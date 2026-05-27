@@ -1,0 +1,170 @@
+{
+    "1": {
+    "diagnosis": "ALL",
+    "n_images": 66,
+    "n_cells_total": 575,
+    "n_cells_identified_wbc": 533,
+    "cell_counts": {
+      "lymphoblast": 500,
+      "none": 42,
+      "lymphocyte": 31,
+      "monocyte": 2
+    },
+    "cell_percentages_all": {
+      "lymphoblast": 86.96,
+      "none": 7.3,
+      "lymphocyte": 5.39,
+      "monocyte": 0.35
+    },
+    "cell_percentages_clinical": {
+      "lymphoblast": 93.81,
+      "lymphocyte": 5.82,
+      "monocyte": 0.38
+    },
+    "attributes": {
+      "cell_size": {
+        "counts": {
+          "medium": 408,
+          "small": 117,
+          "large": 8
+        },
+        "n_informative_cells": 533,
+        "n_na_cells": 0,
+        "percentages": {
+          "medium": 76.55,
+          "small": 21.95,
+          "large": 1.5
+        }
+      },
+      "nuclear_chromatio": {
+        "counts": {
+          "coarse": 462,
+          "open": 71
+        },
+        "n_informative_cells": 533,
+        "n_na_cells": 0,
+        "percentages": {
+          "coarse": 86.68,
+          "open": 13.32
+        }
+      },
+      "nuclear_shape": {
+        "counts": {
+          "regular": 306,
+          "irregular": 210,
+          "code_2": 17
+        },
+        "n_informative_cells": 533,
+        "n_na_cells": 0,
+        "percentages": {
+          "regular": 57.41,
+          "irregular": 39.4,
+          "code_2": 3.19
+        }
+      },
+      "nucleolus": {
+        "counts": {
+          "inconspicuous": 397,
+          "prominent": 136
+        },
+        "n_informative_cells": 533,
+        "n_na_cells": 0,
+        "percentages": {
+          "inconspicuous": 74.48,
+          "prominent": 25.52
+        }
+      },
+      "cytoplasm": {
+        "counts": {
+          "abundant": 422,
+          "scanty": 111
+        },
+        "n_informative_cells": 533,
+        "n_na_cells": 0,
+        "percentages": {
+          "abundant": 79.17,
+          "scanty": 20.83
+        }
+      },
+      "cytoplasmic_basophilia": {
+        "counts": {
+          "slight": 516,
+          "moderate": 17
+        },
+        "n_informative_cells": 533,
+        "n_na_cells": 0,
+        "percentages": {
+          "slight": 96.81,
+          "moderate": 3.19
+        }
+      },
+      "cytoplasmic_vacuoles": {
+        "counts": {
+          "absent": 516,
+          "prominent": 17
+        },
+        "n_informative_cells": 533,
+        "n_na_cells": 0,
+        "percentages": {
+          "absent": 96.81,
+          "prominent": 3.19
+        }
+      }
+    },
+    "report_ready": {
+      "diagnosis": "ALL",
+      "blast_percentage_of_wbc": 93.81,
+      "dominant_cell_type": "lymphoblast",
+      "dominant_cell_pct": 93.81,
+      "diagnostic_flags": {
+        "blasts_present": true,
+        "blast_threshold_met": true,
+        "abnormal_promyelocytes_present": false,
+        "atypical_lymphocytes_present": false,
+        "basophilia_present": false,
+        "eosinophilia_present": false,
+        "left_shifted_myeloid": false,
+        "monocytosis_present": false
+      },
+      "blast_morphology": {
+        "cell_size": {
+          "dominant": "medium",
+          "dominance_pct": 78.2
+        },
+        "nuclear_chromatio": {
+          "dominant": "coarse",
+          "dominance_pct": 85.8
+        },
+        "nuclear_shape": {
+          "dominant": "regular",
+          "dominance_pct": 56.2
+        },
+        "nucleolus": {
+          "dominant": "inconspicuous",
+          "dominance_pct": 72.8
+        },
+        "cytoplasm": {
+          "dominant": "abundant",
+          "dominance_pct": 78.6
+        },
+        "cytoplasmic_basophilia": {
+          "dominant": "slight",
+          "dominance_pct": 96.6
+        },
+        "cytoplasmic_vacuoles": {
+          "dominant": "absent",
+          "dominance_pct": 96.6
+        }
+      },
+      "qc": {
+        "n_annotated_cells": 575,
+        "n_identified_wbc": 533,
+        "n_artifacts": 42,
+        "n_fields_of_view": 66,
+        "n_cells_in_cohort": 500,
+        "low_cell_count_warning": false,
+        "sparse_annotation_skew_warning": false
+      }
+    }
+  }
+}

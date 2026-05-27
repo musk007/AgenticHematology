@@ -1,0 +1,165 @@
+{
+   "1": {
+    "metadata_filename_diagnosis": "ALL",
+    "n_images": 33,
+    "n_cells_total": 150,
+    "n_cells_identified_wbc": 140,
+    "cell_counts": {
+      "lymphoblast": 130,
+      "none": 10,
+      "lymphocyte": 9,
+      "monocyte": 1
+    },
+    "cell_percentages_all": {
+      "lymphoblast": 86.67,
+      "none": 6.67,
+      "lymphocyte": 6.0,
+      "monocyte": 0.67
+    },
+    "cell_percentages_clinical": {
+      "lymphoblast": 92.86,
+      "lymphocyte": 6.43,
+      "monocyte": 0.71
+    },
+    "attributes": {
+      "cell_size": {
+        "counts": {
+          "medium": 104,
+          "small": 35,
+          "large": 1
+        },
+        "n_informative_cells": 140,
+        "n_na_cells": 0,
+        "percentages": {
+          "medium": 74.29,
+          "small": 25.0,
+          "large": 0.71
+        }
+      },
+      "nuclear_chromatio": {
+        "counts": {
+          "coarse": 128,
+          "open": 12
+        },
+        "n_informative_cells": 140,
+        "n_na_cells": 0,
+        "percentages": {
+          "coarse": 91.43,
+          "open": 8.57
+        }
+      },
+      "nuclear_shape": {
+        "counts": {
+          "regular": 84,
+          "irregular": 56
+        },
+        "n_informative_cells": 140,
+        "n_na_cells": 0,
+        "percentages": {
+          "regular": 60.0,
+          "irregular": 40.0
+        }
+      },
+      "nucleolus": {
+        "counts": {
+          "inconspicuous": 107,
+          "prominent": 33
+        },
+        "n_informative_cells": 140,
+        "n_na_cells": 0,
+        "percentages": {
+          "inconspicuous": 76.43,
+          "prominent": 23.57
+        }
+      },
+      "cytoplasm": {
+        "counts": {
+          "abundant": 114,
+          "scanty": 26
+        },
+        "n_informative_cells": 140,
+        "n_na_cells": 0,
+        "percentages": {
+          "abundant": 81.43,
+          "scanty": 18.57
+        }
+      },
+      "cytoplasmic_basophilia": {
+        "counts": {
+          "slight": 140
+        },
+        "n_informative_cells": 140,
+        "n_na_cells": 0,
+        "percentages": {
+          "slight": 100.0
+        }
+      },
+      "cytoplasmic_vacuoles": {
+        "counts": {
+          "absent": 140
+        },
+        "n_informative_cells": 140,
+        "n_na_cells": 0,
+        "percentages": {
+          "absent": 100.0
+        }
+      }
+    },
+    "report_ready": {
+      "metadata_filename_diagnosis": "ALL",
+      "blast_pool_percentage_of_wbc": 92.86,
+      "dominant_cell_type": "lymphoblast",
+      "dominant_cell_pct": 92.86,
+      "diagnostic_flags": {
+        "blasts_present": true,
+        "blast_threshold_met": true,
+        "abnormal_promyelocytes_present": false,
+        "atypical_lymphocytes_present": false,
+        "basophilia_present": false,
+        "eosinophilia_present": false,
+        "left_shifted_myeloid": false,
+        "monocytosis_present": false
+      },
+      "blast_morphology": {
+        "cell_size": {
+          "dominant": "medium",
+          "dominance_pct": 76.15
+        },
+        "nuclear_chromatio": {
+          "dominant": "coarse",
+          "dominance_pct": 90.77
+        },
+        "nuclear_shape": {
+          "dominant": "regular",
+          "dominance_pct": 59.23
+        },
+        "nucleolus": {
+          "dominant": "inconspicuous",
+          "dominance_pct": 74.62
+        },
+        "cytoplasm": {
+          "dominant": "abundant",
+          "dominance_pct": 80.77
+        },
+        "cytoplasmic_basophilia": {
+          "dominant": "slight",
+          "dominance_pct": 100.0
+        },
+        "cytoplasmic_vacuoles": {
+          "dominant": "absent",
+          "dominance_pct": 100.0
+        }
+      },
+      "qc": {
+        "n_annotated_cells": 150,
+        "n_identified_wbc": 140,
+        "n_artifacts": 10,
+        "n_fields_of_view": 33,
+        "n_cells_in_cohort": 130,
+        "low_cell_count_warning": false,
+        "sparse_annotation_skew_warning": false,
+        "global_canvas_stitching_active": true
+      }
+    }
+  }
+}
