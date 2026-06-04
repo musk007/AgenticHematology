@@ -1,6 +1,6 @@
 """
 enrich_report_with_llm.py
-=========================
+
 Standalone post-processor that adds an LLM-generated "Morphologic
 interpretation" paragraph to an already-generated template report. The
 original report is not modified — the new section is inserted in-memory
