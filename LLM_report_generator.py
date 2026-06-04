@@ -58,7 +58,10 @@ from typing import Any
 # WARNING: do not commit this file to a public git repo with real keys.
 
 
+<<<<<<< HEAD
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+=======
+>>>>>>> 98009b8 (mended the API report generation code)
 
 
 OPENAI_MODEL    = "gpt-5.5"
