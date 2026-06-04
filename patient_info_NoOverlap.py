@@ -21,7 +21,7 @@ DATASET_ROOT = (
 )
 
 # Restriced to a single canonical camera domain to prevent sensor multiplication
-DOMAINS: list[str] = ["H_40X_C2"]
+DOMAINS: list[str] = ["H_100X_C2"]
 SPLITS = ["train", "test"]
 
 # ---------------------------------------------------------------------------
@@ -82,8 +82,8 @@ BLAST_THRESHOLD_PCT = 20.0
 BASOPHILIA_THRESHOLD_PCT = 2.0
 LOW_CELL_COUNT_THRESHOLD = 30
 
-OUT_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp.json")
-OUT_CSV_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp.csv")
+OUT_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp_100X.json")
+OUT_CSV_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp_100X.csv")
 
 # ---------------------------------------------------------------------------
 # Global Bounding Box Canvas Object
