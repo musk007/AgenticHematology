@@ -1,0 +1,79 @@
+# WBC unified pipeline — artifacts under artifact_root (NFS)
+
+artifact_root: /nfs-stor/zongyan/wbc_medical/rao.anwer/report_llm
+
+data_root: /nfs-stor/zongyan/datasets/medical/LeukemiaDataset_Organized
+
+# Paths relative to wbc_unified/ (project root)
+predictions:
+  - cv/runs/predict/infer/test_predictions.json
+
+reports_gt_dir: "{data_root}/report"
+
+output:
+  summaries_gt: data/patient_summaries/gt
+  summaries_pred: data/patient_summaries/pred
+  reports_generated: data/reports_template_pred
+  reports_llm_pred: data/reports_llm_pred
+  sft_dataset: data/sft/report_sft.jsonl
+  eval: data/eval
+
+inference:
+  base_model: /nfs-stor/zongyan/pretrained_models/Qwen3.5-2B
+  lora_adapter: null
+  grpo_step: 30
+  max_new_tokens: 768
+  temperature: 0.0
+
+aggregation:
+  conf_threshold: 0.25
+  informative_exclude: None
+  blast_classes:
+    - Myeloblast
+    - Lymphoblast
+    - Monoblast
+    - Abnormal promyelocyte
+  blast_threshold_pct: 20.0
+  morphology_min_cells: 5
+
+verl:
+  pretrained_root: /nfs-stor/zongyan/pretrained_models
+  base_model: /nfs-stor/zongyan/pretrained_models/Qwen3.5-2B
+  lora_rank: 64
+  lora_alpha: 128
+  sft_parquet: data/verl/sft
+  grpo_e2e_parquet: data/verl/grpo_e2e
+  sft_save_dir: runs/verl/sft_qwen3_5_2b_lora
+  grpo_save_dir: runs/verl/grpo_qwen3_5_2b_lora
+  reward_fn_e2e: verl_scripts/reward_report_e2e.py
+  reward_w_report: 0.50
+  reward_w_det: 0.25
+  reward_w_attr: 0.25
+
+stage1:
+  det_weights: cv/runs/detector/train/weights/best.pt
+  attr_weights: cv/runs/attribute/train/best_attr.pt
+  predictions_json: cv/runs/predict/infer/test_predictions.json
+
+class_display:
+  None: None
+  Myeloblast: Myeloblasts
+  Lymphoblast: Lymphoblasts
+  Neutrophil: Neutrophils
+  Atypical lymphocyte: Atypical lymphocytes
+  Promonocyte: Promonocytes
+  Monoblast: Monoblasts
+  Lymphocyte: Lymphocytes
+  Myelocyte: Myelocytes
+  Abnormal promyelocyte: Abnormal promyelocytes
+  Monocyte: Monocytes
+  Metamyelocyte: Metamyelocytes
+  Eosinophil: Eosinophils
+  Basophil: Basophils
+
+disease_impression:
+  ALL: Acute Lymphoblastic Leukemia (ALL).
+  AML: Acute Myeloid Leukemia (AML).
+  CML: Chronic Myeloid Leukemia (CML).
+  CLL: Chronic Lymphocytic Leukemia (CLL).
+  APML: Acute Promyelocytic Leukemia (APML).

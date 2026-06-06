@@ -1,0 +1,22 @@
+path: /home/rao.anwer/codes/medical/LLD-Large-Leukemia-dataset-for-microscopic-imagery/wbc_unified/cv/generated/det_dataset
+train: images/train
+val: images/test
+test: images/test
+nc: 14
+names:
+- None
+- Myeloblast
+- Lymphoblast
+- Neutrophil
+- Atypical lymphocyte
+- Promonocyte
+- Monoblast
+- Lymphocyte
+- Myelocyte
+- Abnormal promyelocyte
+- Monocyte
+- Metamyelocyte
+- Eosinophil
+- Basophil
+data_root: /nfs-stor/zongyan/datasets/medical/LeukemiaDataset_Organized
+attr_manifest: /home/rao.anwer/codes/medical/LLD-Large-Leukemia-dataset-for-microscopic-imagery/wbc_unified/cv/generated/attr_manifest.csv

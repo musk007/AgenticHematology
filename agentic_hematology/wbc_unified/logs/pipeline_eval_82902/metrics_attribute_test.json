@@ -1,0 +1,45 @@
+{
+  "stage": "attribute_gt_crops",
+  "split": "test",
+  "weights": "/home/rao.anwer/codes/medical/LLD-Large-Leukemia-dataset-for-microscopic-imagery/wbc_unified/cv/runs/attribute/train/best_attr.pt",
+  "per_attribute": {
+    "Nuclear_Chromatin": {
+      "accuracy": 0.9171364148816235,
+      "precision": 0.9613225202744854,
+      "recall": 0.9477244772447725,
+      "f1": 0.9544750696810158
+    },
+    "Nuclear_Shape": {
+      "accuracy": 0.8283541553503531,
+      "precision": 0.8960698689956332,
+      "recall": 0.83892068683565,
+      "f1": 0.8665540540540541
+    },
+    "Nucleus": {
+      "accuracy": 0.9467680608365019,
+      "precision": 0.9596412556053812,
+      "recall": 0.9850402761795167,
+      "f1": 0.9721749006246451
+    },
+    "Cytoplasm": {
+      "accuracy": 0.8147745790331342,
+      "precision": 0.6723842195540308,
+      "recall": 0.7232472324723247,
+      "f1": 0.6968888888888889
+    },
+    "Cytoplasmic_Basophilia": {
+      "accuracy": 0.8853883758826725,
+      "precision": 0.9332901554404145,
+      "recall": 0.9302775984506133,
+      "f1": 0.9317814419657291
+    },
+    "Cytoplasmic_Vacuoles": {
+      "accuracy": 0.857686040195546,
+      "precision": 0.8766140602582496,
+      "recall": 0.9314024390243902,
+      "f1": 0.9031781226903178
+    }
+  },
+  "mean_accuracy": 0.875,
+  "written_at": "2026-06-05T13:20:46.865412+00:00"
+}

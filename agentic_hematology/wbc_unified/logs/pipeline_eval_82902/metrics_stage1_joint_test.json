@@ -1,0 +1,98 @@
+{
+  "stage": "stage1_joint",
+  "split": "test",
+  "det_weights": "/home/rao.anwer/codes/medical/LLD-Large-Leukemia-dataset-for-microscopic-imagery/wbc_unified/cv/runs/detector/train/weights/best.pt",
+  "attr_weights": "/home/rao.anwer/codes/medical/LLD-Large-Leukemia-dataset-for-microscopic-imagery/wbc_unified/cv/runs/attribute/train/best_attr.pt",
+  "detection": {
+    "map50": 0.3737912544026985,
+    "map50_95": 0.2019866860517501,
+    "precision": 0.5002689009100655,
+    "recall": 0.45317408064143994
+  },
+  "attributes_gt_crops": {
+    "per_attribute": {
+      "Nuclear_Chromatin": {
+        "accuracy": 0.9171364148816235,
+        "precision": 0.9613225202744854,
+        "recall": 0.9477244772447725,
+        "f1": 0.9544750696810158
+      },
+      "Nuclear_Shape": {
+        "accuracy": 0.8283541553503531,
+        "precision": 0.8960698689956332,
+        "recall": 0.83892068683565,
+        "f1": 0.8665540540540541
+      },
+      "Nucleus": {
+        "accuracy": 0.9467680608365019,
+        "precision": 0.9596412556053812,
+        "recall": 0.9850402761795167,
+        "f1": 0.9721749006246451
+      },
+      "Cytoplasm": {
+        "accuracy": 0.8147745790331342,
+        "precision": 0.6723842195540308,
+        "recall": 0.7232472324723247,
+        "f1": 0.6968888888888889
+      },
+      "Cytoplasmic_Basophilia": {
+        "accuracy": 0.8853883758826725,
+        "precision": 0.9332901554404145,
+        "recall": 0.9302775984506133,
+        "f1": 0.9317814419657291
+      },
+      "Cytoplasmic_Vacuoles": {
+        "accuracy": 0.857686040195546,
+        "precision": 0.8766140602582496,
+        "recall": 0.9314024390243902,
+        "f1": 0.9031781226903178
+      }
+    },
+    "mean_accuracy": 0.875
+  },
+  "attributes_e2e": {
+    "per_attribute": {
+      "Nuclear_Chromatin": {
+        "accuracy": 0.9171364148816235,
+        "precision": 0.9601742377100186,
+        "recall": 0.9489544895448955,
+        "f1": 0.9545313949891742
+      },
+      "Nuclear_Shape": {
+        "accuracy": 0.8354155350353069,
+        "precision": 0.8993055555555556,
+        "recall": 0.8470973017170891,
+        "f1": 0.872421052631579
+      },
+      "Nucleus": {
+        "accuracy": 0.9505703422053232,
+        "precision": 0.9634214969048959,
+        "recall": 0.9850402761795167,
+        "f1": 0.9741109530583215
+      },
+      "Cytoplasm": {
+        "accuracy": 0.830526887561108,
+        "precision": 0.696917808219178,
+        "recall": 0.7509225092250923,
+        "f1": 0.7229129662522202
+      },
+      "Cytoplasmic_Basophilia": {
+        "accuracy": 0.888647474198805,
+        "precision": 0.9369310793237972,
+        "recall": 0.9302775984506133,
+        "f1": 0.9335924846128928
+      },
+      "Cytoplasmic_Vacuoles": {
+        "accuracy": 0.8680065181966322,
+        "precision": 0.8798862828713575,
+        "recall": 0.9435975609756098,
+        "f1": 0.9106289076866495
+      }
+    },
+    "mean_accuracy": 0.8817,
+    "n_matched": 1841,
+    "n_gt_cells": 1841,
+    "mean_match_iou": 0.7892841736845255
+  },
+  "written_at": "2026-06-05T13:21:53.181089+00:00"
+}
