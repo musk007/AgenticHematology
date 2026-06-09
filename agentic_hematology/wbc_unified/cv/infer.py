@@ -59,7 +59,11 @@ def main() -> None:
 
     cfg = yaml.safe_load(args.config.read_text())
     det_root = Path(cfg["path"])
+    print("****"*20)
+    print(det_root)
     img_dir = det_root / "images" / args.split
+    print(img_dir)
+    print("****"*20)
     images = sorted(
         p for p in img_dir.iterdir() if p.suffix.lower() in {".png", ".jpg", ".jpeg", ".tif", ".tiff"}
     )

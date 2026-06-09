@@ -167,6 +167,10 @@ def main() -> int:
     p.add_argument("--out")
     args = p.parse_args()
 
+
+    ################################################ 
+    # Establishing the pipeline components
+    ################################################
     detector = build_detector(args)
     images = resolve_images(args)
     if args.backend != "stub" and not images:
@@ -175,12 +179,16 @@ def main() -> int:
     classifier = HybridClassifier(learned=learned)
     report_gen = build_report_generator(args)
 
+    ################################################
+    # Agentic Components
+    ################################################
     # --- Agentic components: one shared Qwen3 client drives the LLM router,
     #     the reflection agent, and EXPLAIN answers. Enabled unless --no-agent.
     reflection_agent = None
     router = RuleBasedRouter()
     llm_explain = None
     if not args.no_agent:
+        print("Agentic mode enabled: initializing LLM router and reflection agent.", flush=True)
         try:
             from agentic_hematology.agent_controller import (
                 QwenLLMClient,
@@ -203,6 +211,7 @@ def main() -> int:
         reflection_agent = ReflectionAgent(llm_client)
         router = LLMRouter(llm_client.complete, fallback=RuleBasedRouter())
         llm_explain = llm_client.complete
+        print("Agentic components initialized.", flush=True)
 
         # Share one Qwen3 instance: if the report backend is also the local
         # LLM, reuse the agent's loaded weights instead of loading a second
@@ -229,7 +238,9 @@ def main() -> int:
         max_reflect_iterations=args.max_reflect_iterations,
         llm_explain=llm_explain,
     )
-
+    ################################################
+    # Passing request to orchestrator
+    ################################################
     req = OrchestratorRequest(
         case_id=args.case_id,
         image_paths=images,

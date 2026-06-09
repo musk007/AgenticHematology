@@ -41,7 +41,7 @@ DET_IMGSZ="${DET_IMGSZ:-512}"
 DET_BATCH="${DET_BATCH:-1}"
 NO_HALF="${NO_HALF:-0}"
 
-AGENT_LLM_MODEL="${AGENT_LLM_MODEL:-/nfs-stor/zongyan/pretrained_models/Qwen3.5-2B}"
+AGENT_LLM_MODEL="${AGENT_LLM_MODEL:-/nfs-stor/roba.majzoub/Qwen3.5-4B}"
 USE_AGENT="${USE_AGENT:-1}"
 MAX_REFLECT_ITERS="${MAX_REFLECT_ITERS:-2}"
 

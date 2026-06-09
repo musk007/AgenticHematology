@@ -15,63 +15,76 @@ def load_model_and_tokenizer(
     from peft import PeftModel
     from transformers import AutoModelForImageTextToText, AutoTokenizer
 
-    model_path = Path(model_path)
-    tok = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-    model = AutoModelForImageTextToText.from_pretrained(
-        model_path,
+    model_path = Path(model_path).expanduser().resolve()
+    if not model_path.is_dir():
+        raise FileNotFoundError(f"Base model directory not found: {model_path}")
+    model_path_str = str(model_path)
+    tok = AutoTokenizer.from_pretrained(
+        model_path_str,
         trust_remote_code=True,
+        local_files_only=True,
+    )
+    model = AutoModelForImageTextToText.from_pretrained(
+        model_path_str,
+        trust_remote_code=True,
+        local_files_only=True,
         dtype=torch.bfloat16,
         device_map="auto",
     )
-    if adapter_path and Path(adapter_path).is_dir():
-        model = PeftModel.from_pretrained(model, str(adapter_path), is_trainable=False)
+    if adapter_path:
+        adapter_path = Path(adapter_path).expanduser().resolve()
+        if not adapter_path.is_dir():
+            raise FileNotFoundError(f"LoRA adapter directory not found: {adapter_path}")
+        model = PeftModel.from_pretrained(
+            model,
+            str(adapter_path),
+            is_trainable=False,
+            local_files_only=True,
+        )
     model.eval()
     return model, tok
 
 
 def encode_messages(tokenizer, messages: list[dict[str, str]]) -> list[int]:
-    import sys
-
-    from .paths import REPO_ROOT
-
-    verl_root = REPO_ROOT / "third_party" / "verl"
-    if str(verl_root) not in sys.path:
-        sys.path.insert(0, str(verl_root))
-    from verl.utils.chat_template import apply_chat_template
-    from verl.utils.tokenizer import normalize_token_ids
-
-    return normalize_token_ids(
-        apply_chat_template(
-            tokenizer,
+    try:
+        import sys
+        from .paths import REPO_ROOT
+        verl_root = REPO_ROOT / "third_party" / "verl"
+        if str(verl_root) not in sys.path:
+            sys.path.insert(0, str(verl_root))
+        from verl.utils.chat_template import apply_chat_template
+        from verl.utils.tokenizer import normalize_token_ids
+        return normalize_token_ids(
+            apply_chat_template(
+                tokenizer,
+                messages,
+                add_generation_prompt=True,
+                tokenize=True,
+                enable_thinking=False,
+            )
+        )
+    except (ImportError, ModuleNotFoundError):
+        pass
+    # Fallback: HF tokenizer directly (no verl dependency)
+    try:
+        ids = tokenizer.apply_chat_template(
             messages,
             add_generation_prompt=True,
             tokenize=True,
             enable_thinking=False,
         )
-    )
+    except TypeError:
+        ids = tokenizer.apply_chat_template(
+            messages,
+            add_generation_prompt=True,
+            tokenize=True,
+        )
+    return list(ids)
 
 
 def encode_prompt(tokenizer, summary: dict[str, Any]) -> list[int]:
-    import sys
-
-    from .paths import REPO_ROOT
-
-    verl_root = REPO_ROOT / "third_party" / "verl"
-    if str(verl_root) not in sys.path:
-        sys.path.insert(0, str(verl_root))
-    from verl.utils.chat_template import apply_chat_template
-    from verl.utils.tokenizer import normalize_token_ids
-
     msgs = messages_for_inference(summary)
-    return normalize_token_ids(
-        apply_chat_template(
-            tokenizer,
-            msgs,
-            add_generation_prompt=True,
-            tokenize=True,
-            enable_thinking=False,
-        )
-    )
+    return encode_messages(tokenizer, msgs)
 
 
 def generate_from_messages(

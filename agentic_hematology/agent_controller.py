@@ -85,9 +85,11 @@ class QwenLLMClient:
         # Reuse the project's own loader so behaviour matches report gen.
         from report.src.llm_infer import load_model_and_tokenizer  # type: ignore
 
+        print("Loading Qwen agent model...", flush=True)
         self._model, self._tokenizer = load_model_and_tokenizer(
             self.model_path, self.adapter_path
         )
+        print("Qwen agent model loaded.", flush=True)
 
     @property
     def model(self):
@@ -111,17 +113,20 @@ class QwenLLMClient:
         from report.src.llm_infer import generate_from_messages  # type: ignore
 
         self._ensure_loaded()
+        print("Running Qwen agent generation...", flush=True)
         messages = [
             {"role": "system", "content": system},
             {"role": "user", "content": user},
         ]
-        return generate_from_messages(
+        out = generate_from_messages(
             self._model,
             self._tokenizer,
             messages,
             max_new_tokens=self.max_new_tokens,
             temperature=self.temperature,
         )
+        print("Qwen agent generation complete.", flush=True)
+        return out
 
 
 # ---------------------------------------------------------------------------
@@ -212,6 +217,7 @@ class ReflectionAgent:
         )
 
         try:
+            print("Running reflection agent...", flush=True)
             raw = self.llm.complete(_SYSTEM_PROMPT, user)
         except Exception as e:
             return AgentDecision(
@@ -219,6 +225,7 @@ class ReflectionAgent:
                 f"reflection LLM call failed ({e}); flagging for safety",
                 raw="",
             )
+        print("Reflection agent complete.", flush=True)
 
         decision = self._parse(raw)
 

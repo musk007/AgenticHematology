@@ -189,11 +189,18 @@ class LLMRouter:
             return self.fallback.route(request)
 
         try:
+            print("Running LLM intent router...", flush=True)
             raw = self.llm_complete(self._SYSTEM, text).strip().upper()
+            print("LLM intent router complete.", flush=True)
             for intent in Intent:
                 if intent.value in raw:
                     return intent, f"LLM router → {intent.value}"
-        except Exception:
+        except Exception as e:
+            print(
+                f"LLM intent router failed ({type(e).__name__}: {e}); "
+                "falling back to rule router.",
+                flush=True,
+            )
             pass
         return self.fallback.route(request)
 

@@ -1,0 +1,26 @@
+{
+  "feature_keys": [
+    "blast_pct",
+    "n_cells_informative",
+    "pct_Abnormal promyelocyte",
+    "pct_Atypical lymphocyte",
+    "pct_Basophil",
+    "pct_Eosinophil",
+    "pct_Lymphoblast",
+    "pct_Lymphocyte",
+    "pct_Metamyelocyte",
+    "pct_Monoblast",
+    "pct_Monocyte",
+    "pct_Myeloblast",
+    "pct_Myelocyte",
+    "pct_Neutrophil",
+    "pct_Promonocyte"
+  ],
+  "classes": [
+    "ALL",
+    "AML",
+    "APML",
+    "CLL",
+    "CML"
+  ]
+}

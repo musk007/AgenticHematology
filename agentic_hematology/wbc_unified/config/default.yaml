@@ -1,8 +1,8 @@
 # WBC unified pipeline — artifacts under artifact_root (NFS)
 
-artifact_root: /nfs-stor/zongyan/wbc_medical/rao.anwer/report_llm
+artifact_root: /nfs-stor/roba.majzoub/wbc_medical/rao.anwer/report_llm
 
-data_root: /nfs-stor/zongyan/datasets/medical/LeukemiaDataset_Organized
+data_root: /nfs-stor/roba.majzoub/LeukemiaDataset_Organized
 
 # Paths relative to wbc_unified/ (project root)
 predictions:
@@ -19,7 +19,7 @@ output:
   eval: data/eval
 
 inference:
-  base_model: /nfs-stor/zongyan/pretrained_models/Qwen3.5-2B
+  base_model: /nfs-stor/roba.majzoub/LLMs/Qwen3.5-4B
   lora_adapter: null
   grpo_step: 30
   max_new_tokens: 768
@@ -37,8 +37,8 @@ aggregation:
   morphology_min_cells: 5
 
 verl:
-  pretrained_root: /nfs-stor/zongyan/pretrained_models
-  base_model: /nfs-stor/zongyan/pretrained_models/Qwen3.5-2B
+  pretrained_root: /nfs-stor/roba.majzoub/LLMs
+  base_model: /nfs-stor/roba.majzoub/LLMs/Qwen3.5-4B
   lora_rank: 64
   lora_alpha: 128
   sft_parquet: data/verl/sft
