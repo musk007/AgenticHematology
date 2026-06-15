@@ -1,0 +1,6 @@
+{
+  "patient_id": "patient_15",
+  "predicted_class": "AML",
+  "confidence": 0.91,
+  "rationale": "learned classifier prediction from aggregated differential features"
+}

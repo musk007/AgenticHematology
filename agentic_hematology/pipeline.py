@@ -17,6 +17,14 @@ def detect_node(state: PipelineState, detector: BaseDetectionAgent) -> PipelineS
     if not state.image_paths:
         state.errors.append("Detection requested but no image paths were supplied")
         return state
+    from .detection_agent_v2 import PrecroppedCellAgent
+
+    if isinstance(detector, PrecroppedCellAgent):
+        state.dataset_source = "mll-helmholtz"
+        state.routing_notes.append(
+            "Dataset routing: MLL Helmholtz pre-cropped cells — skipped YOLO, "
+            "EfficientNet attributes on full image"
+        )
     state.detection_result = detector.detect(state.case_id, state.image_paths)
     return state
 
@@ -34,7 +42,7 @@ def classify_node(state: PipelineState, classifier: HybridClassifier) -> Pipelin
     if state.findings is None:
         state.errors.append("Classification requested before aggregation")
         return state
-    state.classification = classifier.classify(state.findings)
+    state.classification = classifier.classify(state.findings, dataset_source=state.dataset_source)
     return state
 
 
@@ -72,7 +80,9 @@ def reflect_node(
 
     for iteration in range(1, max_iterations + 1):
         state.n_reflect_iterations = iteration
-        case_state = build_case_state(state.findings, state.classification)
+        case_state = build_case_state(
+            state.findings, state.classification, dataset_source=state.dataset_source
+        )
         decision = agent.decide(
             case_state,
             re_aggregate_used=re_aggregate_used,

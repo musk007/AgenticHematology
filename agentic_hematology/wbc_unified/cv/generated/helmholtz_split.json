@@ -1,0 +1,1159 @@
+{
+  "metadata_json": "/home/roba.majzoub/AgenticHematology/data_preprocessing/patients_helmholtz.json",
+  "seed": 42,
+  "test_fraction": 0.3,
+  "train_fraction": 0.7,
+  "n_patients": 189,
+  "n_train": 132,
+  "n_test": 57,
+  "train_label_counts": {
+    "AML": 73,
+    "APML": 17,
+    "Healthy": 42
+  },
+  "test_label_counts": {
+    "AML": 32,
+    "APML": 7,
+    "Healthy": 18
+  },
+  "train_patient_ids": [
+    "ABF",
+    "AIH",
+    "AVL",
+    "BHG",
+    "BHR",
+    "BHS",
+    "BJK",
+    "BKR",
+    "BOE",
+    "BSN",
+    "BTB",
+    "CCO",
+    "CDA",
+    "CIQ",
+    "CMR",
+    "CVW",
+    "CZI",
+    "DHA",
+    "DHE",
+    "DJJ",
+    "DNX",
+    "DPF",
+    "DPU",
+    "DSN",
+    "ECB",
+    "EEN",
+    "EHM",
+    "FDW",
+    "FED",
+    "FKU",
+    "FPW",
+    "FTW",
+    "FUT",
+    "FYX",
+    "GJQ",
+    "GJZ",
+    "GOJ",
+    "GOP",
+    "GOR",
+    "GQB",
+    "GUE",
+    "GXQ",
+    "HEJ",
+    "HMC",
+    "HNB",
+    "HQE",
+    "HQQ",
+    "HXQ",
+    "ICS",
+    "IEN",
+    "IIG",
+    "ILZ",
+    "IPY",
+    "ISW",
+    "JFC",
+    "JGE",
+    "JRB",
+    "JTF",
+    "KOV",
+    "LBW",
+    "LCW",
+    "LGB",
+    "LPA",
+    "LYD",
+    "MFH",
+    "MJF",
+    "MKF",
+    "MOR",
+    "MPP",
+    "MSC",
+    "NAR",
+    "NCD",
+    "NFI",
+    "NPA",
+    "NRB",
+    "NRL",
+    "NUS",
+    "NXO",
+    "OEY",
+    "OHZ",
+    "ONF",
+    "ORE",
+    "OTU",
+    "OVP",
+    "OYO",
+    "PKC",
+    "POM",
+    "QBU",
+    "QQD",
+    "RDV",
+    "RFV",
+    "RGG",
+    "RHX",
+    "RJQ",
+    "RPA",
+    "SBY",
+    "SQF",
+    "SUN",
+    "SWN",
+    "TBZ",
+    "TOK",
+    "UGU",
+    "UNX",
+    "UOU",
+    "UVT",
+    "UWF",
+    "UXN",
+    "UZP",
+    "VDQ",
+    "VMO",
+    "VPN",
+    "WSD",
+    "WTE",
+    "WXO",
+    "XBB",
+    "XFF",
+    "XTK",
+    "XXI",
+    "YCY",
+    "YDL",
+    "YPF",
+    "YST",
+    "YWQ",
+    "YXH",
+    "YXY",
+    "ZEQ",
+    "ZLW",
+    "ZMX",
+    "ZNB",
+    "ZVS",
+    "ZVX",
+    "ZZM"
+  ],
+  "test_patient_ids": [
+    "AEC",
+    "ALA",
+    "ALE",
+    "AQK",
+    "ATM",
+    "BIK",
+    "BXR",
+    "CWF",
+    "DFT",
+    "DQV",
+    "ENH",
+    "FAQ",
+    "FOH",
+    "FOL",
+    "FQY",
+    "GEG",
+    "HFM",
+    "HVE",
+    "IQS",
+    "KDW",
+    "KRG",
+    "LAM",
+    "NHB",
+    "NOL",
+    "NVD",
+    "NXR",
+    "OCV",
+    "ORD",
+    "OUR",
+    "PAM",
+    "PBO",
+    "PCQ",
+    "QCF",
+    "QIZ",
+    "RNQ",
+    "SDP",
+    "SYY",
+    "TPI",
+    "TVZ",
+    "TXH",
+    "UBG",
+    "VAJ",
+    "VXU",
+    "WOA",
+    "XIE",
+    "XMA",
+    "XOB",
+    "XXJ",
+    "XXX",
+    "YPT",
+    "YRZ",
+    "ZEE",
+    "ZJJ",
+    "ZLQ",
+    "ZNK",
+    "ZNL",
+    "ZRJ"
+  ],
+  "patients": {
+    "ABF": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "AEC": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "AIH": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "ALA": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "ALE": {
+      "split": "test",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "AQK": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "ATM": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "AVL": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "BHG": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "BHR": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "BHS": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "BIK": {
+      "split": "test",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "BJK": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "BKR": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "BOE": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "BSN": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "BTB": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "BXR": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "CCO": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "CDA": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "CIQ": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "CMR": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "CVW": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "CWF": {
+      "split": "test",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "CZI": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "DFT": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "DHA": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "DHE": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "DJJ": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "DNX": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "DPF": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "DPU": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "DQV": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "DSN": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "ECB": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "EEN": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "EHM": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "ENH": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "FAQ": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "FDW": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "FED": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "FKU": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "FOH": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "FOL": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "FPW": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "FQY": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "FTW": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "FUT": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "FYX": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "GEG": {
+      "split": "test",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "GJQ": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "GJZ": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "GOJ": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "GOP": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "GOR": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "GQB": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "GUE": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "GXQ": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "HEJ": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "HFM": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "HMC": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "HNB": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "HQE": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "HQQ": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "HVE": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "HXQ": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "ICS": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "IEN": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "IIG": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "ILZ": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "IPY": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "IQS": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "ISW": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "JFC": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "JGE": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "JRB": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "JTF": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "KDW": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "KOV": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "KRG": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "LAM": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "LBW": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "LCW": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "LGB": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "LPA": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "LYD": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "MFH": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "MJF": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "MKF": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "MOR": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "MPP": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "MSC": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "NAR": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "NCD": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "NFI": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "NHB": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "NOL": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "NPA": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "NRB": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "NRL": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "NUS": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "NVD": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "NXO": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "NXR": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "OCV": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "OEY": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "OHZ": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "ONF": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "ORD": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "ORE": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "OTU": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "OUR": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "OVP": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "OYO": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "PAM": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "PBO": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "PCQ": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "PKC": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "POM": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "QBU": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "QCF": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "QIZ": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "QQD": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "RDV": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "RFV": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "RGG": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "RHX": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "RJQ": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "RNQ": {
+      "split": "test",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "RPA": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "SBY": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "SDP": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "SQF": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "SUN": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "SWN": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "SYY": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "TBZ": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "TOK": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "TPI": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "TVZ": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "TXH": {
+      "split": "test",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "UBG": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "UGU": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "UNX": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "UOU": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "UVT": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "UWF": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "UXN": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "UZP": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "VAJ": {
+      "split": "test",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "VDQ": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "VMO": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "VPN": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "VXU": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "WOA": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "WSD": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "WTE": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "WXO": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "XBB": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "XFF": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "XIE": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "XMA": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "XOB": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "XTK": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "XXI": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "XXJ": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "XXX": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "YCY": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "YDL": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "YPF": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "YPT": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "YRZ": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "YST": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    },
+    "YWQ": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "YXH": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "YXY": {
+      "split": "train",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "ZEE": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "ZEQ": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "ZJJ": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "ZLQ": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "ZLW": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "ZMX": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "NPM1"
+    },
+    "ZNB": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "ZNK": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "ZNL": {
+      "split": "test",
+      "label": "Healthy",
+      "genetic_label": "control"
+    },
+    "ZRJ": {
+      "split": "test",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "ZVS": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "CBFB_MYH11"
+    },
+    "ZVX": {
+      "split": "train",
+      "label": "AML",
+      "genetic_label": "RUNX1_RUNX1T1"
+    },
+    "ZZM": {
+      "split": "train",
+      "label": "APML",
+      "genetic_label": "PML_RARA"
+    }
+  }
+}

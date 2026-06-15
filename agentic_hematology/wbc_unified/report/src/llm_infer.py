@@ -65,21 +65,26 @@ def encode_messages(tokenizer, messages: list[dict[str, str]]) -> list[int]:
         )
     except (ImportError, ModuleNotFoundError):
         pass
-    # Fallback: HF tokenizer directly (no verl dependency)
+    # Fallback: format via chat template (text), then encode separately.
+    # Using tokenize=False avoids BatchEncoding return-type surprises from
+    # vision-language processors (e.g. Qwen3-VL).
     try:
-        ids = tokenizer.apply_chat_template(
+        text = tokenizer.apply_chat_template(
             messages,
             add_generation_prompt=True,
-            tokenize=True,
+            tokenize=False,
             enable_thinking=False,
         )
     except TypeError:
-        ids = tokenizer.apply_chat_template(
+        text = tokenizer.apply_chat_template(
             messages,
             add_generation_prompt=True,
-            tokenize=True,
+            tokenize=False,
         )
-    return list(ids)
+    # Handle both AutoTokenizer and Processor (processor wraps a .tokenizer)
+    text_tok = getattr(tokenizer, "tokenizer", tokenizer)
+    ids = text_tok.encode(text, add_special_tokens=False)
+    return ids if isinstance(ids, list) else ids.tolist()
 
 
 def encode_prompt(tokenizer, summary: dict[str, Any]) -> list[int]:

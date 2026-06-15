@@ -1,0 +1,28 @@
+{
+  "manifest": "generated/attr_manifest.csv",
+  "train_split": "train",
+  "val_split": "test",
+  "train_metrics": {
+    "per_attribute_f1": {
+      "Nuclear_Chromatin": 0.9353620867177669,
+      "Nuclear_Shape": 0.9233128834355828,
+      "Nucleus": 1.0,
+      "Cytoplasm": 0.9247510143858355,
+      "Cytoplasmic_Basophilia": 0.9441010127581217,
+      "Cytoplasmic_Vacuoles": 0.9563812600969306
+    },
+    "mean_f1": 0.9473180428990396
+  },
+  "val_metrics": {
+    "per_attribute_f1": {
+      "Nuclear_Chromatin": 0.9213410702772404,
+      "Nuclear_Shape": 0.8301110654051831,
+      "Nucleus": 0.9529616724738676,
+      "Cytoplasm": 0.5765595463137996,
+      "Cytoplasmic_Basophilia": 0.906498673740053,
+      "Cytoplasmic_Vacuoles": 0.8751914241960184
+    },
+    "mean_f1": 0.8437772420676936
+  },
+  "probes_path": "runs/attribute_dinobloom/train/best_attr_probes.joblib"
+}

@@ -35,13 +35,17 @@ still imports for testing with the StubDetector.
 
 from __future__ import annotations
 
+import inspect
+import logging
 import os
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol, runtime_checkable
 
 from .detection_agent import BaseDetectionAgent, LLD_CLASSES
 from .schemas import Detection, DetectionResult
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -57,6 +61,15 @@ ATTRIBUTE_ORDER = [
     "Cytoplasmic_Basophilia",
     "Cytoplasmic_Vacuoles",
 ]
+
+
+@runtime_checkable
+class CropAttributeClassifier(Protocol):
+    """Stage-2 head: always receives YOLO cell crops, never full PBS tiles."""
+
+    def classify_crops(
+        self, crops: list[Any], **kwargs: Any
+    ) -> list[tuple[dict[str, float], dict[str, float], str | None, float | None]]: ...
 
 
 def _resolve_device(device: str | None) -> tuple[str, str]:
@@ -106,13 +119,25 @@ class YOLOv11Localizer:
         device: str | None = None,
         class_agnostic: bool = False,
     ):
+        weights = Path(weights_path)
+        if not weights.is_file():
+            raise FileNotFoundError(f"YOLO weights not found: {weights}")
+
         try:
             from ultralytics import YOLO  # type: ignore
         except ImportError as e:
             raise ImportError(
                 "Install ultralytics for YOLOv11: `pip install ultralytics`"
             ) from e
-        self.model = YOLO(weights_path)
+        logger.info(
+            "Loading YOLOv11 localizer from %s (conf=%.2f, iou=%.2f, imgsz=%d)",
+            weights,
+            conf_threshold,
+            iou_threshold,
+            image_size,
+        )
+        self.weights_path = str(weights.resolve())
+        self.model = YOLO(self.weights_path)
         self.conf_threshold = conf_threshold
         self.iou_threshold = iou_threshold
         self.image_size = image_size
@@ -268,27 +293,28 @@ class EfficientNetAttributeClassifier:
 
 class TwoStageDetectionAgent(BaseDetectionAgent):
     """
-    Combines YOLOv11 localization with EfficientNet attribute classification.
+    Two-stage detector used by both wbc-unified and dinobloom backends.
 
-    Flow per case:
-    1. YOLOv11 localizes cells in every image → bboxes + cell types.
-    2. Each cell is cropped from its source image.
-    3. EfficientNet classifies the 7 attributes for each crop (and optionally
-       refines the cell-type).
+    Flow per case (always YOLO first):
+    1. YOLOv11 localizes cells in every PBS tile → bboxes + cell types.
+    2. Each detection is cropped from its source tile (with padding).
+    3. Stage-2 head (EfficientNet or DinoBloom) runs on those crops only.
     4. Assemble Detection objects with stable cell_ids.
     """
 
     def __init__(
         self,
         localizer: YOLOv11Localizer,
-        attribute_classifier: EfficientNetAttributeClassifier,
+        attribute_classifier: CropAttributeClassifier,
         crop_padding: int = 4,
         prefer_efficientnet_celltype: bool = False,
+        attribute_head_name: str = "attribute",
     ):
         self.localizer = localizer
         self.attribute_classifier = attribute_classifier
         self.crop_padding = crop_padding
         self.prefer_efficientnet_celltype = prefer_efficientnet_celltype
+        self.attribute_head_name = attribute_head_name
 
     def detect(self, case_id: str, image_paths: list[str]) -> DetectionResult:
         try:
@@ -296,8 +322,16 @@ class TwoStageDetectionAgent(BaseDetectionAgent):
         except ImportError as e:
             raise ImportError("Install Pillow: `pip install Pillow`") from e
 
-        # Stage 1: localize.
+        # Stage 1: YOLO on full PBS tiles (required before any attribute head).
         per_image_cells = self.localizer.localize(image_paths)
+        total_cells = sum(len(cells) for cells in per_image_cells.values())
+        logger.info(
+            "[%s] YOLO localized %d cells in %d PBS image(s); passing crops to %s head",
+            case_id,
+            total_cells,
+            len(image_paths),
+            self.attribute_head_name,
+        )
 
         all_detections: list[Detection] = []
         for img_idx, img_path in enumerate(image_paths):
@@ -310,7 +344,7 @@ class TwoStageDetectionAgent(BaseDetectionAgent):
                 im = im.convert("RGB")
                 W, H = im.size
 
-                # Crop all cells from this image.
+                # Stage 1b: crop each YOLO box from the tile.
                 crops = []
                 for c in cells:
                     x1, y1, x2, y2 = c["bbox_xyxy"]
@@ -320,8 +354,15 @@ class TwoStageDetectionAgent(BaseDetectionAgent):
                     y2 = min(H, int(y2) + self.crop_padding)
                     crops.append(im.crop((x1, y1, x2, y2)))
 
-                # Stage 2: classify attributes for all crops in this image.
-                attr_results = self.attribute_classifier.classify_crops(crops)
+                if not crops:
+                    continue
+
+                # Stage 2: attribute head sees YOLO crops only (never full tiles).
+                classify_kwargs: dict[str, Any] = {}
+                sig = inspect.signature(self.attribute_classifier.classify_crops)
+                if "yolo_cell_types" in sig.parameters:
+                    classify_kwargs["yolo_cell_types"] = [c["cell_type"] for c in cells]
+                attr_results = self.attribute_classifier.classify_crops(crops, **classify_kwargs)
 
             for cell_idx, (c, attr_res) in enumerate(zip(cells, attr_results)):
                 attrs, attr_probs, en_cell_type, en_cell_type_prob = attr_res
@@ -351,3 +392,93 @@ class TwoStageDetectionAgent(BaseDetectionAgent):
             n_images=len(image_paths),
             detections=all_detections,
         )
+
+
+class PrecroppedCellAgent(BaseDetectionAgent):
+    """MLL Helmholtz single-cell crops: DinoBloom cell classifier + attribute head (no YOLO)."""
+
+    def __init__(
+        self,
+        cell_classifier=None,
+        attribute_classifier=None,
+        helmholtz_metadata: dict[str, dict] | None = None,
+        default_cell_type: str = "Neutrophil",
+        attribute_head_name: str = "DinoBloom MLP",
+        use_metadata_cell_types: bool = False,
+    ):
+        self.cell_classifier = cell_classifier
+        self.attribute_classifier = attribute_classifier
+        self.helmholtz_metadata = helmholtz_metadata or {}
+        self.default_cell_type = default_cell_type
+        self.attribute_head_name = attribute_head_name
+        self.use_metadata_cell_types = use_metadata_cell_types
+        if self.cell_classifier is None and self.attribute_classifier is None:
+            raise ValueError("PrecroppedCellAgent requires cell_classifier or attribute_classifier")
+
+    def _cell_types_for_case(self, case_id: str, n_images: int) -> list[str]:
+        if not self.use_metadata_cell_types:
+            return [self.default_cell_type] * n_images
+        meta = self.helmholtz_metadata.get(case_id, {})
+        counts = meta.get("cell_counts") or {}
+        if counts:
+            try:
+                from wbc_unified.cv.mll_helmholtz import assign_cell_types_from_metadata
+            except ModuleNotFoundError:
+                cv_root = Path(__file__).resolve().parent / "wbc_unified" / "cv"
+                if str(cv_root) not in sys.path:
+                    sys.path.insert(0, str(cv_root))
+                from mll_helmholtz import assign_cell_types_from_metadata  # type: ignore
+            return assign_cell_types_from_metadata(counts, n_images)
+        return [self.default_cell_type] * n_images
+
+    def detect(self, case_id: str, image_paths: list[str]) -> DetectionResult:
+        try:
+            from PIL import Image  # type: ignore
+        except ImportError as e:
+            raise ImportError("Install Pillow: `pip install Pillow`") from e
+
+        logger.info(
+            "[%s] Precropped path: %d single-cell image(s) → DinoBloom cell + attribute inference",
+            case_id,
+            len(image_paths),
+        )
+        all_detections: list[Detection] = []
+        batch_size = 64
+
+        for start in range(0, len(image_paths), batch_size):
+            chunk_paths = image_paths[start : start + batch_size]
+            crops = []
+            for img_path in chunk_paths:
+                with Image.open(img_path) as im:
+                    crops.append(im.convert("RGB"))
+
+            if self.cell_classifier is not None:
+                results = self.cell_classifier.classify_crops(crops)
+            else:
+                fallback_types = self._cell_types_for_case(case_id, len(crops))
+                attr_results = self.attribute_classifier.classify_crops(crops)
+                results = []
+                for idx, (attrs, attr_probs, _, _) in enumerate(attr_results):
+                    cell_type = fallback_types[idx] if idx < len(fallback_types) else self.default_cell_type
+                    results.append((attrs, attr_probs, cell_type, 1.0))
+
+            for idx, (img_path, (attrs, attr_probs, cell_type, cell_conf)) in enumerate(
+                zip(chunk_paths, results)
+            ):
+                global_idx = start + idx
+                image_id = os.path.basename(img_path)
+                w, h = crops[idx].size
+                all_detections.append(
+                    Detection(
+                        cell_id=f"img{global_idx:03d}_c000",
+                        image_id=image_id,
+                        bbox_xyxy=(0.0, 0.0, float(w), float(h)),
+                        cell_type=str(cell_type or self.default_cell_type),
+                        objectness=1.0,
+                        cell_type_prob=float(cell_conf or 1.0),
+                        attributes=attrs,
+                        attribute_probs=attr_probs,
+                    )
+                )
+
+        return DetectionResult(case_id=case_id, n_images=len(image_paths), detections=all_detections)

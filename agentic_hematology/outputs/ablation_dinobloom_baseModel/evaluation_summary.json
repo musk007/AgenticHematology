@@ -1,0 +1,1163 @@
+{
+  "n_cases_with_outputs": 13,
+  "n_gt_patients": 13,
+  "detection": {
+    "mAP@0.5": 0.6621520609686462,
+    "mAP@0.5:0.95": 0.5909245384013391,
+    "per_class": {
+      "Myeloblast": {
+        "tp": 128,
+        "fp": 202,
+        "fn": 142,
+        "precision": 0.3878787878787879,
+        "recall": 0.4740740740740741,
+        "f1": 0.42666666666666664
+      },
+      "Lymphoblast": {
+        "tp": 157,
+        "fp": 208,
+        "fn": 35,
+        "precision": 0.4301369863013699,
+        "recall": 0.8177083333333334,
+        "f1": 0.5637342908438061
+      },
+      "Neutrophil": {
+        "tp": 461,
+        "fp": 156,
+        "fn": 37,
+        "precision": 0.747163695299838,
+        "recall": 0.9257028112449799,
+        "f1": 0.8269058295964126
+      },
+      "Atypical lymphocyte": {
+        "tp": 186,
+        "fp": 35,
+        "fn": 3,
+        "precision": 0.8416289592760181,
+        "recall": 0.9841269841269841,
+        "f1": 0.9073170731707316
+      },
+      "Promonocyte": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 22,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "Monoblast": {
+        "tp": 11,
+        "fp": 6,
+        "fn": 107,
+        "precision": 0.6470588235294118,
+        "recall": 0.09322033898305085,
+        "f1": 0.16296296296296298
+      },
+      "Lymphocyte": {
+        "tp": 37,
+        "fp": 54,
+        "fn": 51,
+        "precision": 0.4065934065934066,
+        "recall": 0.42045454545454547,
+        "f1": 0.41340782122905023
+      },
+      "Myelocyte": {
+        "tp": 67,
+        "fp": 88,
+        "fn": 50,
+        "precision": 0.432258064516129,
+        "recall": 0.5726495726495726,
+        "f1": 0.4926470588235293
+      },
+      "Abnormal promyelocyte": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 162,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "Monocyte": {
+        "tp": 11,
+        "fp": 28,
+        "fn": 89,
+        "precision": 0.28205128205128205,
+        "recall": 0.11,
+        "f1": 0.15827338129496404
+      },
+      "Metamyelocyte": {
+        "tp": 11,
+        "fp": 46,
+        "fn": 30,
+        "precision": 0.19298245614035087,
+        "recall": 0.2682926829268293,
+        "f1": 0.22448979591836735
+      },
+      "Eosinophil": {
+        "tp": 11,
+        "fp": 14,
+        "fn": 22,
+        "precision": 0.44,
+        "recall": 0.3333333333333333,
+        "f1": 0.37931034482758624
+      },
+      "Basophil": {
+        "tp": 1,
+        "fp": 9,
+        "fn": 2,
+        "precision": 0.1,
+        "recall": 0.3333333333333333,
+        "f1": 0.15384615384615383
+      }
+    },
+    "note": "Evaluated after global-canvas deduplication. AP is computed from saved final boxes, not raw YOLO validation internals."
+  },
+  "attributes": {
+    "per_attribute": {
+      "Nuclear_Chromatin": {
+        "available": true,
+        "n": 1739,
+        "accuracy": 0.9085681426106959,
+        "f1": 0.9498896942956193,
+        "auc": 0.8558015499825845,
+        "balanced_accuracy": 0.7258860153256705,
+        "positive_recall": 0.9448275862068966,
+        "negative_recall": 0.5069444444444444
+      },
+      "Nuclear_Shape": {
+        "available": true,
+        "n": 1806,
+        "accuracy": 0.8167220376522702,
+        "f1": 0.8526924788607032,
+        "auc": 0.8818248430106348,
+        "balanced_accuracy": 0.8239137431606051,
+        "positive_recall": 0.801673640167364,
+        "negative_recall": 0.8461538461538461
+      },
+      "Nucleus": {
+        "available": true,
+        "n": 1806,
+        "accuracy": 0.946843853820598,
+        "f1": 0.9724454649827784,
+        "auc": 0.7760642565435867,
+        "balanced_accuracy": 0.578085695499267,
+        "positive_recall": 0.9912229373902867,
+        "negative_recall": 0.16494845360824742
+      },
+      "Cytoplasm": {
+        "available": true,
+        "n": 1806,
+        "accuracy": 0.7929125138427464,
+        "f1": 0.6361867704280155,
+        "auc": 0.8204872166297786,
+        "balanced_accuracy": 0.740304565541887,
+        "positive_recall": 0.611214953271028,
+        "negative_recall": 0.8693941778127459
+      },
+      "Cytoplasmic_Basophilia": {
+        "available": true,
+        "n": 1806,
+        "accuracy": 0.8698781838316723,
+        "f1": 0.9206349206349206,
+        "auc": 0.8850949814783791,
+        "balanced_accuracy": 0.8159728039314235,
+        "positive_recall": 0.8943569553805775,
+        "negative_recall": 0.7375886524822695
+      },
+      "Cytoplasmic_Vacuoles": {
+        "available": true,
+        "n": 1806,
+        "accuracy": 0.8388704318936877,
+        "f1": 0.8866380989481886,
+        "auc": 0.8739866895018328,
+        "balanced_accuracy": 0.8063953488372093,
+        "positive_recall": 0.8821705426356589,
+        "negative_recall": 0.7306201550387597
+      }
+    },
+    "macro_f1": 0.8697479046917043
+  },
+  "classification": {
+    "available": true,
+    "n": 13,
+    "macro_f1": 0.6148148148148148,
+    "macro_f1_bootstrap_ci": {
+      "low": 0.294362524050024,
+      "high": 0.6666666666666666
+    },
+    "cohen_kappa": 0.7815126050420168,
+    "macro_auc_ovr": null,
+    "apml_recall": 0.0,
+    "labels": [
+      "ALL",
+      "AML",
+      "APML",
+      "CLL",
+      "CML",
+      "Indeterminate"
+    ],
+    "confusion_matrix": [
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "per_class": {
+      "ALL": {
+        "precision": 0.8,
+        "recall": 1.0,
+        "f1": 0.8888888888888888,
+        "support": 4
+      },
+      "AML": {
+        "precision": 0.8,
+        "recall": 0.8,
+        "f1": 0.8,
+        "support": 5
+      },
+      "APML": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1
+      },
+      "CLL": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "CML": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 2
+      },
+      "Indeterminate": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      }
+    }
+  },
+  "reports": {
+    "aggregate": {
+      "n_reports": 13,
+      "subtype_accuracy": 0.8461538461538461,
+      "blast_call_accuracy": 0.8181818181818182,
+      "numeric_hallucination_rate_mean": 0.0,
+      "grounding_validity_mean": 1.0,
+      "rouge_l_f1_mean": 0.39480810047839976,
+      "bleu_mean": 0.2736682075753219,
+      "meteor_mean": 0.49271202666572694,
+      "bertscore_f1_mean": 0.8807275524506202,
+      "bertscore_available_cases": 13,
+      "meteor_available_cases": 13
+    },
+    "per_case": {
+      "patient_15": {
+        "predicted_subtype": "AML",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 11,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 236,
+            "saved_canvas_dedup_detections": 191,
+            "saved_informative_wbcs": 89,
+            "saved_artifacts": 102,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.32752613240418116,
+            "recall": 0.39330543933054396,
+            "fmeasure": 0.3574144486692015
+          },
+          "bleu": {
+            "score": 0.25816716277171786
+          },
+          "meteor": {
+            "score": 0.46509998979095607
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8910694122314453,
+            "recall": 0.8708574771881104,
+            "f1": 0.8808475136756897
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": 1
+        }
+      },
+      "patient_18": {
+        "predicted_subtype": "ALL",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 7,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 45,
+            "saved_canvas_dedup_detections": 43,
+            "saved_informative_wbcs": 42,
+            "saved_artifacts": 1,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.41796875,
+            "recall": 0.4692982456140351,
+            "fmeasure": 0.4421487603305785
+          },
+          "bleu": {
+            "score": 0.3187055149931109
+          },
+          "meteor": {
+            "score": 0.5164880512734983
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8821048736572266,
+            "recall": 0.8699789047241211,
+            "f1": 0.8759998679161072
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": 1
+        }
+      },
+      "patient_21": {
+        "predicted_subtype": "CLL",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 7,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 288,
+            "saved_canvas_dedup_detections": 281,
+            "saved_informative_wbcs": 238,
+            "saved_artifacts": 43,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.33984375,
+            "recall": 0.42857142857142855,
+            "fmeasure": 0.3790849673202614
+          },
+          "bleu": {
+            "score": 0.2521155906461276
+          },
+          "meteor": {
+            "score": 0.4536428588398374
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8672711849212646,
+            "recall": 0.8487467765808105,
+            "f1": 0.8579090237617493
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": null
+        }
+      },
+      "patient_23": {
+        "predicted_subtype": "AML",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 11,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 289,
+            "saved_canvas_dedup_detections": 228,
+            "saved_informative_wbcs": 204,
+            "saved_artifacts": 24,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.3380281690140845,
+            "recall": 0.39669421487603307,
+            "fmeasure": 0.3650190114068441
+          },
+          "bleu": {
+            "score": 0.2379458944898042
+          },
+          "meteor": {
+            "score": 0.45980701517040656
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8845155239105225,
+            "recall": 0.8679032325744629,
+            "f1": 0.8761306405067444
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 0,
+          "blast_call_correct": 1
+        }
+      },
+      "patient_28": {
+        "predicted_subtype": "CML",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 11,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 395,
+            "saved_canvas_dedup_detections": 355,
+            "saved_informative_wbcs": 323,
+            "saved_artifacts": 32,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.32857142857142857,
+            "recall": 0.416289592760181,
+            "fmeasure": 0.3672654690618763
+          },
+          "bleu": {
+            "score": 0.24523125861656925
+          },
+          "meteor": {
+            "score": 0.4305133044698567
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8818479180335999,
+            "recall": 0.8700466156005859,
+            "f1": 0.8759075403213501
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": 0
+        }
+      },
+      "patient_31": {
+        "predicted_subtype": "CML",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 11,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 449,
+            "saved_canvas_dedup_detections": 399,
+            "saved_informative_wbcs": 304,
+            "saved_artifacts": 95,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.32142857142857145,
+            "recall": 0.4017857142857143,
+            "fmeasure": 0.3571428571428571
+          },
+          "bleu": {
+            "score": 0.2568851012233387
+          },
+          "meteor": {
+            "score": 0.4346265390655974
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8826546669006348,
+            "recall": 0.8716846704483032,
+            "f1": 0.8771353960037231
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": 0
+        }
+      },
+      "patient_34": {
+        "predicted_subtype": "AML",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 8,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 84,
+            "saved_canvas_dedup_detections": 70,
+            "saved_informative_wbcs": 59,
+            "saved_artifacts": 11,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.38202247191011235,
+            "recall": 0.4811320754716981,
+            "fmeasure": 0.4258872651356993
+          },
+          "bleu": {
+            "score": 0.2949517212883699
+          },
+          "meteor": {
+            "score": 0.5389081044337394
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8945140838623047,
+            "recall": 0.8913503885269165,
+            "f1": 0.8929294347763062
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": 1
+        }
+      },
+      "patient_40": {
+        "predicted_subtype": "AML",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 11,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 132,
+            "saved_canvas_dedup_detections": 111,
+            "saved_informative_wbcs": 63,
+            "saved_artifacts": 48,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.32142857142857145,
+            "recall": 0.5142857142857142,
+            "fmeasure": 0.3956043956043956
+          },
+          "bleu": {
+            "score": 0.2564811615643711
+          },
+          "meteor": {
+            "score": 0.5415224536662009
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.908403754234314,
+            "recall": 0.8997827768325806,
+            "f1": 0.9040727019309998
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": null
+        }
+      },
+      "patient_43": {
+        "predicted_subtype": "AML",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 10,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 144,
+            "saved_canvas_dedup_detections": 128,
+            "saved_informative_wbcs": 122,
+            "saved_artifacts": 6,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.3607142857142857,
+            "recall": 0.48325358851674644,
+            "fmeasure": 0.4130879345603272
+          },
+          "bleu": {
+            "score": 0.2790756496113821
+          },
+          "meteor": {
+            "score": 0.5356968131142963
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8974897861480713,
+            "recall": 0.8876014947891235,
+            "f1": 0.8925182819366455
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": 1
+        }
+      },
+      "patient_45": {
+        "predicted_subtype": "ALL",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 11,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 272,
+            "saved_canvas_dedup_detections": 231,
+            "saved_informative_wbcs": 176,
+            "saved_artifacts": 55,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.3472222222222222,
+            "recall": 0.4608294930875576,
+            "fmeasure": 0.39603960396039606
+          },
+          "bleu": {
+            "score": 0.27292534294306386
+          },
+          "meteor": {
+            "score": 0.5247547342003195
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.9009668827056885,
+            "recall": 0.8878413438796997,
+            "f1": 0.8943560123443604
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 0,
+          "blast_call_correct": 1
+        }
+      },
+      "patient_4": {
+        "predicted_subtype": "ALL",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 8,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 167,
+            "saved_canvas_dedup_detections": 149,
+            "saved_informative_wbcs": 130,
+            "saved_artifacts": 19,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.39768339768339767,
+            "recall": 0.4364406779661017,
+            "fmeasure": 0.4161616161616161
+          },
+          "bleu": {
+            "score": 0.30139225300367056
+          },
+          "meteor": {
+            "score": 0.49743275503470363
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8776946067810059,
+            "recall": 0.8718047142028809,
+            "f1": 0.8747397661209106
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": 1
+        }
+      },
+      "patient_6": {
+        "predicted_subtype": "ALL",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 10,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 112,
+            "saved_canvas_dedup_detections": 93,
+            "saved_informative_wbcs": 70,
+            "saved_artifacts": 23,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.37362637362637363,
+            "recall": 0.43776824034334766,
+            "fmeasure": 0.40316205533596844
+          },
+          "bleu": {
+            "score": 0.28133421414678145
+          },
+          "meteor": {
+            "score": 0.4964221455987693
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8781177997589111,
+            "recall": 0.8693923354148865,
+            "f1": 0.8737332224845886
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": 1
+        }
+      },
+      "patient_8": {
+        "predicted_subtype": "ALL",
+        "has_quantitative_summary": true,
+        "has_grounding": true,
+        "numeric_hallucination_rate": {
+          "available": true,
+          "checked": 9,
+          "mismatches": 0,
+          "rate": 0.0,
+          "failed_checks": [],
+          "source_consistency": {
+            "available": true,
+            "saved_raw_detections": 134,
+            "saved_canvas_dedup_detections": 125,
+            "saved_informative_wbcs": 109,
+            "saved_artifacts": 16,
+            "matches_report_dedup": true,
+            "matches_report_informative": true,
+            "matches_report_artifacts": true
+          }
+        },
+        "grounding_validity": {
+          "n_cited": 8,
+          "n_valid": 8,
+          "validity": 1.0,
+          "invalid_cell_ids": []
+        },
+        "llm_as_judge": {
+          "available": false,
+          "reason": "Requires external GPT-4o or expert service; not run locally.",
+          "criteria": [
+            "coverage",
+            "consistency",
+            "diagnostic_accuracy",
+            "clarity"
+          ]
+        },
+        "expert_review": {
+          "available": false,
+          "reason": "Requires expert review from clinical reviewers."
+        },
+        "surface_metrics": {
+          "rouge_l": {
+            "precision": 0.38721804511278196,
+            "recall": 0.4458874458874459,
+            "fmeasure": 0.41448692152917505
+          },
+          "bleu": {
+            "score": 0.3024758331808774
+          },
+          "meteor": {
+            "score": 0.510341581996269
+          },
+          "bertscore": {
+            "model_type": "emilyalsentzer/Bio_ClinicalBERT",
+            "num_layers": 12,
+            "precision": 0.8805525302886963,
+            "recall": 0.8659274578094482,
+            "f1": 0.8731787800788879
+          }
+        },
+        "clinical_accuracy": {
+          "subtype_correct": 1,
+          "blast_call_correct": 1
+        }
+      }
+    }
+  }
+}

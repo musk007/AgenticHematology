@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "skipped": true,
+    "weights": "/home/roba.majzoub/agentic_hematology/wbc_unified/cv/runs/detector/train/weights/best.pt"
+  },
+  "attributes": {
+    "skipped": true,
+    "weights": "/home/roba.majzoub/agentic_hematology/wbc_unified/cv/runs/attribute/train/best_attr.pt"
+  },
+  "classifier": {
+    "model": "/home/roba.majzoub/agentic_hematology/wbc_unified/cv/runs/classifier/leukemia_rf_6class_domainnorm.pkl",
+    "meta": "/home/roba.majzoub/agentic_hematology/wbc_unified/cv/runs/classifier/leukemia_rf_6class_domainnorm_meta.json"
+  }
+}

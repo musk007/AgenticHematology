@@ -93,3 +93,5 @@ class PipelineState:
     n_reflect_iterations: int = 0
     flagged_for_review: bool = False
     review_reasons: list[str] = field(default_factory=list)
+    dataset_source: str = "lld"
+    routing_notes: list[str] = field(default_factory=list)

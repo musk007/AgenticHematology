@@ -20,6 +20,7 @@ import argparse
 import csv
 import json
 import math
+import os
 import re
 import statistics
 from collections import Counter, defaultdict
@@ -70,11 +71,21 @@ CLASS_NAMES = [
     "Basophil",
 ]
 
-DIAGNOSES = ["ALL", "AML", "APML", "CLL", "CML"]
+DIAGNOSES = ["ALL", "AML", "APML", "CLL", "CML", "Indeterminate"]
 DEFAULT_IMAGE_WH = (640, 640)
 OVERLAP_PERCENTAGE = 0.20
 GLOBAL_STRIDE_PX = int(DEFAULT_IMAGE_WH[0] * (1.0 - OVERLAP_PERCENTAGE))
-CANVAS_IOU_THRESHOLD = 0.4
+CANVAS_IOU_THRESHOLD = 0.2
+
+# BERTScore uses a domain model so semantic similarity reflects clinical
+# language rather than general English. Medical BERT checkpoints often ship
+# without a defined tokenizer ``model_max_length`` (it defaults to a huge
+# sentinel int), which makes ``bert-score`` raise ``OverflowError`` during
+# truncation; we pin it explicitly when building the scorer.
+BERTSCORE_MODEL = "emilyalsentzer/Bio_ClinicalBERT"
+BERTSCORE_NUM_LAYERS = 12
+BERTSCORE_MAX_LENGTH = 512
+_BERT_SCORER = None
 
 
 def parse_image_name(path_or_name: str) -> tuple[str, int, int, str]:
@@ -153,6 +164,7 @@ def load_predictions(outputs_dir: Path) -> dict[str, dict[str, Any]]:
         pid = path.stem.replace("case_", "").replace("_report", "")
         cases.setdefault(pid, {})["report_path"] = str(path)
         cases[pid]["report_text"] = path.read_text(encoding="utf-8", errors="ignore")
+    # breakpoint()
     return cases
 
 
@@ -180,7 +192,7 @@ def load_gt_labels(label_root: Path) -> dict[str, dict[str, Any]]:
             attrs = {}
             for idx, attr in enumerate(ATTR_NAMES):
                 v = int(vals[5 + idx])
-                if v != 2:
+                if v in {0, 1}:
                     attrs[attr] = v
             bbox = xywhn_to_xyxy(vals)
             rec["detections"].append(
@@ -365,8 +377,16 @@ def attribute_metrics(cases: dict[str, dict], gt: dict[str, dict]) -> dict[str, 
 
 
 def extract_label_from_report(text: str) -> str | None:
-    for label in ["APML", "ALL", "AML", "CLL", "CML"]:
-        if re.search(rf"\b{label}\b", text, re.I):
+    patterns = [
+        ("APML", r"\bAPML\b|acute\s+promyelocytic\s+leukemia|abnormal\s+promyelocyte"),
+        ("ALL", r"\bALL\b|acute\s+lymphoblastic\s+leukemia"),
+        ("AML", r"\bAML\b|acute\s+myeloid\s+leukemia|acute\s+monoblastic|acute\s+myelomonocytic"),
+        ("CLL", r"\bCLL\b|chronic\s+lymphocytic\s+leukemia"),
+        ("CML", r"\bCML\b|chronic\s+myeloid\s+leukemia"),
+        ("Indeterminate", r"\bindeterminate\b|no\s+subtype-defining|review\s+peripheral\s+smear"),
+    ]
+    for label, pattern in patterns:
+        if re.search(pattern, text, re.I):
             return label
     return None
 
@@ -484,13 +504,19 @@ def report_metrics(cases: dict[str, dict], gt_reports_dir: Path | None = None) -
             else:
                 row["surface_metrics"] = {"available": False, "reason": "No GT report found."}
         rows[case_id] = row
-    return {"per_case": rows}
+    return {"aggregate": aggregate_report_metrics(rows), "per_case": rows}
 
 
 def find_gt_report(gt_reports_dir: Path, pid: str) -> Path | None:
-    candidates = list(gt_reports_dir.rglob(f"*{pid}*"))
-    md_txt = [p for p in candidates if p.suffix.lower() in {".md", ".txt"}]
-    return md_txt[0] if md_txt else None
+    for ext in (".md", ".txt"):
+        direct = gt_reports_dir / f"case_{pid}_report{ext}"
+        if direct.is_file():
+            return direct
+    candidates = [
+        p for p in gt_reports_dir.rglob(f"case_{pid}_report.*")
+        if p.suffix.lower() in {".md", ".txt"}
+    ]
+    return candidates[0] if candidates else None
 
 
 def infer_label_from_text_or_name(text: str, name: str) -> str | None:
@@ -509,12 +535,67 @@ def compare_blast_call(a: str, b: str) -> int | None:
 
 
 def surface_report_metrics(pred: str, ref: str) -> dict[str, Any]:
+    pred = truncate_for_encoder(strip_grounding_for_text_metrics(pred))
+    ref = truncate_for_encoder(strip_grounding_for_text_metrics(ref))
     out: dict[str, Any] = {}
     out["rouge_l"] = optional_text_metric("rouge_l", lambda: rouge_l_score(pred, ref))
     out["bleu"] = optional_text_metric("bleu", lambda: bleu_score(pred, ref))
     out["meteor"] = optional_text_metric("meteor", lambda: meteor_score(pred, ref))
     out["bertscore"] = optional_text_metric("bertscore", lambda: bert_score(pred, ref))
     return out
+
+
+def strip_grounding_for_text_metrics(text: str) -> str:
+    """Keep report prose/tables, but remove long cell-id/bbox grounding lists."""
+    return re.split(r"\n##\s*Cell Grounding\b", text, maxsplit=1, flags=re.I)[0]
+
+
+def truncate_for_encoder(text: str, max_words: int = 450) -> str:
+    words = text.split()
+    if len(words) <= max_words:
+        return text
+    return " ".join(words[:max_words])
+
+
+def aggregate_report_metrics(rows: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    def mean(values: list[float]) -> float | None:
+        return float(statistics.mean(values)) if values else None
+
+    def collect(path: tuple[str, ...]) -> list[float]:
+        values = []
+        for row in rows.values():
+            cur: Any = row
+            for key in path:
+                if not isinstance(cur, dict) or key not in cur:
+                    cur = None
+                    break
+                cur = cur[key]
+            if isinstance(cur, (int, float)) and cur is not None:
+                values.append(float(cur))
+        return values
+
+    subtype = collect(("clinical_accuracy", "subtype_correct"))
+    blast = collect(("clinical_accuracy", "blast_call_correct"))
+    numeric_rates = collect(("numeric_hallucination_rate", "rate"))
+    grounding = collect(("grounding_validity", "validity"))
+    rouge_l = collect(("surface_metrics", "rouge_l", "fmeasure"))
+    bleu = collect(("surface_metrics", "bleu", "score"))
+    meteor = collect(("surface_metrics", "meteor", "score"))
+    bert = collect(("surface_metrics", "bertscore", "f1"))
+
+    return {
+        "n_reports": len(rows),
+        "subtype_accuracy": mean(subtype),
+        "blast_call_accuracy": mean(blast),
+        "numeric_hallucination_rate_mean": mean(numeric_rates),
+        "grounding_validity_mean": mean(grounding),
+        "rouge_l_f1_mean": mean(rouge_l),
+        "bleu_mean": mean(bleu),
+        "meteor_mean": mean(meteor),
+        "bertscore_f1_mean": mean(bert),
+        "bertscore_available_cases": len(bert),
+        "meteor_available_cases": len(meteor),
+    }
 
 
 def rouge_l_score(pred: str, ref: str) -> dict[str, float]:
@@ -538,36 +619,191 @@ def bleu_score(pred: str, ref: str) -> dict[str, float]:
     }
 
 
+def _ensure_nltk_data() -> None:
+    """Register local nltk_data dirs so NLTK can find wordnet for METEOR.
+
+    NLTK only searches a fixed list of default directories, so a custom
+    download location must be added to ``nltk.data.path`` explicitly.
+    """
+    import nltk
+
+    candidates = [
+        os.environ.get("NLTK_DATA"),
+        str(Path(__file__).resolve().parent / "nltk_data"),
+        str(Path.home() / "nltk_data"),
+    ]
+    for path in candidates:
+        if path and path not in nltk.data.path and Path(path).is_dir():
+            nltk.data.path.insert(0, path)
+
+
 def meteor_score(pred: str, ref: str) -> dict[str, float]:
+    _ensure_nltk_data()
     from nltk.translate.meteor_score import meteor_score as _meteor
 
     return {"score": float(_meteor([ref.split()], pred.split()))}
 
 
 def bert_score(pred: str, ref: str) -> dict[str, Any]:
-    from bert_score import score
+    global _BERT_SCORER
+    if _BERT_SCORER is None:
+        from bert_score import BERTScorer
 
-    p, r, f = score([pred], [ref], lang="en", verbose=False)
-    return {"precision": float(p[0]), "recall": float(r[0]), "f1": float(f[0])}
+        _BERT_SCORER = BERTScorer(
+            model_type=BERTSCORE_MODEL,
+            num_layers=BERTSCORE_NUM_LAYERS,
+            rescale_with_baseline=False,
+        )
+        # Medical BERT tokenizers often lack model_max_length; pin it so
+        # bert-score truncation does not overflow on long reports.
+        if getattr(_BERT_SCORER._tokenizer, "model_max_length", 0) > BERTSCORE_MAX_LENGTH:
+            _BERT_SCORER._tokenizer.model_max_length = BERTSCORE_MAX_LENGTH
+    p, r, f = _BERT_SCORER.score([pred], [ref])
+    return {
+        "model_type": BERTSCORE_MODEL,
+        "num_layers": BERTSCORE_NUM_LAYERS,
+        "precision": float(p[0]),
+        "recall": float(r[0]),
+        "f1": float(f[0]),
+    }
 
 
 def numeric_hallucination_rate(report: str, det_payload: dict[str, Any]) -> dict[str, Any]:
-    numbers = [float(x) for x in re.findall(r"(?<![\w.])\d+(?:\.\d+)?", report)]
-    if not numbers:
-        return {"n_numbers": 0, "unsupported": 0, "rate": 0.0}
-    supported = set()
-    if det_payload:
-        supported.add(float(det_payload.get("n_images", -9999)))
-        supported.add(float(len(det_payload.get("detections", []))))
-    # We cannot reliably validate all percentages without the summary JSON, so
-    # this flags only clearly unsupported large counts.
-    unsupported = 0
-    for n in numbers:
-        if n > 1000:
+    """Validate the report's quantitative summary.
+
+    The saved detections JSON can contain the broader detection set while an
+    agentic reflection step may write a report from a stricter re-aggregation.
+    For that reason, the hallucination rate below checks internal numeric
+    consistency of the report itself. Source-data consistency is reported
+    separately for debugging.
+    """
+    fields = extract_first_number(report, r"Fields of view:\s*(\d+)")
+    raw = extract_first_number(report, r"Raw detected cells before overlap deduplication:\s*(\d+)")
+    dedup = extract_first_number(report, r"Deduplicated detected cells:\s*(\d+)")
+    informative = extract_first_number(report, r"Informative WBCs:\s*(\d+)")
+    artifacts = extract_first_number(report, r"Artefacts/non-WBC detections:\s*(\d+)")
+    reported_table = extract_quantitative_table(report)
+    checks: list[dict[str, Any]] = []
+
+    def add_check(name: str, reported: float | None, expected: float, tol: float = 0.0) -> None:
+        if reported is None:
+            checks.append({"name": name, "reported": None, "expected": expected, "passed": False})
+            return
+        passed = abs(float(reported) - float(expected)) <= tol
+        checks.append({"name": name, "reported": reported, "expected": expected, "passed": passed})
+
+    if fields is None or raw is None or dedup is None or informative is None or artifacts is None:
+        missing = [
+            name for name, value in {
+                "fields_of_view": fields,
+                "raw_detected_cells": raw,
+                "deduplicated_detected_cells": dedup,
+                "informative_wbcs": informative,
+                "artifacts_non_wbc": artifacts,
+            }.items()
+            if value is None
+        ]
+        return {"available": False, "reason": f"Missing quantitative fields: {', '.join(missing)}"}
+
+    add_check("informative_plus_artifacts_equals_dedup", informative + artifacts, dedup)
+    checks.append({
+        "name": "raw_detected_ge_deduplicated",
+        "reported": raw,
+        "expected": f">= {dedup}",
+        "passed": raw >= dedup,
+    })
+    table_count_sum = sum(v["count"] for v in reported_table.values())
+    add_check("table_counts_sum_to_informative", table_count_sum, informative)
+    for cell_type, values in sorted(reported_table.items()):
+        expected_pct = (values["count"] / informative * 100.0) if informative else 0.0
+        add_check(f"{cell_type}_pct_matches_count", values["pct"], expected_pct, tol=0.15)
+
+    failed = [c for c in checks if not c["passed"]]
+    return {
+        "available": True,
+        "checked": len(checks),
+        "mismatches": len(failed),
+        "rate": len(failed) / len(checks) if checks else None,
+        "failed_checks": failed,
+        "source_consistency": source_numeric_consistency(det_payload, dedup, informative, artifacts),
+    }
+
+
+def source_numeric_consistency(
+    det_payload: dict[str, Any],
+    reported_dedup: float,
+    reported_informative: float,
+    reported_artifacts: float,
+) -> dict[str, Any]:
+    raw_detections = det_payload.get("detections", []) if det_payload else []
+    if not raw_detections:
+        return {"available": False, "reason": "No detection payload available."}
+    detections = dedup_canvas(
+        [
+            {
+                "image_id": d["image_id"],
+                "bbox_xyxy": d["bbox_xyxy"],
+                "class": d.get("class"),
+                "confidence": d.get("confidence", 1.0),
+            }
+            for d in raw_detections
+            if d.get("image_id") and d.get("bbox_xyxy")
+        ]
+    )
+    informative = sum(1 for d in detections if d.get("class") and d.get("class") != "None")
+    artifacts = len(detections) - informative
+    return {
+        "available": True,
+        "saved_raw_detections": len(raw_detections),
+        "saved_canvas_dedup_detections": len(detections),
+        "saved_informative_wbcs": informative,
+        "saved_artifacts": artifacts,
+        "matches_report_dedup": len(detections) == int(reported_dedup),
+        "matches_report_informative": informative == int(reported_informative),
+        "matches_report_artifacts": artifacts == int(reported_artifacts),
+    }
+
+
+def extract_first_number(text: str, pattern: str) -> float | None:
+    m = re.search(pattern, text, re.I)
+    return float(m.group(1)) if m else None
+
+
+def normalize_cell_type(name: str) -> str:
+    name = re.sub(r"\s+", " ", name.strip())
+    if name.endswith("s") and not name.lower().endswith("ss"):
+        name = name[:-1]
+    aliases = {
+        "Artefact": "None",
+        "Artifact": "None",
+        "Abnormal promyelocytes": "Abnormal promyelocyte",
+        "Atypical lymphocytes": "Atypical lymphocyte",
+    }
+    return aliases.get(name, name)
+
+
+def extract_quantitative_table(report: str) -> dict[str, dict[str, float]]:
+    out: dict[str, dict[str, float]] = {}
+    in_summary = False
+    for line in report.splitlines():
+        if line.strip().lower().startswith("## quantitative cell summary"):
+            in_summary = True
             continue
-        if n.is_integer() and n not in supported and n > 200:
-            unsupported += 1
-    return {"n_numbers": len(numbers), "unsupported": unsupported, "rate": unsupported / len(numbers)}
+        if in_summary and line.strip().startswith("## "):
+            break
+        if not in_summary or not line.strip().startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 3 or cells[0].lower() in {"cell type", "---"} or set(cells[0]) == {"-"}:
+            continue
+        try:
+            out[normalize_cell_type(cells[0])] = {
+                "count": float(cells[1]),
+                "pct": float(cells[2].rstrip("%")),
+            }
+        except ValueError:
+            continue
+    return out
 
 
 def grounding_validity(report: str, det_payload: dict[str, Any]) -> dict[str, Any]:
@@ -594,18 +830,32 @@ def write_csv_rows(path: Path, rows: list[dict[str, Any]]) -> None:
 
 
 def main() -> None:
+    global BERTSCORE_MODEL, BERTSCORE_NUM_LAYERS
     ap = argparse.ArgumentParser()
     ap.add_argument("--outputs-dir", type=Path, required=True, help="Directory containing case_* outputs.")
     ap.add_argument("--label-root", type=Path, required=True, help="Root containing LLD .txt labels.")
     ap.add_argument("--gt-reports-dir", type=Path, default=None, help="Optional reference report directory.")
     ap.add_argument("--out", type=Path, default=Path("eval_outputs"))
     ap.add_argument("--bootstrap", type=int, default=1000)
+    ap.add_argument(
+        "--bertscore-model",
+        default=BERTSCORE_MODEL,
+        help="HF model for BERTScore (default: clinical model emilyalsentzer/Bio_ClinicalBERT).",
+    )
+    ap.add_argument(
+        "--bertscore-num-layers",
+        type=int,
+        default=BERTSCORE_NUM_LAYERS,
+        help="Encoder layer to extract embeddings from for BERTScore.",
+    )
     args = ap.parse_args()
+
+    BERTSCORE_MODEL = args.bertscore_model
+    BERTSCORE_NUM_LAYERS = args.bertscore_num_layers
 
     args.out.mkdir(parents=True, exist_ok=True)
     cases = load_predictions(args.outputs_dir)
     gt = load_gt_labels(args.label_root)
-
     results = {
         "n_cases_with_outputs": len(cases),
         "n_gt_patients": len(gt),

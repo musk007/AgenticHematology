@@ -182,6 +182,15 @@ def stage_attributes(args: argparse.Namespace) -> Path:
 def _run_infer(args: argparse.Namespace, det_weights: Path, attr_weights: Path) -> Path:
     out_dir = CV / "runs" / "predict" / "classifier_fit_infer"
     out_dir.mkdir(parents=True, exist_ok=True)
+    pred_json = out_dir / "train_predictions.json"
+    if getattr(args, "skip_infer", False):
+        if not pred_json.is_file():
+            sys.exit(
+                f"--skip-infer set but {pred_json} not found.\n"
+                "Run without --skip-infer once, or point --train-predictions-json to an existing file."
+            )
+        print(f"\nSkipping infer; using existing {pred_json}")
+        return pred_json
     cmd = [
         sys.executable, str(CV / "infer.py"),
         "--det-weights",  str(det_weights),
@@ -194,16 +203,22 @@ def _run_infer(args: argparse.Namespace, det_weights: Path, attr_weights: Path) 
         "--name",         "classifier_fit_infer",
     ]
     run(cmd, desc="Classifier fit: infer train split", cwd=CV)
-    pred_json = out_dir / "train_predictions.json"
     if not pred_json.is_file():
         sys.exit(f"infer.py did not produce {pred_json}")
     return pred_json
 
 
-def _build_features_labels(pred_json: Path):
+def _build_features_labels(
+    pred_json: Path,
+    mll_json: Path | None = None,
+    helmholtz_patient_ids: set[str] | None = None,
+    return_sources: bool = False,
+):
     import json as _json
 
     payload = _json.loads(pred_json.read_text())
+    if isinstance(payload, dict) and "predictions" in payload:
+        payload = payload["predictions"]
 
     try:
         from agentic_hematology.aggregator import aggregate
@@ -215,20 +230,49 @@ def _build_features_labels(pred_json: Path):
         from agentic_hematology.schemas import Detection, DetectionResult
         from agentic_hematology.leukemia_classifier import HybridClassifier
 
-    patients: dict[str, dict] = {}
-    for img_rec in payload:
-        image_path = Path(str(img_rec.get("image", "")))
-        stem_parts = image_path.stem.split("_")
-        if len(stem_parts) < 5:
-            continue
-        pid = stem_parts[0]
-        gt_label = stem_parts[-1].strip()
-        if not gt_label:
-            continue
-        rec = patients.setdefault(pid, {"patient_id": pid, "label": gt_label, "images": []})
-        rec["images"].append(img_rec)
+    def _ingest_records(records: list, patients: dict[str, dict]) -> None:
+        for img_rec in records:
+            image_path = Path(str(img_rec.get("image", "")))
+            explicit_pid = img_rec.get("patient_id")
+            explicit_label = img_rec.get("patient_label")
+            if explicit_pid:
+                pid = str(explicit_pid)
+                gt_label = str(explicit_label or img_rec.get("label", "")).strip()
+            else:
+                stem_parts = image_path.stem.split("_")
+                if len(stem_parts) < 5:
+                    continue
+                pid = stem_parts[0]
+                gt_label = stem_parts[-1].strip()
+            if not gt_label:
+                continue
+            rec = patients.setdefault(pid, {"patient_id": pid, "label": gt_label, "images": []})
+            rec["images"].append(img_rec)
 
-    X, y = [], []
+    patients: dict[str, dict] = {}
+    helmholtz_pids: set[str] = set()
+    _ingest_records(payload, patients)
+
+    if mll_json and mll_json.is_file():
+        mll_payload = _json.loads(mll_json.read_text())
+        mll_records = mll_payload.get("predictions", mll_payload)
+        if isinstance(mll_records, list):
+            if helmholtz_patient_ids is not None:
+                before = len({str(r.get("patient_id")) for r in mll_records})
+                mll_records = [
+                    r for r in mll_records
+                    if str(r.get("patient_id", "")) in helmholtz_patient_ids
+                ]
+                after = len({str(r.get("patient_id")) for r in mll_records})
+                print(f"  Helmholtz subset: {after}/{before} patients")
+            for img_rec in mll_records:
+                pid = str(img_rec.get("patient_id", ""))
+                if pid:
+                    helmholtz_pids.add(pid)
+            _ingest_records(mll_records, patients)
+            print(f"  Merged Helmholtz patients from {mll_json}")
+
+    X, y, sources = [], [], []
     for patient in patients.values():
         pid      = str(patient.get("patient_id", "unknown"))
         gt_label = str(patient.get("label", "")).strip()
@@ -257,22 +301,96 @@ def _build_features_labels(pred_json: Path):
         ))
         X.append(HybridClassifier._features(findings))
         y.append(gt_label)
+        sources.append("helmholtz" if pid in helmholtz_pids else "lld")
 
+    if return_sources:
+        return X, y, sources
     return X, y
 
 
 def stage_classifier(args: argparse.Namespace, det_weights: Path, attr_weights: Path) -> Path:
+    from collections import Counter
+
     from sklearn.ensemble import RandomForestClassifier
+    from sklearn.metrics import classification_report, confusion_matrix
     from sklearn.preprocessing import LabelEncoder
 
-    pred_json = _run_infer(args, det_weights, attr_weights)
+    pred_json = (
+        Path(args.train_predictions_json)
+        if getattr(args, "train_predictions_json", None)
+        else _run_infer(args, det_weights, attr_weights)
+    )
     print("\nBuilding patient-level features from predictions...")
-    X_dicts, y_raw = _build_features_labels(pred_json)
+    mll_json = getattr(args, "mll_predictions_json", None)
+    helmholtz_patient_ids: set[str] | None = None
+    helmholtz_split_json = getattr(args, "helmholtz_split_json", None)
+    split_path: Path | None = None
+    if args.include_healthy_class:
+        if mll_json is None:
+            sys.path.insert(0, str(CV))
+            from mll_helmholtz import resolve_helmholtz_classifier_predictions_json
+
+            mll_json = resolve_helmholtz_classifier_predictions_json()
+        if not Path(mll_json).is_file():
+            sys.exit(
+                f"Helmholtz training JSON not found: {mll_json}\n"
+                "Run:\n"
+                "  python wbc_unified/cv/train_dinobloom_cell_classifier.py\n"
+                "  python wbc_unified/cv/extract_helmholtz_cells.py --device 0\n"
+                "Or (metadata fallback): python wbc_unified/cv/build_helmholtz_metadata.py --classifier-only"
+            )
+        split_path = Path(helmholtz_split_json) if helmholtz_split_json else CV / "generated" / "helmholtz_split.json"
+        if split_path.is_file():
+            sys.path.insert(0, str(CV))
+            from mll_helmholtz import helmholtz_patient_ids_for_split, load_helmholtz_split
+            split_payload = load_helmholtz_split(split_path)
+            helmholtz_patient_ids = helmholtz_patient_ids_for_split(split_payload, "train")
+            print(f"  Using Helmholtz train split ({len(helmholtz_patient_ids)} patients) from {split_path}")
+        elif helmholtz_split_json:
+            sys.exit(f"Helmholtz split file not found: {split_path}")
+        else:
+            print("  No helmholtz_split.json found — using all Helmholtz patients for training")
+
+    domain_normalize = bool(getattr(args, "domain_normalize", False))
+    if domain_normalize and not args.include_healthy_class:
+        sys.exit("--domain-normalize requires --include-healthy-class (LLD + Helmholtz training)")
+
+    if domain_normalize or args.include_healthy_class:
+        X_dicts, y_raw, sources = _build_features_labels(
+            pred_json,
+            mll_json if args.include_healthy_class else None,
+            helmholtz_patient_ids,
+            return_sources=True,
+        )
+    else:
+        X_dicts, y_raw = _build_features_labels(
+            pred_json,
+            None,
+            None,
+        )
+        sources = ["lld"] * len(X_dicts)
 
     if len(X_dicts) < 5:
         sys.exit(f"Only {len(X_dicts)} labelled patients found — cannot fit classifier.")
 
-    all_keys = sorted({k for d in X_dicts for k in d})
+    label_counts = Counter(y_raw)
+    print(f"  Label distribution: {dict(sorted(label_counts.items()))}")
+
+    base_dim = len(sorted({k for d in X_dicts for k in d}))
+    normalizer = None
+    norm_stats_path: Path | None = None
+    if domain_normalize:
+        sys.path.insert(0, str(HERE.parent))
+        from agentic_hematology.domain_feature_norm import DATASET_SOURCE_KEY, DomainFeatureNormalizer
+
+        normalizer = DomainFeatureNormalizer()
+        normalizer.fit(X_dicts, sources)
+        X_dicts = normalizer.transform_batch(X_dicts, sources)
+        all_keys = normalizer.feature_keys()
+        print(f"  Domain normalize: base features={base_dim} -> model features={len(all_keys)} (+{DATASET_SOURCE_KEY})")
+    else:
+        all_keys = sorted({k for d in X_dicts for k in d})
+
     X = [[d.get(k, 0.0) for k in all_keys] for d in X_dicts]
     le = LabelEncoder()
     y  = le.fit_transform(y_raw).tolist()
@@ -289,19 +407,75 @@ def stage_classifier(args: argparse.Namespace, det_weights: Path, attr_weights: 
 
     save_dir = CV / "runs" / "classifier"
     save_dir.mkdir(parents=True, exist_ok=True)
-    out_path = save_dir / "leukemia_rf.pkl"
+    if domain_normalize and args.include_healthy_class:
+        out_name = "leukemia_rf_6class_domainnorm.pkl"
+        meta_name = "leukemia_rf_6class_domainnorm_meta.json"
+        norm_stats_path = save_dir / "leukemia_rf_6class_domainnorm_norm_stats.json"
+    elif args.include_healthy_class:
+        out_name = "leukemia_rf_6class.pkl"
+        meta_name = "leukemia_rf_6class_meta.json"
+    else:
+        out_name = "leukemia_rf.pkl"
+        meta_name = "leukemia_rf_meta.json"
+    out_path = save_dir / out_name
     with open(out_path, "wb") as f:
         pickle.dump(clf, f)
 
-    meta = {"feature_keys": all_keys, "classes": list(le.classes_)}
-    (save_dir / "leukemia_rf_meta.json").write_text(json.dumps(meta, indent=2))
+    if normalizer is not None and norm_stats_path is not None:
+        normalizer.save(norm_stats_path)
+        lld_stats_path, hz_stats_path = normalizer.write_split_stats(save_dir)
+        print(f"  Norm stats: {norm_stats_path}")
+        print(f"  LLD stats : {lld_stats_path}")
+        print(f"  HZ stats  : {hz_stats_path}")
 
-    preds   = clf.predict(X)
-    correct = sum(a == b for a, b in zip(preds, y))
+    meta = {
+        "feature_keys": all_keys,
+        "classes": list(le.classes_),
+        "include_healthy_class": args.include_healthy_class,
+        "domain_normalize": domain_normalize,
+        "healthy_cell_pct_threshold": args.healthy_cell_pct_threshold,
+        "label_counts": dict(label_counts),
+        "training_sources": {
+            "lld_predictions_json": str(pred_json),
+            "helmholtz_predictions_json": str(mll_json) if args.include_healthy_class else None,
+            "helmholtz_split_json": str(split_path)
+            if args.include_healthy_class and helmholtz_patient_ids is not None
+            else None,
+            "helmholtz_split_used": "train" if helmholtz_patient_ids is not None else None,
+        },
+    }
+    if norm_stats_path is not None:
+        meta["domain_norm_stats_json"] = str(norm_stats_path)
+    (save_dir / meta_name).write_text(json.dumps(meta, indent=2))
+
+    if hasattr(clf, "feature_importances_"):
+        ranked = sorted(
+            zip(all_keys, clf.feature_importances_.tolist()),
+            key=lambda item: item[1],
+            reverse=True,
+        )
+        print("  Top feature importances:")
+        for name, score in ranked[:8]:
+            print(f"    {name}: {score:.4f}")
+        ds_rank = next((i + 1 for i, (name, _) in enumerate(ranked) if name == "dataset_source"), None)
+        if ds_rank is not None:
+            print(f"  dataset_source importance rank: {ds_rank}/{len(ranked)}")
+        meta["feature_importances"] = {name: float(score) for name, score in ranked}
+        (save_dir / meta_name).write_text(json.dumps(meta, indent=2))
+
+    raw_preds = clf.predict(X)
+    if len(raw_preds) and isinstance(raw_preds[0], str):
+        pred_labels = list(raw_preds)
+    else:
+        pred_labels = le.inverse_transform(raw_preds)
+    correct = sum(a == b for a, b in zip(pred_labels, y_raw))
     print(f"  Patients: {len(X)}  Classes: {list(le.classes_)}")
     print(f"  In-sample accuracy: {correct}/{len(X)} = {correct/len(X):.1%}  (sanity only)")
+    print("  Confusion matrix (in-sample):")
+    print(confusion_matrix(y_raw, pred_labels, labels=list(le.classes_)))
+    print(classification_report(y_raw, pred_labels, labels=list(le.classes_)))
     print(f"  Model : {out_path}")
-    print(f"  Meta  : {save_dir / 'leukemia_rf_meta.json'}")
+    print(f"  Meta  : {save_dir / meta_name}")
     return out_path
 
 
@@ -381,6 +555,63 @@ def parse_args() -> argparse.Namespace:
                       choices=["efficientnet_b0", "resnet18"])
     attr.add_argument("--attr-workers",  type=int,   default=_env_int("ATTR_WORKERS", 2))
 
+    # ---- classifier fit ----
+    clf = p.add_argument_group("classifier fit")
+    clf.add_argument(
+        "--skip-infer",
+        action="store_true",
+        help="Reuse cv/runs/predict/classifier_fit_infer/train_predictions.json instead of re-running infer.py",
+    )
+    clf.add_argument(
+        "--train-predictions-json",
+        type=Path,
+        default=None,
+        help="LLD train-split predictions JSON (overrides infer / --skip-infer default path)",
+    )
+
+    # ---- 6-class: LLD train + full Helmholtz dataset ----
+    healthy = p.add_argument_group("6-class LLD + Helmholtz training")
+    healthy.add_argument(
+        "--include-healthy-class",
+        action="store_true",
+        help=(
+            "Train on LLD train split plus full Helmholtz dataset "
+            "(AML/APML/Healthy from metadata differentials)"
+        ),
+    )
+    healthy.add_argument(
+        "--mll-predictions-json",
+        type=Path,
+        default=None,
+        help=(
+            "Helmholtz JSON from build_helmholtz_metadata.py --classifier-only "
+            "(default: helmholtz_cell_predictions.json if present, else helmholtz_predictions.json)"
+        ),
+    )
+    healthy.add_argument(
+        "--helmholtz-split-json",
+        type=Path,
+        default=None,
+        help=(
+            "Helmholtz train/test manifest from split_helmholtz.py "
+            "(default: cv/generated/helmholtz_split.json when present)"
+        ),
+    )
+    healthy.add_argument(
+        "--domain-normalize",
+        action="store_true",
+        help=(
+            "Per-dataset z-score normalization + dataset_source feature "
+            "(saves leukemia_rf_6class_domainnorm.pkl)"
+        ),
+    )
+    healthy.add_argument(
+        "--healthy-cell-pct-threshold",
+        type=float,
+        default=65.0,
+        help="Rule-based Healthy call when mature WBC %% exceeds this (see leukemia_classifier.py)",
+    )
+
     return p.parse_args()
 
 
@@ -432,7 +663,7 @@ def main() -> None:
     clf_path = stage_classifier(args, args.det_weights, args.attr_weights)
     results["classifier"] = {
         "model": str(clf_path),
-        "meta":  str(clf_path.parent / "leukemia_rf_meta.json"),
+        "meta":  str(clf_path.with_name(f"{clf_path.stem}_meta.json")),
     }
 
     write_summary(results, CV / "runs")

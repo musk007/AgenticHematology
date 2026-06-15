@@ -289,7 +289,7 @@ class ReflectionAgent:
 # Compact case-state builder — what the agent actually sees
 # ---------------------------------------------------------------------------
 
-def build_case_state(findings, classification) -> dict[str, Any]:
+def build_case_state(findings, classification, dataset_source: str = "lld") -> dict[str, Any]:
     """
     Build the compact, decision-relevant view of the case for the agent.
     Deliberately small: differential, blast burden, QC quality signals, and
@@ -299,6 +299,7 @@ def build_case_state(findings, classification) -> dict[str, Any]:
     rr = findings.report_ready
     qc = rr.get("qc", {})
     state: dict[str, Any] = {
+        "dataset_source": dataset_source,
         "differential_pct": findings.cell_percentages_clinical,
         "blast_pct": rr.get("blast_pct"),
         "flags": rr.get("flags", {}),

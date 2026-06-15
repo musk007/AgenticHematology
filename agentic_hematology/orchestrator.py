@@ -79,6 +79,7 @@ class OrchestratorRequest:
     instruction: str | None = None          # free-text from the user
     precomputed_findings: dict | None = None  # for REPORT_FROM_JSON
     forced_intent: Intent | None = None      # bypass routing if set
+    dataset_source: str = "lld"
 
 
 @dataclass
@@ -175,9 +176,27 @@ class LLMRouter:
         self.fallback = fallback or RuleBasedRouter()
 
     _SYSTEM = (
-        "You are an intent classifier for a hematology pipeline. "
-        "Classify the user's instruction into exactly one of: "
-        "FULL_REPORT, DETECT_ONLY, CLASSIFY_ONLY, REPORT_FROM_JSON, EXPLAIN. "
+        "You are an intent classifier for a hematology AI pipeline. Read the "
+        "user's instruction and choose exactly ONE label from this list:\n\n"
+        "- FULL_REPORT: Generate a complete diagnostic report (detection + "
+        "classification + narrative report). This is the DEFAULT for any "
+        "general diagnosis or report request, e.g. 'diagnose this case', "
+        "'analyze this smear', 'generate a report', or any instruction that "
+        "doesn't explicitly restrict scope.\n"
+        "- DETECT_ONLY: Detect/count/localize cells ONLY, with NO diagnosis "
+        "or report. Use ONLY if the instruction explicitly says 'only' or "
+        "'just' detect/count/localize cells.\n"
+        "- CLASSIFY_ONLY: Return ONLY the leukemia subtype/class, with NO "
+        "narrative report. Use ONLY if the instruction explicitly says "
+        "'only' or 'just' classify/diagnose/subtype (e.g. 'just tell me the "
+        "leukemia type').\n"
+        "- REPORT_FROM_JSON: Generate a report from precomputed findings "
+        "JSON, with no new image analysis.\n"
+        "- EXPLAIN: Answer a question about an existing result, e.g. 'why', "
+        "'explain', 'justify', 'what does X mean'.\n\n"
+        "If the instruction does not contain the word 'only' or 'just', "
+        "do NOT choose DETECT_ONLY or CLASSIFY_ONLY — choose FULL_REPORT "
+        "instead.\n\n"
         "Reply with ONLY the label, nothing else."
     )
 
@@ -191,6 +210,7 @@ class LLMRouter:
         try:
             print("Running LLM intent router...", flush=True)
             raw = self.llm_complete(self._SYSTEM, text).strip().upper()
+            print(f"LLM intent router raw output: {raw!r}", flush=True)
             print("LLM intent router complete.", flush=True)
             for intent in Intent:
                 if intent.value in raw:
@@ -263,6 +283,7 @@ class Orchestrator:
             case_id=request.case_id,
             image_paths=request.image_paths,
             text_input=request.instruction,
+            dataset_source=request.dataset_source,
         )
 
         # If caller supplied precomputed findings, inject them.

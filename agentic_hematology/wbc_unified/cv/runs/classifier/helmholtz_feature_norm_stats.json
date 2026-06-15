@@ -1,0 +1,36 @@
+{
+  "mean": {
+    "blast_pct": 67.42424242424242,
+    "n_cells_informative": 1.0,
+    "pct_Abnormal promyelocyte": 0.0,
+    "pct_Atypical lymphocyte": 0.0,
+    "pct_Basophil": 0.0,
+    "pct_Eosinophil": 0.0,
+    "pct_Lymphoblast": 0.0,
+    "pct_Lymphocyte": 0.0,
+    "pct_Metamyelocyte": 0.0,
+    "pct_Monoblast": 0.0,
+    "pct_Monocyte": 0.0,
+    "pct_Myeloblast": 67.42424242424242,
+    "pct_Myelocyte": 0.0,
+    "pct_Neutrophil": 31.818181818181817,
+    "pct_Promonocyte": 0.7575757575757576
+  },
+  "std": {
+    "blast_pct": 46.86572069158043,
+    "n_cells_informative": 1e-06,
+    "pct_Abnormal promyelocyte": 1e-06,
+    "pct_Atypical lymphocyte": 1e-06,
+    "pct_Basophil": 1e-06,
+    "pct_Eosinophil": 1e-06,
+    "pct_Lymphoblast": 1e-06,
+    "pct_Lymphocyte": 1e-06,
+    "pct_Metamyelocyte": 1e-06,
+    "pct_Monoblast": 1e-06,
+    "pct_Monocyte": 1e-06,
+    "pct_Myeloblast": 46.86572069158043,
+    "pct_Myelocyte": 1e-06,
+    "pct_Neutrophil": 46.57704893617999,
+    "pct_Promonocyte": 8.67085086534818
+  }
+}
