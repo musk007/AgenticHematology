@@ -1,0 +1,102 @@
+{
+  "backend": "lightgbm",
+  "cv_folds": 5,
+  "cv_accuracy_mean": 0.9095238095238095,
+  "cv_accuracy_std": 0.07438333024673005,
+  "cv_fold_accuracies": [
+    0.8571428571428571,
+    1.0,
+    1.0,
+    0.8571428571428571,
+    0.8333333333333334
+  ],
+  "classes": [
+    "ALL",
+    "AML",
+    "APML",
+    "CLL",
+    "CML"
+  ],
+  "confusion_matrix_labels": [
+    "ALL",
+    "AML",
+    "APML",
+    "CLL",
+    "CML"
+  ],
+  "confusion_matrix": [
+    [
+      15,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      14,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      2
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n         ALL       0.94      1.00      0.97        15\n         AML       0.93      0.93      0.93        15\n        APML       0.00      0.00      0.00         1\n         CLL       0.00      0.00      0.00         1\n         CML       1.00      1.00      1.00         2\n\n    accuracy                           0.91        34\n   macro avg       0.57      0.59      0.58        34\nweighted avg       0.88      0.91      0.90        34\n",
+  "oof_predictions": {
+    "0": "ALL",
+    "1": "ALL",
+    "2": "ALL",
+    "3": "ALL",
+    "4": "ALL",
+    "5": "ALL",
+    "6": "ALL",
+    "7": "ALL",
+    "8": "AML",
+    "9": "ALL",
+    "10": "ALL",
+    "11": "AML",
+    "12": "AML",
+    "13": "AML",
+    "14": "ALL",
+    "15": "AML",
+    "16": "AML",
+    "17": "AML",
+    "18": "CML",
+    "19": "ALL",
+    "20": "CML",
+    "21": "ALL",
+    "22": "AML",
+    "23": "ALL",
+    "24": "AML",
+    "25": "AML",
+    "26": "ALL",
+    "27": "AML",
+    "28": "ALL",
+    "29": "AML",
+    "30": "AML",
+    "31": "AML",
+    "32": "APML",
+    "33": "AML"
+  },
+  "scope": "train_only"
+}

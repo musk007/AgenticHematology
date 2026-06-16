@@ -1,0 +1,83 @@
+{
+  "patient_id": "43",
+  "ground_truth_label": "AML",
+  "disease_label_file": "AML",
+  "source": "patient_WBC_stats",
+  "n_images": 61,
+  "n_cells_total": 118,
+  "n_cells_informative": 113,
+  "n_cells_artifact": 5,
+  "class_counts": {
+    "Myeloblast": 91,
+    "Neutrophil": 8,
+    "Lymphocyte": 6,
+    "Promonocyte": 5,
+    "Monocyte": 3
+  },
+  "differential_pct": {
+    "Myeloblast": 80.5,
+    "Neutrophil": 7.1,
+    "Lymphocyte": 5.3,
+    "Promonocyte": 4.4,
+    "Monocyte": 2.6
+  },
+  "blast_pct": 80.53,
+  "flags": {
+    "blasts_present": true,
+    "blast_threshold_met": true
+  },
+  "morphology_cohort": {},
+  "qc": {
+    "n_annotated_cells": 118,
+    "n_identified_wbc": 113,
+    "n_artifacts": 5,
+    "n_fields_of_view": 61,
+    "n_cells_in_cohort": 91,
+    "low_cell_count_warning": false,
+    "sparse_annotation_skew_warning": false,
+    "global_canvas_stitching_active": true
+  },
+  "classifier": {
+    "backend_prediction": "AML",
+    "confidence": 0.9999437534825242,
+    "class_probabilities": {
+      "ALL": 2.0279743352192077e-05,
+      "AML": 0.9999437534825242,
+      "APML": 1.0780091187315504e-05,
+      "CLL": 1.5695484475761712e-05,
+      "CML": 9.491198460693042e-06
+    },
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": 2.2709,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nuclear_chromatio__open__pct",
+        "label": "open nuclear chromatio attribute %",
+        "shap_value": 1.2111,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.9532,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": 0.8698,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nuclear_chromatio__code_2__pct",
+        "label": "code 2 nuclear chromatio attribute %",
+        "shap_value": 0.5035,
+        "direction": "supports"
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "patient_id": "40",
+  "ground_truth_label": "AML",
+  "disease_label_file": "AML",
+  "source": "patient_WBC_stats",
+  "n_images": 50,
+  "n_cells_total": 109,
+  "n_cells_informative": 90,
+  "n_cells_artifact": 19,
+  "class_counts": {
+    "Neutrophil": 26,
+    "Monocyte": 24,
+    "Promonocyte": 16,
+    "Lymphocyte": 10,
+    "Myeloblast": 8,
+    "Eosinophil": 4,
+    "Myelocyte": 1,
+    "Metamyelocyte": 1
+  },
+  "differential_pct": {
+    "Neutrophil": 28.9,
+    "Monocyte": 26.7,
+    "Promonocyte": 17.8,
+    "Lymphocyte": 11.1,
+    "Myeloblast": 8.9,
+    "Eosinophil": 4.4,
+    "Myelocyte": 1.1,
+    "Metamyelocyte": 1.1
+  },
+  "blast_pct": 8.89,
+  "flags": {
+    "blasts_present": true,
+    "blast_threshold_met": false
+  },
+  "morphology_cohort": {},
+  "qc": {
+    "n_annotated_cells": 109,
+    "n_identified_wbc": 90,
+    "n_artifacts": 19,
+    "n_fields_of_view": 50,
+    "n_cells_in_cohort": 10,
+    "low_cell_count_warning": false,
+    "sparse_annotation_skew_warning": false,
+    "global_canvas_stitching_active": true
+  },
+  "classifier": {
+    "backend_prediction": "AML",
+    "confidence": 0.6332277655601501,
+    "class_probabilities": {
+      "ALL": 0.09978719055652618,
+      "AML": 0.6332277655601501,
+      "APML": 0.08666792511940002,
+      "CLL": 0.09362392872571945,
+      "CML": 0.0866931900382042
+    },
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": -0.5619,
+        "direction": "opposes"
+      },
+      {
+        "feature": "attr_nuclear_shape__regular__pct",
+        "label": "regular nuclear shape attribute %",
+        "shap_value": 0.4147,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.2446,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.2235,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": -0.1927,
+        "direction": "opposes"
+      }
+    ]
+  }
+}

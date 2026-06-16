@@ -1,39 +1,31 @@
 #!/usr/bin/env python3
-"""Summarize the agentic reflection trace and outcome changes for the 13-case batch.
-
-D1: per-case agent action sequence (proceed / re_aggregate / flag_for_review),
-    including iteration-level reasons and any conf_threshold adjustments.
-D2: outcome-change table — agentic vs non-agentic predicted class vs ground
-    truth, and whether flag_for_review correlates with classifier errors.
-"""
+"""Summarize agentic reflection traces (proceed / re_aggregate / flag_for_review)."""
 from __future__ import annotations
 
+import argparse
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent
-AGENTIC_DIR = REPO / "outputs" / "batch_traced"
-NON_AGENTIC_DIR = REPO / "outputs" / "batch_non_agentic"
-PATIENTS_DIR = REPO / "wbc_unified" / "cv" / "generated" / "patients"
+DEFAULT_STATS_JSON = Path(
+    "/home/roba.majzoub/AgenticHematology/data_preprocessing/patient_WBC_stats_NoOveralp.json"
+)
 
 
-def ground_truth_label(patient_id: str) -> str | None:
-    images_dir = PATIENTS_DIR / patient_id / "images"
-    if not images_dir.is_dir():
+def ground_truth_from_stats(stats: dict, patient_id: str) -> str | None:
+    rec = stats.get(str(patient_id))
+    if not rec:
         return None
-    for f in images_dir.iterdir():
-        m = re.match(r"\d+_\d+_\d+_\d+_([A-Za-z]+)\.png", f.name)
-        if m:
-            return m.group(1)
-    return None
+    return str(rec.get("metadata_filename_diagnosis") or "")
 
 
 def load_json(path: Path):
     if not path.exists():
         return None
-    return json.loads(path.read_text())
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def find_classification(base: Path, pid: str) -> dict | None:
@@ -42,11 +34,32 @@ def find_classification(base: Path, pid: str) -> dict | None:
     )
 
 
+def discover_patient_ids(agentic_dir: Path) -> list[str]:
+    ids: set[str] = set()
+    if not agentic_dir.is_dir():
+        return []
+    for path in agentic_dir.iterdir():
+        if path.is_dir():
+            ids.add(path.name)
+        for suffix in ("_agent_trace.json", "_classification.json"):
+            for f in agentic_dir.glob(f"case_*{suffix}"):
+                m = re.search(r"case_(.+?)_", f.name)
+                if m:
+                    ids.add(m.group(1))
+    return sorted(ids, key=lambda x: (not x.isdigit(), int(x) if x.isdigit() else x))
+
+
 def main() -> None:
-    patients = sorted(
-        (p.name for p in PATIENTS_DIR.iterdir() if p.is_dir()),
-        key=lambda n: int(re.search(r"\d+", n).group()),
-    )
+    ap = argparse.ArgumentParser(description="Summarize agentic reflection batch outputs.")
+    ap.add_argument("--agentic-dir", type=Path, default=REPO / "outputs" / "batch_traced")
+    ap.add_argument("--non-agentic-dir", type=Path, default=REPO / "outputs" / "batch_non_agentic")
+    ap.add_argument("--stats-json", type=Path, default=DEFAULT_STATS_JSON)
+    args = ap.parse_args()
+
+    stats = load_json(args.stats_json) or {}
+    patients = discover_patient_ids(args.agentic_dir)
+    if not patients:
+        sys.exit(f"No patient outputs found under {args.agentic_dir}")
 
     print("=" * 100)
     print("D1 - Agent action trace (proceed / re_aggregate / flag_for_review)")
@@ -54,7 +67,7 @@ def main() -> None:
 
     final_actions: Counter[str] = Counter()
     for pid in patients:
-        trace = load_json(AGENTIC_DIR / pid / f"case_{pid}_agent_trace.json")
+        trace = load_json(args.agentic_dir / pid / f"case_{pid}_agent_trace.json")
         if trace is None:
             print(f"{pid:14s}  NO TRACE FOUND")
             continue
@@ -77,7 +90,7 @@ def main() -> None:
 
     print()
     print("=" * 100)
-    print("D2 - Outcome-change table (agentic vs non-agentic vs ground truth)")
+    print("D2 - Outcome table (agentic vs optional non-agentic vs ground truth)")
     print("=" * 100)
     print(
         f"{'patient':14s} {'GT':6s} {'non-agentic':12s} {'agentic':10s} "
@@ -88,18 +101,18 @@ def main() -> None:
     n_clean_correct = n_clean_incorrect = 0
     n_outcome_changed = 0
     for pid in patients:
-        gt = ground_truth_label(pid)
-        non_ag = find_classification(NON_AGENTIC_DIR, pid)
-        ag = find_classification(AGENTIC_DIR, pid)
-        trace = load_json(AGENTIC_DIR / pid / f"case_{pid}_agent_trace.json")
+        gt = ground_truth_from_stats(stats, pid)
+        non_ag = find_classification(args.non_agentic_dir, pid) if args.non_agentic_dir.is_dir() else None
+        ag = find_classification(args.agentic_dir, pid)
+        trace = load_json(args.agentic_dir / pid / f"case_{pid}_agent_trace.json")
 
         non_ag_cls = non_ag["predicted_class"] if non_ag else None
         ag_cls = ag["predicted_class"] if ag else None
         flagged = trace["flagged_for_review"] if trace else None
 
         ag_correct = ag_cls == gt
-        non_ag_correct = non_ag_cls == gt
-        if ag_cls != non_ag_cls:
+        non_ag_correct = non_ag_cls == gt if non_ag_cls else None
+        if non_ag_cls and ag_cls and ag_cls != non_ag_cls:
             n_outcome_changed += 1
 
         if flagged:

@@ -1,0 +1,600 @@
+{
+  "4": {
+    "patient_id": "4",
+    "true_label": "ALL",
+    "predicted_class": "ALL",
+    "confidence": 0.9209484457969666,
+    "class_probabilities": {
+      "ALL": 0.9209484457969666,
+      "AML": 0.0286217350512743,
+      "APML": 0.01646224595606327,
+      "CLL": 0.0177835151553154,
+      "CML": 0.016184017062187195
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "pct_lymphoblast",
+        "label": "lymphoblast differential %",
+        "shap_value": 2.017,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasmic_basophilia__slight__pct",
+        "label": "slight cytoplasmic basophilia attribute %",
+        "shap_value": 0.2055,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasm__scanty__pct",
+        "label": "scanty cytoplasm attribute %",
+        "shap_value": 0.0858,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": 0.0712,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.0486,
+        "direction": "supports"
+      }
+    ]
+  },
+  "6": {
+    "patient_id": "6",
+    "true_label": "ALL",
+    "predicted_class": "ALL",
+    "confidence": 0.9260034561157227,
+    "class_probabilities": {
+      "ALL": 0.9260034561157227,
+      "AML": 0.026456741616129875,
+      "APML": 0.015309643000364304,
+      "CLL": 0.01653839647769928,
+      "CML": 0.01569180004298687
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "pct_lymphoblast",
+        "label": "lymphoblast differential %",
+        "shap_value": 2.017,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasmic_basophilia__slight__pct",
+        "label": "slight cytoplasmic basophilia attribute %",
+        "shap_value": 0.2055,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasm__scanty__pct",
+        "label": "scanty cytoplasm attribute %",
+        "shap_value": 0.0858,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.0835,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": 0.0712,
+        "direction": "supports"
+      }
+    ]
+  },
+  "8": {
+    "patient_id": "8",
+    "true_label": "ALL",
+    "predicted_class": "ALL",
+    "confidence": 0.9325296878814697,
+    "class_probabilities": {
+      "ALL": 0.9325296878814697,
+      "AML": 0.015213962644338608,
+      "APML": 0.01682855375111103,
+      "CLL": 0.01817922480404377,
+      "CML": 0.01724862866103649
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "pct_lymphoblast",
+        "label": "lymphoblast differential %",
+        "shap_value": 2.017,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasmic_basophilia__slight__pct",
+        "label": "slight cytoplasmic basophilia attribute %",
+        "shap_value": 0.2055,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasm__scanty__pct",
+        "label": "scanty cytoplasm attribute %",
+        "shap_value": 0.0858,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": 0.0712,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.0486,
+        "direction": "supports"
+      }
+    ]
+  },
+  "15": {
+    "patient_id": "15",
+    "true_label": "AML",
+    "predicted_class": "AML",
+    "confidence": 0.9325982332229614,
+    "class_probabilities": {
+      "ALL": 0.01851813681423664,
+      "AML": 0.9325982332229614,
+      "APML": 0.01596403680741787,
+      "CLL": 0.01724531129002571,
+      "CML": 0.015674347057938576
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": 1.3384,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.4684,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": -0.2521,
+        "direction": "opposes"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": 0.2451,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.2248,
+        "direction": "supports"
+      }
+    ]
+  },
+  "18": {
+    "patient_id": "18",
+    "true_label": "ALL",
+    "predicted_class": "ALL",
+    "confidence": 0.8959669470787048,
+    "class_probabilities": {
+      "ALL": 0.8959669470787048,
+      "AML": 0.05290672183036804,
+      "APML": 0.016447370871901512,
+      "CLL": 0.017767446115612984,
+      "CML": 0.016911467537283897
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "pct_lymphoblast",
+        "label": "lymphoblast differential %",
+        "shap_value": 2.017,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasmic_basophilia__slight__pct",
+        "label": "slight cytoplasmic basophilia attribute %",
+        "shap_value": 0.2055,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasm__scanty__pct",
+        "label": "scanty cytoplasm attribute %",
+        "shap_value": 0.0858,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": 0.0712,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.0486,
+        "direction": "supports"
+      }
+    ]
+  },
+  "21": {
+    "patient_id": "21",
+    "true_label": "CLL",
+    "predicted_class": "AML",
+    "confidence": 0.28751784563064575,
+    "class_probabilities": {
+      "ALL": 0.22299551963806152,
+      "AML": 0.28751784563064575,
+      "APML": 0.13357654213905334,
+      "CLL": 0.21598535776138306,
+      "CML": 0.1399247646331787
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": -0.6718,
+        "direction": "opposes"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.4863,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": -0.3125,
+        "direction": "opposes"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.2053,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": -0.1898,
+        "direction": "opposes"
+      }
+    ]
+  },
+  "23": {
+    "patient_id": "23",
+    "true_label": "APML",
+    "predicted_class": "AML",
+    "confidence": 0.5040656328201294,
+    "class_probabilities": {
+      "ALL": 0.009041458368301392,
+      "AML": 0.5040656328201294,
+      "APML": 0.468545526266098,
+      "CLL": 0.009511785581707954,
+      "CML": 0.008835623040795326
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": 1.5427,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.448,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": -0.2521,
+        "direction": "opposes"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": 0.2381,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.2209,
+        "direction": "supports"
+      }
+    ]
+  },
+  "28": {
+    "patient_id": "28",
+    "true_label": "CML",
+    "predicted_class": "CML",
+    "confidence": 0.9150430560112,
+    "class_probabilities": {
+      "ALL": 0.016272086650133133,
+      "AML": 0.034372661262750626,
+      "APML": 0.016494154930114746,
+      "CLL": 0.017817987129092216,
+      "CML": 0.9150430560112
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "pct_neutrophil",
+        "label": "neutrophil differential %",
+        "shap_value": 2.1155,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myelocyte",
+        "label": "myelocyte differential %",
+        "shap_value": 0.3019,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": 0.0137,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__medium__pct",
+        "label": "medium cell size attribute %",
+        "shap_value": 0.0126,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": -0.0114,
+        "direction": "opposes"
+      }
+    ]
+  },
+  "31": {
+    "patient_id": "31",
+    "true_label": "CML",
+    "predicted_class": "CML",
+    "confidence": 0.922918438911438,
+    "class_probabilities": {
+      "ALL": 0.01641213335096836,
+      "AML": 0.026062004268169403,
+      "APML": 0.016636114567518234,
+      "CLL": 0.0179713387042284,
+      "CML": 0.922918438911438
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "pct_neutrophil",
+        "label": "neutrophil differential %",
+        "shap_value": 2.1155,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myelocyte",
+        "label": "myelocyte differential %",
+        "shap_value": 0.3019,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": 0.0137,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__medium__pct",
+        "label": "medium cell size attribute %",
+        "shap_value": 0.0126,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": -0.0114,
+        "direction": "opposes"
+      }
+    ]
+  },
+  "34": {
+    "patient_id": "34",
+    "true_label": "AML",
+    "predicted_class": "AML",
+    "confidence": 0.9567403197288513,
+    "class_probabilities": {
+      "ALL": 0.011417918838560581,
+      "AML": 0.9567403197288513,
+      "APML": 0.010263017378747463,
+      "CLL": 0.011086734011769295,
+      "CML": 0.010492004454135895
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": 1.2762,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.4613,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": 0.2866,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.2594,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nuclear_shape__regular__pct",
+        "label": "regular nuclear shape attribute %",
+        "shap_value": 0.1754,
+        "direction": "supports"
+      }
+    ]
+  },
+  "40": {
+    "patient_id": "40",
+    "true_label": "AML",
+    "predicted_class": "AML",
+    "confidence": 0.6332277655601501,
+    "class_probabilities": {
+      "ALL": 0.09978719055652618,
+      "AML": 0.6332277655601501,
+      "APML": 0.08666792511940002,
+      "CLL": 0.09362392872571945,
+      "CML": 0.0866931900382042
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": -0.5619,
+        "direction": "opposes"
+      },
+      {
+        "feature": "attr_nuclear_shape__regular__pct",
+        "label": "regular nuclear shape attribute %",
+        "shap_value": 0.4147,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.2446,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.2235,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": -0.1927,
+        "direction": "opposes"
+      }
+    ]
+  },
+  "43": {
+    "patient_id": "43",
+    "true_label": "AML",
+    "predicted_class": "AML",
+    "confidence": 0.9621553421020508,
+    "class_probabilities": {
+      "ALL": 0.009988682344555855,
+      "AML": 0.9621553421020508,
+      "APML": 0.008978350088000298,
+      "CLL": 0.009698952548205853,
+      "CML": 0.009178669191896915
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": 1.4387,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.4584,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": 0.2866,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": 0.2385,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.233,
+        "direction": "supports"
+      }
+    ]
+  },
+  "45": {
+    "patient_id": "45",
+    "true_label": "AML",
+    "predicted_class": "AML",
+    "confidence": 0.88863605260849,
+    "class_probabilities": {
+      "ALL": 0.029163530096411705,
+      "AML": 0.88863605260849,
+      "APML": 0.02649429813027382,
+      "CLL": 0.02862073853611946,
+      "CML": 0.027085421606898308
+    },
+    "split": "test",
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": 1.3246,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": -0.4902,
+        "direction": "opposes"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": 0.2764,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.1986,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": 0.1756,
+        "direction": "supports"
+      }
+    ]
+  }
+}

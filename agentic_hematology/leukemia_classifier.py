@@ -1,33 +1,17 @@
-"""Simple patient-level leukemia classification from aggregated WBC findings."""
+"""Patient-level leukemia classification from aggregated WBC findings (LLD)."""
 from __future__ import annotations
 
 import json
 import pickle
 from pathlib import Path
 
-from .domain_feature_norm import DomainFeatureNormalizer
 from .schemas import AggregatedFindings, LeukemiaClassification
 
-# Mature WBC types expected on healthy peripheral smears (Matek NGS/NGB/EOS/BAS/LYT/MON/MYB/PMO).
-HEALTHY_MATURE_CELL_TYPES = frozenset(
-    {
-        "Neutrophil",
-        "Lymphocyte",
-        "Eosinophil",
-        "Basophil",
-        "Monocyte",
-        "Myelocyte",
-        "Metamyelocyte",
-        "Promonocyte",
-    }
-)
-
-DEFAULT_CLASSES_5 = ("ALL", "AML", "APML", "CLL", "CML")
-DEFAULT_CLASSES_6 = DEFAULT_CLASSES_5 + ("Healthy",)
+DEFAULT_CLASSES = ("ALL", "AML", "APML", "CLL", "CML")
 
 
 class LearnedClassifier:
-    """Optional wrapper for a pickled sklearn-like classifier."""
+    """Wrapper for a pickled Random Forest / LightGBM / XGBoost classifier."""
 
     def __init__(self, model_path: str | Path, meta_path: str | Path | None = None):
         model_path = Path(model_path)
@@ -36,50 +20,56 @@ class LearnedClassifier:
 
         meta_path = Path(meta_path) if meta_path else model_path.with_name(f"{model_path.stem}_meta.json")
         self.feature_keys: list[str] | None = None
-        self.domain_normalize = False
-        self.normalizer: DomainFeatureNormalizer | None = None
+        self.backend: str | None = None
+        self.classes: list[str] = list(DEFAULT_CLASSES)
         if meta_path.is_file():
             meta = json.loads(meta_path.read_text(encoding="utf-8"))
-            keys = meta.get("feature_keys")
+            keys = meta.get("feature_keys") or meta.get("feature_names")
             if isinstance(keys, list) and keys:
                 self.feature_keys = [str(k) for k in keys]
-            self.domain_normalize = bool(meta.get("domain_normalize", False))
-            norm_stats_path = meta.get("domain_norm_stats_json")
-            if self.domain_normalize and norm_stats_path and Path(norm_stats_path).is_file():
-                self.normalizer = DomainFeatureNormalizer.load(norm_stats_path)
-            elif self.domain_normalize and meta.get("domain_norm_stats"):
-                self.normalizer = DomainFeatureNormalizer.from_dict(meta["domain_norm_stats"])
+            self.backend = meta.get("classifier_backend")
+            meta_classes = meta.get("classes")
+            if isinstance(meta_classes, list) and meta_classes:
+                self.classes = [str(c) for c in meta_classes]
 
-    def _prepare_features(
-        self,
-        features: dict[str, float],
-        dataset_source: str | int | None = None,
-    ) -> dict[str, float]:
-        if self.domain_normalize:
-            if self.normalizer is None:
-                raise ValueError("domain_normalize enabled but normalization stats are missing")
-            if dataset_source is None:
-                raise ValueError("dataset_source is required for domain-normalized classifier")
-            return self.normalizer.transform_dict(features, dataset_source)
-        return dict(features)
+    def _decode_label(self, raw_pred) -> str:
+        if isinstance(raw_pred, (str, bytes)) and not str(raw_pred).isdigit():
+            return str(raw_pred)
+        try:
+            idx = int(raw_pred)
+        except (TypeError, ValueError):
+            return str(raw_pred)
+        if 0 <= idx < len(self.classes):
+            return self.classes[idx]
+        return str(raw_pred)
 
-    def predict(
-        self,
-        features: dict[str, float],
-        dataset_source: str | int | None = None,
-    ) -> LeukemiaClassification | None:
+    def predict(self, features: dict[str, float]) -> LeukemiaClassification | None:
         if not hasattr(self.model, "predict"):
             return None
-        prepared = self._prepare_features(features, dataset_source)
-        keys = self.feature_keys if self.feature_keys else sorted(prepared)
-        x = [[float(prepared.get(k, 0.0)) for k in keys]]
-        pred = str(self.model.predict(x)[0])
+        keys = self.feature_keys if self.feature_keys else sorted(features)
+        row = {k: float(features.get(k, 0.0)) for k in keys}
+        try:
+            import pandas as pd
+
+            x = pd.DataFrame([row], columns=keys)
+        except Exception:
+            x = [[row[k] for k in keys]]
+        pred = self._decode_label(self.model.predict(x)[0])
         confidence = 0.0
         scores: dict[str, float] = {}
         if hasattr(self.model, "predict_proba"):
             probs = self.model.predict_proba(x)[0]
-            classes = [str(c) for c in getattr(self.model, "classes_", [])]
-            scores = {c: float(p) for c, p in zip(classes, probs)}
+            model_classes = getattr(self.model, "classes_", None)
+            if self.backend == "xgboost" and model_classes is not None:
+                label_names = [
+                    self.classes[int(c)] if int(c) < len(self.classes) else str(c)
+                    for c in model_classes
+                ]
+            elif model_classes is not None:
+                label_names = [self._decode_label(c) for c in model_classes]
+            else:
+                label_names = list(self.classes)
+            scores = {name: float(p) for name, p in zip(label_names, probs)}
             confidence = max(scores.values()) if scores else 0.0
         return LeukemiaClassification(
             predicted_class=pred,
@@ -95,47 +85,41 @@ class HybridClassifier:
     def __init__(
         self,
         learned: LearnedClassifier | None = None,
-        healthy_cell_pct_threshold: float = 65.0,
-        include_healthy_class: bool = False,
+        stats_json: str | Path | None = None,
     ):
         self.learned = learned
-        self.healthy_cell_pct_threshold = float(healthy_cell_pct_threshold)
-        self.include_healthy_class = include_healthy_class
+        self.stats_json = Path(stats_json) if stats_json else None
+        self._stats: dict | None = None
 
-    def classify(
-        self,
-        findings: AggregatedFindings,
-        dataset_source: str = "lld",
-    ) -> LeukemiaClassification:
+    def _load_stats(self) -> dict:
+        if self._stats is None and self.stats_json and self.stats_json.is_file():
+            from .leukemia_features import load_patient_stats
+
+            self._stats = load_patient_stats(self.stats_json)
+        return self._stats or {}
+
+    def classify(self, findings: AggregatedFindings) -> LeukemiaClassification:
         features = self._features(findings)
         if self.learned is not None:
-            learned = self.learned.predict(features, dataset_source=dataset_source)
+            if self.learned.feature_keys and any(
+                k.startswith(("attr_", "group_")) or k == "blast_pool_percentage_of_wbc"
+                for k in self.learned.feature_keys
+            ):
+                stats = self._load_stats()
+                pid = str(findings.case_id)
+                if pid in stats:
+                    from .leukemia_features import build_feature_row_from_stats
+
+                    features = build_feature_row_from_stats(
+                        stats, pid, self.learned.feature_keys
+                    )
+            learned = self.learned.predict(features)
             if learned is not None:
                 return learned
 
         diff = findings.cell_percentages_clinical
         counts = findings.cell_counts
         blast_pct = float(findings.report_ready.get("blast_pct", 0.0))
-        healthy_mature_pct = sum(diff.get(t, 0.0) for t in HEALTHY_MATURE_CELL_TYPES)
-
-        if self.include_healthy_class:
-            # Priority 0 — dominant mature WBC pattern without blast burden.
-            # Threshold 65%: healthy PB typically >60% segmented neutrophils + lymphocytes;
-            # 65% is conservative to avoid calling leukemic smears Healthy when mature
-            # cells still dominate (e.g. CML left-shift).
-            if (
-                healthy_mature_pct >= self.healthy_cell_pct_threshold
-                and blast_pct < 20.0
-                and diff.get("Lymphoblast", 0.0) < 10.0
-                and diff.get("Myeloblast", 0.0) + diff.get("Monoblast", 0.0) < 10.0
-                and diff.get("Abnormal promyelocyte", 0.0) < 5.0
-            ):
-                return self._result(
-                    "Healthy",
-                    min(0.95, 0.55 + healthy_mature_pct / 200.0),
-                    f"mature WBC fraction {healthy_mature_pct:.1f}% exceeds "
-                    f"threshold {self.healthy_cell_pct_threshold:.0f}% without blast burden",
-                )
 
         if diff.get("Abnormal promyelocyte", 0.0) >= 10.0:
             return self._result("APML", 0.82, "abnormal promyelocytes are enriched")

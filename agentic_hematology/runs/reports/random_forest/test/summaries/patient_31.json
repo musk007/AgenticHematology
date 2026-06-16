@@ -1,0 +1,89 @@
+{
+  "patient_id": "31",
+  "ground_truth_label": "CML",
+  "disease_label_file": "CML",
+  "source": "patient_WBC_stats",
+  "n_images": 50,
+  "n_cells_total": 368,
+  "n_cells_informative": 300,
+  "n_cells_artifact": 68,
+  "class_counts": {
+    "Neutrophil": 177,
+    "Myelocyte": 59,
+    "Myeloblast": 19,
+    "Metamyelocyte": 18,
+    "Monocyte": 15,
+    "Lymphocyte": 5,
+    "Eosinophil": 4,
+    "Basophil": 3
+  },
+  "differential_pct": {
+    "Neutrophil": 59.0,
+    "Myelocyte": 19.7,
+    "Myeloblast": 6.3,
+    "Metamyelocyte": 6.0,
+    "Monocyte": 5.0,
+    "Lymphocyte": 1.7,
+    "Eosinophil": 1.3,
+    "Basophil": 1.0
+  },
+  "blast_pct": 6.33,
+  "flags": {
+    "blasts_present": true,
+    "blast_threshold_met": false
+  },
+  "morphology_cohort": {},
+  "qc": {
+    "n_annotated_cells": 368,
+    "n_identified_wbc": 300,
+    "n_artifacts": 68,
+    "n_fields_of_view": 50,
+    "n_cells_in_cohort": 19,
+    "low_cell_count_warning": false,
+    "sparse_annotation_skew_warning": false,
+    "global_canvas_stitching_active": true
+  },
+  "classifier": {
+    "backend_prediction": "CML",
+    "confidence": 0.7,
+    "class_probabilities": {
+      "ALL": 0.054,
+      "AML": 0.244,
+      "APML": 0.0,
+      "CLL": 0.002,
+      "CML": 0.7
+    },
+    "top_features": [
+      {
+        "feature": "group_blasts_pct",
+        "label": "blasts lineage group %",
+        "shap_value": 0.0547,
+        "direction": "supports"
+      },
+      {
+        "feature": "blast_pool_percentage_of_wbc",
+        "label": "blast pool % of WBC",
+        "shap_value": 0.0482,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_basophil",
+        "label": "basophil differential %",
+        "shap_value": -0.0372,
+        "direction": "opposes"
+      },
+      {
+        "feature": "pct_atypical_lymphocyte",
+        "label": "atypical lymphocyte differential %",
+        "shap_value": 0.0335,
+        "direction": "supports"
+      },
+      {
+        "feature": "group_lymphoid_pct",
+        "label": "lymphoid lineage group %",
+        "shap_value": 0.0282,
+        "direction": "supports"
+      }
+    ]
+  }
+}

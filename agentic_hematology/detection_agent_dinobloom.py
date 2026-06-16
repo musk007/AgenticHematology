@@ -481,8 +481,9 @@ class DinoBloomCellClassifier:
         attribute_classifier: Optional[EfficientNetAttributeClassifier] = None,
         fallback_to_yolo_type: bool = True,
     ) -> None:
+        resolved_weights = resolve_dinobloom_weights(weights_path, variant)
         self.embedder = DinoBloomEmbedder(
-            weights_path=weights_path,
+            weights_path=resolved_weights,
             variant=variant,
             device=device,
             hub_dir=hub_dir,
@@ -526,10 +527,16 @@ class DinoBloomCellClassifier:
                 self._torch_head = payload
                 self._torch_head.eval().to(self.device)
             elif isinstance(payload, dict):
-                classes = payload.get("classes") or payload.get("class_names") or []
+                classes = payload.get("classes")
+                if not classes:
+                    classes = payload.get("class_names") or []
                 self._class_names = [str(c) for c in classes]
-                weight = payload.get("weight") or payload.get("W")
-                bias = payload.get("bias") or payload.get("b")
+                weight = payload.get("weight")
+                if weight is None:
+                    weight = payload.get("W")
+                bias = payload.get("bias")
+                if bias is None:
+                    bias = payload.get("b")
                 if weight is None:
                     raise ValueError(
                         f"Torch classifier checkpoint must contain 'weight' and 'bias': {path}"

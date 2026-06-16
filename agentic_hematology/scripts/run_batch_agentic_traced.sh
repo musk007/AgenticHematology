@@ -1,7 +1,6 @@
 #!/bin/bash
-# Re-run the 13-patient agentic batch with the per-case agent_actions trace
-# persisted (case_<id>_agent_trace.json), to recover the proceed /
-# re_aggregate / flag_for_review distribution.
+# Agentic batch on the LLD test split (13 patients): reflection, re_aggregate,
+# flag_for_review traces saved as case_<id>_agent_trace.json per patient.
 
 #SBATCH --job-name=wbc_agent_traced
 #SBATCH --time=2:00:00
@@ -20,17 +19,29 @@ REPO_ROOT=/home/roba.majzoub
 PROJECT="${REPO_ROOT}/agentic_hematology"
 mkdir -p "${PROJECT}/logs"
 
+source /apps/local/anaconda3.10/bin/activate /home/roba.majzoub/envs/agentic/
 cd "${PROJECT}"
 
 export PYTHONUNBUFFERED=1
 export PYTHONPATH="${REPO_ROOT}:${PYTHONPATH:-}"
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
-/home/roba.majzoub/envs/agentic/bin/python run_orchestrator.py \
-  --patients-dir wbc_unified/cv/generated/patients \
+CLASSIFIER="${CLASSIFIER:-${PROJECT}/runs/classifier/random_forest/leukemia_random_forest.pkl}"
+STATS_JSON="${STATS_JSON:-/home/roba.majzoub/AgenticHematology/data_preprocessing/patient_WBC_stats_NoOveralp.json}"
+AGENT_LLM="${AGENT_LLM:-${PROJECT}/models/Qwen3-VL-4B-Instruct}"
+OUT_DIR="${OUT_DIR:-${PROJECT}/outputs/batch_traced}"
+
+python run_orchestrator.py \
+  --lld-split test \
   --yolo-weights wbc_unified/cv/runs/detector/train/weights/best.pt \
   --effnet-weights wbc_unified/cv/runs/attribute/train/best_attr.pt \
-  --llm-model /home/roba.majzoub/agentic_hematology/models/Qwen3-VL-4B-Instruct \
-  --lora-adapter /home/roba.majzoub/agentic_hematology/models/wbc_qwen3_4b_sft_lora \
-  --out outputs/batch_traced/ \
-  --instruction "diagnose this case"
+  --classifier-model "${CLASSIFIER}" \
+  --stats-json "${STATS_JSON}" \
+  --llm-model "${AGENT_LLM}" \
+  --max-reflect-iterations 2 \
+  --report-backend template \
+  --instruction "diagnose this case" \
+  --device 0 \
+  --out "${OUT_DIR}"
+
+echo "Analyze traces: python analyze_agent_trace.py --agentic-dir ${OUT_DIR}"

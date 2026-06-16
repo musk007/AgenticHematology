@@ -1,0 +1,83 @@
+{
+  "patient_id": "23",
+  "ground_truth_label": "APML",
+  "disease_label_file": "AML",
+  "source": "patient_WBC_stats",
+  "n_images": 59,
+  "n_cells_total": 207,
+  "n_cells_informative": 177,
+  "n_cells_artifact": 30,
+  "class_counts": {
+    "Abnormal promyelocyte": 162,
+    "Neutrophil": 11,
+    "Myeloblast": 2,
+    "Monocyte": 1,
+    "Lymphocyte": 1
+  },
+  "differential_pct": {
+    "Abnormal promyelocyte": 91.5,
+    "Neutrophil": 6.2,
+    "Myeloblast": 1.1,
+    "Monocyte": 0.6,
+    "Lymphocyte": 0.6
+  },
+  "blast_pct": 92.66,
+  "flags": {
+    "blasts_present": true,
+    "blast_threshold_met": true
+  },
+  "morphology_cohort": {},
+  "qc": {
+    "n_annotated_cells": 207,
+    "n_identified_wbc": 177,
+    "n_artifacts": 30,
+    "n_fields_of_view": 59,
+    "n_cells_in_cohort": 162,
+    "low_cell_count_warning": false,
+    "sparse_annotation_skew_warning": false,
+    "global_canvas_stitching_active": true
+  },
+  "classifier": {
+    "backend_prediction": "AML",
+    "confidence": 0.792,
+    "class_probabilities": {
+      "ALL": 0.048,
+      "AML": 0.792,
+      "APML": 0.148,
+      "CLL": 0.002,
+      "CML": 0.01
+    },
+    "top_features": [
+      {
+        "feature": "blast_pool_percentage_of_wbc",
+        "label": "blast pool % of WBC",
+        "shap_value": 0.0603,
+        "direction": "supports"
+      },
+      {
+        "feature": "group_blasts_pct",
+        "label": "blasts lineage group %",
+        "shap_value": 0.057,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_basophil",
+        "label": "basophil differential %",
+        "shap_value": 0.0387,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_metamyelocyte",
+        "label": "metamyelocyte differential %",
+        "shap_value": 0.0379,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myelocyte",
+        "label": "myelocyte differential %",
+        "shap_value": 0.0346,
+        "direction": "supports"
+      }
+    ]
+  }
+}

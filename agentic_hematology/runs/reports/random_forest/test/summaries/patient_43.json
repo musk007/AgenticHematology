@@ -1,0 +1,83 @@
+{
+  "patient_id": "43",
+  "ground_truth_label": "AML",
+  "disease_label_file": "AML",
+  "source": "patient_WBC_stats",
+  "n_images": 61,
+  "n_cells_total": 118,
+  "n_cells_informative": 113,
+  "n_cells_artifact": 5,
+  "class_counts": {
+    "Myeloblast": 91,
+    "Neutrophil": 8,
+    "Lymphocyte": 6,
+    "Promonocyte": 5,
+    "Monocyte": 3
+  },
+  "differential_pct": {
+    "Myeloblast": 80.5,
+    "Neutrophil": 7.1,
+    "Lymphocyte": 5.3,
+    "Promonocyte": 4.4,
+    "Monocyte": 2.6
+  },
+  "blast_pct": 80.53,
+  "flags": {
+    "blasts_present": true,
+    "blast_threshold_met": true
+  },
+  "morphology_cohort": {},
+  "qc": {
+    "n_annotated_cells": 118,
+    "n_identified_wbc": 113,
+    "n_artifacts": 5,
+    "n_fields_of_view": 61,
+    "n_cells_in_cohort": 91,
+    "low_cell_count_warning": false,
+    "sparse_annotation_skew_warning": false,
+    "global_canvas_stitching_active": true
+  },
+  "classifier": {
+    "backend_prediction": "AML",
+    "confidence": 0.962,
+    "class_probabilities": {
+      "ALL": 0.038,
+      "AML": 0.962,
+      "APML": 0.0,
+      "CLL": 0.0,
+      "CML": 0.0
+    },
+    "top_features": [
+      {
+        "feature": "group_blasts_pct",
+        "label": "blasts lineage group %",
+        "shap_value": 0.0665,
+        "direction": "supports"
+      },
+      {
+        "feature": "blast_pool_percentage_of_wbc",
+        "label": "blast pool % of WBC",
+        "shap_value": 0.0658,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_metamyelocyte",
+        "label": "metamyelocyte differential %",
+        "shap_value": 0.0442,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_basophil",
+        "label": "basophil differential %",
+        "shap_value": 0.0393,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasmic_basophilia__slight__pct",
+        "label": "slight cytoplasmic basophilia attribute %",
+        "shap_value": 0.0384,
+        "direction": "supports"
+      }
+    ]
+  }
+}

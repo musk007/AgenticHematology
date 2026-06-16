@@ -1,0 +1,81 @@
+{
+  "patient_id": "21",
+  "ground_truth_label": "CLL",
+  "disease_label_file": "CLL",
+  "source": "patient_WBC_stats",
+  "n_images": 62,
+  "n_cells_total": 253,
+  "n_cells_informative": 206,
+  "n_cells_artifact": 47,
+  "class_counts": {
+    "Atypical lymphocyte": 190,
+    "Neutrophil": 12,
+    "Monocyte": 3,
+    "Lymphocyte": 1
+  },
+  "differential_pct": {
+    "Atypical lymphocyte": 92.2,
+    "Neutrophil": 5.8,
+    "Monocyte": 1.5,
+    "Lymphocyte": 0.5
+  },
+  "blast_pct": 0.0,
+  "flags": {
+    "blasts_present": false,
+    "blast_threshold_met": false
+  },
+  "morphology_cohort": {},
+  "qc": {
+    "n_annotated_cells": 253,
+    "n_identified_wbc": 206,
+    "n_artifacts": 47,
+    "n_fields_of_view": 62,
+    "n_cells_in_cohort": 190,
+    "low_cell_count_warning": false,
+    "sparse_annotation_skew_warning": false,
+    "global_canvas_stitching_active": true
+  },
+  "classifier": {
+    "backend_prediction": "CLL",
+    "confidence": 0.9996608019266895,
+    "class_probabilities": {
+      "ALL": 2.319587597521237e-06,
+      "AML": 0.00016719248956359011,
+      "APML": 0.00016524743606584238,
+      "CLL": 0.9996608019266895,
+      "CML": 4.4385600835394815e-06
+    },
+    "top_features": [
+      {
+        "feature": "blast_pool_percentage_of_wbc",
+        "label": "blast pool % of WBC",
+        "shap_value": 10.0773,
+        "direction": "supports"
+      },
+      {
+        "feature": "group_blasts_pct",
+        "label": "blasts lineage group %",
+        "shap_value": 1.2551,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nuclear_chromatio__open__pct",
+        "label": "open nuclear chromatio attribute %",
+        "shap_value": 0.075,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": 0.0459,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasmic_vacuoles__absent__pct",
+        "label": "absent cytoplasmic vacuoles attribute %",
+        "shap_value": 0.0029,
+        "direction": "supports"
+      }
+    ]
+  }
+}

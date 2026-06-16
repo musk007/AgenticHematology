@@ -15,81 +15,63 @@ def load_model_and_tokenizer(
     from peft import PeftModel
     from transformers import AutoModelForImageTextToText, AutoTokenizer
 
-    model_path = Path(model_path).expanduser().resolve()
-    if not model_path.is_dir():
-        raise FileNotFoundError(f"Base model directory not found: {model_path}")
-    model_path_str = str(model_path)
-    tok = AutoTokenizer.from_pretrained(
-        model_path_str,
-        trust_remote_code=True,
-        local_files_only=True,
-    )
+    model_path = Path(model_path)
+    tok = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     model = AutoModelForImageTextToText.from_pretrained(
-        model_path_str,
+        model_path,
         trust_remote_code=True,
-        local_files_only=True,
         dtype=torch.bfloat16,
         device_map="auto",
     )
-    if adapter_path:
-        adapter_path = Path(adapter_path).expanduser().resolve()
-        if not adapter_path.is_dir():
-            raise FileNotFoundError(f"LoRA adapter directory not found: {adapter_path}")
-        model = PeftModel.from_pretrained(
-            model,
-            str(adapter_path),
-            is_trainable=False,
-            local_files_only=True,
-        )
+    if adapter_path and Path(adapter_path).is_dir():
+        model = PeftModel.from_pretrained(model, str(adapter_path), is_trainable=False)
     model.eval()
     return model, tok
 
 
 def encode_messages(tokenizer, messages: list[dict[str, str]]) -> list[int]:
-    try:
-        import sys
-        from .paths import REPO_ROOT
-        verl_root = REPO_ROOT / "third_party" / "verl"
-        if str(verl_root) not in sys.path:
-            sys.path.insert(0, str(verl_root))
-        from verl.utils.chat_template import apply_chat_template
-        from verl.utils.tokenizer import normalize_token_ids
-        return normalize_token_ids(
-            apply_chat_template(
-                tokenizer,
-                messages,
-                add_generation_prompt=True,
-                tokenize=True,
-                enable_thinking=False,
-            )
-        )
-    except (ImportError, ModuleNotFoundError):
-        pass
-    # Fallback: format via chat template (text), then encode separately.
-    # Using tokenize=False avoids BatchEncoding return-type surprises from
-    # vision-language processors (e.g. Qwen3-VL).
-    try:
-        text = tokenizer.apply_chat_template(
+    import sys
+
+    from .paths import REPO_ROOT
+
+    verl_root = REPO_ROOT / "third_party" / "verl"
+    if str(verl_root) not in sys.path:
+        sys.path.insert(0, str(verl_root))
+    from verl.utils.chat_template import apply_chat_template
+    from verl.utils.tokenizer import normalize_token_ids
+
+    return normalize_token_ids(
+        apply_chat_template(
+            tokenizer,
             messages,
             add_generation_prompt=True,
-            tokenize=False,
+            tokenize=True,
             enable_thinking=False,
         )
-    except TypeError:
-        text = tokenizer.apply_chat_template(
-            messages,
-            add_generation_prompt=True,
-            tokenize=False,
-        )
-    # Handle both AutoTokenizer and Processor (processor wraps a .tokenizer)
-    text_tok = getattr(tokenizer, "tokenizer", tokenizer)
-    ids = text_tok.encode(text, add_special_tokens=False)
-    return ids if isinstance(ids, list) else ids.tolist()
+    )
 
 
 def encode_prompt(tokenizer, summary: dict[str, Any]) -> list[int]:
+    import sys
+
+    from .paths import REPO_ROOT
+
+    verl_root = REPO_ROOT / "third_party" / "verl"
+    if str(verl_root) not in sys.path:
+        sys.path.insert(0, str(verl_root))
+    from verl.utils.chat_template import apply_chat_template
+    from verl.utils.tokenizer import normalize_token_ids
+
     msgs = messages_for_inference(summary)
-    return encode_messages(tokenizer, msgs)
+    return normalize_token_ids(
+        apply_chat_template(
+            tokenizer,
+            msgs,
+            add_generation_prompt=True,
+            tokenize=True,
+            enable_thinking=False,
+        )
+    )
 
 
 def generate_from_messages(

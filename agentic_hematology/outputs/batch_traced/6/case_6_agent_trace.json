@@ -1,0 +1,18 @@
+{
+  "patient_id": "6",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "High pct_class_none (21.9%) and low mean detection confidence (0.71) suggest data quality issues despite strong classifier confidence.",
+      "conf_threshold": 0.25
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "High pct_class_none (21.9%) and low mean detection confidence (0.71) suggest data quality issues despite strong classifier confidence."
+  ]
+}

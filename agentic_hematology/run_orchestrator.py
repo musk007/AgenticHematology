@@ -28,7 +28,7 @@ Two modes:
       --yolo-weights weights/yolov11_lld.pt \\
       --dinobloom-weights weights/DinoBloom-B.pth \\
       --dinobloom-attr-weights weights/attribute_dinobloom/best_attr_probes.joblib \\
-      --classifier-model weights/leukemia_rf.pkl \\
+      --classifier-model weights/leukemia_gbm.pkl \\
       --images "data/PT-0042/*.png" \\
       --instruction "Generate a full diagnostic report"
 """
@@ -70,18 +70,26 @@ except ModuleNotFoundError:
 ROOT = Path(__file__).resolve().parent
 WBC_UNIFIED = ROOT / "wbc_unified"
 CV = WBC_UNIFIED / "cv"
-sys.path.insert(0, str(CV))
-from mll_helmholtz import (  # noqa: E402
-    resolve_helmholtz_data_root,
-    resolve_helmholtz_metadata_json,
-    resolve_helmholtz_reports_dir,
-)
-from dinobloom_infer import resolve_dinobloom_attr_weights, resolve_dinobloom_cell_weights  # noqa: E402
 DEFAULT_YOLO_WEIGHTS = WBC_UNIFIED / "cv/runs/detector/train/weights/best.pt"
 DEFAULT_EFFNET_WEIGHTS = WBC_UNIFIED / "cv/runs/attribute/train/best_attr.pt"
-DEFAULT_CLASSIFIER_MODEL = WBC_UNIFIED / "cv/runs/classifier/leukemia_rf_6class.pkl"
-DEFAULT_DINOBLOOM_ATTR_WEIGHTS = resolve_dinobloom_attr_weights()
-DEFAULT_DINOBLOOM_CELL_WEIGHTS = resolve_dinobloom_cell_weights()
+DEFAULT_CLASSIFIER_MODEL = ROOT / "runs" / "classifier" / "random_forest" / "leukemia_random_forest.pkl"
+DEFAULT_STATS_JSON = Path(
+    "/home/roba.majzoub/AgenticHematology/data_preprocessing/patient_WBC_stats_NoOveralp.json"
+)
+DEFAULT_LLD_IMAGE_DIR = CV / "generated" / "det_dataset" / "images"
+
+
+def _default_dinobloom_attr_weights() -> Path:
+    for candidate in (
+        ROOT / "runs" / "attribute_dinobloom" / "train" / "best_attr_probes.joblib",
+        CV / "runs" / "attribute_dinobloom" / "train" / "best_attr_probes.joblib",
+    ):
+        if candidate.is_file():
+            return candidate
+    return ROOT / "runs" / "attribute_dinobloom" / "train" / "best_attr_probes.joblib"
+
+
+DEFAULT_DINOBLOOM_ATTR_WEIGHTS = _default_dinobloom_attr_weights()
 DEFAULT_DINOBLOOM_KNN_MANIFEST = WBC_UNIFIED / "cv/generated/attr_manifest.csv"
 DEFAULT_DINOBLOOM_KNN_CACHE = WBC_UNIFIED / "cv/runs/attribute_dinobloom/knn_train_embeddings.npz"
 
@@ -168,89 +176,25 @@ def _build_attribute_classifier(args):
 def build_detector(args):
     if args.backend == "stub":
         return StubDetector(args.stub_source)
+    if args.dataset_source not in {"auto", "lld"}:
+        sys.exit(
+            "This pipeline is LLD-only (YOLO + EfficientNet). "
+            "Use --dataset-source lld with PBS smear tiles."
+        )
     if args.backend in {"two-stage", "wbc-unified", "dinobloom"}:
         try:
-            from leukemia_pipeline.detection_agent_v2 import (
-                EfficientNetAttributeClassifier,
-                PrecroppedCellAgent,
-                TwoStageDetectionAgent,
-            )
+            from leukemia_pipeline.detection_agent_v2 import TwoStageDetectionAgent
         except ModuleNotFoundError:
-            from agentic_hematology.detection_agent_v2 import (
-                EfficientNetAttributeClassifier,
-                PrecroppedCellAgent,
-                TwoStageDetectionAgent,
-            )
+            from agentic_hematology.detection_agent_v2 import TwoStageDetectionAgent
 
         attribute_model = _resolve_attribute_model(args)
-        if args.dataset_source == "mll-helmholtz":
-            sys.path.insert(0, str(CV))
-            from dinobloom_infer import (  # noqa: E402
-                build_dinobloom_attr_classifier,
-                build_dinobloom_cell_classifier,
-                resolve_dinobloom_attr_weights,
-                resolve_dinobloom_cell_weights,
-            )
-
-            metadata = {}
-            meta_path = getattr(args, "helmholtz_metadata", None)
-            if meta_path and Path(meta_path).is_file():
-                metadata = json.loads(Path(meta_path).read_text(encoding="utf-8"))
-
-            cell_weights = resolve_dinobloom_cell_weights(
-                getattr(args, "dinobloom_cell_weights", None) or None
-            )
-            use_metadata_types = bool(getattr(args, "helmholtz_metadata_cell_types", False))
-
-            if cell_weights.is_file() and not use_metadata_types:
-                print(
-                    "Building precropped detector: DinoBloom cell classifier + MLP attributes "
-                    f"({cell_weights.name})",
-                    flush=True,
-                )
-                cell_clf = build_dinobloom_cell_classifier(
-                    device=args.device,
-                    cell_weights=cell_weights,
-                    attr_weights=resolve_dinobloom_attr_weights(args.dinobloom_attr_weights or None),
-                    dinobloom_weights=args.dinobloom_weights or "auto",
-                    variant=args.dinobloom_variant,
-                    hub_dir=args.dinobloom_hub_dir,
-                    fallback_to_yolo_type=False,
-                )
-                return PrecroppedCellAgent(
-                    cell_classifier=cell_clf,
-                    helmholtz_metadata=metadata,
-                    attribute_head_name="DinoBloom cell + MLP",
-                )
-
-            print(
-                "Building precropped detector: DinoBloom MLP attributes + metadata cell types "
-                "(train cell classifier or drop --helmholtz-metadata-cell-types for image-based types)",
-                flush=True,
-            )
-            attr_weights = resolve_dinobloom_attr_weights(args.dinobloom_attr_weights or None)
-            attr_clf = build_dinobloom_attr_classifier(
-                device=args.device,
-                attr_weights=attr_weights,
-                dinobloom_weights=args.dinobloom_weights or "auto",
-                variant=args.dinobloom_variant,
-                hub_dir=args.dinobloom_hub_dir,
-            )
-            return PrecroppedCellAgent(
-                attribute_classifier=attr_clf,
-                helmholtz_metadata=metadata,
-                attribute_head_name="DinoBloom MLP",
-                use_metadata_cell_types=True,
-            )
-
+        head_name = "EfficientNet" if attribute_model == "effnet" else "DinoBloom MLP"
         print(
-            f"Building two-stage detector: YOLO (localize+crop) → {attribute_model} (attributes)",
+            f"Building two-stage detector: YOLO (localize+crop) → {head_name} (attributes)",
             flush=True,
         )
         localizer = _build_yolo_localizer(args)
-        print(f"Stage 2 — attribute head: {attribute_model}", flush=True)
         attr_clf = _build_attribute_classifier(args)
-        head_name = "EfficientNet" if attribute_model == "effnet" else "DinoBloom"
         return TwoStageDetectionAgent(
             localizer=localizer,
             attribute_classifier=attr_clf,
@@ -311,17 +255,40 @@ def _discover_patients(patients_dir: str) -> list[tuple[str, str]]:
     return patients
 
 
-def _discover_helmholtz_patients(data_root: str) -> list[tuple[str, str]]:
-    """Return [(patient_id, images_dir)] for Helmholtz control/<patient_id>/ layouts."""
-    root = Path(data_root)
-    if not root.is_dir():
-        sys.exit(f"--helmholtz-data-root not found: {data_root}")
-    patients = []
-    for sub in sorted(root.iterdir()):
-        if sub.is_dir() and not sub.name.startswith("."):
-            patients.append((sub.name, str(sub)))
+def _discover_lld_split_patients(
+    *,
+    split: str,
+    image_root: Path,
+    cv_root: Path,
+) -> list[tuple[str, list[str]]]:
+    """Group flat LLD tile images by patient id for train/test split."""
+    from agentic_hematology.leukemia_features import discover_lld_split_from_cv
+
+    derived = discover_lld_split_from_cv(cv_root)
+    patient_ids = derived.get(split, [])
+    if not patient_ids:
+        sys.exit(f"No patient IDs found for split={split} under {cv_root}")
+
+    image_dir = image_root / split
+    if not image_dir.is_dir():
+        sys.exit(f"LLD image dir not found: {image_dir}")
+
+    suffixes = {".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp"}
+    by_patient: dict[str, list[str]] = {pid: [] for pid in patient_ids}
+    for path in sorted(image_dir.iterdir()):
+        if path.suffix.lower() not in suffixes:
+            continue
+        pid = path.stem.split("_")[0]
+        if pid in by_patient:
+            by_patient[pid].append(str(path))
+
+    patients: list[tuple[str, list[str]]] = []
+    for pid in patient_ids:
+        paths = by_patient.get(pid, [])
+        if paths:
+            patients.append((pid, paths))
     if not patients:
-        sys.exit(f"No patient folders under {data_root}")
+        sys.exit(f"No images matched split={split} patients in {image_dir}")
     return patients
 
 
@@ -463,19 +430,36 @@ def main() -> int:
     mode = p.add_mutually_exclusive_group(required=False)
     mode.add_argument("--case-id", help="Single patient case ID.")
     mode.add_argument("--patients-dir",
-                      help="LLD batch: subdirectories with images/ subfolder. "
-                           "For MLL Helmholtz batch use --dataset-source mll-helmholtz instead.")
+                      help="Batch: subdirectories each with images/ subfolder.")
+    p.add_argument(
+        "--lld-split",
+        choices=["train", "test"],
+        help="Batch: run all patients in the LLD train/test split (uses flat det_dataset images).",
+    )
+    p.add_argument(
+        "--lld-image-dir",
+        type=Path,
+        default=DEFAULT_LLD_IMAGE_DIR,
+        help="Root of det_dataset/images when using --lld-split.",
+    )
+    p.add_argument(
+        "--stats-json",
+        type=Path,
+        default=DEFAULT_STATS_JSON,
+        help="Patient stats JSON for rich-feature classifier inputs.",
+    )
     p.add_argument(
         "--backend",
         choices=["stub", "two-stage", "wbc-unified", "dinobloom"],
-        default="dinobloom",
-        help="Detection stack. Default: dinobloom (DinoBloom-L MLP attributes).",
+        default="wbc-unified",
+        help="LLD: wbc-unified (YOLO + EfficientNet) or dinobloom (YOLO + DinoBloom attrs).",
     )
     p.add_argument(
         "--attribute-model",
         choices=["effnet", "dinobloom"],
-        default="dinobloom",
-        help="Attribute head: dinobloom (default, DinoBloom-L MLP) or effnet.",
+        default="effnet",
+        help="Attribute head on YOLO crops: effnet (default) or dinobloom (ablation). "
+             "Set --backend dinobloom to select DinoBloom without passing this flag.",
     )
     p.add_argument("--stub-source")
     p.add_argument("--yolo-weights", default=str(DEFAULT_YOLO_WEIGHTS))
@@ -491,16 +475,6 @@ def main() -> int:
         default=str(DEFAULT_DINOBLOOM_ATTR_WEIGHTS),
         help="Trained DinoBloom attribute head (.pt) or sklearn probes (.joblib). "
              "Falls back to k-NN if file missing and mode=auto.",
-    )
-    p.add_argument(
-        "--dinobloom-cell-weights",
-        default=str(DEFAULT_DINOBLOOM_CELL_WEIGHTS),
-        help="Trained DinoBloom cell-type head (.pt) for MLL Helmholtz precropped path.",
-    )
-    p.add_argument(
-        "--helmholtz-metadata-cell-types",
-        action="store_true",
-        help="Use annotated metadata differentials for cell types instead of the cell classifier.",
     )
     p.add_argument(
         "--dinobloom-attr-mode",
@@ -533,39 +507,13 @@ def main() -> int:
     p.add_argument(
         "--classifier-model",
         default=str(DEFAULT_CLASSIFIER_MODEL),
-        help="Pickled patient-level leukemia classifier (RandomForest).",
+        help="Pickled patient-level leukemia classifier (LightGBM / XGBoost).",
     )
     p.add_argument(
         "--dataset-source",
-        choices=["auto", "lld", "mll-helmholtz"],
+        choices=["auto", "lld"],
         default="lld",
-        help="Input layout: LLD PBS tiles (YOLO) or MLL Helmholtz pre-cropped cells (skip YOLO).",
-    )
-    p.add_argument(
-        "--helmholtz-data-root",
-        default=str(resolve_helmholtz_data_root() / "control"),
-        help="Root with one folder per control patient (used with --dataset-source mll-helmholtz).",
-    )
-    p.add_argument(
-        "--helmholtz-metadata",
-        default=str(resolve_helmholtz_metadata_json()),
-        help="Patient metadata JSON for MLL cell-type assignment.",
-    )
-    p.add_argument(
-        "--helmholtz-reports-dir",
-        default=str(resolve_helmholtz_reports_dir()),
-        help="Directory of Helmholtz template reports (one .txt per case).",
-    )
-    p.add_argument(
-        "--include-healthy-class",
-        action="store_true",
-        help="Enable 6-class HybridClassifier rules (Healthy threshold).",
-    )
-    p.add_argument(
-        "--healthy-cell-pct-threshold",
-        type=float,
-        default=65.0,
-        help="Rule threshold: mature WBC %% for Healthy call (default 65).",
+        help="Input layout: LLD PBS tiles (YOLO + EfficientNet).",
     )
     p.add_argument("--report-backend", choices=["template", "local-llm", "claude", "openai"], default="template")
     p.add_argument("--llm-model", help="Local base model path for --report-backend local-llm")
@@ -598,8 +546,7 @@ def main() -> int:
               file=sys.stderr)
     classifier = HybridClassifier(
         learned=learned,
-        include_healthy_class=args.include_healthy_class,
-        healthy_cell_pct_threshold=args.healthy_cell_pct_threshold,
+        stats_json=args.stats_json if args.stats_json.is_file() else None,
     )
     report_gen = build_report_generator(args)
 
@@ -657,14 +604,34 @@ def main() -> int:
     ################################################
     # Batch mode — iterate over all patients
     ################################################
-    if args.dataset_source == "mll-helmholtz":
-        patients = _discover_helmholtz_patients(args.helmholtz_data_root)
-        batch_label = args.helmholtz_data_root
-    elif args.patients_dir:
-        patients = _discover_patients(args.patients_dir)
-        batch_label = args.patients_dir
-    else:
-        sys.exit("Batch mode requires --patients-dir (LLD) or --dataset-source mll-helmholtz.")
+    if args.lld_split:
+        patients = _discover_lld_split_patients(
+            split=args.lld_split,
+            image_root=args.lld_image_dir,
+            cv_root=CV,
+        )
+        batch_label = f"lld-split={args.lld_split}"
+        print(f"Batch mode ({batch_label}): {len(patients)} patients", flush=True)
+        failed: list[str] = []
+        for i, (case_id, image_paths) in enumerate(patients, 1):
+            out_dir = os.path.join(args.out, case_id) if args.out else None
+            try:
+                ok = _run_one(orch, case_id, image_paths, args.instruction, out_dir, args.dataset_source)
+                if not ok:
+                    failed.append(case_id)
+            except Exception as exc:
+                print(f"[{i}/{len(patients)}] ERROR for {case_id}: {exc}", file=sys.stderr)
+                failed.append(case_id)
+        print(f"\nBatch complete: {len(patients) - len(failed)}/{len(patients)} succeeded.")
+        if failed:
+            print(f"Failed: {', '.join(failed)}", file=sys.stderr)
+            return 1
+        return 0
+
+    if not args.patients_dir:
+        sys.exit("Batch mode requires --patients-dir or --lld-split.")
+    patients = _discover_patients(args.patients_dir)
+    batch_label = args.patients_dir
     print(f"Batch mode: {len(patients)} patients found under {batch_label}", flush=True)
 
     image_suffixes = {".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp"}

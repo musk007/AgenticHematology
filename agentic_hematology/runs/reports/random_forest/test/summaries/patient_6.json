@@ -1,0 +1,83 @@
+{
+  "patient_id": "6",
+  "ground_truth_label": "ALL",
+  "disease_label_file": "ALL",
+  "source": "patient_WBC_stats",
+  "n_images": 55,
+  "n_cells_total": 92,
+  "n_cells_informative": 77,
+  "n_cells_artifact": 15,
+  "class_counts": {
+    "Lymphoblast": 45,
+    "Eosinophil": 15,
+    "Lymphocyte": 15,
+    "Neutrophil": 1,
+    "Monocyte": 1
+  },
+  "differential_pct": {
+    "Lymphoblast": 58.4,
+    "Eosinophil": 19.5,
+    "Lymphocyte": 19.5,
+    "Neutrophil": 1.3,
+    "Monocyte": 1.3
+  },
+  "blast_pct": 58.44,
+  "flags": {
+    "blasts_present": true,
+    "blast_threshold_met": true
+  },
+  "morphology_cohort": {},
+  "qc": {
+    "n_annotated_cells": 92,
+    "n_identified_wbc": 77,
+    "n_artifacts": 15,
+    "n_fields_of_view": 55,
+    "n_cells_in_cohort": 45,
+    "low_cell_count_warning": false,
+    "sparse_annotation_skew_warning": false,
+    "global_canvas_stitching_active": true
+  },
+  "classifier": {
+    "backend_prediction": "ALL",
+    "confidence": 0.978,
+    "class_probabilities": {
+      "ALL": 0.978,
+      "AML": 0.018,
+      "APML": 0.0,
+      "CLL": 0.0,
+      "CML": 0.004
+    },
+    "top_features": [
+      {
+        "feature": "blast_pool_percentage_of_wbc",
+        "label": "blast pool % of WBC",
+        "shap_value": 0.074,
+        "direction": "supports"
+      },
+      {
+        "feature": "group_blasts_pct",
+        "label": "blasts lineage group %",
+        "shap_value": 0.0709,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_metamyelocyte",
+        "label": "metamyelocyte differential %",
+        "shap_value": 0.0475,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasm__scanty__pct",
+        "label": "scanty cytoplasm attribute %",
+        "shap_value": 0.0426,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cytoplasmic_basophilia__slight__pct",
+        "label": "slight cytoplasmic basophilia attribute %",
+        "shap_value": 0.0405,
+        "direction": "supports"
+      }
+    ]
+  }
+}

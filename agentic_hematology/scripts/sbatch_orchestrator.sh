@@ -48,7 +48,7 @@ DINOBLOOM_VARIANT="${DINOBLOOM_VARIANT:-l}"
 DINOBLOOM_WEIGHTS="${DINOBLOOM_WEIGHTS:-auto}"
 DINOBLOOM_ATTR_MODE="${DINOBLOOM_ATTR_MODE:-probes}"
 DINOBLOOM_ATTR_WEIGHTS="${DINOBLOOM_ATTR_WEIGHTS:-${PROJECT}/runs/attribute_dinobloom/train/best_attr_dinobloom.pt}"
-CLASSIFIER_MODEL="${CLASSIFIER_MODEL:-${PROJECT}/wbc_unified/cv/runs/classifier/leukemia_rf.pkl}"
+CLASSIFIER_MODEL="${CLASSIFIER_MODEL:-${PROJECT}/wbc_unified/cv/runs/classifier/leukemia_gbm.pkl}"
 
 AGENT_LLM_MODEL="${AGENT_LLM_MODEL:-/nfs-stor/roba.majzoub/Qwen3.5-4B}"
 USE_AGENT="${USE_AGENT:-1}"

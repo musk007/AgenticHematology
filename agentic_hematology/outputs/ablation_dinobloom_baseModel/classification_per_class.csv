@@ -1,7 +1,0 @@
-class,f1,precision,recall,support
-ALL,0.8888888888888888,0.8,1.0,4
-AML,0.8,0.8,0.8,5
-APML,0.0,0.0,0.0,1
-CLL,1.0,1.0,1.0,1
-CML,1.0,1.0,1.0,2
-Indeterminate,0.0,0.0,0.0,0

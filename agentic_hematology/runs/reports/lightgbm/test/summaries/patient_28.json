@@ -1,0 +1,87 @@
+{
+  "patient_id": "28",
+  "ground_truth_label": "CML",
+  "disease_label_file": "CML",
+  "source": "patient_WBC_stats",
+  "n_images": 59,
+  "n_cells_total": 299,
+  "n_cells_informative": 271,
+  "n_cells_artifact": 28,
+  "class_counts": {
+    "Neutrophil": 160,
+    "Myelocyte": 46,
+    "Metamyelocyte": 21,
+    "Myeloblast": 19,
+    "Monocyte": 14,
+    "Lymphocyte": 8,
+    "Eosinophil": 3
+  },
+  "differential_pct": {
+    "Neutrophil": 59.0,
+    "Myelocyte": 17.0,
+    "Metamyelocyte": 7.8,
+    "Myeloblast": 7.0,
+    "Monocyte": 5.2,
+    "Lymphocyte": 3.0,
+    "Eosinophil": 1.1
+  },
+  "blast_pct": 7.01,
+  "flags": {
+    "blasts_present": true,
+    "blast_threshold_met": false
+  },
+  "morphology_cohort": {},
+  "qc": {
+    "n_annotated_cells": 299,
+    "n_identified_wbc": 271,
+    "n_artifacts": 28,
+    "n_fields_of_view": 59,
+    "n_cells_in_cohort": 19,
+    "low_cell_count_warning": false,
+    "sparse_annotation_skew_warning": false,
+    "global_canvas_stitching_active": true
+  },
+  "classifier": {
+    "backend_prediction": "CML",
+    "confidence": 0.9999604448423609,
+    "class_probabilities": {
+      "ALL": 4.050576151966948e-06,
+      "AML": 8.244981354814718e-06,
+      "APML": 1.1449092449903325e-05,
+      "CLL": 1.5810507682317216e-05,
+      "CML": 0.9999604448423609
+    },
+    "top_features": [
+      {
+        "feature": "pct_neutrophil",
+        "label": "neutrophil differential %",
+        "shap_value": 3.827,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_metamyelocyte",
+        "label": "metamyelocyte differential %",
+        "shap_value": 3.4862,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myelocyte",
+        "label": "myelocyte differential %",
+        "shap_value": 3.2392,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_basophil",
+        "label": "basophil differential %",
+        "shap_value": -0.0258,
+        "direction": "opposes"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": -0.0054,
+        "direction": "opposes"
+      }
+    ]
+  }
+}

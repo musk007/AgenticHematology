@@ -1,0 +1,39 @@
+{
+  "split": "test",
+  "backend": "random_forest",
+  "n_patients": 13,
+  "patient_ids": [
+    "4",
+    "6",
+    "8",
+    "15",
+    "18",
+    "21",
+    "23",
+    "28",
+    "31",
+    "34",
+    "40",
+    "43",
+    "45"
+  ],
+  "predictions_json": "/home/roba.majzoub/agentic_hematology/runs/classifier/random_forest/leukemia_random_forest_predictions.json",
+  "stats_json": "/home/roba.majzoub/AgenticHematology/data_preprocessing/patient_WBC_stats_NoOveralp.json",
+  "summaries_dir": "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/summaries",
+  "reports_dir": "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports",
+  "reports": [
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_4_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_6_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_8_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_15_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_18_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_21_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_23_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_28_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_31_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_34_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_40_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_43_report.md",
+    "/home/roba.majzoub/agentic_hematology/runs/reports/random_forest/test/reports/case_45_report.md"
+  ]
+}

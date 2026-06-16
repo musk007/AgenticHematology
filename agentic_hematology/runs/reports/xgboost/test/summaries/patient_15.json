@@ -1,0 +1,83 @@
+{
+  "patient_id": "15",
+  "ground_truth_label": "AML",
+  "disease_label_file": "AML",
+  "source": "patient_WBC_stats",
+  "n_images": 59,
+  "n_cells_total": 164,
+  "n_cells_informative": 137,
+  "n_cells_artifact": 27,
+  "class_counts": {
+    "Monoblast": 118,
+    "Lymphocyte": 10,
+    "Neutrophil": 6,
+    "Myeloblast": 2,
+    "Monocyte": 1
+  },
+  "differential_pct": {
+    "Monoblast": 86.1,
+    "Lymphocyte": 7.3,
+    "Neutrophil": 4.4,
+    "Myeloblast": 1.5,
+    "Monocyte": 0.7
+  },
+  "blast_pct": 87.59,
+  "flags": {
+    "blasts_present": true,
+    "blast_threshold_met": true
+  },
+  "morphology_cohort": {},
+  "qc": {
+    "n_annotated_cells": 164,
+    "n_identified_wbc": 137,
+    "n_artifacts": 27,
+    "n_fields_of_view": 59,
+    "n_cells_in_cohort": 118,
+    "low_cell_count_warning": false,
+    "sparse_annotation_skew_warning": false,
+    "global_canvas_stitching_active": true
+  },
+  "classifier": {
+    "backend_prediction": "AML",
+    "confidence": 0.9325982332229614,
+    "class_probabilities": {
+      "ALL": 0.01851813681423664,
+      "AML": 0.9325982332229614,
+      "APML": 0.01596403680741787,
+      "CLL": 0.01724531129002571,
+      "CML": 0.015674347057938576
+    },
+    "top_features": [
+      {
+        "feature": "attr_nucleolus__prominent__pct",
+        "label": "prominent nucleolus attribute %",
+        "shap_value": 1.3384,
+        "direction": "supports"
+      },
+      {
+        "feature": "attr_cell_size__small__pct",
+        "label": "small cell size attribute %",
+        "shap_value": 0.4684,
+        "direction": "supports"
+      },
+      {
+        "feature": "pct_myeloblast",
+        "label": "myeloblast differential %",
+        "shap_value": -0.2521,
+        "direction": "opposes"
+      },
+      {
+        "feature": "attr_nucleolus__inconspicuous__pct",
+        "label": "inconspicuous nucleolus attribute %",
+        "shap_value": 0.2451,
+        "direction": "supports"
+      },
+      {
+        "feature": "n_cells_identified_wbc",
+        "label": "identified WBC cell count",
+        "shap_value": 0.2248,
+        "direction": "supports"
+      }
+    ]
+  }
+}
