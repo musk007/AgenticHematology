@@ -1,165 +1,158 @@
-# Agentic Hematology Pipeline
+# AgenticHematology — LLD workflow
 
-An agentic orchestration system for peripheral blood smear analysis. A YOLOv11 localizer detects white blood cells, an EfficientNet attribute classifier describes their morphology, a deterministic rule-based classifier assigns the leukemia subtype, and an optional Qwen3-VL LLM drives intent routing and reflection-based process control.
 
----
 
-## Environment Setup
-
-All commands must be run from the **repository parent directory** (`/home/roba.majzoub`) with the `agentic` conda environment active.
 
 ```bash
-source /apps/local/anaconda3.10/bin/activate
-conda activate /home/roba.majzoub/envs/agentic
-cd /home/roba.majzoub
-```
-
-If you see `ImportError: libpython3.10.so.1.0: cannot open shared object file`, run:
-
-```bash
-export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:$LD_LIBRARY_PATH"
+YOLO=wbc_unified/cv/runs/detector/train/weights/best.pt
+EFFNET=wbc_unified/cv/runs/attribute/train/best_attr.pt
+CLASSIFIER=outputs/ablations/classifier/dinobloom/random_forest/leukemia_random_forest.pkl
+DINOBLOOM_ATTR=wbc_unified/cv/runs/attribute_dinobloom/train/best_attr_dinobloom.pt
 ```
 
 ---
 
-## Running the Pipeline
-
-### Single patient — non-agentic mode
-
-Deterministic pipeline only. No LLM is loaded. Intent is decided by keyword rules. Reflection is skipped.
+#### 1) Prepare the data
 
 ```bash
-python agentic_hematology/run_orchestrator.py \
-  --case-id PATIENT_004 \
-  --backend wbc-unified \
-  --images agentic_hematology/wbc_unified/cv/generated/patients/patient_4/images \
-  --yolo-weights agentic_hematology/wbc_unified/cv/runs/detector/train/weights/best.pt \
-  --effnet-weights agentic_hematology/wbc_unified/cv/runs/attribute/train/best_attr.pt \
-  --instruction "diagnose this case" \
-  --report-backend template \
-  --no-agent \
-  --out agentic_hematology/outputs
-```
-
-### Single patient — agentic mode
-
-Loads a local Qwen3-VL model (with optional LoRA adapter) to drive LLM intent routing and the reflection agent. The model is loaded once and shared across routing, reflection, and report generation.
-
-```bash
-python agentic_hematology/run_orchestrator.py \
-  --case-id PATIENT_004 \
-  --backend wbc-unified \
-  --images agentic_hematology/wbc_unified/cv/generated/patients/patient_4/images \
-  --yolo-weights agentic_hematology/wbc_unified/cv/runs/detector/train/weights/best.pt \
-  --effnet-weights agentic_hematology/wbc_unified/cv/runs/attribute/train/best_attr.pt \
-  --instruction "diagnose this case" \
-  --report-backend template \
-  --llm-model /nfs-stor/roba.majzoub/LLMs/Qwen3-VL-4B-Instruct \
-  --lora-adapter /nfs-stor/roba.majzoub/wbc_medical/runs/wbc_sft_only/checkpoints/wbc_qwen3_4b_sft_lora \
-  --out agentic_hematology/outputs
-```
-
-### Submitting via SLURM
-
-```bash
-sbatch agentic_hematology/inference.sh
-```
-
-The script activates the conda environment, sets up paths, and submits the agentic single-patient run. Logs are written to `agentic_hematology/logs/`.
-
-### All patients — batch mode
-
-Discovers every subdirectory under `--patients-dir` that contains an `images/` folder and runs them all in one process. The detector, classifier, and LLM are loaded **once** and reused across all patients.
-
-```bash
-python agentic_hematology/run_orchestrator.py \
-  --patients-dir agentic_hematology/wbc_unified/cv/generated/patients \
-  --yolo-weights agentic_hematology/wbc_unified/cv/runs/detector/train/weights/best.pt \
-  --effnet-weights agentic_hematology/wbc_unified/cv/runs/attribute/train/best_attr.pt \
-  --llm-model /nfs-stor/roba.majzoub/LLMs/Qwen3-VL-4B-Instruct \
-  --lora-adapter /nfs-stor/roba.majzoub/wbc_medical/runs/wbc_sft_only/checkpoints/wbc_qwen3_4b_sft_lora \
-  --out agentic_hematology/outputs/batch
-```
-
-Each patient's outputs are saved to `<out>/<patient_name>/`. Patients with no images are skipped with a warning; errors in individual patients are logged and the batch continues.
-
----
-
-## Intent Router
-
-The orchestrator classifies the user's `--instruction` into one of five intents and runs only the pipeline stages that intent requires.
-
-| Intent | Triggered by | Pipeline stages | Output files |
-|---|---|---|---|
-| `FULL_REPORT` | Report-like or default diagnostic prompts (default fallback) | detect → aggregate → classify → reflect → report → validate | `_detections.json`, `_classification.json`, `_report.md` |
-| `DETECT_ONLY` | "only detect", "count cells", "localize cells" | detect → aggregate | `_detections.json` |
-| `CLASSIFY_ONLY` | "only classify", "just tell me the subtype", "which leukemia" | detect → aggregate → classify | `_detections.json`, `_classification.json` |
-| `REPORT_FROM_JSON` | Precomputed findings supplied via API (no images) | load findings → classify → reflect → report → validate | `_classification.json`, `_report.md` |
-| `EXPLAIN` | "explain", "why", "justify", "what does X mean" | full pipeline (if images present) + LLM answer | `_explain.txt` (+ report files if pipeline ran) |
-
-**Routing modes:**
-- **Non-agentic (`--no-agent`):** keyword/regex rules only — deterministic, no GPU cost.
-- **Agentic (default):** the LLM classifies the instruction first; falls back to keyword rules if the LLM call fails or returns an unrecognised label.
-
-The intent can be overridden at the API level by setting `forced_intent` on `OrchestratorRequest`.
-
-### Reflection agent (agentic mode only)
-
-After detect → aggregate → classify, the reflection agent reads the case state and decides one of three process actions before the report is written:
-
-- **`proceed`** — evidence is coherent and sufficient.
-- **`re_aggregate`** — re-run aggregation at a stricter confidence threshold, re-classify, and reflect again. Used when detection quality looks noisy. Can only be used once per case.
-- **`flag_for_review`** — mark the case for mandatory human review. Written as a banner at the bottom of the report.
-
-The reflection agent never modifies the diagnosis — the deterministic classifier is always authoritative.
-
----
-
-## Output Files
-
-All files are written to `--out` (or `--out/<patient_name>/` in batch mode). If `--out` is not set, results are printed to the terminal instead.
-
-| File | Contents |
-|---|---|
-| `case_<id>_detections.json` | `patient_id`, `n_images`, and per cell: `cell_id`, `image_id`, `bbox_xyxy`, `class`, `confidence`, binarised `attributes`, raw `attribute_probs` |
-| `case_<id>_classification.json` | `patient_id`, `predicted_class`, `confidence`, `rationale` |
-| `case_<id>_report.md` | Full narrative Markdown report with quantitative summary, agentic diagnosis, and cell grounding |
-| `case_<id>_explain.txt` | LLM free-text answer (EXPLAIN intent only) |
-
----
-
-## Key CLI Arguments
-
-| Argument | Description |
-|---|---|
-| `--case-id` | Case identifier for single-patient mode |
-| `--patients-dir` | Root directory for batch mode (`--case-id` and `--patients-dir` are mutually exclusive) |
-| `--backend` | `wbc-unified` (default), `two-stage`, or `stub` |
-| `--images` | Image paths or glob for single-patient mode |
-| `--yolo-weights` | Path to YOLOv11 detection weights |
-| `--effnet-weights` | Path to EfficientNet attribute classifier weights |
-| `--instruction` | Free-text instruction that drives intent routing (default: `"diagnose this case"`) |
-| `--report-backend` | `template` (default), `local-llm`, `claude`, `openai` |
-| `--llm-model` | Path to local Qwen3 base model (required for agentic mode) |
-| `--lora-adapter` | Path to LoRA adapter checkpoint (optional) |
-| `--no-agent` | Disable LLM routing and reflection; use keyword rules only |
-| `--max-reflect-iterations` | Max reflection loop iterations before forced escalation (default: 2) |
-| `--out` | Output directory |
-
----
-
-## Training the Leukemia Classifier
-
-Detection and attribute weights are frozen. Only the downstream rule-based / learned classifier is trained.
-
-```bash
-# Option 1 — direct
-python agentic_hematology/Train_pipeline.py \
+python wbc_unified/cv/data/prepare_dataset.py \
   --data-root /nfs-stor/roba.majzoub/LeukemiaDataset_Organized \
-  --device 0 \
-  --det-weights agentic_hematology/wbc_unified/cv/runs/detector/train/weights/best.pt \
-  --attr-weights agentic_hematology/wbc_unified/cv/runs/attribute/train/best_attr.pt
+  --out wbc_unified/cv/generated --image-mode hardlink
+```
 
-# Option 2 — SLURM
-sbatch agentic_hematology/train_agentic_pipeline.sh
+#### 2) Train the detector
+```bash
+sbatch scripts/sbatch_train_yolo.sh
+```
+
+#### 3) Train EfficientNet for attribute classification
+```bash
+python wbc_unified/cv/train_attributes.py \
+  --config wbc_unified/cv/configs/dataset.yaml \
+  --epochs 40 --batch 256 --device 0 \
+  --project wbc_unified/cv/runs/attribute --name train
+```
+
+#### 4)Train leukemia classifier using EfficientNet predictions (this trains all 3 types of classifiers including XGBoost, light GBM, and random forest):
+
+```bash
+python train_leukemia_from_efficientnet.py --backend all --device 0
+```
+
+---
+Alternative for attribute classification
+#### 3) Train DinoBloom MLP for attribute classification
+```bash
+python wbc_unified/cv/train_dinobloom_attributes_torch.py \
+  --manifest wbc_unified/cv/generated/attr_manifest.csv \
+  --dinobloom-weights /home/roba.majzoub/DinoBloom-L.pth \
+  --dinobloom-variant l \
+  --project wbc_unified/cv/runs/attribute_dinobloom \
+  --name train \
+  --epochs 40 --batch 64 --device 0 --workers 2
+```
+#### 4) Train leukemia classifier using DinoBloom predictions (this trains all 3 types of classifiers including XGBoost, light GBM, and random forest):
+
+```bash
+python train_leukemia_from_dinobloom.py --backend all --device 0
+```
+
+Re-train classifiers only from cached detection features:
+
+
+#### 5) Full agentic pipeline (detect → aggregate → classify → reflect → report)
+
+Classification + report numbers come only from live detection/aggregation.  
+Use a classifier trained with `train_leukemia_from_dinobloom.py` (not stats JSON).
+
+Single patient with reflection + re_aggregate + flag_for_review:
+
+```bash
+# sbatch scripts/sbatch_orchestrator.sh
+#   export CASE_ID=4 IMAGES_GLOB='wbc_unified/cv/generated/det_dataset/images/test/4_*.png'
+#   export CLASSIFIER_MODEL=runs/classifier/random_forest/leukemia_random_forest.pkl
+#   export USE_AGENT=1
+```
+
+Batch: all 13 test patients with agent traces:
+
+EfficientNet batch:
+
+```bash
+python run_orchestrator.py \
+  --lld-split test \
+  --patients-dir /wbc_unified/cv/generated/det_dataset/images/test \
+  --backend wbc-unified \
+  --yolo-weights "${YOLO}" \
+  --effnet-weights "${EFFNET}" \
+  --classifier-model path/to/trained/RF_Classifier.pkl \
+  --llm-model /models/Qwen3-VL-4B-Instruct \
+  --max-reflect-iterations 2 \
+  --device 0 \
+  --out outputs/batch_effnet
+```
+
+DinoBloom batch:
+
+```bash
+python run_orchestrator.py \
+  --lld-split test \
+  --backend dinobloom \
+  --yolo-weights "${YOLO}" \
+  --dinobloom-attr-weights "${DINOBLOOM_ATTR}" \
+  --classifier-model "${CLASSIFIER}" \
+  --llm-model models/Qwen3-VL-4B-Instruct \
+  --max-reflect-iterations 2 \
+  --report-backend template \
+  --device 0 \
+  --out outputs/batch_traced
+```
+
+
+#### Summarize reflection actions:
+
+```bash
+python analyze_agent_trace.py --agentic-dir outputs/batch_traced
+```
+
+---
+
+## Running the pipeline — DinoBloom
+
+```bash
+python run_orchestrator.py \
+  --lld-split test \
+  --backend dinobloom \
+  --yolo-weights wbc_unified/cv/runs/detector/train/weights/best.pt \
+  --dinobloom-attr-weights /home/roba.majzoub/agentic_hematology/wbc_unified/cv/runs/attribute_dinobloom/train/best_attr_dinobloom.pt \
+  --classifier /home/roba.majzoub/agentic_hematology/wbc_unified/cv/runs/classifier/dinobloom/random_forest/leukemia_random_forest.pkl \
+  --llm-model /home/roba.majzoub/agentic_hematology/models/Qwen3-VL-4B-Instruct \
+  --max-reflect-iterations 2 \
+  --device 0 \
+  --out outputs/batch_dinobloom
+```
+
+
+
+## Summarizing results
+
+EfficientNet:
+
+```bash
+python summarize_batch_eval.py \
+  --output-dir agentic_hematology/outputs/batch_effnet \
+  --stats-json data_preprocessing/patient_WBC_stats_NoOveralp.json \
+  --approved-reports-dir LLM_reports \
+  --non-agentic-dir outputs/batch_effnet_noAgent \
+  --out-json agentic_hematology/outputs/effnet_results_summary.json \
+  --out-md agentic_hematology/outputs/effnet_results_summary.md
+```
+
+
+Per-patient detection eval:
+
+```bash
+python eval_detection_patient.py \
+  --results_dir /home/roba.majzoub/agentic_hematology/outputs/batch_effnet/4 \
+  --stats_json /home/roba.majzoub/AgenticHematology/data_preprocessing/patient_WBC_stats_NoOveralp.json
 ```
