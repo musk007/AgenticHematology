@@ -156,3 +156,4 @@ python eval_detection_patient.py \
   --results_dir /home/roba.majzoub/agentic_hematology/outputs/batch_effnet/4 \
   --stats_json /home/roba.majzoub/AgenticHematology/data_preprocessing/patient_WBC_stats_NoOveralp.json
 ```
+pretrained weights of EfficientNet, DinoBloom as well as the leukemia classifiers can be downloaded from the following [link](https://drive.google.com/file/d/1W0e555uSFi38X96SdX2Pqs0IsKWdxgb_/view?usp=sharing)
