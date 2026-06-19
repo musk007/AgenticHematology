@@ -1,0 +1,18 @@
+{
+  "patient_id": "34",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "High blast burden (57.6%) with borderline classifier confidence (0.816) and significant non-WBC artifacts (15.7%) suggest potential diagnostic uncertainty.",
+      "conf_threshold": 0.3
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "High blast burden (57.6%) with borderline classifier confidence (0.816) and significant non-WBC artifacts (15.7%) suggest potential diagnostic uncertainty."
+  ]
+}

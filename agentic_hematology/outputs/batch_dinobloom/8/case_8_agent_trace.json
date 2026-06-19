@@ -1,0 +1,18 @@
+{
+  "patient_id": "8",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "High blast burden with borderline classifier confidence and significant non-WBC artifacts suggest potential misclassification.",
+      "conf_threshold": null
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "High blast burden with borderline classifier confidence and significant non-WBC artifacts suggest potential misclassification."
+  ]
+}

@@ -56,7 +56,12 @@ from .pipeline import (
 )
 from .report_generator import BaseReportGenerator, TemplateReportGenerator
 from .schemas import AggregatedFindings, DetectionResult, PipelineState
-from .validators import LLMOutputValidator, ReportConsistencyValidator
+from .validators import (
+    LLMOutputValidator,
+    NumericalHallucinationValidator,
+    ReportConsistencyValidator,
+    TemplateJsonConsistencyValidator,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -103,6 +108,11 @@ class OrchestratorResponse:
             ),
             "consistency_passed": self.state.consistency_passed,
             "llm_output_passed": self.state.llm_output_passed,
+            "template_json_passed": self.state.template_json_passed,
+            "numerical_hallucination_passed": self.state.numerical_hallucination_passed,
+            "validation_passed": self.state.validation_passed,
+            "report_delivery_allowed": self.state.report_delivery_allowed,
+            "validation_details": self.state.validation_details,
             "agent_actions": self.state.agent_actions,
             "n_reflect_iterations": self.state.n_reflect_iterations,
             "flagged_for_review": self.state.flagged_for_review,
@@ -272,6 +282,8 @@ class Orchestrator:
         self.max_reflect_iterations = max_reflect_iterations
         self._consistency = ReportConsistencyValidator()
         self._llm_guard = LLMOutputValidator()
+        self._template_json = TemplateJsonConsistencyValidator()
+        self._numerical_hallucination = NumericalHallucinationValidator()
 
     # ------------------------------------------------------------------
     # Entry point
@@ -339,6 +351,8 @@ class Orchestrator:
                 state,
                 consistency_validator=self._consistency,
                 llm_output_validator=self._llm_guard,
+                template_json_validator=self._template_json,
+                numerical_hallucination_validator=self._numerical_hallucination,
                 failure_policy=self.validate_failure_policy,
                 report_generator=self.report_generator,
             )
@@ -362,6 +376,8 @@ class Orchestrator:
                 state,
                 consistency_validator=self._consistency,
                 llm_output_validator=self._llm_guard,
+                template_json_validator=self._template_json,
+                numerical_hallucination_validator=self._numerical_hallucination,
                 failure_policy=self.validate_failure_policy,
                 report_generator=self.report_generator,
             )

@@ -1,0 +1,6 @@
+{
+  "patient_id": "28",
+  "predicted_class": "CML",
+  "confidence": 0.65,
+  "rationale": "granulocytic precursors dominate the differential"
+}

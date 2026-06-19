@@ -1,0 +1,16 @@
+{
+  "patient_id": "18",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "proceed",
+      "reason": "Evidence is coherent with high confidence and sufficient cell count",
+      "conf_threshold": null
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": false,
+  "review_reasons": []
+}

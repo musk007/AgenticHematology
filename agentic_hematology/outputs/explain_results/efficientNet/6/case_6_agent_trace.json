@@ -1,0 +1,18 @@
+{
+  "patient_id": "6",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "High pct_class_none and low mean detection confidence suggest data quality issues despite clear blast burden.",
+      "conf_threshold": null
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "High pct_class_none and low mean detection confidence suggest data quality issues despite clear blast burden."
+  ]
+}

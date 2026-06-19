@@ -1,0 +1,20 @@
+The report for **Case 4** presents a **diagnosis of Acute Lymphoblastic Leukemia (ALL)** based on a multi-image, automated peripheral blood smear analysis. Below is a structured explanation of the key findings and rationale:
+
+---
+
+### **1. Clinical & Diagnostic Summary**
+
+- **Specimen:** Peripheral blood smear analyzed across **52 fields of view**.
+- **Total cells detected:** 166 raw cells → **149 after overlap deduplication**.
+- **Informative WBCs (excluding artefacts):** 124 cells (16.8% artefacts).
+- **Differential count (by % of informative WBCs):**
+  - **Lymphoblasts: 41.1%** → **Diagnostic threshold met** (≥20% for acute leukemia).
+  - Neutrophils: 31.5%
+  - Lymphocytes: 23.4%
+  - Eosinophils: 3.2%
+  - Metamyelocytes: 0.8%
+
+> **Diagnostic flags:**  
+> - `blasts_present: true`  
+> - `blast_threshold_met: true`  
+> → Confirms **

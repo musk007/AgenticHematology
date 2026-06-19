@@ -1,0 +1,17 @@
+The report for **Case 34** presents an automated hematology analysis of a peripheral blood smear, concluding with a diagnosis of **Acute Myeloid Leukemia (AML)** based on morphological and quantitative findings. Below is a structured explanation of the key components and rationale:
+
+---
+
+### **1. Specimen & Image Analysis**
+- **39 fields of view (FOVs)** were analyzed.
+- **85 cells** were initially detected, but **11 were classified as artifacts** (non-WBCs), leaving **70 total detected cells**.
+- **59 of these 70 cells** were classified as **informative WBCs** — the basis for differential counts and diagnostic interpretation.
+- **Global canvas stitching** was active with **20% tile overlap** and **IoU threshold 0.2**, ensuring spatial continuity across images.
+
+---
+
+### **2. Differential Count (of Informative WBCs)**
+| Cell Type      | Count | % of Informative WBCs |
+|----------------|-------|------------------------|
+| Neutrophils    | 23    | 39.0%                 |
+| Myeloblasts    | 18    | 30.

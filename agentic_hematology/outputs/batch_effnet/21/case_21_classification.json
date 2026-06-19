@@ -1,0 +1,6 @@
+{
+  "patient_id": "21",
+  "predicted_class": "Indeterminate",
+  "confidence": 0.35,
+  "rationale": "no subtype-defining differential pattern detected"
+}

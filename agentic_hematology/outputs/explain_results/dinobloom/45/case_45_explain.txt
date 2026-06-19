@@ -1,0 +1,13 @@
+The report for patient **45** presents a **diagnosis of Acute Myeloid Leukemia (AML)** based on automated analysis of 54 fields of view from a peripheral blood smear. The findings are consistent with a **high blast burden** and **morphological features characteristic of AML**, though the diagnostic confidence is borderline (0.62), warranting mandatory human review.
+
+---
+
+### **Key Findings Summary**
+
+#### **1. Cell Count & Differential**
+- **Total informative WBCs**: 176 out of 227 detected cells (22.5% artefacts).
+- **Blast-equivalent burden**: **50.0%** of informative WBCs — meeting the 20% threshold for acute leukemia.
+- **Dominant cell type**: **Lymphoblasts (42.6%)** — the most prominent malignant population.
+- **Neutrophils (29.0%)** — the second most common cell type, but not the dominant population.
+- **Lymphocytes (15.3%)** — normal-appearing, non-malignant.
+- **Myeloblasts (7.4%)** — consistent with AML, but

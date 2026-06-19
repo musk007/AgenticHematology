@@ -47,11 +47,18 @@ REQUIRED_REPORT_SECTIONS = (
 )
 BANNED_REPORT_PHRASES = ("as an ai language model", "i cannot diagnose")
 REVIEW_BANNER_MARKER = "Flagged for mandatory human review"
-PCT_TOLERANCE = 1.5
-COUNT_TOLERANCE = 2
-BLAST_PCT_TOLERANCE = 2.0
 MORPHOLOGY_PCT_TOLERANCE = 15.0
-WHITELIST_PCT = {20.0}
+
+from report_validation import (  # noqa: E402
+    BLAST_PCT_TOLERANCE,
+    COUNT_TOLERANCE,
+    PCT_TOLERANCE,
+    WHITELIST_PCT,
+    evaluate_numerical_hallucination as evaluate_hallucination_rate,
+    extract_blast_pct_from_report,
+    extract_integer_claims,
+    extract_percentages,
+)
 DISEASE_ALIASES = {
     "all": ["lymphoblastic", "all", "acute lymphoblastic"],
     "aml": ["myeloid", "aml", "acute myeloid"],
@@ -265,38 +272,11 @@ def find_classification(output_dir: Path, pid: str) -> dict | None:
     return load_json(base / f"case_{pid}_classification.json")
 
 
-def extract_blast_pct_from_report(md: str) -> float | None:
-    m = re.search(r"blast-equivalent burden is (\d+\.?\d*)\s*%", md, re.I)
-    if m:
-        return float(m.group(1))
-    m = re.search(r"blast_pct[\"']?\s*[:=]\s*(\d+\.?\d*)", md, re.I)
-    return float(m.group(1)) if m else None
-
-
-def extract_percentages(text: str) -> list[float]:
-    return [float(m.group(1)) for m in re.finditer(r"(\d+\.?\d*)\s*%", text)]
-
-
 def extract_morphology_percentages(md: str) -> list[float]:
     m = re.search(r"\*\*cohort morphology[^:]*:\*\*(.+?)(?:\n\n|\*\*)", md, re.I | re.S)
     if not m:
         return []
     return extract_percentages(m.group(1))
-
-
-def extract_integer_claims(md: str) -> list[int]:
-    body = md.split("## Quantitative Cell Summary")[0]
-    claims: list[int] = []
-    for pattern in (
-        r"(\d+)\s+fields of view",
-        r"(\d+)\s+of\s+(\d+)\s+detected objects",
-        r"(\d+)\s+artefacts excluded",
-        r"(\d+)/(\d+)\s+cells classifiable",
-        r"\(n\s*=\s*(\d+)",
-    ):
-        for match in re.finditer(pattern, body, re.I):
-            claims.extend(int(g) for g in match.groups() if g is not None)
-    return claims
 
 
 def impression_matches_disease(report_md: str, disease: str | None, extract_report_markdown) -> bool:
@@ -309,90 +289,6 @@ def impression_matches_disease(report_md: str, disease: str | None, extract_repo
     block = imp.group(1).split("\n\n")[0].lower()
     aliases = DISEASE_ALIASES.get(disease.lower(), [disease.lower()])
     return any(alias in block for alias in aliases)
-
-
-def build_pipeline_json_evidence(
-    det_agg: dict[str, Any],
-    clf: dict | None,
-    report_md: str,
-) -> tuple[set[float], set[int]]:
-    pct_pool: set[float] = set(WHITELIST_PCT)
-    int_pool: set[int] = set()
-
-    pct_pool.add(float(det_agg.get("blast_pct", 0.0)))
-    pct_pool.add(float(det_agg.get("pct_class_none", 0.0)))
-    pct_pool.add(round(float(det_agg.get("mean_det_conf", 0.0)) * 100.0, 2))
-    for value in (det_agg.get("cell_percentages_clinical") or {}).values():
-        pct_pool.add(float(value))
-
-    int_pool.update(
-        {
-            int(det_agg.get("n_cells_total", 0)),
-            int(det_agg.get("n_cells_informative", 0)),
-            int(det_agg.get("n_cells_artifact", 0)),
-        }
-    )
-    if clf:
-        int_pool.add(int(round(float(clf.get("confidence", 0.0)) * 100)))
-
-    if report_md:
-        quant = report_md.split("## Quantitative Cell Summary")[-1] if "## Quantitative Cell Summary" in report_md else ""
-        for value in extract_percentages(quant):
-            pct_pool.add(value)
-        for value in extract_integer_claims(report_md):
-            int_pool.add(value)
-
-    return pct_pool, int_pool
-
-
-def build_report_evidence_pool(report_md: str) -> tuple[set[float], set[int]]:
-    body = report_md.split("## Agentic Diagnosis")[0]
-    pct_pool = set(WHITELIST_PCT) | set(extract_percentages(body))
-    int_pool = set(extract_integer_claims(body))
-    return pct_pool, int_pool
-
-
-def _is_traceable(value: float, pool: set[float], *, is_pct: bool) -> bool:
-    tol = PCT_TOLERANCE if is_pct else float(COUNT_TOLERANCE)
-    return any(abs(value - candidate) <= tol for candidate in pool)
-
-
-def evaluate_hallucination_rate(
-    generated_md: str,
-    det_agg: dict[str, Any],
-    clf: dict | None,
-    approved_md: str | None,
-) -> dict[str, Any]:
-    body = generated_md.split("## Agentic Diagnosis")[0]
-    pct_claims = [v for v in extract_percentages(body) if v not in WHITELIST_PCT]
-    int_claims = extract_integer_claims(body)
-
-    json_pct, json_int = build_pipeline_json_evidence(det_agg, clf, generated_md)
-    approved_pct: set[float] = set()
-    approved_int: set[int] = set()
-    if approved_md:
-        approved_pct, approved_int = build_report_evidence_pool(approved_md)
-
-    untraceable: list[dict[str, Any]] = []
-    for value in pct_claims:
-        ok = _is_traceable(value, json_pct, is_pct=True) or _is_traceable(value, approved_pct, is_pct=True)
-        if not ok:
-            untraceable.append({"kind": "percent", "value": value})
-    for value in int_claims:
-        ok = _is_traceable(float(value), {float(v) for v in json_int}, is_pct=False) or _is_traceable(
-            float(value), {float(v) for v in approved_int}, is_pct=False
-        )
-        if not ok:
-            untraceable.append({"kind": "count", "value": value})
-
-    total = len(pct_claims) + len(int_claims)
-    rate = round(len(untraceable) / total, 4) if total else 0.0
-    return {
-        "n_claims": total,
-        "n_untraceable": len(untraceable),
-        "hallucination_rate": rate,
-        "untraceable_examples": untraceable[:8],
-    }
 
 
 def evaluate_vs_approved_report(
@@ -445,7 +341,7 @@ def evaluate_vs_approved_report(
         "morphology_pct_mae_vs_approved": morph_mae,
         "morphology_vs_approved_correct": morph_ok,
         "hallucination": evaluate_hallucination_rate(
-            generated_md, det_agg, clf, approved_md
+            generated_md, det_agg, clf, approved_md=approved_md
         ),
     }
 
@@ -661,7 +557,7 @@ def build_summary(
                             report_text,
                             det_agg,
                             clf if isinstance(clf, dict) else None,
-                            None,
+                            approved_md=None,
                         ),
                     }
                 )

@@ -1,6 +1,0 @@
-{
-  "patient_id": "18",
-  "predicted_class": "ALL",
-  "confidence": 0.754,
-  "rationale": "learned classifier prediction from aggregated differential features"
-}

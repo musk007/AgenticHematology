@@ -1,0 +1,1222 @@
+{
+  "generated_at": "2026-06-19T02:49:45.721415+00:00",
+  "output_dir": "/home/roba.majzoub/agentic_hematology/outputs/batch_dinobloom",
+  "stats_json": "/home/roba.majzoub/AgenticHematology/data_preprocessing/patient_WBC_stats_NoOveralp.json",
+  "approved_reports_dir": "/home/roba.majzoub/AgenticHematology/LLM_reports",
+  "n_patients": 13,
+  "patient_ids": [
+    "4",
+    "6",
+    "8",
+    "15",
+    "18",
+    "21",
+    "23",
+    "28",
+    "31",
+    "34",
+    "40",
+    "43",
+    "45"
+  ],
+  "artifacts": {
+    "all_four_files_present": 13,
+    "per_patient": [
+      {
+        "patient_id": "4",
+        "case_4_detections.json": true,
+        "case_4_classification.json": true,
+        "case_4_report.md": true,
+        "case_4_agent_trace.json": true
+      },
+      {
+        "patient_id": "6",
+        "case_6_detections.json": true,
+        "case_6_classification.json": true,
+        "case_6_report.md": true,
+        "case_6_agent_trace.json": true
+      },
+      {
+        "patient_id": "8",
+        "case_8_detections.json": true,
+        "case_8_classification.json": true,
+        "case_8_report.md": true,
+        "case_8_agent_trace.json": true
+      },
+      {
+        "patient_id": "15",
+        "case_15_detections.json": true,
+        "case_15_classification.json": true,
+        "case_15_report.md": true,
+        "case_15_agent_trace.json": true
+      },
+      {
+        "patient_id": "18",
+        "case_18_detections.json": true,
+        "case_18_classification.json": true,
+        "case_18_report.md": true,
+        "case_18_agent_trace.json": true
+      },
+      {
+        "patient_id": "21",
+        "case_21_detections.json": true,
+        "case_21_classification.json": true,
+        "case_21_report.md": true,
+        "case_21_agent_trace.json": true
+      },
+      {
+        "patient_id": "23",
+        "case_23_detections.json": true,
+        "case_23_classification.json": true,
+        "case_23_report.md": true,
+        "case_23_agent_trace.json": true
+      },
+      {
+        "patient_id": "28",
+        "case_28_detections.json": true,
+        "case_28_classification.json": true,
+        "case_28_report.md": true,
+        "case_28_agent_trace.json": true
+      },
+      {
+        "patient_id": "31",
+        "case_31_detections.json": true,
+        "case_31_classification.json": true,
+        "case_31_report.md": true,
+        "case_31_agent_trace.json": true
+      },
+      {
+        "patient_id": "34",
+        "case_34_detections.json": true,
+        "case_34_classification.json": true,
+        "case_34_report.md": true,
+        "case_34_agent_trace.json": true
+      },
+      {
+        "patient_id": "40",
+        "case_40_detections.json": true,
+        "case_40_classification.json": true,
+        "case_40_report.md": true,
+        "case_40_agent_trace.json": true
+      },
+      {
+        "patient_id": "43",
+        "case_43_detections.json": true,
+        "case_43_classification.json": true,
+        "case_43_report.md": true,
+        "case_43_agent_trace.json": true
+      },
+      {
+        "patient_id": "45",
+        "case_45_detections.json": true,
+        "case_45_classification.json": true,
+        "case_45_report.md": true,
+        "case_45_agent_trace.json": true
+      }
+    ]
+  },
+  "detection": {
+    "n_evaluated": 13,
+    "mean_differential_mae_pct_points": 8.041,
+    "median_differential_mae_pct_points": 6.468,
+    "mean_informative_wbc_count_error_pct": 17.38,
+    "top_dominant_cell_type_match_rate": 0.6154,
+    "mean_detection_confidence": 0.6936,
+    "mean_artifact_rate_pct": 19.23,
+    "per_patient": [
+      {
+        "status": "ok",
+        "patient_id": "4",
+        "gt_informative_wbc": 96,
+        "pred_informative_wbc": 136,
+        "informative_wbc_count_error": 40,
+        "informative_wbc_count_error_pct": 41.67,
+        "differential_mae_pct_points": 4.709,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 41.91,
+        "blast_pct_error": 41.91,
+        "mean_det_conf": 0.7164,
+        "pct_class_none": 18.07,
+        "gt_top_cell_type": "lymphoblast",
+        "pred_top_cell_type": "lymphoblast",
+        "top_cell_type_match": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "6",
+        "gt_informative_wbc": 77,
+        "pred_informative_wbc": 90,
+        "informative_wbc_count_error": 13,
+        "informative_wbc_count_error_pct": 16.88,
+        "differential_mae_pct_points": 12.59,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 67.78,
+        "blast_pct_error": 67.78,
+        "mean_det_conf": 0.6578,
+        "pct_class_none": 20.35,
+        "gt_top_cell_type": "lymphoblast",
+        "pred_top_cell_type": "myeloblast",
+        "top_cell_type_match": false
+      },
+      {
+        "status": "ok",
+        "patient_id": "8",
+        "gt_informative_wbc": 92,
+        "pred_informative_wbc": 121,
+        "informative_wbc_count_error": 29,
+        "informative_wbc_count_error_pct": 31.52,
+        "differential_mae_pct_points": 6.468,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 77.69,
+        "blast_pct_error": 77.69,
+        "mean_det_conf": 0.698,
+        "pct_class_none": 12.95,
+        "gt_top_cell_type": "lymphoblast",
+        "pred_top_cell_type": "lymphoblast",
+        "top_cell_type_match": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "15",
+        "gt_informative_wbc": 137,
+        "pred_informative_wbc": 104,
+        "informative_wbc_count_error": -33,
+        "informative_wbc_count_error_pct": -24.09,
+        "differential_mae_pct_points": 19.609,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 77.88,
+        "blast_pct_error": 77.88,
+        "mean_det_conf": 0.5799,
+        "pct_class_none": 54.59,
+        "gt_top_cell_type": "monoblast",
+        "pred_top_cell_type": "myeloblast",
+        "top_cell_type_match": false
+      },
+      {
+        "status": "ok",
+        "patient_id": "18",
+        "gt_informative_wbc": 43,
+        "pred_informative_wbc": 42,
+        "informative_wbc_count_error": -1,
+        "informative_wbc_count_error_pct": -2.33,
+        "differential_mae_pct_points": 2.655,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 71.43,
+        "blast_pct_error": 71.43,
+        "mean_det_conf": 0.797,
+        "pct_class_none": 2.33,
+        "gt_top_cell_type": "lymphoblast",
+        "pred_top_cell_type": "lymphoblast",
+        "top_cell_type_match": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "21",
+        "gt_informative_wbc": 206,
+        "pred_informative_wbc": 239,
+        "informative_wbc_count_error": 33,
+        "informative_wbc_count_error_pct": 16.02,
+        "differential_mae_pct_points": 0.57,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 0.84,
+        "blast_pct_error": 0.84,
+        "mean_det_conf": 0.7667,
+        "pct_class_none": 18.15,
+        "gt_top_cell_type": "atypical_lymphocyte",
+        "pred_top_cell_type": "atypical_lymphocyte",
+        "top_cell_type_match": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "23",
+        "gt_informative_wbc": 177,
+        "pred_informative_wbc": 266,
+        "informative_wbc_count_error": 89,
+        "informative_wbc_count_error_pct": 50.28,
+        "differential_mae_pct_points": 20.258,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 57.89,
+        "blast_pct_error": 57.89,
+        "mean_det_conf": 0.6162,
+        "pct_class_none": 7.96,
+        "gt_top_cell_type": "abnormal_promyelocyte",
+        "pred_top_cell_type": "myeloblast",
+        "top_cell_type_match": false
+      },
+      {
+        "status": "ok",
+        "patient_id": "28",
+        "gt_informative_wbc": 271,
+        "pred_informative_wbc": 365,
+        "informative_wbc_count_error": 94,
+        "informative_wbc_count_error_pct": 34.69,
+        "differential_mae_pct_points": 1.002,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 7.95,
+        "blast_pct_error": 7.95,
+        "mean_det_conf": 0.7114,
+        "pct_class_none": 9.2,
+        "gt_top_cell_type": "neutrophil",
+        "pred_top_cell_type": "neutrophil",
+        "top_cell_type_match": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "31",
+        "gt_informative_wbc": 300,
+        "pred_informative_wbc": 349,
+        "informative_wbc_count_error": 49,
+        "informative_wbc_count_error_pct": 16.33,
+        "differential_mae_pct_points": 1.146,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 5.73,
+        "blast_pct_error": 5.73,
+        "mean_det_conf": 0.7398,
+        "pct_class_none": 22.44,
+        "gt_top_cell_type": "neutrophil",
+        "pred_top_cell_type": "neutrophil",
+        "top_cell_type_match": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "34",
+        "gt_informative_wbc": 63,
+        "pred_informative_wbc": 70,
+        "informative_wbc_count_error": 7,
+        "informative_wbc_count_error_pct": 11.11,
+        "differential_mae_pct_points": 7.344,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 58.57,
+        "blast_pct_error": 58.57,
+        "mean_det_conf": 0.7039,
+        "pct_class_none": 17.65,
+        "gt_top_cell_type": "myeloblast",
+        "pred_top_cell_type": "neutrophil",
+        "top_cell_type_match": false
+      },
+      {
+        "status": "ok",
+        "patient_id": "40",
+        "gt_informative_wbc": 90,
+        "pred_informative_wbc": 82,
+        "informative_wbc_count_error": -8,
+        "informative_wbc_count_error_pct": -8.89,
+        "differential_mae_pct_points": 9.21,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 18.29,
+        "blast_pct_error": 18.29,
+        "mean_det_conf": 0.6585,
+        "pct_class_none": 37.4,
+        "gt_top_cell_type": "neutrophil",
+        "pred_top_cell_type": "neutrophil",
+        "top_cell_type_match": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "43",
+        "gt_informative_wbc": 113,
+        "pred_informative_wbc": 139,
+        "informative_wbc_count_error": 26,
+        "informative_wbc_count_error_pct": 23.01,
+        "differential_mae_pct_points": 3.016,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 79.86,
+        "blast_pct_error": 79.86,
+        "mean_det_conf": 0.7255,
+        "pct_class_none": 4.14,
+        "gt_top_cell_type": "myeloblast",
+        "pred_top_cell_type": "myeloblast",
+        "top_cell_type_match": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "45",
+        "gt_informative_wbc": 172,
+        "pred_informative_wbc": 206,
+        "informative_wbc_count_error": 34,
+        "informative_wbc_count_error_pct": 19.77,
+        "differential_mae_pct_points": 15.959,
+        "gt_blast_pct": 0.0,
+        "pred_blast_pct": 51.94,
+        "blast_pct_error": 51.94,
+        "mean_det_conf": 0.646,
+        "pct_class_none": 24.82,
+        "gt_top_cell_type": "myeloblast",
+        "pred_top_cell_type": "lymphoblast",
+        "top_cell_type_match": false
+      }
+    ]
+  },
+  "classification": {
+    "n_evaluated": 13,
+    "accuracy": 0.7692,
+    "n_correct": 10,
+    "per_class_accuracy": {
+      "ALL": 0.75,
+      "AML": 1.0,
+      "APML": 0.0,
+      "CLL": 0.0,
+      "CML": 1.0
+    },
+    "per_patient": [
+      {
+        "status": "ok",
+        "patient_id": "4",
+        "ground_truth": "ALL",
+        "predicted_class": "ALL",
+        "confidence": 0.928,
+        "correct": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "6",
+        "ground_truth": "ALL",
+        "predicted_class": "ALL",
+        "confidence": 0.866,
+        "correct": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "8",
+        "ground_truth": "ALL",
+        "predicted_class": "ALL",
+        "confidence": 0.684,
+        "correct": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "15",
+        "ground_truth": "AML",
+        "predicted_class": "AML",
+        "confidence": 0.884,
+        "correct": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "18",
+        "ground_truth": "ALL",
+        "predicted_class": "AML",
+        "confidence": 0.554,
+        "correct": false
+      },
+      {
+        "status": "ok",
+        "patient_id": "21",
+        "ground_truth": "CLL",
+        "predicted_class": "ALL",
+        "confidence": 0.36,
+        "correct": false
+      },
+      {
+        "status": "ok",
+        "patient_id": "23",
+        "ground_truth": "APML",
+        "predicted_class": "AML",
+        "confidence": 0.774,
+        "correct": false
+      },
+      {
+        "status": "ok",
+        "patient_id": "28",
+        "ground_truth": "CML",
+        "predicted_class": "CML",
+        "confidence": 0.532,
+        "correct": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "31",
+        "ground_truth": "CML",
+        "predicted_class": "CML",
+        "confidence": 0.422,
+        "correct": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "34",
+        "ground_truth": "AML",
+        "predicted_class": "AML",
+        "confidence": 0.816,
+        "correct": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "40",
+        "ground_truth": "AML",
+        "predicted_class": "AML",
+        "confidence": 0.642,
+        "correct": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "43",
+        "ground_truth": "AML",
+        "predicted_class": "AML",
+        "confidence": 0.96,
+        "correct": true
+      },
+      {
+        "status": "ok",
+        "patient_id": "45",
+        "ground_truth": "AML",
+        "predicted_class": "AML",
+        "confidence": 0.62,
+        "correct": true
+      }
+    ]
+  },
+  "report_quality": {
+    "n_evaluated": 13,
+    "mean_quality_score": 1.0,
+    "consistency_pass_rate": 1.0,
+    "llm_output_pass_rate": 1.0,
+    "all_required_sections_rate": 1.0,
+    "review_banner_pass_rate": 1.0,
+    "per_patient": [
+      {
+        "status": "ok",
+        "patient_id": "4",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 452
+      },
+      {
+        "status": "ok",
+        "patient_id": "6",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 479
+      },
+      {
+        "status": "ok",
+        "patient_id": "8",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 452
+      },
+      {
+        "status": "ok",
+        "patient_id": "15",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 495
+      },
+      {
+        "status": "ok",
+        "patient_id": "18",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 446
+      },
+      {
+        "status": "ok",
+        "patient_id": "21",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 455
+      },
+      {
+        "status": "ok",
+        "patient_id": "23",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 499
+      },
+      {
+        "status": "ok",
+        "patient_id": "28",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 485
+      },
+      {
+        "status": "ok",
+        "patient_id": "31",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 487
+      },
+      {
+        "status": "ok",
+        "patient_id": "34",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 450
+      },
+      {
+        "status": "ok",
+        "patient_id": "40",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 472
+      },
+      {
+        "status": "ok",
+        "patient_id": "43",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": false,
+        "quality_score": 1.0,
+        "word_count": 455
+      },
+      {
+        "status": "ok",
+        "patient_id": "45",
+        "files_complete": true,
+        "non_empty": true,
+        "consistency_passed": true,
+        "llm_output_passed": true,
+        "required_sections": {
+          "## Quantitative Cell Summary": true,
+          "## Agentic Diagnosis": true,
+          "## Cell Grounding": true
+        },
+        "review_banner_ok": true,
+        "flagged_for_review": true,
+        "quality_score": 1.0,
+        "word_count": 493
+      }
+    ]
+  },
+  "report_vs_approved": {
+    "n_evaluated_with_approved_report": 13,
+    "field_level_accuracy": {
+      "differential_mae_pct_vs_approved_mean": 8.61,
+      "differential_class_recall_vs_approved_mean": 0.8417,
+      "blast_pct_vs_approved_correct_rate": 0.0,
+      "diagnosis_impression_match_rate": 0.7692,
+      "morphology_vs_approved_correct_rate": 0.4444
+    },
+    "hallucination": {
+      "mean_hallucination_rate": 0.1514,
+      "n_total_claims": 251,
+      "n_untraceable_claims": 38,
+      "definition": "Fraction of numeric claims in the generated report body that are not traceable (within tolerance) to either pipeline JSON evidence or the hematologist-approved report."
+    },
+    "text_similarity_secondary": {
+      "note": "Secondary textual similarity signal only; not the primary quality claim.",
+      "rouge1_mean": 0.3821,
+      "rouge2_mean": 0.196,
+      "rougeL_mean": 0.2408,
+      "per_case": [
+        {
+          "patient_id": "4",
+          "rouge1": 0.402,
+          "rouge2": 0.2116,
+          "rougeL": 0.2638
+        },
+        {
+          "patient_id": "6",
+          "rouge1": 0.3792,
+          "rouge2": 0.201,
+          "rougeL": 0.2488
+        },
+        {
+          "patient_id": "8",
+          "rouge1": 0.3914,
+          "rouge2": 0.2152,
+          "rougeL": 0.2551
+        },
+        {
+          "patient_id": "15",
+          "rouge1": 0.3848,
+          "rouge2": 0.181,
+          "rougeL": 0.2233
+        },
+        {
+          "patient_id": "18",
+          "rouge1": 0.393,
+          "rouge2": 0.2133,
+          "rougeL": 0.2553
+        },
+        {
+          "patient_id": "21",
+          "rouge1": 0.3452,
+          "rouge2": 0.1628,
+          "rougeL": 0.2056
+        },
+        {
+          "patient_id": "23",
+          "rouge1": 0.3662,
+          "rouge2": 0.1716,
+          "rougeL": 0.2259
+        },
+        {
+          "patient_id": "28",
+          "rouge1": 0.3607,
+          "rouge2": 0.1796,
+          "rougeL": 0.2258
+        },
+        {
+          "patient_id": "31",
+          "rouge1": 0.3571,
+          "rouge2": 0.1647,
+          "rougeL": 0.219
+        },
+        {
+          "patient_id": "34",
+          "rouge1": 0.4155,
+          "rouge2": 0.2251,
+          "rougeL": 0.2555
+        },
+        {
+          "patient_id": "40",
+          "rouge1": 0.3679,
+          "rouge2": 0.1974,
+          "rougeL": 0.2358
+        },
+        {
+          "patient_id": "43",
+          "rouge1": 0.4098,
+          "rouge2": 0.2171,
+          "rougeL": 0.2629
+        },
+        {
+          "patient_id": "45",
+          "rouge1": 0.3946,
+          "rouge2": 0.2076,
+          "rougeL": 0.2533
+        }
+      ],
+      "bertscore_f1_mean": 0.8834,
+      "bertscore_f1_per_case": [
+        0.8803,
+        0.8774,
+        0.8777,
+        0.8819,
+        0.8805,
+        0.874,
+        0.883,
+        0.8853,
+        0.8827,
+        0.8904,
+        0.8862,
+        0.8935,
+        0.8916
+      ]
+    },
+    "per_patient": [
+      {
+        "patient_id": "4",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 6.42,
+        "differential_class_recall_vs_approved": 0.6667,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": 32.6,
+        "morphology_vs_approved_correct": false,
+        "hallucination": {
+          "n_claims": 16,
+          "n_untraceable": 2,
+          "hallucination_rate": 0.125,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 83.5
+            },
+            {
+              "kind": "percent",
+              "value": 55.8
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "6",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 10.18,
+        "differential_class_recall_vs_approved": 1.0,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": 22.9,
+        "morphology_vs_approved_correct": false,
+        "hallucination": {
+          "n_claims": 18,
+          "n_untraceable": 2,
+          "hallucination_rate": 0.1111,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 93.9
+            },
+            {
+              "kind": "percent",
+              "value": 21.9
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "8",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 5.48,
+        "differential_class_recall_vs_approved": 0.8,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": 14.9,
+        "morphology_vs_approved_correct": true,
+        "hallucination": {
+          "n_claims": 16,
+          "n_untraceable": 2,
+          "hallucination_rate": 0.125,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 88.1
+            },
+            {
+              "kind": "percent",
+              "value": 58.3
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "15",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 29.06,
+        "differential_class_recall_vs_approved": 1.0,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": 18.55,
+        "morphology_vs_approved_correct": false,
+        "hallucination": {
+          "n_claims": 21,
+          "n_untraceable": 2,
+          "hallucination_rate": 0.0952,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 95.3
+            },
+            {
+              "kind": "percent",
+              "value": 89.3
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "18",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 2.65,
+        "differential_class_recall_vs_approved": 1.0,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": false,
+        "morphology_pct_mae_vs_approved": 20.15,
+        "morphology_vs_approved_correct": false,
+        "hallucination": {
+          "n_claims": 17,
+          "n_untraceable": 3,
+          "hallucination_rate": 0.1765,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 87.7
+            },
+            {
+              "kind": "percent",
+              "value": 73.6
+            },
+            {
+              "kind": "percent",
+              "value": 63.5
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "21",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 0.33,
+        "differential_class_recall_vs_approved": 0.75,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": false,
+        "morphology_pct_mae_vs_approved": null,
+        "morphology_vs_approved_correct": null,
+        "hallucination": {
+          "n_claims": 19,
+          "n_untraceable": 2,
+          "hallucination_rate": 0.1053,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 82.3
+            },
+            {
+              "kind": "percent",
+              "value": 80.5
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "23",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 13.65,
+        "differential_class_recall_vs_approved": 0.8,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": false,
+        "morphology_pct_mae_vs_approved": 14.77,
+        "morphology_vs_approved_correct": true,
+        "hallucination": {
+          "n_claims": 21,
+          "n_untraceable": 4,
+          "hallucination_rate": 0.1905,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 96.6
+            },
+            {
+              "kind": "percent",
+              "value": 86.4
+            },
+            {
+              "kind": "percent",
+              "value": 84.5
+            },
+            {
+              "kind": "percent",
+              "value": 72.2
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "28",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 1.83,
+        "differential_class_recall_vs_approved": 1.0,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": null,
+        "morphology_vs_approved_correct": null,
+        "hallucination": {
+          "n_claims": 22,
+          "n_untraceable": 4,
+          "hallucination_rate": 0.1818,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 98.9
+            },
+            {
+              "kind": "percent",
+              "value": 98.9
+            },
+            {
+              "kind": "percent",
+              "value": 98.1
+            },
+            {
+              "kind": "percent",
+              "value": 96.7
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "31",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 3.11,
+        "differential_class_recall_vs_approved": 1.0,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": null,
+        "morphology_vs_approved_correct": null,
+        "hallucination": {
+          "n_claims": 22,
+          "n_untraceable": 4,
+          "hallucination_rate": 0.1818,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 99.8
+            },
+            {
+              "kind": "percent",
+              "value": 99.8
+            },
+            {
+              "kind": "percent",
+              "value": 99.7
+            },
+            {
+              "kind": "percent",
+              "value": 98.6
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "34",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 6.53,
+        "differential_class_recall_vs_approved": 0.5,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": 2.43,
+        "morphology_vs_approved_correct": true,
+        "hallucination": {
+          "n_claims": 17,
+          "n_untraceable": 0,
+          "hallucination_rate": 0.0,
+          "untraceable_examples": []
+        }
+      },
+      {
+        "patient_id": "40",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 17.44,
+        "differential_class_recall_vs_approved": 0.625,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": null,
+        "morphology_vs_approved_correct": null,
+        "hallucination": {
+          "n_claims": 21,
+          "n_untraceable": 5,
+          "hallucination_rate": 0.2381,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 99.9
+            },
+            {
+              "kind": "percent",
+              "value": 99.7
+            },
+            {
+              "kind": "percent",
+              "value": 99.6
+            },
+            {
+              "kind": "percent",
+              "value": 99.5
+            },
+            {
+              "kind": "percent",
+              "value": 39.5
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "43",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 2.32,
+        "differential_class_recall_vs_approved": 0.8,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": 6.1,
+        "morphology_vs_approved_correct": true,
+        "hallucination": {
+          "n_claims": 20,
+          "n_untraceable": 3,
+          "hallucination_rate": 0.15,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 90.8
+            },
+            {
+              "kind": "percent",
+              "value": 89.9
+            },
+            {
+              "kind": "percent",
+              "value": 87.7
+            }
+          ]
+        }
+      },
+      {
+        "patient_id": "45",
+        "approved_report_found": true,
+        "differential_mae_pct_vs_approved": 12.93,
+        "differential_class_recall_vs_approved": 1.0,
+        "blast_pct_vs_approved_error": null,
+        "blast_pct_vs_approved_correct": false,
+        "diagnosis_impression_matches_label": true,
+        "morphology_pct_mae_vs_approved": 22.75,
+        "morphology_vs_approved_correct": false,
+        "hallucination": {
+          "n_claims": 21,
+          "n_untraceable": 5,
+          "hallucination_rate": 0.2381,
+          "untraceable_examples": [
+            {
+              "kind": "percent",
+              "value": 93.7
+            },
+            {
+              "kind": "percent",
+              "value": 82.5
+            },
+            {
+              "kind": "percent",
+              "value": 61.8
+            },
+            {
+              "kind": "percent",
+              "value": 60.5
+            },
+            {
+              "kind": "percent",
+              "value": 22.5
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "agent_ablation": {
+    "non_agentic_dir": null,
+    "n_compared": 0,
+    "outcome_change_rate": null,
+    "classification_accuracy_agentic": null,
+    "classification_accuracy_non_agentic": null,
+    "per_patient": [],
+    "note": "Provide --non-agentic-dir with outputs from run_orchestrator.py --no-agent."
+  },
+  "agent_trace": {
+    "n_with_trace": 13,
+    "flagged_for_review": 12,
+    "re_aggregate_used": 2,
+    "final_action_counts": {
+      "flag_for_review": 12,
+      "proceed": 1
+    }
+  }
+}

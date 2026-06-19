@@ -1,0 +1,22 @@
+The report and data provided indicate a **diagnosis of Acute Myeloid Leukemia (AML)** based on a high proportion of myeloid blasts in the peripheral blood smear. Here’s a structured explanation of the key findings:
+
+---
+
+### **1. Diagnostic Summary**
+- **Total fields of view analyzed**: 59
+- **Total cells detected**: 116 (after overlap deduplication)
+- **Informative WBCs (classifiable)**: 41 (i.e., 35.3% of total cells)
+- **Artifacts/Non-WBCs**: 75 (64.7% of total cells)
+- **Blast percentage**: 75.6% of informative WBCs → **meets the 20% threshold for acute leukemia**.
+
+> **Diagnostic flags**:  
+> - `blasts_present`: ✅ Yes  
+> - `blast_threshold_met`: ✅ Yes  
+> → **Impression: AML**
+
+---
+
+### **2. Differential Count (of Informative WBCs)**
+| Cell Type       | Count | % of Informative WBCs |
+|-----------------|-------|------------------------|
+| Myeloblast      | 28

@@ -1,0 +1,18 @@
+{
+  "patient_id": "18",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "Low classifier confidence (0.554) and high blast burden (71.4%) suggest borderline diagnostic certainty requiring review.",
+      "conf_threshold": 0.3
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "Low classifier confidence (0.554) and high blast burden (71.4%) suggest borderline diagnostic certainty requiring review."
+  ]
+}

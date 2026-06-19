@@ -86,6 +86,11 @@ class PipelineState:
     report: GroundedReport | None = None
     consistency_passed: bool | None = None
     llm_output_passed: bool | None = None
+    template_json_passed: bool | None = None
+    numerical_hallucination_passed: bool | None = None
+    validation_passed: bool | None = None
+    report_delivery_allowed: bool | None = None
+    validation_details: dict[str, Any] = field(default_factory=dict)
     errors: list[str] = field(default_factory=list)
     # --- agentic control trace (populated by the reflection loop) ---
     conf_threshold: float = 0.25            # current aggregation threshold

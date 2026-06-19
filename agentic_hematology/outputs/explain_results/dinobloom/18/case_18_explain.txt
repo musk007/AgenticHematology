@@ -1,0 +1,20 @@
+The report describes an automated hematology analysis of a peripheral blood smear from patient ID 18, which reveals a **high proportion of lymphoblasts** — the defining feature of acute leukemia. Here’s a structured explanation of the key findings:
+
+---
+
+### **1. Overall Cell Composition**
+- **Total cells analyzed**: 43 (raw), 42 informative (1 artifact excluded).
+- **Differential count**:
+  - **Lymphoblasts**: 30 cells (71.4%)
+  - **Neutrophils**: 7 cells (16.7%)
+  - **Lymphocytes**: 4 cells (9.5%)
+  - **Eosinophils**: 1 cell (2.4%)
+
+> **Diagnostic flag**: *Blasts present* and *blast threshold met* — indicating ≥20% blast-equivalent burden, which meets the clinical threshold for acute leukemia consideration.
+
+---
+
+### **2. Morphological Cohort Analysis (Lymphoblasts)**
+Of the 30 lymphoblasts:
+- **Nucleus**: 87.7% of cells show a defined nucleus.
+- **Nuclear chromatin**: 78.2%

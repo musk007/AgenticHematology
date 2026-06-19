@@ -10,16 +10,11 @@ from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent
-DEFAULT_STATS_JSON = Path(
-    "/home/roba.majzoub/AgenticHematology/data_preprocessing/patient_WBC_stats_NoOveralp.json"
-)
+WBC_CV = REPO / "wbc_unified" / "cv"
 
 
-def ground_truth_from_stats(stats: dict, patient_id: str) -> str | None:
-    rec = stats.get(str(patient_id))
-    if not rec:
-        return None
-    return str(rec.get("metadata_filename_diagnosis") or "")
+def ground_truth_for_patient(labels: dict[str, str], patient_id: str) -> str | None:
+    return labels.get(str(patient_id))
 
 
 def load_json(path: Path):
@@ -53,10 +48,12 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Summarize agentic reflection batch outputs.")
     ap.add_argument("--agentic-dir", type=Path, default=REPO / "outputs" / "batch_traced")
     ap.add_argument("--non-agentic-dir", type=Path, default=REPO / "outputs" / "batch_non_agentic")
-    ap.add_argument("--stats-json", type=Path, default=DEFAULT_STATS_JSON)
+    ap.add_argument("--cv-root", type=Path, default=WBC_CV)
     args = ap.parse_args()
 
-    stats = load_json(args.stats_json) or {}
+    from agentic_hematology.leukemia_features import discover_patient_labels_from_cv
+
+    labels = discover_patient_labels_from_cv(args.cv_root)
     patients = discover_patient_ids(args.agentic_dir)
     if not patients:
         sys.exit(f"No patient outputs found under {args.agentic_dir}")
@@ -101,7 +98,7 @@ def main() -> None:
     n_clean_correct = n_clean_incorrect = 0
     n_outcome_changed = 0
     for pid in patients:
-        gt = ground_truth_from_stats(stats, pid)
+        gt = ground_truth_for_patient(labels, pid)
         non_ag = find_classification(args.non_agentic_dir, pid) if args.non_agentic_dir.is_dir() else None
         ag = find_classification(args.agentic_dir, pid)
         trace = load_json(args.agentic_dir / pid / f"case_{pid}_agent_trace.json")

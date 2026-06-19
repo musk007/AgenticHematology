@@ -1,0 +1,21 @@
+The report describes a **peripheral blood smear** analysis from patient **21**, performed via automated multi-image analysis using an agentic orchestrator system. The findings are summarized as follows:
+
+---
+
+### **Key Clinical Findings**
+
+- **Total fields of view analyzed**: 62  
+- **Total cells detected**: 292 (raw) → 283 (after overlap deduplication)  
+- **Informative WBCs**: 234 (79.3% of total detected cells)  
+- **Artefacts/non-WBCs**: 49 (17.3% of total detected cells)  
+- **Dominant cell type**: **Atypical lymphocytes** — **91.9%** of informative WBCs  
+- **Blasts present**: Yes — **2 lymphoblasts** (0.9% of informative WBCs)  
+- **Diagnostic flags**: `blasts_present` = true, `blast_threshold_met` = false (indicating the blast count is below institutional threshold for automatic classification)
+
+---
+
+### **Differential Count**
+
+| Cell Type         | Count | % of Informative WBCs |
+|------------------|-------|------------------------|
+| Atypical

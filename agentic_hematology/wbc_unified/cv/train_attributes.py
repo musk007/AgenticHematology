@@ -71,7 +71,7 @@ def main() -> None:
     ap.add_argument("--imgsz", type=int, default=224)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--device", type=str, default="0", help="Used only for single-GPU; DDP uses LOCAL_RANK")
-    ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--local-rank", type=int, default=-1, help="Set by torch.distributed.run")
     ap.add_argument("--backbone", type=str, default="efficientnet_b0", choices=["efficientnet_b0", "resnet18"])
     ap.add_argument("--project", type=Path, default=ROOT / "runs" / "attribute")

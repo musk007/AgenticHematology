@@ -5,7 +5,7 @@ import json
 import pickle
 from pathlib import Path
 
-from .schemas import AggregatedFindings, LeukemiaClassification
+from .schemas import AggregatedFindings, DetectionResult, LeukemiaClassification
 
 DEFAULT_CLASSES = ("ALL", "AML", "APML", "CLL", "CML")
 
@@ -74,7 +74,7 @@ class LearnedClassifier:
         return LeukemiaClassification(
             predicted_class=pred,
             confidence=confidence,
-            rationale="learned classifier prediction from aggregated differential features",
+            rationale="learned classifier prediction from detection-derived features",
             scores=scores,
         )
 
@@ -82,37 +82,23 @@ class LearnedClassifier:
 class HybridClassifier:
     """Rule-first classifier with optional learned model override."""
 
-    def __init__(
-        self,
-        learned: LearnedClassifier | None = None,
-        stats_json: str | Path | None = None,
-    ):
+    def __init__(self, learned: LearnedClassifier | None = None):
         self.learned = learned
-        self.stats_json = Path(stats_json) if stats_json else None
-        self._stats: dict | None = None
 
-    def _load_stats(self) -> dict:
-        if self._stats is None and self.stats_json and self.stats_json.is_file():
-            from .leukemia_features import load_patient_stats
+    def classify(
+        self,
+        findings: AggregatedFindings,
+        detection_result: DetectionResult | None = None,
+    ) -> LeukemiaClassification:
+        from .leukemia_features import build_feature_row_from_findings
 
-            self._stats = load_patient_stats(self.stats_json)
-        return self._stats or {}
-
-    def classify(self, findings: AggregatedFindings) -> LeukemiaClassification:
-        features = self._features(findings)
+        feature_names = self.learned.feature_keys if self.learned and self.learned.feature_keys else None
+        features = build_feature_row_from_findings(
+            findings,
+            feature_names=feature_names,
+            detection_result=detection_result,
+        )
         if self.learned is not None:
-            if self.learned.feature_keys and any(
-                k.startswith(("attr_", "group_")) or k == "blast_pool_percentage_of_wbc"
-                for k in self.learned.feature_keys
-            ):
-                stats = self._load_stats()
-                pid = str(findings.case_id)
-                if pid in stats:
-                    from .leukemia_features import build_feature_row_from_stats
-
-                    features = build_feature_row_from_stats(
-                        stats, pid, self.learned.feature_keys
-                    )
             learned = self.learned.predict(features)
             if learned is not None:
                 return learned
@@ -134,13 +120,6 @@ class HybridClassifier:
         if blast_pct >= 20.0:
             return self._result("Acute leukemia, subtype indeterminate", 0.55, "blast threshold is met")
         return self._result("Indeterminate", 0.35, "no subtype-defining differential pattern detected")
-
-    @staticmethod
-    def _features(findings: AggregatedFindings) -> dict[str, float]:
-        features = {f"pct_{k}": float(v) for k, v in findings.cell_percentages_clinical.items()}
-        features["blast_pct"] = float(findings.report_ready.get("blast_pct", 0.0))
-        features["n_cells_informative"] = float(findings.n_cells_identified_wbc)
-        return features
 
     @staticmethod
     def _result(pred: str, confidence: float, rationale: str) -> LeukemiaClassification:

@@ -1,0 +1,12 @@
+The report for **Case 40** presents an automated analysis of a peripheral blood smear using 50 fields of view, yielding 69 informative white blood cells (WBCs) after excluding 42 artefacts. The dominant cell type is **Neutrophil (62.3%)**, with a **blast-equivalent burden of 15.9%**, indicating the presence of blast cells (lymphoblasts, myeloblasts, monoblasts) — a key feature in acute leukemias.
+
+---
+
+### **Key Findings**
+
+#### **1. Differential Count**
+- **Neutrophils (62.3%)** — overwhelmingly dominant, consistent with reactive or chronic inflammation.
+- **Lymphoblasts (7.2%)**, **Lymphocytes (7.2%)**, **Myelocytes (7.2%)** — suggest possible lymphoid or myeloid lineage involvement.
+- **Myeloblasts (5.8%)** — a critical marker for acute myeloid leukemia (AML).
+- **Monoblasts (2.9%)** — suggestive of acute myelomonocytic leukemia (AMML) or monocytic leukemia.
+- **E

@@ -1,4 +1,4 @@
-"""Build patient-level feature matrices from patient_WBC_stats JSON."""
+"""Patient-level feature helpers and LLD split/label discovery."""
 from __future__ import annotations
 
 import json
@@ -46,6 +46,8 @@ CLINICAL_GROUPS: dict[str, tuple[str, ...]] = {
 
 FEATURES_EXCLUDED = {"qc__global_canvas_stitching_active"}
 
+LLD_DIAGNOSIS_LABELS: frozenset[str] = frozenset({"ALL", "AML", "APML", "CLL", "CML"})
+
 
 def _slug(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "_", str(text).strip().lower()).strip("_")
@@ -73,11 +75,46 @@ def discover_lld_split_from_cv(cv_root: Path) -> dict[str, list[str]]:
     return {k: sorted(v, key=lambda x: (not x.isdigit(), int(x) if x.isdigit() else x)) for k, v in split.items()}
 
 
-def load_or_create_split(
-    stats: dict[str, dict[str, Any]],
+def discover_patient_labels_from_cv(
+    cv_root: Path,
     *,
-    split_path: Path | None,
-    cv_root: Path | None,
+    image_root: Path | None = None,
+) -> dict[str, str]:
+    """Diagnosis labels from LLD tile filenames: ``{patient}_{...}_{DIAGNOSIS}.png``."""
+    if image_root is None:
+        image_root = cv_root / "generated" / "det_dataset" / "images"
+    suffixes = {".png", ".jpg", ".jpeg", ".tif", ".tiff", ".bmp"}
+    labels: dict[str, str] = {}
+    for split in ("train", "test"):
+        img_dir = image_root / split
+        if not img_dir.is_dir():
+            continue
+        for path in sorted(img_dir.iterdir()):
+            if path.suffix.lower() not in suffixes:
+                continue
+            parts = path.stem.split("_")
+            if len(parts) < 2:
+                continue
+            patient_id = parts[0]
+            diagnosis = parts[-1].strip().upper()
+            if diagnosis not in LLD_DIAGNOSIS_LABELS:
+                continue
+            existing = labels.get(patient_id)
+            if existing and existing != diagnosis:
+                raise ValueError(
+                    f"Conflicting diagnosis labels for patient {patient_id}: "
+                    f"{existing} vs {diagnosis} (from {path.name})"
+                )
+            labels[patient_id] = diagnosis
+    return labels
+
+
+def load_or_create_split(
+    stats: dict[str, dict[str, Any]] | None = None,
+    *,
+    split_path: Path | None = None,
+    cv_root: Path | None = None,
+    patient_ids: set[str] | None = None,
 ) -> dict[str, list[str]]:
     if split_path and split_path.is_file():
         payload = json.loads(split_path.read_text(encoding="utf-8"))
@@ -88,9 +125,10 @@ def load_or_create_split(
     if cv_root is None:
         raise ValueError("Provide --split-json or --cv-root to derive train/test patient IDs.")
     derived = discover_lld_split_from_cv(cv_root)
-    stats_ids = set(stats.keys())
-    derived["train"] = [pid for pid in derived["train"] if pid in stats_ids]
-    derived["test"] = [pid for pid in derived["test"] if pid in stats_ids]
+    allowed = set(stats.keys()) if stats else patient_ids
+    if allowed is not None:
+        derived["train"] = [pid for pid in derived["train"] if pid in allowed]
+        derived["test"] = [pid for pid in derived["test"] if pid in allowed]
     return derived
 
 
@@ -207,7 +245,6 @@ def build_simple_features_from_infer_json(
     from pathlib import Path as _Path
 
     from agentic_hematology.aggregator import aggregate
-    from agentic_hematology.leukemia_classifier import HybridClassifier
     from agentic_hematology.schemas import Detection, DetectionResult
 
     pred_json = _Path(pred_json)
@@ -253,17 +290,87 @@ def build_simple_features_from_infer_json(
                 )
         if not detections:
             continue
-        findings = aggregate(
-            DetectionResult(
-                case_id=pid,
-                n_images=len(patient.get("images", [])),
-                detections=detections,
-            )
+        detection_result = DetectionResult(
+            case_id=pid,
+            n_images=len(patient.get("images", [])),
+            detections=detections,
         )
-        X.append(HybridClassifier._features(findings))
+        findings = aggregate(detection_result)
+        X.append(build_feature_row_from_findings(findings, detection_result=detection_result))
         y.append(gt_label)
         patient_ids.append(pid)
     return X, y, patient_ids
+
+
+def build_feature_row_from_findings(
+    findings,
+    feature_names: list[str] | None = None,
+    *,
+    detection_result=None,
+) -> dict[str, float]:
+    """Build patient-level tabular features from live detection + aggregation only."""
+    from agentic_hematology.detection_agent_v2 import ATTRIBUTE_ORDER
+
+    row = {f"pct_{_slug(cell_type)}": 0.0 for cell_type in CLINICAL_CELL_TYPES}
+    for name, value in (findings.cell_percentages_clinical or {}).items():
+        key = f"pct_{_slug(name)}"
+        if key in row:
+            row[key] = float(value)
+
+    blast_pct = float((findings.report_ready or {}).get("blast_pct", 0.0))
+    row["blast_pool_percentage_of_wbc"] = blast_pct
+    row["blast_pct"] = blast_pct
+    row["n_cells_identified_wbc"] = float(findings.n_cells_identified_wbc)
+    row["n_cells_informative"] = float(findings.n_cells_identified_wbc)
+
+    counts = findings.cell_counts or {}
+    denom = max(float(findings.n_cells_identified_wbc), 1.0)
+    for group, members in CLINICAL_GROUPS.items():
+        group_count = sum(float(counts.get(member, 0)) for member in members)
+        row[f"group_{group}_pct"] = round(100.0 * group_count / denom, 4)
+
+    attr_values: dict[str, list[float]] = {name: [] for name in ATTRIBUTE_ORDER}
+    cells = []
+    if detection_result is not None:
+        excluded = {"None", "Unknown"}
+        grounded_ids = set((findings.grounding_index or {}).keys())
+        if grounded_ids:
+            cells = [
+                det
+                for det in detection_result.detections
+                if det.cell_id in grounded_ids and det.cell_type not in excluded
+            ]
+        else:
+            cells = [
+                det
+                for det in detection_result.detections
+                if det.cell_type not in excluded
+            ]
+    if not cells:
+        for rec in (findings.grounding_index or {}).values():
+            attrs = rec.get("attributes") or {}
+            for attr in ATTRIBUTE_ORDER:
+                value = attrs.get(attr)
+                if isinstance(value, (int, float)):
+                    attr_values[attr].append(float(value))
+    else:
+        for det in cells:
+            for attr in ATTRIBUTE_ORDER:
+                value = det.attributes.get(attr, det.attribute_probs.get(attr))
+                if isinstance(value, (int, float)):
+                    attr_values[attr].append(float(value))
+
+    for attr in ATTRIBUTE_ORDER:
+        vals = attr_values[attr]
+        slug = _slug(attr)
+        row[f"attr_{slug}__positive_pct"] = (
+            round(100.0 * sum(v >= 0.5 for v in vals) / len(vals), 4) if vals else 0.0
+        )
+        row[f"attr_{slug}__mean_prob"] = round(sum(vals) / len(vals), 4) if vals else 0.0
+
+    if feature_names is None:
+        return row
+    return {name: float(row.get(name, 0.0)) for name in feature_names}
 
 
 def build_feature_row_from_stats(

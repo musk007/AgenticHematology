@@ -72,9 +72,8 @@ WBC_UNIFIED = ROOT / "wbc_unified"
 CV = WBC_UNIFIED / "cv"
 DEFAULT_YOLO_WEIGHTS = WBC_UNIFIED / "cv/runs/detector/train/weights/best.pt"
 DEFAULT_EFFNET_WEIGHTS = WBC_UNIFIED / "cv/runs/attribute/train/best_attr.pt"
-DEFAULT_CLASSIFIER_MODEL = ROOT / "runs" / "classifier" / "random_forest" / "leukemia_random_forest.pkl"
-DEFAULT_STATS_JSON = Path(
-    "/home/roba.majzoub/AgenticHematology/data_preprocessing/patient_WBC_stats_NoOveralp.json"
+DEFAULT_CLASSIFIER_MODEL = (
+    ROOT / "outputs" / "ablations" / "classifier" / "dinobloom" / "random_forest" / "leukemia_random_forest.pkl"
 )
 DEFAULT_LLD_IMAGE_DIR = CV / "generated" / "det_dataset" / "images"
 
@@ -348,17 +347,43 @@ def _save_outputs(resp, case_id: str, out_dir: str | None) -> None:
             print(f"\n[Classification] {clf.predicted_class} (confidence={clf.confidence:.2f})")
             print(f"  Rationale: {clf.rationale}")
 
-    # Report output
-    if resp.state.report:
+    # Report output — only written when pre-save validation passed (or validation skipped)
+    validation_ran = resp.state.validation_passed is not None
+    validation_ok = resp.state.report_delivery_allowed if validation_ran else True
+    if resp.state.report and validation_ok:
         if out_dir:
             rpt_path = os.path.join(out_dir, f"case_{case_id}_report.md")
             with open(rpt_path, "w") as f:
                 f.write(resp.state.report.markdown)
             print(f"  Wrote {rpt_path}")
-            print(f"  consistency_passed={resp.state.consistency_passed} "
-                  f"llm_output_passed={resp.state.llm_output_passed}")
         else:
             print("\n" + resp.state.report.markdown)
+    elif resp.state.report and validation_ran and not validation_ok:
+        print(
+            "  Report NOT saved — pre-save validation failed "
+            f"(validation_passed={resp.state.validation_passed})",
+            file=sys.stderr,
+        )
+    elif resp.state.validation_passed is not None:
+        print(
+            f"  validation_passed={resp.state.validation_passed} "
+            f"consistency={resp.state.consistency_passed} "
+            f"llm_output={resp.state.llm_output_passed} "
+            f"template_json={resp.state.template_json_passed} "
+            f"numerical_hallucination={resp.state.numerical_hallucination_passed}"
+        )
+
+    if out_dir and resp.state.validation_details:
+        val_path = os.path.join(out_dir, f"case_{case_id}_validation.json")
+        val_payload = {
+            "patient_id": case_id,
+            "validation_passed": resp.state.validation_passed,
+            "report_delivery_allowed": resp.state.report_delivery_allowed,
+            "checks": resp.state.validation_details,
+        }
+        with open(val_path, "w") as f:
+            json.dump(val_payload, f, indent=2)
+        print(f"  Wrote {val_path}")
 
     # Agent reflection trace (decision-control audit trail)
     if out_dir:
@@ -443,12 +468,6 @@ def main() -> int:
         help="Root of det_dataset/images when using --lld-split.",
     )
     p.add_argument(
-        "--stats-json",
-        type=Path,
-        default=DEFAULT_STATS_JSON,
-        help="Patient stats JSON for rich-feature classifier inputs.",
-    )
-    p.add_argument(
         "--backend",
         choices=["stub", "two-stage", "wbc-unified", "dinobloom"],
         default="wbc-unified",
@@ -524,7 +543,7 @@ def main() -> int:
     p.add_argument("--no-agent", action="store_true",
                    help="Disable the agentic LLM router + reflection loop (runs the "
                         "deterministic automated pipeline only).")
-    p.add_argument("--max-reflect-iterations", type=int, default=2,
+    p.add_argument("--max-reflect-iterations", type=int, default=6,
                    help="Max reflection-agent iterations before forced escalation.")
     p.add_argument("--out", help="Output directory. In batch mode each patient gets its own subdirectory.")
     args = p.parse_args()
@@ -544,10 +563,7 @@ def main() -> int:
     elif args.classifier_model:
         print(f"WARNING: classifier model not found ({args.classifier_model}); using rule-based classifier.",
               file=sys.stderr)
-    classifier = HybridClassifier(
-        learned=learned,
-        stats_json=args.stats_json if args.stats_json.is_file() else None,
-    )
+    classifier = HybridClassifier(learned=learned)
     report_gen = build_report_generator(args)
 
     reflection_agent = None
@@ -580,6 +596,8 @@ def main() -> int:
             except Exception as e:
                 print(f"WARNING: could not share Qwen3 instance ({e}); "
                       f"falling back to separate loads.", file=sys.stderr)
+    else:
+        print("Generating reports using template backend.")
 
     orch = Orchestrator(
         detector=detector,

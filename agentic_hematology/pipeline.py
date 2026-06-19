@@ -34,7 +34,10 @@ def classify_node(state: PipelineState, classifier: HybridClassifier) -> Pipelin
     if state.findings is None:
         state.errors.append("Classification requested before aggregation")
         return state
-    state.classification = classifier.classify(state.findings)
+    state.classification = classifier.classify(
+        state.findings,
+        detection_result=state.detection_result,
+    )
     return state
 
 
@@ -52,8 +55,9 @@ def reflect_node(
     classification and decides the next PROCESS action at runtime:
 
       - proceed          → exit the loop, evidence is sufficient
-      - re_aggregate     → re-run aggregation at a stricter confidence
+      - re_aggregate     → re-run aggregation at a stricter confidence 
                            threshold, re-classify, and reflect again
+                           (increase confidence threshold by 0.1->agent_controller)
       - flag_for_review  → mark the case for mandatory human review, exit
 
     This is the component that makes the pipeline agentic: a model makes a
@@ -137,14 +141,58 @@ def validate_node(
     *,
     consistency_validator,
     llm_output_validator,
+    template_json_validator=None,
+    numerical_hallucination_validator=None,
     failure_policy: str = "strip",
     report_generator: BaseReportGenerator | None = None,
 ) -> PipelineState:
     if state.report is None:
         state.errors.append("Validation requested before report generation")
         return state
-    state.consistency_passed = consistency_validator.validate(state).passed
-    state.llm_output_passed = llm_output_validator.validate(state.report.markdown).passed
+
+    checks: list[tuple[str, Any]] = [
+        ("consistency", consistency_validator.validate(state)),
+        ("llm_output", llm_output_validator.validate(state.report.markdown)),
+    ]
+    if template_json_validator is not None:
+        checks.append(("template_json", template_json_validator.validate(state)))
+    if numerical_hallucination_validator is not None:
+        checks.append(
+            ("numerical_hallucination", numerical_hallucination_validator.validate(state))
+        )
+
+    state.consistency_passed = checks[0][1].passed
+    state.llm_output_passed = checks[1][1].passed
+    state.template_json_passed = next(
+        (r.passed for name, r in checks if name == "template_json"), None
+    )
+    state.numerical_hallucination_passed = next(
+        (r.passed for name, r in checks if name == "numerical_hallucination"), None
+    )
+
+    state.validation_details = {
+        name: {
+            "passed": result.passed,
+            "message": result.message,
+            "details": result.details,
+        }
+        for name, result in checks
+    }
+    all_passed = all(result.passed for _, result in checks)
+    state.validation_passed = all_passed
+    state.report_delivery_allowed = all_passed
+
+    if not all_passed:
+        for name, result in checks:
+            if not result.passed:
+                state.errors.append(f"Report validation failed — {name}: {result.message}")
+
+        if failure_policy == "flag":
+            state.flagged_for_review = True
+            state.review_reasons.append("Report failed pre-save validation")
+        if failure_policy == "strip":
+            state.report = None
+
     return state
 
 

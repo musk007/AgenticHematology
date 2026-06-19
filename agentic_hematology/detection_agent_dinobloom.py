@@ -235,6 +235,34 @@ def build_dinobloom_attribute_head(in_dim: int, num_attrs: int) -> nn.Sequential
     )
 
 
+def _parse_dinobloom_checkpoint(raw: object) -> dict[str, torch.Tensor]:
+    """Normalize MarrLab / cAItomorph / HF DinoBloom checkpoints to DINOv2 keys."""
+    if not isinstance(raw, dict):
+        raise ValueError(f"Expected checkpoint dict, got {type(raw)!r}")
+
+    if "teacher" in raw:
+        state: dict[str, torch.Tensor] = {}
+        for key, value in raw["teacher"].items():
+            if "dino_head" in key or "ibot_head" in key:
+                continue
+            state[key.replace("backbone.", "", 1)] = value
+        if not state:
+            raise ValueError("DinoBloom checkpoint 'teacher' block contained no backbone weights")
+        return state
+
+    if "state_dict" in raw:
+        return dict(raw["state_dict"])
+    if "model" in raw and isinstance(raw["model"], dict):
+        return dict(raw["model"])
+    if any(k.startswith(("cls_token", "patch_embed", "blocks.")) for k in raw):
+        return dict(raw)
+
+    raise ValueError(
+        "Unrecognized DinoBloom checkpoint format. Expected keys like "
+        "'teacher', 'state_dict', 'model', or bare DINOv2 backbone tensors."
+    )
+
+
 class DinoBloomEmbedder:
     """Load DinoBloom weights on top of a DINOv2 ViT backbone."""
 
@@ -265,11 +293,22 @@ class DinoBloomEmbedder:
         self.model.pos_embed = nn.Parameter(torch.zeros(1, num_tokens, self.embed_dim))
 
         ckpt = torch.load(self.weights_path, map_location="cpu", weights_only=False)
-        if isinstance(ckpt, dict) and "state_dict" in ckpt:
-            ckpt = ckpt["state_dict"]
-        elif isinstance(ckpt, dict) and "model" in ckpt:
-            ckpt = ckpt["model"]
-        self.model.load_state_dict(ckpt, strict=True)
+        state_dict = _parse_dinobloom_checkpoint(ckpt)
+        missing, unexpected = self.model.load_state_dict(state_dict, strict=False)
+        if missing:
+            raise RuntimeError(
+                f"DinoBloom checkpoint missing {len(missing)} backbone keys "
+                f"(variant={variant!r}, file={self.weights_path.name}). "
+                f"First missing: {missing[:3]}. "
+                "Check that --dinobloom-variant matches the weights file "
+                "(e.g. l for DinoBloom-L.pth, b for DinoBloom-B.pth)."
+            )
+        if unexpected:
+            logger.warning(
+                "Ignored %d unexpected DinoBloom checkpoint keys: %s",
+                len(unexpected),
+                ", ".join(unexpected[:5]),
+            )
         self.model.to(self.device)
 
         self.transform = transforms.Compose(

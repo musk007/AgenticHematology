@@ -1,0 +1,6 @@
+The report for patient 28 presents an automated hematology analysis of a peripheral blood smear, identifying 324 informative white blood cells (WBCs) out of 358 detected, with 34 artifacts excluded. The differential count shows a dominant population of neutrophils at 64.5%, with 7.4% blasts (myeloblasts + metamyelocytes + myelocytes), which is the key diagnostic feature consistent with **Chronic Myeloid Leukemia (CML)**.
+
+### Key Findings:
+- **Blasts present**: Confirmed by 24 myeloblasts, 24 metamyelocytes, and 48 myelocytes — totaling 96 blast-equivalent cells, representing 7.4% of informative WBCs.
+- **Dominant cell type**: Neutrophils (64.5%) — consistent with CML, where neutrophils are typically the most abundant cell type.
+- **Morphology**: Neutrophils show high nuclear chromatin integrity (98.9%), nuclear shape consistency (98.9%), and cytoplasmic basophilia (98.1%), indicating a mature, non

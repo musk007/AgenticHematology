@@ -1,0 +1,11 @@
+The automated hematology analysis for patient 43 reveals a **diagnosis of Acute Myeloid Leukemia (AML)** based on a high burden of myeloblasts and morphological features consistent with AML.
+
+### Key Findings:
+
+- **Total fields of view:** 61  
+- **Total cells detected:** 145 (raw) → 131 after overlap deduplication  
+- **Informative WBCs:** 127 (4 artefacts excluded)  
+- **Blast percentage:** 80.3% (myeloblasts + lymphoblasts) — **exceeding the 20% threshold** for acute leukemia diagnosis.  
+- **Myeloblast count:** 97 (76.4% of informative WBCs) — **dominant cell type**  
+- **Lymphoblasts:** 5 (3.9%) — **present, but minor**  
+- **Other cell types:** Lymphocytes (8.7%), Neutrophils (7.9%), Monocytes (1.6%), Eosinophils (0.8%), Myelocytes (0.8%) — **all minor and consistent

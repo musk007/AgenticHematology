@@ -1,0 +1,60 @@
+[
+  {
+    "patient_id": "21",
+    "gt_total": 253,
+    "pred_total": 292,
+    "total_count_error": 39,
+    "gt_wbc": 206,
+    "pred_wbc": 239,
+    "wbc_count_error": 33,
+    "wbc_count_error_pct": 16.02,
+    "pred_artefact": 53,
+    "artefact_pct": 18.15,
+    "mean_det_confidence": 0.7667,
+    "differential_mae_pp": 0.57,
+    "per_class": {
+      "atypical lymphocyte": {
+        "gt_count": 190,
+        "pred_count": 220,
+        "gt_pct": 92.23,
+        "pred_pct": 92.05,
+        "pct_error": -0.18
+      },
+      "lymphoblast": {
+        "gt_count": 0,
+        "pred_count": 2,
+        "gt_pct": 0.0,
+        "pred_pct": 0.84,
+        "pct_error": 0.84
+      },
+      "lymphocyte": {
+        "gt_count": 1,
+        "pred_count": 1,
+        "gt_pct": 0.49,
+        "pred_pct": 0.42,
+        "pct_error": -0.07
+      },
+      "monocyte": {
+        "gt_count": 3,
+        "pred_count": 0,
+        "gt_pct": 1.46,
+        "pred_pct": 0.0,
+        "pct_error": -1.46
+      },
+      "myelocyte": {
+        "gt_count": 0,
+        "pred_count": 1,
+        "gt_pct": 0.0,
+        "pred_pct": 0.42,
+        "pct_error": 0.42
+      },
+      "neutrophil": {
+        "gt_count": 12,
+        "pred_count": 15,
+        "gt_pct": 5.83,
+        "pred_pct": 6.28,
+        "pct_error": 0.45
+      }
+    }
+  }
+]

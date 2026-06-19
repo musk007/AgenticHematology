@@ -1,0 +1,19 @@
+The report for **Case 8** presents a **diagnosis of Acute Lymphoblastic Leukemia (ALL)** based on a multi-image automated analysis of a peripheral blood smear. Below is a structured explanation of the key findings and their clinical significance:
+
+---
+
+### **1. Specimen & Image Analysis**
+- **55 fields of view** were analyzed.
+- **139 raw cells** were detected, but **16 were artifacts** (non-WBCs), leaving **125 total detected cells**.
+- **109 informative WBCs** were classified (i.e., 86.3% of detected cells were usable for diagnosis).
+- **Mean detection confidence** was **0.73**, indicating moderate-to-high reliability of cell classification.
+- **Global canvas stitching** was active with **20% tile overlap** and **IoU threshold 0.2**, ensuring spatial continuity across images.
+
+---
+
+### **2. Differential Count (Clinical Denominator)**
+The differential is based on **109 informative WBCs**:
+
+| Cell Type      | Count | % of Informative WBCs |
+|----------------|-------|------------------------|
+| Lymphoblast    | 72    |

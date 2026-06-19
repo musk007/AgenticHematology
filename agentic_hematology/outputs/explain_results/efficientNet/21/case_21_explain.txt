@@ -1,0 +1,14 @@
+The report describes an automated hematopathology analysis of a peripheral blood smear from patient 21, performed by an agentic orchestrator. The findings indicate a **dominant population of atypical lymphocytes (91.9%)**, with **2 blasts** detected — meeting the threshold for “blasts present” — but **not triggering a definitive diagnosis**. The system assigns an **“Indeterminate” diagnosis** with low confidence (0.35), citing the absence of a subtype-defining differential pattern.
+
+---
+
+### Key Findings:
+
+#### 1. **Cellular Composition**
+- **Atypical lymphocytes**: 215 cells (91.9% of informative WBCs) — the overwhelming majority.
+- **Neutrophils**: 15 cells (6.4%) — consistent with normal or mildly elevated counts.
+- **Lymphoblasts**: 2 cells (0.9%) — **flagged as clinically significant** but not sufficient for a definitive diagnosis.
+- **Lymphocytes**: 1 cell (0.4%)
+- **Myelocytes**: 1 cell (0.4%)
+
+> **Note**: The presence of 2 lymphoblasts is **not sufficient** to meet diagnostic

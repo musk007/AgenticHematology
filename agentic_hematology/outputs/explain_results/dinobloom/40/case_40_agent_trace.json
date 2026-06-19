@@ -1,0 +1,24 @@
+{
+  "patient_id": "40",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "re_aggregate",
+      "reason": "High pct_class_none and low mean detection confidence suggest noisy detection quality.",
+      "conf_threshold": 0.6
+    },
+    {
+      "iteration": 2,
+      "action": "flag_for_review",
+      "reason": "High pct_class_none and low classifier confidence suggest unreliable evidence despite AML prediction.",
+      "conf_threshold": null
+    }
+  ],
+  "n_reflect_iterations": 2,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "High pct_class_none and low classifier confidence suggest unreliable evidence despite AML prediction."
+  ]
+}

@@ -1,0 +1,23 @@
+The report for **Case 6** presents a **diagnosis of Acute Lymphoblastic Leukemia (ALL)** based on automated analysis of a peripheral blood smear. Below is a structured explanation of the key findings and their clinical significance:
+
+---
+
+### **1. Overall Findings Summary**
+
+- **Total fields of view analyzed**: 55
+- **Total cells detected**: 113 (raw), deduplicated to 96
+- **Informative WBCs (non-artifact)**: 75 (88.5% of total detected cells)
+- **Artifacts**: 21 (21.9% of total cells)
+- **Diagnostic flags**:  
+  - **Blasts present**: Yes  
+  - **Blast threshold met**: Yes (65.3% blast-equivalent burden)
+
+---
+
+### **2. Differential Count (of Informative WBCs)**
+
+| Cell Type       | Count | % of Informative WBCs |
+|-----------------|-------|------------------------|
+| Lymphoblast     | 25    | 33.3%                  |
+| Myeloblast      | 24    | 32.0%                  |
+| Lymph

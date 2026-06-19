@@ -1,0 +1,23 @@
+The report for patient 45 presents a **diagnosis of Acute Lymphoblastic Leukemia (ALL)** based on a multi-image automated analysis of a peripheral blood smear. Below is a structured explanation of the key findings and their clinical significance:
+
+---
+
+### **1. Diagnostic Summary**
+
+- **Total fields of view analyzed**: 54  
+- **Total cells detected**: 274 (raw) → 227 after overlap deduplication  
+- **Informative WBCs**: 176 (51 artefacts excluded)  
+- **Blast burden**: **50.0%** of informative WBCs → meets the **20.0% threshold** for acute leukemia diagnosis  
+- **Diagnostic flags**:  
+  - `blasts_present`: **true**  
+  - `blast_threshold_met`: **true**  
+- **Agentic diagnosis**: **ALL** (confidence 0.80)  
+- **Impression**: Acute Lymphoblastic Leukemia (ALL)
+
+---
+
+### **2. Differential Count (176 informative WBCs)**
+
+| Cell Type       | Count | % of Informative WBCs |
+|-----------------|-------|------------------------|
+| L

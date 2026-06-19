@@ -1,0 +1,6 @@
+{
+  "patient_id": "6",
+  "predicted_class": "ALL",
+  "confidence": 0.866,
+  "rationale": "learned classifier prediction from detection-derived features"
+}
