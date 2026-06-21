@@ -28,7 +28,7 @@ Monocytic-lineage predominance (promonocytes 83.8%) with circulating blasts (8.7
 - Bone marrow aspirate and trephine biopsy.
 - Cytogenetics and targeted molecular AML panel.
 
-**QC:** 50 FOVs; 161/269 cells classifiable (40.1% artefact); cohort cell count = 14; global canvas stitching active.
+**QC:** 50 FOVs; 161/269 cells classifiable (40.1% artefact); cohort cell count = 135; global canvas stitching active.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

@@ -15,7 +15,7 @@
 
 **Cohort morphology (n = 51 lymphoblasts):** predominantly small cells (62.8%) with scanty (90.2%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (98.0%), irregular contours (98.0%), and inconspicuous nucleoli (100.0%).
 
-**Morphologic interpretation:** The lymphoblast cohort shows mixed FAB-associated morphology, with small cell size, scant cytoplasm, and inconspicuous nucleoli supporting an L1-like pattern, while the strongly irregular nuclear contours are more L2-like. The small-cell predominance is borderline at 62.75%, so the population is not strongly homogeneous by size. Absent cytoplasmic vacuolation with only slight basophilia argues against an L3-like morphology. Overall, no specific FAB subtype is favored on morphology alone.
+**Morphologic interpretation:** The lymphoblast cohort is characterized by open chromatin, irregular nuclear contours, inconspicuous nucleoli, and scant, slightly basophilic cytoplasm without vacuolation. The small-cell predominance is borderline at 62.75%, so the blast population is not uniformly small and demonstrates appreciable size heterogeneity. Overall, the morphology is internally consistent with a lymphoblast-rich smear and does not show discordant cytologic features within the assessed cohort.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

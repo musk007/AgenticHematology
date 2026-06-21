@@ -10,7 +10,7 @@
 | Myeloblasts | 47.5% |
 | Lymphocytes | 2.5% |
 
-**Morphologic interpretation:** The blast population shows open chromatin, irregular nuclear contours, prominent nucleoli, abundant cytoplasm, and moderate basophilia, supporting an immature myeloid blast morphology. No specific FAB subtype is favored on morphology alone, as the findings do not define maturation stage or a distinct monocytic, promyelocytic, erythroid, or megakaryoblastic pattern. The dominant medium cell size is borderline at 57.89%, indicating that size is not strongly one-sided within the blast cohort. Irregular nuclei with abundant basophilic cytoplasm could overlap with monocytic morphology, but the available cohort morphology does not establish a monocytic FAB category.
+**Morphologic interpretation:** The blast population shows an immature pattern with open nuclear chromatin, prominent nucleoli, and uniformly irregular nuclear contours. Cell size is only borderline dominated by medium forms at 57.89%, indicating meaningful size heterogeneity rather than a uniform medium-sized cohort. Cytoplasm is predominantly abundant with moderate basophilia, and cytoplasmic vacuoles are not a feature of the cohort. Overall, the morphology is internally consistent with the automated myeloblast cohort assignment.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

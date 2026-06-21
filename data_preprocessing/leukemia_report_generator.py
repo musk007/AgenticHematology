@@ -315,6 +315,14 @@ def classify_case(
         )
         if not is_cml_profile:
             is_cml_profile = dominant in {"metamyelocyte"} and blast_pct > 0
+        basophil_pct = float(clinical.get("basophil", 0.0))
+        basophil_note = ""
+        if basophil_pct == 0.0:
+            basophil_note = (
+                " Absence of identifiable basophils is atypical for classic CML and raises "
+                "consideration of alternative reactive processes such as leukemoid reaction "
+                "or severe infection/sepsis."
+            )
         if is_cml_profile and not flags.get("monocytosis_present"):
             return Impression(
                 primary="Chronic Myeloid Leukemia (CML), chronic phase (suspected)",
@@ -323,10 +331,10 @@ def classify_case(
                     f"maturation (myelocytes, metamyelocytes, neutrophils), "
                     f"and a blast burden of {blast_pct:.1f}% "
                     f"(below the 20% threshold for blast phase) supports a "
-                    f"chronic-phase CML profile, even when basophilia is borderline."
+                    f"chronic-phase CML pattern.{basophil_note}"
                 ),
                 differential=[
-                    "Leukemoid reaction (less likely with persistent left shift).",
+                    "Leukemoid reaction or severe infection/sepsis, particularly if basophils are absent.",
                     "Other MPN (PV, ET, primary myelofibrosis).",
                     "Atypical CML, BCR::ABL1 negative.",
                     "CML in accelerated or blast phase (excluded by blast count and morphology).",

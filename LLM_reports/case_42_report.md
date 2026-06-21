@@ -14,7 +14,7 @@
 | Lymphocytes | 3.7% |
 | Metamyelocytes | 0.9% |
 
-**Morphologic interpretation:** The blast population shows open nuclear chromatin, prominent nucleoli, irregular nuclear contours, abundant cytoplasm, and moderate cytoplasmic basophilia, a pattern consistent with myeloid blasts. In the setting of 24.8% myeloblasts with accompanying granulocytic maturation and monocytes at 16.5%, the morphology favours AML with maturation, FAB M2, rather than a monocytic FAB category. Cytoplasmic vacuoles are predominantly absent, which argues against a vacuolated monocytic or Burkitt-like pattern in this automated cohort.
+**Morphologic interpretation:** The blast population is morphologically cohesive, with medium cell size (74.07%) and uniform open nuclear chromatin, prominent nucleoli, and moderate cytoplasmic basophilia. Nuclear contours are predominantly irregular (92.59%), with largely abundant cytoplasm (85.19%) and generally absent cytoplasmic vacuoles (92.59%). No assessed blast attribute is borderline in dominance, supporting a coherent immature myeloid/blast morphology without a morphology-level conflict with the reported impression.
 
 **Diagnostic flags:** blasts present; blast threshold met; monocytosis present.
 

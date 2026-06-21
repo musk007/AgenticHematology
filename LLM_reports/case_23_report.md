@@ -14,7 +14,7 @@
 
 **Cohort morphology (n = 162 abnormal promyelocytes):** predominantly medium cells (98.8%) with abundant (100.0%), moderately basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (99.4%), irregular contours (100.0%), and prominent nucleoli (82.7%).
 
-**Morphologic interpretation:** The blast population favours FAB AML-M3 because the smear is dominated by abnormal promyelocytes with uniformly irregular nuclear contours, open chromatin, abundant moderately basophilic cytoplasm, and absent vacuolation. Prominent nucleoli in 82.7% indicate an immature promyelocytic/blast-equivalent population rather than mature granulocytic forms. The morphology is not mixed and does not favour another specific FAB subtype.
+**Morphologic interpretation:** The blast-equivalent cohort is morphologically cohesive, composed almost entirely of medium-sized cells with open chromatin, irregular nuclear contours, abundant moderately basophilic cytoplasm, and no cytoplasmic vacuolation. Nucleolar prominence is the least uniform feature, present in 82.7%, indicating a minor subset with less conspicuous nucleoli. Overall, the morphology is supportive of an abnormal promyelocytic blast-equivalent population and is internally consistent with the report impression.
 
 **Diagnostic flags:** blasts present; blast threshold met; abnormal promyelocytes present.
 

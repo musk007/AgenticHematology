@@ -14,7 +14,7 @@
 | Myeloblasts | 1.5% |
 | Basophils | 1.5% |
 
-**Morphologic interpretation:** The blast population shows open nuclear chromatin with scant cytoplasm and inconspicuous nucleoli, consistent with lymphoblast morphology. Medium cell size and irregular nuclear contours create a mixed L1/L2 pattern: scant cytoplasm and inconspicuous nucleoli align more with L1, whereas irregular nuclei argue toward L2. No specific FAB subtype is favored; absent vacuoles and only slight cytoplasmic basophilia argue against L3 morphology.
+**Morphologic interpretation:** The blast population is morphologically cohesive, composed of medium-sized blasts with open chromatin, irregular nuclear contours, inconspicuous nucleoli, and scant slightly basophilic cytoplasm. There is no meaningful size pleomorphism or prominent nucleolar subgroup within the reported blast cohort. The lack of appreciable cytoplasmic vacuolation and absence of marked basophilia support an immature blast phenotype rather than a mature, highly basophilic blast morphology.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

@@ -13,7 +13,7 @@
 
 **Cohort morphology (n = 154 myeloblasts):** predominantly medium cells (100.0%) with abundant (100.0%), moderately basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (100.0%).
 
-**Morphologic interpretation:** The blast morphology favours FAB M1, AML without maturation, given a highly uniform myeloblast cohort with open chromatin, prominent nucleoli, irregular nuclear contours, and no morphologic evidence of granulocytic maturation in the reported differential. The abundant, moderately basophilic cytoplasm is compatible with primitive myeloid blasts but does not by itself support monocytic differentiation. Absence of cytoplasmic vacuolation and lack of reported promyelocytic or eosinophilic features argue against FAB M3, M4Eo, or M5 morphology.
+**Morphologic interpretation:** The myeloblast cohort is morphologically homogeneous, with medium cell size, open chromatin, irregular nuclear contours, prominent nucleoli, and abundant moderately basophilic cytoplasm. The combination of open chromatin and prominent nucleoli supports an immature blast population, while the uniformly absent vacuolation argues against a vacuolated blast pattern. No clinically meaningful subordinate heterogeneity is evident within the blast cohort, and the morphology is internally consistent with the reported blast-predominant process.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

@@ -170,7 +170,10 @@
         "n_cells_in_cohort": 130,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -350,7 +353,10 @@
         "n_cells_in_cohort": 39,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -525,7 +531,10 @@
         "n_cells_in_cohort": 211,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -711,7 +720,10 @@
         "n_cells_in_cohort": 40,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -899,7 +911,10 @@
         "n_cells_in_cohort": 99,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -1080,7 +1095,10 @@
         "n_cells_in_cohort": 45,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -1263,7 +1281,10 @@
         "n_cells_in_cohort": 30,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -1448,7 +1469,10 @@
         "n_cells_in_cohort": 74,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -1634,7 +1658,10 @@
         "n_cells_in_cohort": 51,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -1825,7 +1852,10 @@
         "n_cells_in_cohort": 19,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -2006,7 +2036,10 @@
         "n_cells_in_cohort": 66,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -2191,7 +2224,10 @@
         "n_cells_in_cohort": 340,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -2361,7 +2397,10 @@
         "n_cells_in_cohort": 28,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -2534,7 +2573,10 @@
         "n_cells_in_cohort": 61,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -2719,7 +2761,10 @@
         "n_cells_in_cohort": 118,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -2904,7 +2949,10 @@
         "n_cells_in_cohort": 115,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -3084,7 +3132,10 @@
         "n_cells_in_cohort": 154,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -3246,7 +3297,10 @@
         "n_cells_in_cohort": 33,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -3429,7 +3483,10 @@
         "n_cells_in_cohort": 294,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -3612,7 +3669,10 @@
         "n_cells_in_cohort": 70,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -3794,7 +3854,10 @@
         "n_cells_in_cohort": 190,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -3974,7 +4037,10 @@
         "n_cells_in_cohort": 113,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -4157,7 +4223,10 @@
         "n_cells_in_cohort": 162,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -4342,7 +4411,10 @@
         "n_cells_in_cohort": 212,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -4524,7 +4596,10 @@
         "n_cells_in_cohort": 129,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -4716,7 +4791,10 @@
         "n_cells_in_cohort": 19,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -4907,7 +4985,18 @@
         "n_cells_in_cohort": 19,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [
+          {
+            "code": "CML_PATTERN_NO_BASOPHILIA",
+            "severity": "review",
+            "message": "Smear shows a predominance of neutrophils followed by myelocytes and other granulocytic precursors. The absence of identifiable basophils is unusual for CML and raises the possibility of alternative diagnoses such as a leukemoid reaction or severe infection/sepsis.",
+            "recommendation": "Correlate with the CBC, differential count, and BCR::ABL1 testing.",
+            "suggested_action": "FLAG_FOR_REVIEW"
+          }
+        ],
+        "requires_review": true
       }
     }
   },
@@ -5075,7 +5164,10 @@
         "n_cells_in_cohort": 54,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -5269,7 +5361,10 @@
         "n_cells_in_cohort": 35,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -5463,7 +5558,10 @@
         "n_cells_in_cohort": 19,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -5636,7 +5734,10 @@
         "n_cells_in_cohort": 217,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -5813,7 +5914,10 @@
         "n_cells_in_cohort": 19,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -6001,7 +6105,10 @@
         "n_cells_in_cohort": 31,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -6187,7 +6294,10 @@
         "n_cells_in_cohort": 527,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -6335,32 +6445,32 @@
       },
       "blast_morphology": {
         "cell_size": {
-          "dominant": "small",
-          "dominance_pct": 100.0
+          "dominant": "medium",
+          "dominance_pct": 58.33
         },
         "nuclear_chromatio": {
-          "dominant": "coarse",
+          "dominant": "open",
           "dominance_pct": 100.0
         },
         "nuclear_shape": {
-          "dominant": "regular",
-          "dominance_pct": 80.0
+          "dominant": "irregular",
+          "dominance_pct": 100.0
         },
         "nucleolus": {
-          "dominant": "inconspicuous",
+          "dominant": "prominent",
           "dominance_pct": 100.0
         },
         "cytoplasm": {
           "dominant": "abundant",
-          "dominance_pct": 60.0
+          "dominance_pct": 100.0
         },
         "cytoplasmic_basophilia": {
-          "dominant": "slight",
+          "dominant": "moderate",
           "dominance_pct": 100.0
         },
         "cytoplasmic_vacuoles": {
-          "dominant": "absent",
-          "dominance_pct": 100.0
+          "dominant": "prominent",
+          "dominance_pct": 86.46
         }
       },
       "qc": {
@@ -6368,10 +6478,13 @@
         "n_identified_wbc": 216,
         "n_artifacts": 71,
         "n_fields_of_view": 54,
-        "n_cells_in_cohort": 5,
+        "n_cells_in_cohort": 192,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -6559,7 +6672,10 @@
         "n_cells_in_cohort": 41,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -6734,7 +6850,10 @@
         "n_cells_in_cohort": 46,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -6917,7 +7036,10 @@
         "n_cells_in_cohort": 288,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -7075,31 +7197,31 @@
       },
       "blast_morphology": {
         "cell_size": {
-          "dominant": "small",
-          "dominance_pct": 100.0
+          "dominant": "medium",
+          "dominance_pct": 87.5
         },
         "nuclear_chromatio": {
-          "dominant": "coarse",
-          "dominance_pct": 100.0
+          "dominant": "open",
+          "dominance_pct": 93.75
         },
         "nuclear_shape": {
-          "dominant": "regular",
-          "dominance_pct": 90.0
+          "dominant": "irregular",
+          "dominance_pct": 100.0
         },
         "nucleolus": {
           "dominant": "inconspicuous",
-          "dominance_pct": 100.0
+          "dominance_pct": 81.25
         },
         "cytoplasm": {
-          "dominant": "scanty",
-          "dominance_pct": 60.0
+          "dominant": "abundant",
+          "dominance_pct": 100.0
         },
         "cytoplasmic_basophilia": {
-          "dominant": "slight",
+          "dominant": "moderate",
           "dominance_pct": 100.0
         },
         "cytoplasmic_vacuoles": {
-          "dominant": "absent",
+          "dominant": "prominent",
           "dominance_pct": 100.0
         }
       },
@@ -7108,10 +7230,21 @@
         "n_identified_wbc": 90,
         "n_artifacts": 19,
         "n_fields_of_view": 50,
-        "n_cells_in_cohort": 10,
+        "n_cells_in_cohort": 16,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [
+          {
+            "code": "CML_PATTERN_NO_BASOPHILIA",
+            "severity": "review",
+            "message": "Smear shows a predominance of neutrophils followed by myelocytes and other granulocytic precursors. The absence of identifiable basophils is unusual for CML and raises the possibility of alternative diagnoses such as a leukemoid reaction or severe infection/sepsis.",
+            "recommendation": "Correlate with the CBC, differential count, and BCR::ABL1 testing.",
+            "suggested_action": "FLAG_FOR_REVIEW"
+          }
+        ],
+        "requires_review": true
       }
     }
   },
@@ -7294,7 +7427,10 @@
         "n_cells_in_cohort": 80,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -7485,7 +7621,10 @@
         "n_cells_in_cohort": 27,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -7670,7 +7809,10 @@
         "n_cells_in_cohort": 91,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -7847,7 +7989,10 @@
         "n_cells_in_cohort": 263,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -8040,7 +8185,10 @@
         "n_cells_in_cohort": 98,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -8190,7 +8338,7 @@
       "blast_morphology": {
         "cell_size": {
           "dominant": "medium",
-          "dominance_pct": 100.0
+          "dominance_pct": 99.26
         },
         "nuclear_chromatio": {
           "dominant": "open",
@@ -8206,15 +8354,15 @@
         },
         "cytoplasm": {
           "dominant": "abundant",
-          "dominance_pct": 85.71
+          "dominance_pct": 100.0
         },
         "cytoplasmic_basophilia": {
           "dominant": "moderate",
           "dominance_pct": 100.0
         },
         "cytoplasmic_vacuoles": {
-          "dominant": "absent",
-          "dominance_pct": 100.0
+          "dominant": "prominent",
+          "dominance_pct": 83.7
         }
       },
       "qc": {
@@ -8222,10 +8370,13 @@
         "n_identified_wbc": 161,
         "n_artifacts": 108,
         "n_fields_of_view": 50,
-        "n_cells_in_cohort": 14,
+        "n_cells_in_cohort": 135,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -8369,27 +8520,27 @@
       },
       "blast_morphology": {
         "cell_size": {
-          "dominant": "small",
-          "dominance_pct": 100.0
+          "dominant": "medium",
+          "dominance_pct": 75.0
         },
         "nuclear_chromatio": {
-          "dominant": "coarse",
+          "dominant": "open",
           "dominance_pct": 100.0
         },
         "nuclear_shape": {
-          "dominant": "regular",
+          "dominant": "irregular",
           "dominance_pct": 100.0
         },
         "nucleolus": {
-          "dominant": "inconspicuous",
+          "dominant": "prominent",
           "dominance_pct": 100.0
         },
         "cytoplasm": {
-          "dominant": "scanty",
-          "dominance_pct": 75.0
+          "dominant": "abundant",
+          "dominance_pct": 100.0
         },
         "cytoplasmic_basophilia": {
-          "dominant": "slight",
+          "dominant": "moderate",
           "dominance_pct": 100.0
         },
         "cytoplasmic_vacuoles": {
@@ -8405,7 +8556,10 @@
         "n_cells_in_cohort": 4,
         "low_cell_count_warning": true,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   },
@@ -8596,7 +8750,10 @@
         "n_cells_in_cohort": 106,
         "low_cell_count_warning": false,
         "sparse_annotation_skew_warning": false,
-        "global_canvas_stitching_active": true
+        "global_canvas_stitching_active": true,
+        "cohort_selection_ambiguous": false,
+        "differential_alerts": [],
+        "requires_review": false
       }
     }
   }

@@ -10,7 +10,7 @@
 | Neutrophils | 0.9% |
 | Eosinophils | 0.9% |
 
-**Morphologic interpretation:** The cohort shows a mature lymphoid cytologic pattern with coarse nuclear chromatin, inconspicuous nucleoli, slight basophilia, and absent cytoplasmic vacuoles, supporting a chronic lymphoproliferative morphology rather than an acute blast process. No specific FAB subtype is favored, as the analyzed cohort is not morphologically a blast population and lacks features supporting an acute leukemia FAB category. Nuclear contour abnormality is prominent, with irregular nuclei dominant at 99.08%, making the morphology less purely small round lymphocyte-like despite the mature chromatin pattern. Cytoplasmic abundance is only borderline dominant at 57.6%, so the cytoplasmic profile is not strongly one-sided.
+**Morphologic interpretation:** The atypical lymphocyte cohort is characterized by predominantly medium-sized cells with coarse chromatin, inconspicuous nucleoli, and highly frequent irregular nuclear contours. Cytoplasmic amount is not strongly one-sided: although reported as abundant, the dominance is only 57.6%, indicating a mixed cytoplasmic profile within the cohort. Slight cytoplasmic basophilia and absence of cytoplasmic vacuoles support a mature lymphoid cytologic pattern rather than a blast-rich process. The morphology is internally consistent with the reported atypical mature lymphocyte predominance.
 
 **Diagnostic flags:** atypical lymphocytes present.
 

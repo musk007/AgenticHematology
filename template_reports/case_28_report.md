@@ -18,10 +18,10 @@
 
 **Impression:** Chronic Myeloid Leukemia (CML), chronic phase (suspected).
 
-Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 7.0% (below the 20% threshold for blast phase) supports a chronic-phase CML profile, even when basophilia is borderline.
+Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 7.0% (below the 20% threshold for blast phase) supports a chronic-phase CML pattern. Absence of identifiable basophils is atypical for classic CML and raises consideration of alternative reactive processes such as leukemoid reaction or severe infection/sepsis.
 
 **Differential considerations:**
-- Leukemoid reaction (less likely with persistent left shift).
+- Leukemoid reaction or severe infection/sepsis, particularly if basophils are absent.
 - Other MPN (PV, ET, primary myelofibrosis).
 - Atypical CML, BCR::ABL1 negative.
 - CML in accelerated or blast phase (excluded by blast count and morphology).

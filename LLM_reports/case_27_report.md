@@ -15,16 +15,16 @@
 | Lymphocytes | 1.0% |
 | Eosinophils | 0.7% |
 
-**Morphologic interpretation:** The blast population is composed predominantly of medium-sized cells with open nuclear chromatin, irregular nuclear contours, prominent nucleoli, abundant cytoplasm, and moderate cytoplasmic basophilia, supporting immature myeloid morphology. No specific FAB subtype is favored, as the described features do not show subtype-defining differentiation patterns and no Auer rods or distinctive cytoplasmic features are documented. The broader smear pattern of left-shifted granulopoiesis with myelocytes, metamyelocytes, basophils, and 6.17% myeloblasts is morphologically concordant with a chronic myeloid proliferative process rather than an acute leukemia pattern.
+**Morphologic interpretation:** The blast cohort is characterized by medium cell size (84.21%), open chromatin (100.0%), irregular nuclei (100.0%), and prominent nucleoli (94.74%), supporting an immature blast morphology. Cytoplasm is predominantly abundant (73.68%) with moderate cytoplasmic basophilia (94.74%), and cytoplasmic vacuoles are absent (100.0%). Cytoplasmic amount is the least uniform feature, so the cohort is not completely monomorphic despite otherwise strong attribute dominances. The morphology is compatible with circulating myeloblasts in a left-shifted myeloid process and is not internally discordant with that pattern.
 
 **Diagnostic flags:** blasts present; basophilia present; left shifted myeloid.
 
 **Impression:** Chronic Myeloid Leukemia (CML), chronic phase (suspected).
 
-Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 6.2% (below the 20% threshold for blast phase) supports a chronic-phase CML profile, even when basophilia is borderline.
+Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 6.2% (below the 20% threshold for blast phase) supports a chronic-phase CML pattern.
 
 **Differential considerations:**
-- Leukemoid reaction (less likely with persistent left shift).
+- Leukemoid reaction or severe infection/sepsis, particularly if basophils are absent.
 - Other MPN (PV, ET, primary myelofibrosis).
 - Atypical CML, BCR::ABL1 negative.
 - CML in accelerated or blast phase (excluded by blast count and morphology).

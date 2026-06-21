@@ -14,7 +14,7 @@
 
 **Cohort morphology (n = 212 myeloblasts):** predominantly medium cells (66.5%) with abundant (98.6%), moderately basophilic (99.5%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (91.0%).
 
-**Morphologic interpretation:** The findings show a mixed myeloid pattern rather than a pure promyelocytic morphology, with a dominant myeloblast population and a substantial abnormal promyelocyte component. The blast cohort has open chromatin, irregular nuclear contours, prominent nucleoli, and abundant moderately basophilic cytoplasm, supporting immature myeloid differentiation but not providing specific morphologic features that definitively favor FAB M3 over other AML categories. No specific FAB subtype is favored on the blast-cohort morphology alone; the presence of abnormal promyelocytes keeps AML-M3/APL in consideration but is not morphologically conclusive here. The template impression is therefore stronger than the documented blast-cohort morphology supports.
+**Morphologic interpretation:** The blast population shows open chromatin, irregular nuclear contours, prominent nucleoli, and abundant moderately basophilic cytoplasm, supporting an immature myeloid morphology. Cell size is only modestly dominant at 66.5% medium cells, indicating some size heterogeneity within the cohort. The absence of cytoplasmic vacuolation is uniform in the analyzed cohort. The analyzed cohort is myeloblast-defined, so its morphology alone is not fully concordant with a promyelocytic-predominant interpretation.
 
 **Diagnostic flags:** blasts present; blast threshold met; abnormal promyelocytes present.
 

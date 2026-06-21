@@ -15,7 +15,7 @@
 
 **Cohort morphology (n = 31 myeloblasts):** predominantly medium cells (100.0%) with abundant (100.0%), moderately basophilic (90.3%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (96.8%), irregular contours (80.7%), and prominent nucleoli (93.5%).
 
-**Morphologic interpretation:** The blast cohort is morphologically cohesive, with open chromatin, prominent nucleoli, irregular nuclear contours, and abundant moderately basophilic cytoplasm. No specific FAB subtype is favored, as the available morphology does not show defining features for a more specific category. The strong predominance of absent vacuolation argues against a vacuolated blast pattern.
+**Morphologic interpretation:** The myeloblast cohort is morphologically cohesive, with uniform medium size, abundant cytoplasm, open chromatin, and prominent nucleoli. Nuclear contour irregularity is a consistent feature but not absolute, present in 80.7%, indicating a minor subset with less irregular nuclear outlines. The combination of open chromatin and prominent nucleoli supports an immature blast phenotype, while absent cytoplasmic vacuolation and only moderate cytoplasmic basophilia argue against a strongly vacuolated or deeply basophilic cytoplasmic pattern.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

@@ -14,7 +14,7 @@
 
 **Cohort morphology (n = 118 monoblasts):** predominantly medium cells (79.7%) with abundant (100.0%), moderately basophilic (100.0%) cytoplasm and prominent cytoplasmic vacuolation (50.9%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (100.0%).
 
-**Morphologic interpretation:** Morphology favours FAB M5, specifically acute monoblastic leukemia, supported by a dominant monoblast population with open chromatin, irregular nuclear contours, prominent nucleoli, and abundant moderately basophilic cytoplasm. The cytoplasmic vacuolation is only borderline dominant at 50.85%, so it supports monocytic differentiation but should be interpreted as heterogeneous rather than uniform. The very small myeloblast component of 1.46% provides little morphologic support for a mixed myelomonocytic pattern.
+**Morphologic interpretation:** The blast population is characterized by a cohesive monoblast morphology with open chromatin, uniformly irregular nuclear contours, prominent nucleoli, and abundant moderately basophilic cytoplasm. Cell size is predominantly medium but not entirely uniform, with a minority of non-medium forms indicating limited pleomorphism. Prominent cytoplasmic vacuolation is only borderline dominant at 50.85%, so vacuolation should be interpreted as a mixed feature rather than a uniform cohort property. Overall, the morphologic pattern supports monocytic-lineage blast differentiation without internal discordance.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

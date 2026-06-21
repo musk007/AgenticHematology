@@ -13,7 +13,7 @@
 
 **Cohort morphology (n = 33 lymphoblasts):** predominantly medium cells (93.9%) with scanty (66.7%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show coarse chromatin (100.0%), irregular contours (100.0%), and inconspicuous nucleoli (100.0%).
 
-**Morphologic interpretation:** No specific FAB subtype is favored because the lymphoblast cohort shows mixed features. The uniform medium size, inconspicuous nucleoli, scanty cytoplasm, slight basophilia, and absent vacuolation argue against FAB L3 morphology, while the uniformly irregular nuclear contours are not typical for classic FAB L1. The cytoplasmic amount is only modestly dominant for scanty cytoplasm, so the cohort is not strongly one-sided for that attribute.
+**Morphologic interpretation:** The lymphoblast cohort is relatively monomorphic in size, with a strong predominance of medium cells. Nuclear features are uniform, showing coarse chromatin, irregular nuclear contours, and inconspicuous nucleoli throughout the cohort. Cytoplasmic quantity is less one-sided, with scant cytoplasm present in 66.7%, while slight cytoplasmic basophilia and absent vacuolation are consistent features. Overall, the morphology supports a lymphoblast-rich acute leukemia pattern without internally discordant morphologic features.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

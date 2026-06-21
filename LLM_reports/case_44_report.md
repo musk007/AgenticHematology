@@ -12,7 +12,7 @@
 
 **Cohort morphology (n = 263 myeloblasts):** predominantly medium cells (97.3%) with scanty (56.3%), moderately basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (100.0%).
 
-**Morphologic interpretation:** The blast population is morphologically myeloblastic, with open chromatin, prominent nucleoli, irregular nuclear contours, and moderately basophilic cytoplasm. The near-exclusive myeloblast composition with minimal accompanying maturation favours FAB AML-M1 over a more mature myeloid subtype. The scanty cytoplasm designation is borderline for the cohort, so cytoplasmic volume is not strongly one-sided despite being the dominant descriptor. Absent cytoplasmic vacuolation argues against a vacuolated/blastic pattern such as FAB AML-M5 or Burkitt-like morphology on morphology alone.
+**Morphologic interpretation:** The myeloblast cohort demonstrates a relatively uniform immature nuclear phenotype, with open chromatin, prominent nucleoli, and irregular nuclear contours throughout the evaluated cohort. Cell size is largely medium without meaningful size pleomorphism in the blast cohort. Cytoplasmic quantity is borderline for the reported scanty predominance (56.3%), indicating a sizeable non-scanty component, while cytoplasmic basophilia is consistently moderate and vacuolation is absent. Overall, the morphology is internally consistent with a blast-rich acute leukemia pattern.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

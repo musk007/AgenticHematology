@@ -11,7 +11,7 @@
 | Lymphocytes | 2.3% |
 | Myeloblasts | 1.9% |
 
-**Morphologic interpretation:** The blast cohort does not favour a specific FAB subtype. Small size, coarse nuclear chromatin, inconspicuous nucleoli, slight cytoplasmic basophilia, and absent cytoplasmic vacuoles do not provide morphologic support for monoblastic/monocytic AML. Cytoplasmic abundance is borderline rather than uniform, with a 60.0% dominance, limiting subtype inference. The cohort morphology is internally inconsistent with a monocytic AML impression based on morphology alone.
+**Morphologic interpretation:** The blast population is characterized by open nuclear chromatin, irregular nuclear contours, and prominent nucleoli, with abundant moderately basophilic cytoplasm. The medium cell-size assignment is borderline at 58.33%, indicating appreciable size heterogeneity rather than a strongly uniform size class. Prominent cytoplasmic vacuolation is present in most of the cohort at 86.46%, adding a monocytoid cytoplasmic pattern supportive of monocytic differentiation. Overall, the morphology is internally concordant with a monocytic-lineage acute leukemia pattern, without establishing diagnostic certainty by morphology alone.
 
 **Diagnostic flags:** blasts present; left shifted myeloid.
 
@@ -29,7 +29,7 @@ Monocytic-lineage predominance (promonocytes 88.9%) with circulating blasts (1.9
 - Bone marrow aspirate and trephine biopsy.
 - Cytogenetics and targeted molecular AML panel.
 
-**QC:** 54 FOVs; 216/287 cells classifiable (24.7% artefact); cohort cell count = 5; global canvas stitching active.
+**QC:** 54 FOVs; 216/287 cells classifiable (24.7% artefact); cohort cell count = 192; global canvas stitching active.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

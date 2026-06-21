@@ -13,7 +13,7 @@
 
 **Cohort morphology (n = 113 myeloblasts):** predominantly medium cells (55.8%) with abundant (99.1%), moderately basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (100.0%).
 
-**Morphologic interpretation:** The blast population shows uniform immature myeloid morphology with open chromatin, prominent nucleoli, irregular nuclear contours, and abundant moderately basophilic cytoplasm. In this morphologic context and with myeloblasts at 95.0% of informative WBCs, the pattern favours AML without maturation (FAB M1) rather than a more differentiated FAB category. The medium-cell predominance is borderline at 55.8%, so cell size should not be regarded as strongly one-sided. Absent cytoplasmic vacuolation argues against a vacuolated monocytic or Burkitt-like pattern on morphology alone.
+**Morphologic interpretation:** The blast population is characterized by uniformly open chromatin, irregular nuclear contours, and prominent nucleoli, with abundant moderately basophilic cytoplasm and absent vacuolation. The medium-cell predominance is borderline at 55.8%, so the cohort is not strongly size-uniform despite otherwise highly concordant nuclear and cytoplasmic attributes. This morphology is supportive of an immature blast-rich myeloid process and is internally consistent with the stated impression.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

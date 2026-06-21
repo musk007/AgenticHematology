@@ -2,6 +2,9 @@
 Patient Cell-Type Percentages + Report-Ready Summary for LLD (Fixed Global Canvas)
 Deduplicates 20% spatial tile overlap using absolute canvas positioning.
 Optimized to run strictly on 12-column AttriDet labels to eliminate JSON double-loading.
+
+Contradiction cases worth flagging in a report
+
 """
 
 import json
@@ -21,7 +24,7 @@ DATASET_ROOT = (
 )
 
 # Restriced to a single canonical camera domain to prevent sensor multiplication
-DOMAINS: list[str] = ["H_100X_C2"]
+DOMAINS: list[str] = ["H_40X_C2"]
 SPLITS = ["train", "test"]
 
 # ---------------------------------------------------------------------------
@@ -67,6 +70,23 @@ YOLO_CLASS_NAMES: dict[int, str] = {
     12: "eosinophil",
     13: "basophil"
 }
+# Lower rank = higher diagnostic priority when counts tie.
+# Ordered by: (1) clinical urgency, (2) lineage-defining specificity, (3) maturity.
+CELL_TYPE_PRIORITY: dict[str, int] = {
+    "abnormal promyelocyte": 1,   # APML — emergency (DIC), near-pathognomonic
+    "myeloblast":            2,   # AML-defining blast
+    "lymphoblast":           3,   # ALL-defining blast
+    "monoblast":             4,   # AML monocytic blast-equivalent
+    "promonocyte":           5,   # AML monocytic, one step more mature
+    "atypical lymphocyte":   6,   # reactive/mimic flag — supportive only
+    "lymphocyte":            7,   # mature lymphoid — meaningful only in CLL context
+}
+COHORT_ELIGIBLE = set(CELL_TYPE_PRIORITY)        # only these can be selected as a cohort
+DEFAULT_PRIORITY = 50                             # any unseen type sorts last
+
+TIER1_BLAST_TYPES = {"myeloblast", "lymphoblast", "monoblast"}
+MIN_BLAST_TIE_COUNT = 3                            # floor below which a tie is treated as noise
+
 
 CLINICAL_GROUPS: dict[str, set[str]] = {
     "blasts":               {"myeloblast", "lymphoblast", "monoblast"},
@@ -82,8 +102,8 @@ BLAST_THRESHOLD_PCT = 20.0
 BASOPHILIA_THRESHOLD_PCT = 2.0
 LOW_CELL_COUNT_THRESHOLD = 30
 
-OUT_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp_100X.json")
-OUT_CSV_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp_100X.csv")
+OUT_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp.json")
+OUT_CSV_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp.csv")
 
 # ---------------------------------------------------------------------------
 # Global Bounding Box Canvas Object
@@ -215,6 +235,56 @@ def run_global_canvas_nms(boxes: list[GlobalBoundedBox]) -> list[GlobalBoundedBo
         sorted_boxes = [b for b in sorted_boxes if current.compute_global_iou(b) < IOU_MATCH_THRESHOLD]
         
     return retained
+def _build_differential_alerts(counts, pct_clinical, group_percentages,
+                               blast_pool_pct, cohort_ambiguous) -> list[dict]:
+    alerts = []
+    neutrophil_pct      = pct_clinical.get("neutrophil", 0.0)
+    dominant_cell       = max(pct_clinical, key=pct_clinical.get) if pct_clinical else None
+    precursors_present  = group_percentages.get("intermediate_myeloid", 0.0) >= 10.0
+    basophils_absent    = counts.get("basophil", 0) == 0
+
+    if (dominant_cell == "neutrophil"
+            and precursors_present
+            and blast_pool_pct < BLAST_THRESHOLD_PCT
+            and basophils_absent):
+        alerts.append({
+            "code": "CML_PATTERN_NO_BASOPHILIA",
+            "severity": "review",
+            "message": ("Smear shows a predominance of neutrophils followed by myelocytes "
+                        "and other granulocytic precursors. The absence of identifiable "
+                        "basophils is unusual for CML and raises the possibility of "
+                        "alternative diagnoses such as a leukemoid reaction or severe "
+                        "infection/sepsis."),
+            "recommendation": ("Correlate with the CBC, differential count, and BCR::ABL1 "
+                               "testing."),
+            "suggested_action": "FLAG_FOR_REVIEW",
+        })
+
+    # Mixed-lineage blast tie (MPAL — outside the 5-class taxonomy)
+    if cohort_ambiguous:
+        alerts.append({
+            "code": "MIXED_LINEAGE_BLAST_TIE",
+            "severity": "review",
+            "message": ("Co-dominant myeloid and lymphoid blast populations. Pattern is "
+                        "compatible with mixed-phenotype acute leukemia, which lies outside "
+                        "the five supported subtypes."),
+            "recommendation": "Flow cytometry / immunophenotyping required to resolve lineage.",
+            "suggested_action": "FLAG_FOR_REVIEW",
+        })
+
+    # Blast burden inconsistent with a chronic picture
+    mature_lymphoid_dominant = pct_clinical.get("lymphocyte", 0.0) >= 50.0
+    if blast_pool_pct >= BLAST_THRESHOLD_PCT and mature_lymphoid_dominant:
+        alerts.append({
+            "code": "BLASTS_IN_CHRONIC_PATTERN",
+            "severity": "review",
+            "message": ("Blast pool meets the acute threshold alongside a mature lymphoid "
+                        "background — incompatible with a stable chronic process."),
+            "recommendation": "Consider transformation/blast crisis; correlate clinically.",
+            "suggested_action": "FLAG_FOR_REVIEW",
+        })
+
+    return alerts
 
 def load_patient_data() -> dict:
     stores: dict[str, dict] = {}
@@ -284,13 +354,22 @@ def _attribute_summary(attribute_counts: dict) -> dict:
         }
     return out
 
-def _select_cohort_from_counts(counts: dict) -> set[str]:
-    """Data-driven tracker to avoid ground-truth metadata label leaks."""
-    abnormal_pool = CLINICAL_GROUPS["blasts"] | CLINICAL_GROUPS["abnormal_precursors"] | CLINICAL_GROUPS["lymphoid"]
-    candidates = {ct: counts.get(ct, 0) for ct in abnormal_pool if counts.get(ct, 0) > 0}
+def _select_cohort_from_counts(counts: dict) -> tuple[set[str], bool]:
+    candidates = {ct: counts.get(ct, 0) for ct in COHORT_ELIGIBLE if counts.get(ct, 0) > 0}
     if not candidates:
-        return set()
-    return {max(candidates, key=candidates.get)}
+        return set(), False
+
+    max_count = max(candidates.values())
+    tied = [ct for ct, v in candidates.items() if v == max_count]
+
+    ambiguous = (
+        len([ct for ct in tied if ct in TIER1_BLAST_TYPES]) >= 2
+        and max_count >= MIN_BLAST_TIE_COUNT
+    )
+
+    # Deterministic AND medically ordered: lowest rank wins among ties.
+    winner = min(tied, key=lambda ct: CELL_TYPE_PRIORITY.get(ct, DEFAULT_PRIORITY))
+    return {winner}, ambiguous
 
 def _build_report_ready(rec: dict, pct_clinical: dict) -> dict:
     counts = rec["cell_counts"]
@@ -314,7 +393,8 @@ def _build_report_ready(rec: dict, pct_clinical: dict) -> dict:
         "monocytosis_present":             pct_clinical.get("monocyte", 0.0) >= 10.0,
     }
 
-    cohort_types = _select_cohort_from_counts(counts)
+    # Deterministic, medically-ranked cohort selection (returns ambiguity flag for tier-1 blast ties)
+    cohort_types, cohort_ambiguous = _select_cohort_from_counts(counts)
     merged_cohort_attrs = {k: Counter() for k in ATTRIBUTE_KEYS}
     n_cohort = 0
     for ct in cohort_types:
@@ -336,6 +416,15 @@ def _build_report_ready(rec: dict, pct_clinical: dict) -> dict:
         if blast_pool_pct < BLAST_THRESHOLD_PCT and n_wbc < LOW_CELL_COUNT_THRESHOLD:
             is_sparse_skew_suspected = True
 
+    # Differential contradiction layer — patterns that point outside / against the 5-class taxonomy
+    alerts = _build_differential_alerts(
+        counts=counts,
+        pct_clinical=pct_clinical,
+        group_percentages=group_percentages,
+        blast_pool_pct=blast_pool_pct,
+        cohort_ambiguous=cohort_ambiguous,
+    )
+
     qc = {
         "n_annotated_cells": sum(counts.values()),
         "n_identified_wbc": n_wbc,
@@ -344,7 +433,10 @@ def _build_report_ready(rec: dict, pct_clinical: dict) -> dict:
         "n_cells_in_cohort": n_cohort,
         "low_cell_count_warning": n_wbc < LOW_CELL_COUNT_THRESHOLD,
         "sparse_annotation_skew_warning": is_sparse_skew_suspected,
-        "global_canvas_stitching_active": True
+        "global_canvas_stitching_active": True,
+        "cohort_selection_ambiguous": cohort_ambiguous,
+        "differential_alerts": alerts,
+        "requires_review": any(a["severity"] == "review" for a in alerts),
     }
 
     return {
@@ -354,7 +446,7 @@ def _build_report_ready(rec: dict, pct_clinical: dict) -> dict:
         "dominant_cell_pct": max(pct_clinical.values()) if pct_clinical else 0.0,
         "diagnostic_flags": flags,
         "blast_morphology": blast_morphology,
-        "qc": qc
+        "qc": qc,
     }
 
 def compute_percentages(summary: dict) -> dict:

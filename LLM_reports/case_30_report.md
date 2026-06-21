@@ -15,16 +15,16 @@
 | Basophils | 1.9% |
 | Eosinophils | 0.9% |
 
-**Morphologic interpretation:** The blast population is morphologically immature, with open nuclear chromatin, prominent nucleoli, irregular nuclei, and moderate cytoplasmic basophilia. No specific FAB subtype is favored, as the described features do not define a distinctive promyelocytic, monocytic, erythroid, megakaryoblastic, or otherwise lineage-specific FAB pattern. Cytoplasmic amount is borderline rather than uniform, with abundant cytoplasm representing only 57.14% of the blast cohort. The blast morphology is compatible with a myeloid blast population but does not by itself establish a specific acute leukemia subtype.
+**Morphologic interpretation:** The blast population is relatively uniform, with medium cell size, open nuclear chromatin, irregular nuclear contours, prominent nucleoli, moderate cytoplasmic basophilia, and absent cytoplasmic vacuolation. Cytoplasmic amount is not strongly one-sided, with abundant cytoplasm present in 57.14%, indicating appreciable heterogeneity in this feature. The blast morphology is compatible with a myeloid blast cohort in a left-shifted granulocytic proliferation and shows no internal inconsistency with the reported smear pattern.
 
 **Diagnostic flags:** blasts present; left shifted myeloid.
 
 **Impression:** Chronic Myeloid Leukemia (CML), chronic phase (suspected).
 
-Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 8.1% (below the 20% threshold for blast phase) supports a chronic-phase CML profile, even when basophilia is borderline.
+Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 8.1% (below the 20% threshold for blast phase) supports a chronic-phase CML pattern.
 
 **Differential considerations:**
-- Leukemoid reaction (less likely with persistent left shift).
+- Leukemoid reaction or severe infection/sepsis, particularly if basophils are absent.
 - Other MPN (PV, ET, primary myelofibrosis).
 - Atypical CML, BCR::ABL1 negative.
 - CML in accelerated or blast phase (excluded by blast count and morphology).

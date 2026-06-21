@@ -14,7 +14,7 @@
 
 **Cohort morphology (n = 340 monoblasts):** predominantly medium cells (95.3%) with abundant (100.0%), moderately basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (100.0%).
 
-**Morphologic interpretation:** The blast population favours FAB AML-M5, specifically an acute monoblastic pattern, based on the monoblast predominance with open chromatin, irregular nuclear contours, prominent nucleoli, and abundant moderately basophilic cytoplasm. The highly uniform monoblastic morphology argues against a mixed myelomonocytic pattern on morphologic grounds. Absent cytoplasmic vacuolation and the cohesive pattern of monocytic blast features do not support a lymphoblastic morphology.
+**Morphologic interpretation:** The blast population is morphologically cohesive, with medium cell size and no meaningful size pleomorphism evident within the cohort. The combination of open chromatin, irregular nuclear contours, and uniformly prominent nucleoli indicates a high-grade immature blast population. Abundant moderately basophilic cytoplasm supports monocytic differentiation on morphology, while absent cytoplasmic vacuolation argues against a vacuolated blast pattern. The morphologic findings are internally consistent with the reported monocytic blast-predominant impression.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

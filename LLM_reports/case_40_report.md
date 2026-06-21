@@ -15,7 +15,7 @@
 | Myelocytes | 1.1% |
 | Metamyelocytes | 1.1% |
 
-**Morphologic interpretation:** The blast cohort is uniformly small with coarse nuclear chromatin, inconspicuous nucleoli, slight cytoplasmic basophilia, and absent cytoplasmic vacuoles, with regular nuclear contours in 90.0%. This pattern does not provide morphologic support for a specific AML FAB subtype, and no specific FAB subtype is favoured. The scanty cytoplasm designation is borderline at 60.0%, but the overall blast morphology still lacks monoblastic or myelomonocytic features. This is internally inconsistent with a monocytic AML interpretation based on blast morphology alone.
+**Morphologic interpretation:** The blast cohort is characterized by predominantly medium cell size with open nuclear chromatin, uniformly irregular nuclear contours, abundant moderately basophilic cytoplasm, and prominent cytoplasmic vacuolation. Nucleoli are mostly inconspicuous, but the 81.25% dominance indicates a minor nucleolar subset rather than a completely uniform population. The combination of irregular nuclei, abundant basophilic cytoplasm, and vacuolation is morphologically supportive of monocytic differentiation, while the cohort does not show marked size pleomorphism.
 
 **Diagnostic flags:** blasts present; left shifted myeloid; monocytosis present.
 
@@ -33,7 +33,7 @@ Monocytic-lineage predominance (promonocytes 17.8%) with circulating blasts (8.9
 - Bone marrow aspirate and trephine biopsy.
 - Cytogenetics and targeted molecular AML panel.
 
-**QC:** 50 FOVs; 90/109 cells classifiable (17.4% artefact); cohort cell count = 10; global canvas stitching active.
+**QC:** 50 FOVs; 90/109 cells classifiable (17.4% artefact); cohort cell count = 16; global canvas stitching active.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

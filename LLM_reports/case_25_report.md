@@ -15,7 +15,7 @@
 
 **Cohort morphology (n = 129 myeloblasts):** predominantly medium cells (92.2%) with abundant (65.1%), moderately basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (96.9%).
 
-**Morphologic interpretation:** The blast population favours acute myeloid leukemia with myeloblast morphology, showing open chromatin, irregular nuclear contours, and prominent nucleoli. No specific FAB subtype is favored on morphology alone, as the described cohort lacks defining promyelocytic, monocytic, erythroid, or megakaryoblastic features. Cytoplasmic abundance is only borderline dominant at 65.1%, so the cohort is not entirely uniform in cytoplasmic volume. The morphology is internally inconsistent with an APL/AML-M3 interpretation, given that the dominant analyzed cohort is myeloblastic rather than promyelocytic.
+**Morphologic interpretation:** The myeloblast cohort is cytologically cohesive, with medium cell size, open chromatin, irregular nuclear contours, prominent nucleoli, moderate cytoplasmic basophilia, and absent vacuolation. Cytoplasmic abundance is only borderline dominant at 65.1%, indicating meaningful cytoplasmic variability within the blast population rather than a uniformly abundant-cytoplasm phenotype. The morphology supports a high-grade blast population but does not provide cohort-level support for a dominant abnormal promyelocytic process; this is internally inconsistent with the stated impression and with abnormal promyelocytes comprising only 0.6% of informative WBCs.
 
 **Diagnostic flags:** blasts present; blast threshold met; abnormal promyelocytes present.
 

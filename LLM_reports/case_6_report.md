@@ -14,7 +14,7 @@
 
 **Cohort morphology (n = 45 lymphoblasts):** predominantly medium cells (62.2%) with scanty (82.2%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (97.8%), and inconspicuous nucleoli (100.0%).
 
-**Morphologic interpretation:** The lymphoblast cohort shows a mixed FAB pattern rather than a single classic subtype. Markedly irregular nuclear contours favour an L2-like component, but the uniformly inconspicuous nucleoli and predominantly scanty cytoplasm are not typical of classic L2. The medium-cell predominance is borderline at 62.2%, so size does not strongly support a homogeneous L1 pattern. Slight cytoplasmic basophilia with absent vacuolation argues against L3 morphology; overall, no specific FAB subtype is favoured.
+**Morphologic interpretation:** The blast population shows a cohesive lymphoblast pattern with open chromatin, markedly irregular nuclear contours, inconspicuous nucleoli, scant cytoplasm, slight cytoplasmic basophilia, and no cytoplasmic vacuolation. The medium-cell designation is borderline dominant at 62.22%, so blast size is not strongly uniform and should be interpreted as showing size heterogeneity. The lack of prominent nucleoli, strong basophilia, or vacuolation supports a relatively immature blast morphology without features suggesting a more cytoplasm-rich or vacuolated blast pattern.
 
 **Diagnostic flags:** blasts present; blast threshold met; eosinophilia present.
 

@@ -14,7 +14,7 @@
 
 **Cohort morphology (n = 70 lymphoblasts):** predominantly small cells (67.1%) with scanty (82.9%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (98.6%); nuclei show open chromatin (95.7%), irregular contours (100.0%), and inconspicuous nucleoli (100.0%).
 
-**Morphologic interpretation:** The lymphoblast cohort favours FAB L1 morphology overall, with small size, scanty slightly basophilic cytoplasm, inconspicuous nucleoli, and absent vacuolation. The small-cell predominance is only moderate at 67.14%, indicating some size heterogeneity rather than a completely uniform L1 pattern. Uniformly irregular nuclear contours introduce an L2-like feature, so the morphology is not purely classic for L1. The absence of prominent vacuolation argues against FAB L3 morphology.
+**Morphologic interpretation:** The blast population is characterized by open chromatin, uniformly irregular nuclear contours, inconspicuous nucleoli, scant cytoplasm, slight cytoplasmic basophilia, and essentially absent vacuolation. Cell size is only moderately one-sided, with the dominant small-cell component at 67.1%, indicating a meaningful non-small minority within the cohort. Overall, the morphology is cohesive and supports a lymphoblast-rich acute leukemia pattern without an internally discordant morphologic feature.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

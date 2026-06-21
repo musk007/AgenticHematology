@@ -11,7 +11,7 @@
 | Monocytes | 1.5% |
 | Lymphocytes | 0.5% |
 
-**Morphologic interpretation:** No specific FAB subtype is favored, as the cohort is not a blast population and shows mature lymphoid-type cytology. The atypical lymphocyte cohort is highly uniform, with medium size, coarse nuclear chromatin, irregular nuclei, inconspicuous nucleoli, abundant cytoplasm, slight basophilia, and absent cytoplasmic vacuoles. This pattern supports a mature lymphoid process but is not classic for CLL/SLL morphology, given the prominent irregular nuclear contours and abundant cytoplasm. Inconspicuous nucleoli argue against a prolymphocytic morphology.
+**Morphologic interpretation:** The atypical lymphocyte cohort is morphologically homogeneous, with medium cell size, coarse nuclear chromatin, irregular nuclear contours, inconspicuous nucleoli, and abundant cytoplasm with slight basophilia. The absence of cytoplasmic vacuolation and lack of a prominent nucleolar component argue against a prolymphocytic or overtly blast-like morphology. Overall, the smear pattern supports a mature lymphoid proliferation rather than an acute blast process.
 
 **Diagnostic flags:** atypical lymphocytes present.
 

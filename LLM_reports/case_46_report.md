@@ -12,7 +12,7 @@
 | Neutrophils | 2.5% |
 | Monocytes | 0.6% |
 
-**Morphologic interpretation:** FAB AML-M5 is favoured by the marked promonocyte predominance and a blast cohort with open chromatin, irregular nuclei, prominent nucleoli, abundant cytoplasm, and moderate basophilia. The blast morphology is relatively cohesive, with no borderline dominant descriptors except cytoplasmic abundance, which remains predominant at 85.71%. The limited granulocytic component argues against a strong AML-M4 pattern. Absent cytoplasmic vacuoles in the blast cohort does not negate monocytic differentiation but makes the morphology less classically monoblastic.
+**Morphologic interpretation:** The cohort shows a cohesive immature monocytic pattern characterized by medium cell size, open nuclear chromatin, irregular nuclei, prominent nucleoli, and abundant moderately basophilic cytoplasm. Cytoplasmic vacuolation is a strong but less uniform feature, with prominent vacuoles in 83.7% of the cohort. The attribute dominances are otherwise not borderline, supporting a relatively homogeneous abnormal cohort and aligning morphologically with monocytic-lineage involvement.
 
 **Diagnostic flags:** blasts present; left shifted myeloid.
 
@@ -30,7 +30,7 @@ Monocytic-lineage predominance (promonocytes 83.8%) with circulating blasts (8.7
 - Bone marrow aspirate and trephine biopsy.
 - Cytogenetics and targeted molecular AML panel.
 
-**QC:** 50 FOVs; 161/269 cells classifiable (40.1% artefact); cohort cell count = 14; global canvas stitching active.
+**QC:** 50 FOVs; 161/269 cells classifiable (40.1% artefact); cohort cell count = 135; global canvas stitching active.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

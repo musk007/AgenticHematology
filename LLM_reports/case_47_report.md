@@ -11,7 +11,7 @@
 | Lymphocytes | 20.0% |
 | Eosinophils | 15.0% |
 
-**Morphologic interpretation:** The blast population does not favour a specific FAB subtype. Small size, coarse nuclear chromatin, regular nuclear contours, inconspicuous nucleoli, scanty cytoplasm at 75.0%, and only slight cytoplasmic basophilia are not typical of a classic myeloblast-rich FAB M1/M2 pattern. The regular nuclei and scant cytoplasm argue against overt monocytic differentiation by morphology. Overall, the cohort morphology is internally inconsistent with a confident AML FAB assignment based on morphology alone.
+**Morphologic interpretation:** The blast population is characterized by open nuclear chromatin, irregular nuclear contours, prominent nucleoli, abundant cytoplasm, and moderate cytoplasmic basophilia, supporting an immature blast phenotype. Cell size is predominantly medium but not completely uniform, with 75.0% dominance indicating some size heterogeneity within the cohort. Cytoplasmic vacuoles are absent in the evaluated blast cohort, arguing against a vacuolated blast pattern.
 
 **Diagnostic flags:** blasts present; blast threshold met; eosinophilia present.
 

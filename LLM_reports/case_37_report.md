@@ -15,7 +15,7 @@
 
 **Cohort morphology (n = 41 myeloblasts):** predominantly medium cells (78.0%) with abundant (90.2%), moderately basophilic (97.6%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (100.0%).
 
-**Morphologic interpretation:** The blast population is morphologically immature, with open chromatin and prominent nucleoli, supporting a myeloblast-predominant acute leukemia pattern. The cohort is otherwise fairly cohesive, with medium cell size, abundant moderately basophilic cytoplasm, irregular nuclear contours, and absent cytoplasmic vacuolation. No specific FAB subtype is favored on morphology alone; the findings do not clearly establish a maturation pattern sufficient to separate FAB M1 from M2, and they do not support a monocytic morphology.
+**Morphologic interpretation:** The myeloblast cohort is cytologically cohesive, with uniform open chromatin, irregular nuclear contours, and prominent nucleoli supporting a primitive blast population. Cell size is the main heterogeneous feature, as the medium-cell predominance is not absolute, indicating residual size pleomorphism within the blast cohort. The abundant, moderately basophilic cytoplasm with absent vacuolation is internally consistent with the reported blast morphology and does not introduce a conflicting morphologic pattern.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 

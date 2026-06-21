@@ -12,7 +12,7 @@
 
 **Cohort morphology (n = 130 lymphoblasts):** predominantly medium cells (76.2%) with abundant (80.8%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show coarse chromatin (90.8%), regular contours (59.2%), and inconspicuous nucleoli (74.6%).
 
-**Morphologic interpretation:** The lymphoblast cohort shows coarse chromatin with mostly inconspicuous nucleoli, but no specific FAB subtype is favored. Regular nuclear contours are dominant at 59.23%, which is borderline and indicates a clinically meaningful non-regular nuclear component rather than a uniform L1-like pattern. Medium cell size and abundant slightly basophilic cytoplasm are not classic for FAB L1, while inconspicuous nucleoli and absent cytoplasmic vacuolation argue against typical FAB L2/L3 morphology.
+**Morphologic interpretation:** The lymphoblast cohort is relatively monomorphic in size and cytoplasmic appearance, with medium size, abundant slightly basophilic cytoplasm, coarse chromatin, and absent vacuolation. Nuclear contour is not strongly one-sided, as regular contours account for only 59.2%, indicating a clinically meaningful non-regular component within the blast population. Nucleoli are predominantly inconspicuous, but this feature is not uniform, supporting some cytologic heterogeneity without a discordant morphologic pattern. Overall, the morphology is compatible with a blast-rich lymphoid process and does not show internal inconsistency with the stated impression.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 
