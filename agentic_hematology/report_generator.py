@@ -170,13 +170,8 @@ def _append_quantitative_summary(markdown: str, findings: AggregatedFindings) ->
     lines.append(
         f"- Fields of view: {summary.get('n_images', findings.n_images)}"
     )
-    raw_n = summary.get("n_cells_raw_before_overlap_dedup")
-    if raw_n is not None:
-        lines.append(
-            f"- Raw detected cells before overlap deduplication: {raw_n}"
-        )
     lines.append(
-        f"- Deduplicated detected cells: {summary.get('n_cells_total', findings.n_cells_total)}"
+        f"- Detected cells: {summary.get('n_cells_total', findings.n_cells_total)}"
     )
     lines.append(
         f"- Informative WBCs: {summary.get('n_cells_informative', findings.n_cells_identified_wbc)}"
@@ -194,16 +189,6 @@ def _append_quantitative_summary(markdown: str, findings: AggregatedFindings) ->
     ):
         lines.append(f"| {cell_type} | {count} | {pct.get(cell_type, 0.0)}% |")
 
-    qc = summary.get("qc", {})
-    if qc.get("global_canvas_stitching_active"):
-        lines.extend([
-            "",
-            (
-                f"Overlap correction: global canvas stitching active "
-                f"({qc.get('overlap_percentage', 0.2) * 100:.0f}% tile overlap, "
-                f"IoU threshold {qc.get('iou_match_threshold', 0.4)})."
-            ),
-        ])
     return "\n".join(lines)
 
 

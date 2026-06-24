@@ -1,10 +1,9 @@
 """
-Patient Cell-Type Percentages + Report-Ready Summary for LLD (Fixed Global Canvas)
-Deduplicates 20% spatial tile overlap using absolute canvas positioning.
+Patient Cell-Type Percentages + Report-Ready Summary for LLD (100X, no overlap)
+Aggregates AttriDet labels directly per patient without global-canvas deduplication.
+Use this when input tiles are already non-overlapping.
+
 Optimized to run strictly on 12-column AttriDet labels to eliminate JSON double-loading.
-
-Contradiction cases worth flagging in a report
-
 """
 
 import json
@@ -24,7 +23,7 @@ DATASET_ROOT = (
 )
 
 # Restriced to a single canonical camera domain to prevent sensor multiplication
-DOMAINS: list[str] = ["H_40X_C2"]
+DOMAINS: list[str] = ["H_100X_C2"]
 SPLITS = ["train", "test"]
 
 # ---------------------------------------------------------------------------
@@ -32,14 +31,6 @@ SPLITS = ["train", "test"]
 # ---------------------------------------------------------------------------
 KNOWN_DIAGNOSES = {"ALL", "AML", "APML", "CLL", "CML"}
 PERCENT_DECIMALS = 2
-
-# Global Canvas Parameters
-IOU_MATCH_THRESHOLD = 0.4
-DEFAULT_IMAGE_WH = (640, 640)
-OVERLAP_PERCENTAGE = 0.20
-
-# Calculated unique non-overlapping translation stride (640 * 0.8 = 512 pixels)
-GLOBAL_STRIDE_PX = int(DEFAULT_IMAGE_WH[0] * (1.0 - OVERLAP_PERCENTAGE))
 
 ATTRIBUTE_VALUE_MAPS: dict[str, dict[int, str]] = {
     "cell_size":              {0: "small",   1: "medium",     2: "large",               4: "n_a"},
@@ -102,39 +93,8 @@ BLAST_THRESHOLD_PCT = 20.0
 BASOPHILIA_THRESHOLD_PCT = 2.0
 LOW_CELL_COUNT_THRESHOLD = 30
 
-OUT_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp.json")
-OUT_CSV_PATH = os.path.join(HERE, "patient_WBC_stats_NoOveralp.csv")
-
-# ---------------------------------------------------------------------------
-# Global Bounding Box Canvas Object
-# ---------------------------------------------------------------------------
-class GlobalBoundedBox:
-    def __init__(self, local_x1, local_y1, local_x2, local_y2, cell_type, attrs=None, grid_x=0, grid_y=0):
-        self.cell_type = cell_type
-        self.attrs = attrs if attrs else {k: N_A_CODE for k in ATTRIBUTE_KEYS}
-        
-        # Map local pixel coordinates to absolute spatial matrix offsets
-        self.global_x1 = (grid_x * GLOBAL_STRIDE_PX) + float(local_x1)
-        self.global_y1 = (grid_y * GLOBAL_STRIDE_PX) + float(local_y1)
-        self.global_x2 = (grid_x * GLOBAL_STRIDE_PX) + float(local_x2)
-        self.global_y2 = (grid_y * GLOBAL_STRIDE_PX) + float(local_y2)
-        
-        self.global_area = (self.global_x2 - self.global_x1) * (self.global_y2 - self.global_y1)
-
-    def compute_global_iou(self, other) -> float:
-        """Computes canvas IoU. Class restriction removed to catch cross-lineage classification drift."""
-        inter_x1 = max(self.global_x1, other.global_x1)
-        inter_y1 = max(self.global_y1, other.global_y1)
-        inter_x2 = min(self.global_x2, other.global_x2)
-        inter_y2 = min(self.global_y2, other.global_y2)
-        
-        if inter_x2 <= inter_x1 or inter_y2 <= inter_y1:
-            return 0.0
-            
-        inter_area = (inter_x2 - inter_x1) * (inter_y2 - inter_y1)
-        union_area = self.global_area + other.global_area - inter_area
-        
-        return inter_area / union_area if union_area > 0 else 0.0
+OUT_PATH = os.path.join(HERE, "patient_WBC_stats_100X.json")
+OUT_CSV_PATH = os.path.join(HERE, "patient_WBC_stats_100X.csv")
 
 # ---------------------------------------------------------------------------
 # Data Accumulator Storage Elements
@@ -143,32 +103,18 @@ def _new_patient_store() -> dict:
     return {
         "metadata_filename_diagnosis": None,
         "filenames": set(),
-        "raw_canvas_box_pool": [],  
         "cell_counts": Counter(),
         "attribute_counts": {k: Counter() for k in ATTRIBUTE_KEYS},
         "celltype_attribute_counts": defaultdict(lambda: {k: Counter() for k in ATTRIBUTE_KEYS}),
     }
 
-def parse_filename_grid(fname: str) -> tuple[int, int, str, str]:
+def parse_filename(fname: str) -> tuple[str, str]:
+    """Parse patient id and diagnosis from 100X or 40X-style filenames."""
     stem = os.path.splitext(os.path.basename(fname))[0]
     parts = stem.split("_")
-    if len(parts) < 5:
+    if len(parts) < 4:
         raise ValueError(f"Filename {fname} does not conform to expected LLD structure.")
-    
-    pid = parts[0]
-    
-    # DEFENSIVE FIX: Sanitizes stray backticks, symbols, or formatting noise from digits
-    clean_grid_x = "".join(filter(str.isdigit, parts[1]))
-    clean_grid_y = "".join(filter(str.isdigit, parts[2]))
-    
-    if not clean_grid_x or not clean_grid_y:
-        raise ValueError(f"Unable to parse coordinates from raw string segments: {parts[1]} or {parts[2]}")
-
-    grid_x = int(clean_grid_x)
-    grid_y = int(clean_grid_y)
-    dx = parts[-1]
-    
-    return grid_x, grid_y, pid, dx
+    return parts[0], parts[-1]
 
 # ---------------------------------------------------------------------------
 # Pure AttriDet Ingestion Engine (JSON Double-Loading Removed)
@@ -178,11 +124,10 @@ def ingest_yolo_attribute_dir(stores: dict[str, dict], label_dir: str) -> None:
         return
 
     paths = sorted(glob.glob(os.path.join(label_dir, "*.txt")))
-    img_w, img_h = DEFAULT_IMAGE_WH
-    
+    breakpoint()
     for path in paths:
         fname = os.path.basename(path)
-        grid_x, grid_y, pid, dx = parse_filename_grid(fname)
+        pid, dx = parse_filename(fname)
         stem = os.path.splitext(fname)[0]
         
         if pid not in stores:
@@ -190,6 +135,7 @@ def ingest_yolo_attribute_dir(stores: dict[str, dict], label_dir: str) -> None:
         if stores[pid]["metadata_filename_diagnosis"] is None:
             stores[pid]["metadata_filename_diagnosis"] = dx
         stores[pid]["filenames"].add(stem)
+        breakpoint()
 
         with open(path) as f:
             for row in f:
@@ -199,42 +145,25 @@ def ingest_yolo_attribute_dir(stores: dict[str, dict], label_dir: str) -> None:
                     continue
                     
                 try:
-                    cls, cx, cy, w, h = int(parts[0]), float(parts[1]), float(parts[2]), float(parts[3]), float(parts[4])
+                    cls = int(parts[0])
                 except ValueError:
                     continue
-                    
-                x1 = (cx - w / 2.0) * img_w
-                y1 = (cy - h / 2.0) * img_h
-                x2 = (cx + w / 2.0) * img_w
-                y2 = (cy + h / 2.0) * img_h
                 
                 ct = YOLO_CLASS_NAMES.get(cls, "none")
-                
-                attrs = {}
+                stores[pid]["cell_counts"][ct] += 1
+                breakpoint()
+
                 for idx, attr_key in enumerate(ATTRIBUTE_KEYS):
                     try:
-                        attrs[attr_key] = int(parts[5 + idx])
+                        code = int(parts[5 + idx])
                     except (ValueError, IndexError):
-                        attrs[attr_key] = N_A_CODE
-                            
-                global_box = GlobalBoundedBox(x1, y1, x2, y2, ct, attrs=attrs, 
-                                              grid_x=grid_x, grid_y=grid_y)
-                stores[pid]["raw_canvas_box_pool"].append(global_box)
+                        code = N_A_CODE
+                    if code == N_A_CODE:
+                        continue
+                    label = ATTRIBUTE_VALUE_MAPS[attr_key].get(code, f"code_{code}")
+                    stores[pid]["attribute_counts"][attr_key][label] += 1
+                    stores[pid]["celltype_attribute_counts"][ct][attr_key][label] += 1
 
-def run_global_canvas_nms(boxes: list[GlobalBoundedBox]) -> list[GlobalBoundedBox]:
-    """Collapses duplicate boxes across overlapping boundaries based on unified canvas space."""
-    if not boxes:
-        return []
-    sorted_boxes = sorted(boxes, key=lambda b: b.global_area, reverse=True)
-    retained = []
-    
-    while sorted_boxes:
-        current = sorted_boxes.pop(0)
-        retained.append(current)
-        # Discards any border box sharing a high global IoU, completely independent of lineage class
-        sorted_boxes = [b for b in sorted_boxes if current.compute_global_iou(b) < IOU_MATCH_THRESHOLD]
-        
-    return retained
 def _build_differential_alerts(counts, pct_clinical, group_percentages,
                                blast_pool_pct, cohort_ambiguous) -> list[dict]:
     alerts = []
@@ -291,23 +220,10 @@ def load_patient_data() -> dict:
     
     for domain in DOMAINS:
         paths = _domain_paths(domain)
+        breakpoint()
         for split in SPLITS:
-            # FIX: Only loading 12-column AttriDet files to prevent double-counting truth sources
             ingest_yolo_attribute_dir(stores, paths["yolo_attr"][split])
-            
-    for pid, s in stores.items():
-        unique_canvas_cells = run_global_canvas_nms(s["raw_canvas_box_pool"])
-        
-        for box in unique_canvas_cells:
-            ct = box.cell_type
-            s["cell_counts"][ct] += 1
-            for attr_key, code in box.attrs.items():
-                if code == N_A_CODE:
-                    continue
-                label = ATTRIBUTE_VALUE_MAPS[attr_key].get(code, f"code_{code}")
-                s["attribute_counts"][attr_key][label] += 1
-                s["celltype_attribute_counts"][ct][attr_key][label] += 1
-                
+
     return _finalise_stores(stores)
 
 def _finalise_stores(stores: dict[str, dict]) -> dict:
@@ -433,7 +349,7 @@ def _build_report_ready(rec: dict, pct_clinical: dict) -> dict:
         "n_cells_in_cohort": n_cohort,
         "low_cell_count_warning": n_wbc < LOW_CELL_COUNT_THRESHOLD,
         "sparse_annotation_skew_warning": is_sparse_skew_suspected,
-        "global_canvas_stitching_active": True,
+        "global_canvas_stitching_active": False,
         "cohort_selection_ambiguous": cohort_ambiguous,
         "differential_alerts": alerts,
         "requires_review": any(a["severity"] == "review" for a in alerts),
@@ -497,6 +413,6 @@ if __name__ == "__main__":
         with open(OUT_PATH, "w") as out_f:
             json.dump(final_percentages, out_f, indent=2)
         write_csv(final_percentages, OUT_CSV_PATH)
-        print(f"[SUCCESS] Pipeline completed safely. Global Canvas Stitched NMS active.")
+        print(f"[SUCCESS] Pipeline completed safely. Direct aggregation (no overlap deduplication).")
     except Exception as e:
         print(f"[FATAL PIPELINE CRASH] Execution halted: {str(e)}")

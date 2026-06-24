@@ -44,7 +44,10 @@ CLINICAL_GROUPS: dict[str, tuple[str, ...]] = {
     "monocytic": ("monocyte",),
 }
 
-FEATURES_EXCLUDED = {"qc__global_canvas_stitching_active"}
+FEATURES_EXCLUDED = {
+    "qc__global_canvas_stitching_active",
+    "qc__overlap_deduplication_active",
+}
 
 LLD_DIAGNOSIS_LABELS: frozenset[str] = frozenset({"ALL", "AML", "APML", "CLL", "CML"})
 
