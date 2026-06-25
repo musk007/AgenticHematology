@@ -1,38 +1,72 @@
 """
 orchestrator.py
 ===============
-The agentic orchestrator. This is the component the user (or an upstream
-service) talks to. It:
+The agentic orchestrator. This is the entry point of the pipeline and the component the user (or an upstream
+service) talks to. 
 
-1. Receives a request containing images and/or a free-text instruction.
-2. Parses the instruction to decide WHAT the user wants (intent routing).
-3. Dispatches to the appropriate pipeline stages in the right order.
-4. Collects outputs and returns a structured response.
+It is responsible for coordinating the workflow while deligating all domain-specific reasoning to specialized 
+agents. Its responsibilities are:
+
+1. Receives a request containing images, structured findings and /or free 
+text instructions.
+2. Determine the user's intent and generate an execution plan using either
+a rule-based router or an LLM-based orchestration agent
+3. Execute the selected sequence of pipeline tools while maintaining a shared 
+"PipelineState"
+4. Collects outputs, performs optional validation and return a structured
+response describing both the execution plan and its results.
 
 Design notes
 ------------
-The orchestrator is deliberately a thin *router*, not a monolith. It owns
-no clinical logic; it only decides which agents to call and in what order,
-then threads the shared `PipelineState` through them. The heavy lifting
-stays in the specialised agents (detection, aggregation, classification,
-reporting, validation).
+The orchestrator is deliberately lightweight, with no hematologic or diagnostic
+logic itself.
 
-Intent routing has two modes:
-- `RuleBasedRouter` (default): keyword/heuristic routing over the text
-  instruction. Deterministic, no API cost.
-- `LLMRouter` (optional): uses an LLM to classify the instruction into one
-  of the known intents when phrasing is ambiguous. Falls back to the rule
-  router if the LLM is unavailable or returns something unrecognised.
+Routing can operate in two modes:
 
-Supported intents:
-- FULL_REPORT       : detect → aggregate → classify → report → validate
-- DETECT_ONLY       : detect → aggregate (return structured findings only)
-- CLASSIFY_ONLY     : detect → aggregate → classify (no narrative report)
-- REPORT_FROM_JSON  : skip detection; caller supplies precomputed findings
-- EXPLAIN           : answer a free-text question about an existing result
+- LLMRouter (default)
+    A Qwen-based orchestration agent that analyzes the user's request,
+    determines the intent, plans the sequence of pipeline tools, validates
+    the execution plan, and dispatches the workflow. If the generated plan
+    is invalid or the LLM is unavailable, routing automatically falls back
+    to the rule-based router.
 
-The orchestrator returns an `OrchestratorResponse` describing what was run,
-the resulting state, and any routing rationale (for auditability).
+- RuleBasedRouter (fallback)
+    A deterministic keyword-based router used as a lightweight baseline,
+    for debugging, or whenever agentic routing is disabled.
+
+Supported intents
+-----------------
+FULL_REPORT
+    Execute the complete diagnostic workflow, including detection,
+    aggregation, leukemia classification, agentic reflection, report
+    generation, and report validation.
+
+DETECT_ONLY
+    Detect and aggregate white blood cells without downstream diagnosis or
+    report generation.
+
+CLASSIFY_ONLY
+    Detect, aggregate, and classify the leukemia subtype without producing
+    a narrative report.
+
+REPORT_FROM_JSON
+    Skip image analysis and generate a diagnostic report from previously
+    computed aggregated findings.
+
+EXPLAIN
+    Answer natural-language questions about an existing case using the
+    structured findings and generated report as grounded context.
+
+Outputs
+-------
+The orchestrator returns an `OrchestratorResponse` containing:
+
+- the selected intent,
+- the execution plan (tool sequence),
+- routing rationale,
+- the final `PipelineState`,
+- optional explanation text (for EXPLAIN),
+- validation and reflection metadata for auditability.
 """
 
 from __future__ import annotations
@@ -63,7 +97,15 @@ from .validators import (
     TemplateJsonConsistencyValidator,
 )
 
-
+VALID_TOOLS = {
+                "detect",
+                "aggregate",
+                "classify",
+                "reflect",
+                "report",
+                "validate",
+                "explain",
+            }
 # ---------------------------------------------------------------------------
 # Intents
 # ---------------------------------------------------------------------------
@@ -75,6 +117,11 @@ class Intent(str, Enum):
     REPORT_FROM_JSON = "REPORT_FROM_JSON"
     EXPLAIN = "EXPLAIN"
 
+@dataclass
+class RouteDecision:
+    intent: Intent
+    tool_sequence: list[str]
+    rationale: str
 
 @dataclass
 class OrchestratorRequest:
@@ -93,6 +140,7 @@ class OrchestratorResponse:
     case_id: str
     intent: Intent
     routing_rationale: str
+    tool_sequence: list[str]
     state: PipelineState
     answer: str | None = None                # for EXPLAIN intent
 
@@ -101,6 +149,7 @@ class OrchestratorResponse:
             "case_id": self.case_id,
             "intent": self.intent.value,
             "routing_rationale": self.routing_rationale,
+            "tool_sequence": self.tool_sequence,
             "report_markdown": (self.state.report.markdown if self.state.report else None),
             "leukemia_class": (
                 self.state.classification.predicted_class
@@ -126,8 +175,18 @@ class OrchestratorResponse:
 # Intent routers
 # ---------------------------------------------------------------------------
 
+def tools_for_intent(intent: Intent) -> list[str]:
+    return {
+        Intent.FULL_REPORT: ["detect", "aggregate", "classify", "reflect", "report", "validate"],
+        Intent.DETECT_ONLY: ["detect", "aggregate"],
+        Intent.CLASSIFY_ONLY: ["detect", "aggregate", "classify"],
+        Intent.REPORT_FROM_JSON: ["classify", "reflect", "report", "validate"],
+        Intent.EXPLAIN: ["explain"],
+    }[intent]
+
+
 class BaseRouter(ABC := type("ABC", (), {})):  # lightweight ABC
-    def route(self, request: OrchestratorRequest) -> tuple[Intent, str]:
+    def route(self, request: OrchestratorRequest) -> RouteDecision:
         raise NotImplementedError
 
 
@@ -149,27 +208,54 @@ class RuleBasedRouter:
         # FULL_REPORT — anything mentioning a report.
         (re.compile(r"\breport\b", re.I), Intent.FULL_REPORT),
     ]
+    
 
-    def route(self, request: OrchestratorRequest) -> tuple[Intent, str]:
+    def route(self, request: OrchestratorRequest) -> RouteDecision:
         if request.forced_intent:
-            return request.forced_intent, "forced by caller"
+            intent = request.forced_intent
+            return RouteDecision(
+                intent=intent,
+                tool_sequence=tools_for_intent(intent),
+                rationale="forced by caller",
+            )
 
         if request.precomputed_findings is not None and not request.image_paths:
-            return Intent.REPORT_FROM_JSON, "precomputed findings supplied, no images"
+            intent = Intent.REPORT_FROM_JSON
+            return RouteDecision(
+                intent=intent,
+                tool_sequence=tools_for_intent(intent),
+                rationale="precomputed findings supplied, no images",
+            )
 
         text = (request.instruction or "").strip()
         if not text:
-            # No instruction → default to a full report if we have images.
             if request.image_paths:
-                return Intent.FULL_REPORT, "no instruction; images present → full report"
-            return Intent.EXPLAIN, "no instruction and no images"
+                intent = Intent.FULL_REPORT
+                rationale = "no instruction; images present → full report"
+            else:
+                intent = Intent.EXPLAIN
+                rationale = "no instruction and no images"
+
+            return RouteDecision(
+                intent=intent,
+                tool_sequence=tools_for_intent(intent),
+                rationale=rationale,
+            )
 
         for pattern, intent in self._PATTERNS:
             if pattern.search(text):
-                return intent, f"matched rule {pattern.pattern!r}"
+                return RouteDecision(
+                    intent=intent,
+                    tool_sequence=tools_for_intent(intent),
+                    rationale=f"matched rule {pattern.pattern!r}",
+                )
 
-        # Default.
-        return Intent.FULL_REPORT, "no specific rule matched; defaulting to full report"
+        intent = Intent.FULL_REPORT
+        return RouteDecision(
+            intent=intent,
+            tool_sequence=tools_for_intent(intent),
+            rationale="no specific rule matched; defaulting to full report",
+        )
 
 
 class LLMRouter:
@@ -184,55 +270,128 @@ class LLMRouter:
         """
         self.llm_complete = llm_complete
         self.fallback = fallback or RuleBasedRouter()
+        
 
-    _SYSTEM = (
-        "You are an intent classifier for a hematology AI pipeline. Read the "
-        "user's instruction and choose exactly ONE label from this list:\n\n"
-        "- FULL_REPORT: Generate a complete diagnostic report (detection + "
-        "classification + narrative report). This is the DEFAULT for any "
-        "general diagnosis or report request, e.g. 'diagnose this case', "
-        "'analyze this smear', 'generate a report', or any instruction that "
-        "doesn't explicitly restrict scope.\n"
-        "- DETECT_ONLY: Detect/count/localize cells ONLY, with NO diagnosis "
-        "or report. Use ONLY if the instruction explicitly says 'only' or "
-        "'just' detect/count/localize cells.\n"
-        "- CLASSIFY_ONLY: Return ONLY the leukemia subtype/class, with NO "
-        "narrative report. Use ONLY if the instruction explicitly says "
-        "'only' or 'just' classify/diagnose/subtype (e.g. 'just tell me the "
-        "leukemia type').\n"
-        "- REPORT_FROM_JSON: Generate a report from precomputed findings "
-        "JSON, with no new image analysis.\n"
-        "- EXPLAIN: Answer a question about an existing result, e.g. 'why', "
-        "'explain', 'justify', 'what does X mean'.\n\n"
-        "If the instruction does not contain the word 'only' or 'just', "
-        "do NOT choose DETECT_ONLY or CLASSIFY_ONLY — choose FULL_REPORT "
-        "instead.\n\n"
-        "Reply with ONLY the label, nothing else."
-    )
+    _SYSTEM = """
+        You are the orchestration agent for an agentic hematology system.
 
-    def route(self, request: OrchestratorRequest) -> tuple[Intent, str]:
+        Your job is to decide:
+
+        1. The user's intent.
+        2. The sequence of tools that should be executed.
+
+        Available tools:
+        - detect
+        - aggregate
+        - classify
+        - reflect
+        - report
+        - validate
+        - explain
+
+        Rules:
+        - Only use the listed tools.
+        - Preserve logical ordering.
+        - Use explain only for question answering.
+        - If precomputed findings are supplied, do not use detect or aggregate.
+        - Return ONLY valid JSON.
+
+        Example:
+
+        {
+        "intent": "FULL_REPORT",
+        "tool_sequence": [
+            "detect",
+            "aggregate",
+            "classify",
+            "reflect",
+            "report",
+            "validate"
+        ],
+        "rationale": "The user requested a complete diagnosis."
+        }
+        """
+
+    def route(self, request: OrchestratorRequest) -> RouteDecision:
         if request.forced_intent:
-            return request.forced_intent, "forced by caller"
+            return RouteDecision(
+                intent=request.forced_intent,
+                tool_sequence=tools_for_intent(request.forced_intent),
+                rationale="forced by caller",
+            )
+        if request.precomputed_findings is not None and not request.image_paths:
+            intent = Intent.REPORT_FROM_JSON
+            return RouteDecision(
+                intent=intent,
+                tool_sequence=tools_for_intent(intent),
+                rationale="precomputed findings supplied, no images",
+            )
+
         text = (request.instruction or "").strip()
         if not text:
             return self.fallback.route(request)
 
         try:
-            print("Running LLM intent router...", flush=True)
-            raw = self.llm_complete(self._SYSTEM, text).strip().upper()
-            print(f"LLM intent router raw output: {raw!r}", flush=True)
-            print("LLM intent router complete.", flush=True)
-            for intent in Intent:
-                if intent.value in raw:
-                    return intent, f"LLM router → {intent.value}"
+            print("Running LLM tool router...", flush=True)
+            raw = self.llm_complete(self._SYSTEM, text).strip()
+            match = re.search(r"\{.*\}", raw, re.DOTALL)
+            if not match:
+                raise ValueError(f"No JSON object found in router output: {raw}")
+            payload = json.loads(match.group(0))
+
+            intent = Intent(payload["intent"])
+            tools = payload["tool_sequence"]
+            rationale = payload.get("rationale", "LLM router")
+            # ---------- Validate tools ----------
+
+            if not isinstance(tools, list):
+                raise ValueError("tool_sequence must be a list.")
+
+            if not all(tool in VALID_TOOLS for tool in tools):
+                raise ValueError(f"Unknown tool in plan: {tools}")
+
+            # ---------- Validate ordering ----------
+
+            if (
+                "aggregate" in tools
+                and "detect" not in tools
+                and request.precomputed_findings is None
+            ):
+                raise ValueError("Aggregation requires detection or precomputed findings.")
+
+            if (
+                "classify" in tools
+                and "aggregate" not in tools
+                and request.precomputed_findings is None
+            ):
+                raise ValueError(
+                    "Classification requires aggregation unless precomputed findings are supplied."
+                )
+
+            if "report" in tools and "classify" not in tools:
+                raise ValueError("Report generation requires classification.")
+
+            if "validate" in tools and "report" not in tools:
+                raise ValueError("Validation requires report generation.")
+
+            if "explain" in tools and len(tools) > 1:
+                raise ValueError("EXPLAIN should not be combined with other tools.")
+
+            # ------------------------------------------------
+
+            return RouteDecision(
+                intent=intent,
+                tool_sequence=tools,
+                rationale=rationale,
+            )
+
         except Exception as e:
             print(
-                f"LLM intent router failed ({type(e).__name__}: {e}); "
+                f"LLM tool router failed ({type(e).__name__}: {e}); "
                 "falling back to rule router.",
                 flush=True,
             )
-            pass
-        return self.fallback.route(request)
+            return self.fallback.route(request)
 
 
 # ---------------------------------------------------------------------------
@@ -290,7 +449,7 @@ class Orchestrator:
     # ------------------------------------------------------------------
 
     def handle(self, request: OrchestratorRequest) -> OrchestratorResponse:
-        intent, rationale = self.router.route(request)
+        decision = self.router.route(request)
         state = PipelineState(
             case_id=request.case_id,
             image_paths=request.image_paths,
@@ -305,22 +464,16 @@ class Orchestrator:
             )
 
         answer = None
-        if intent == Intent.DETECT_ONLY:
-            state = self._run_detect_aggregate(state)
-        elif intent == Intent.CLASSIFY_ONLY:
-            state = self._run_detect_aggregate(state)
-            state = classify_node(state, self.classifier)
-        elif intent == Intent.REPORT_FROM_JSON:
-            state = self._run_report_from_findings(state)
-        elif intent == Intent.EXPLAIN:
+        if decision.intent == Intent.EXPLAIN:
             answer = self._run_explain(state, request)
-        else:  # FULL_REPORT
-            state = self._run_full(state)
+        else:
+            state = self._run_tools(state, decision.tool_sequence, request)
 
         return OrchestratorResponse(
             case_id=request.case_id,
-            intent=intent,
-            routing_rationale=rationale,
+            intent=decision.intent,
+            routing_rationale=decision.rationale,
+            tool_sequence=decision.tool_sequence,
             state=state,
             answer=answer,
         )
@@ -329,58 +482,44 @@ class Orchestrator:
     # Intent handlers
     # ------------------------------------------------------------------
 
-    def _run_detect_aggregate(self, state: PipelineState) -> PipelineState:
-        state = detect_node(state, self.detector)
-        state = aggregate_node(state)
-        return state
 
-    def _run_full(self, state: PipelineState) -> PipelineState:
-        state = detect_node(state, self.detector)
-        state = aggregate_node(state)
-        state = classify_node(state, self.classifier)
-        if self.enable_reflect:
-            state = reflect_node(
-                state,
-                agent=self.reflection_agent,
-                classifier=self.classifier,
-                max_iterations=self.max_reflect_iterations,
-            )
-        state = report_node(state, self.report_generator)
-        if self.enable_validate:
-            state = validate_node(
-                state,
-                consistency_validator=self._consistency,
-                llm_output_validator=self._llm_guard,
-                template_json_validator=self._template_json,
-                numerical_hallucination_validator=self._numerical_hallucination,
-                failure_policy=self.validate_failure_policy,
-                report_generator=self.report_generator,
-            )
-        return state
 
-    def _run_report_from_findings(self, state: PipelineState) -> PipelineState:
-        if state.findings is None:
-            state.errors.append("REPORT_FROM_JSON: no findings supplied")
-            return state
-        state = classify_node(state, self.classifier)
-        if self.enable_reflect:
-            state = reflect_node(
-                state,
-                agent=self.reflection_agent,
-                classifier=self.classifier,
-                max_iterations=self.max_reflect_iterations,
-            )
-        state = report_node(state, self.report_generator)
-        if self.enable_validate:
-            state = validate_node(
-                state,
-                consistency_validator=self._consistency,
-                llm_output_validator=self._llm_guard,
-                template_json_validator=self._template_json,
-                numerical_hallucination_validator=self._numerical_hallucination,
-                failure_policy=self.validate_failure_policy,
-                report_generator=self.report_generator,
-            )
+    def _run_tools(self, state, tools, request):
+
+        for tool in tools:
+            if tool == "detect":
+                state = detect_node(state, self.detector)
+
+            elif tool == "aggregate":
+                state = aggregate_node(state)
+
+            elif tool == "classify":
+                state = classify_node(state, self.classifier)
+
+            elif tool == "reflect":
+                if self.enable_reflect:
+                    state = reflect_node(
+                        state,
+                        agent=self.reflection_agent,
+                        classifier=self.classifier,
+                        max_iterations=self.max_reflect_iterations,
+                    )
+
+            elif tool == "report":
+                state = report_node(state, self.report_generator)
+
+            elif tool == "validate":
+                if self.enable_validate:
+                    state = validate_node(
+                        state,
+                        consistency_validator=self._consistency,
+                        llm_output_validator=self._llm_guard,
+                        template_json_validator=self._template_json,
+                        numerical_hallucination_validator=self._numerical_hallucination,
+                        failure_policy=self.validate_failure_policy,
+                        report_generator=self.report_generator,
+                    )
+
         return state
 
     def _run_explain(
@@ -391,7 +530,11 @@ class Orchestrator:
         pipeline first so the LLM has grounded context; then answer.
         """
         if state.findings is None and state.image_paths:
-            state = self._run_full(state)
+            state = self._run_tools(
+                state,
+                ["detect", "aggregate", "classify", "reflect", "report", "validate"],
+                request,
+            )
 
         if self.llm_explain is None:
             return (

@@ -58,7 +58,12 @@ except ModuleNotFoundError:
         sys.path.insert(0, str(repo_parent))
     from agentic_hematology.detection_agent import StubDetector
     from agentic_hematology.leukemia_classifier import HybridClassifier, LearnedClassifier
-    from agentic_hematology.orchestrator import Orchestrator, OrchestratorRequest, RuleBasedRouter
+    from agentic_hematology.orchestrator import (
+        Orchestrator,
+        OrchestratorRequest,
+        RuleBasedRouter,
+        LLMRouter,
+    )
     from agentic_hematology.report_generator import (
         ClaudeReportGenerator,
         LocalLLMReportGenerator,
@@ -432,7 +437,7 @@ def _run_one(
     )
     resp = orch.handle(req)
 
-    print(f"Intent: {resp.intent.value}  ({resp.routing_rationale})")
+    print(f"Execution plan: {' → '.join(resp.tool_sequence)}")
     if resp.state.agent_actions:
         print("Agent reflection trace:")
         for a in resp.state.agent_actions:
@@ -573,7 +578,12 @@ def main() -> int:
         print("Agentic mode enabled: initializing LLM router and reflection agent.", flush=True)
         try:
             from agentic_hematology.agent_controller import QwenLLMClient, ReflectionAgent
-            from agentic_hematology.orchestrator import LLMRouter
+            from agentic_hematology.orchestrator import (
+                Orchestrator,
+                OrchestratorRequest,
+                RuleBasedRouter,
+                LLMRouter,
+            )
         except ModuleNotFoundError:
             from leukemia_pipeline.agent_controller import QwenLLMClient, ReflectionAgent  # type: ignore
             from leukemia_pipeline.orchestrator import LLMRouter  # type: ignore

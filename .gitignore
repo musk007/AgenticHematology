@@ -2,3 +2,5 @@
 agentic_hematology/wbc_unified/cv/runs/
 *.pt
 agentic_hematology/wbc_unified/cv/runs/
+agentic_hematology/wbc_unified/cv/generated/det_dataset
+agentic_hematology/wbc_unified/cv/runs
