@@ -1,20 +1,20 @@
 # Hematology Report — Case 32
 
-**Specimen:** Peripheral blood smear, 48 fields of view, 221 of 405 annotated objects classified as informative WBCs (184 artefacts excluded).
+**Specimen:** Peripheral blood smear, 48 fields of view, 225 of 413 annotated objects classified as informative WBCs (188 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Atypical lymphocytes | 98.2% |
+| Atypical lymphocytes | 98.7% |
 | Neutrophils | 0.9% |
-| Eosinophils | 0.9% |
+| Eosinophils | 0.4% |
 
 **Diagnostic flags:** atypical lymphocytes present.
 
 **Impression:** Chronic Lymphocytic Leukemia / Small Lymphocytic Lymphoma (CLL/SLL, suspected).
 
-The smear is dominated by atypical mature lymphocytes (98.2% of informative WBCs) with coarse chromatin and inconspicuous nucleoli, and no significant blast population.
+The smear is dominated by atypical mature lymphocytes (98.7% of informative WBCs) with coarse chromatin and inconspicuous nucleoli, and no significant blast population.
 
 **Differential considerations:**
 - Mantle cell lymphoma in leukemic phase (excluded by CD5+/CD23+/cyclin D1- profile).
@@ -29,7 +29,7 @@ The smear is dominated by atypical mature lymphocytes (98.2% of informative WBCs
 - IGHV mutation status and TP53 sequencing (prognostic and predictive).
 - Beta-2 microglobulin and standard staging workup (Rai/Binet).
 
-**QC:** 48 FOVs; 221/405 cells classifiable (45.4% artefact); cohort cell count = 217; global canvas stitching active.
+**QC:** 48 FOVs; 225/413 cells classifiable (45.5% artefact); cohort cell count = 222; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

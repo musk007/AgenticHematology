@@ -1,6 +1,6 @@
 # Hematology Report — Case 8
 
-**Specimen:** Peripheral blood smear, 55 fields of view, 92 of 116 annotated objects classified as informative WBCs (24 artefacts excluded).
+**Specimen:** Peripheral blood smear, 55 fields of view, 92 of 115 annotated objects classified as informative WBCs (23 artefacts excluded).
 
 **Differential (clinical denominator):**
 
@@ -12,7 +12,7 @@
 | Monocytes | 2.2% |
 | Myelocytes | 1.1% |
 
-**Cohort morphology (n = 74 lymphoblasts):** predominantly medium cells (81.1%) with scanty (81.1%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (75.7%); nuclei show coarse chromatin (96.0%), irregular contours (100.0%), and inconspicuous nucleoli (94.6%).
+**Cohort morphology (n = 74 lymphoblasts):** predominantly medium cells (79.7%) with scanty (79.7%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (74.3%); nuclei show coarse chromatin (94.6%), irregular contours (100.0%), and inconspicuous nucleoli (94.6%).
 
 **Diagnostic flags:** blasts present; blast threshold met.
 
@@ -32,7 +32,7 @@ Lymphoblasts comprise 80.4% of WBCs, exceeding the 20% blast threshold for acute
 - Molecular studies including BCR::ABL1-like signature where available.
 - CSF examination to assess CNS involvement.
 
-**QC:** 55 FOVs; 92/116 cells classifiable (20.7% artefact); cohort cell count = 74; global canvas stitching active.
+**QC:** 55 FOVs; 92/115 cells classifiable (20.0% artefact); cohort cell count = 74; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

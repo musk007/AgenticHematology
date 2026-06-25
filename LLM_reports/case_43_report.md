@@ -1,26 +1,26 @@
 # Hematology Report — Case 43
 
-**Specimen:** Peripheral blood smear, 61 fields of view, 113 of 118 annotated objects classified as informative WBCs (5 artefacts excluded).
+**Specimen:** Peripheral blood smear, 62 fields of view, 118 of 124 annotated objects classified as informative WBCs (6 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Myeloblasts | 80.5% |
-| Neutrophils | 7.1% |
-| Lymphocytes | 5.3% |
-| Promonocyte | 4.4% |
-| Monocytes | 2.6% |
+| Myeloblasts | 81.4% |
+| Neutrophils | 6.8% |
+| Lymphocytes | 5.1% |
+| Promonocyte | 4.2% |
+| Monocytes | 2.5% |
 
-**Cohort morphology (n = 91 myeloblasts):** predominantly medium cells (97.8%) with abundant (85.7%), moderately basophilic (97.8%) cytoplasm and absent cytoplasmic vacuolation (98.9%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (100.0%).
+**Cohort morphology (n = 96 myeloblasts):** predominantly medium cells (96.9%) with abundant (85.4%), moderately basophilic (97.9%) cytoplasm and absent cytoplasmic vacuolation (99.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (100.0%).
 
-**Morphologic interpretation:** The myeloblast cohort is morphologically cohesive, dominated by medium-sized blasts with open chromatin, irregular nuclear contours, and prominent nucleoli. Cytoplasm is generally abundant and moderately basophilic, with vacuolation largely absent, supporting an immature myeloid blast pattern. No borderline attribute dominance or clinically meaningful morphologic heterogeneity is evident within the reported blast cohort.
+**Morphologic interpretation:** The blast cohort is morphologically cohesive, dominated by medium-sized blasts with open chromatin, irregular nuclear contours, and prominent nucleoli. Cytoplasm is generally abundant and moderately basophilic, with absent vacuolation in nearly all blasts; cytoplasmic volume is the only attribute showing appreciable but still limited heterogeneity relative to the other features. The uniformly open chromatin and prominent nucleoli support an immature blast population, while the lack of meaningful size or nuclear-feature heterogeneity argues against a mixed morphologic pattern within the assessed cohort.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 
 **Impression:** Acute Myeloid Leukemia (AML).
 
-Myeloblasts comprise 80.5% of WBCs, exceeding the 20% blast threshold for acute leukemia.
+Myeloblasts comprise 81.4% of WBCs, exceeding the 20% blast threshold for acute leukemia.
 
 **Differential considerations:**
 - AML with recurrent genetic abnormalities (per WHO/ICC).
@@ -33,7 +33,7 @@ Myeloblasts comprise 80.5% of WBCs, exceeding the 20% blast threshold for acute 
 - Cytogenetics and FISH for recurrent AML abnormalities.
 - Molecular panel: NPM1, FLT3-ITD/TKD, CEBPA, RUNX1, TP53, and AML fusion screen.
 
-**QC:** 61 FOVs; 113/118 cells classifiable (4.2% artefact); cohort cell count = 91; global canvas stitching active.
+**QC:** 62 FOVs; 118/124 cells classifiable (4.8% artefact); cohort cell count = 96; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

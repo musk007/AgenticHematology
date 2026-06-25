@@ -1,24 +1,24 @@
 # Hematology Report — Case 3
 
-**Specimen:** Peripheral blood smear, 60 fields of view, 221 of 370 annotated objects classified as informative WBCs (149 artefacts excluded).
+**Specimen:** Peripheral blood smear, 60 fields of view, 222 of 369 annotated objects classified as informative WBCs (147 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Lymphoblasts | 95.5% |
-| Lymphocytes | 3.2% |
+| Lymphoblasts | 95.0% |
+| Lymphocytes | 3.6% |
 | Neutrophils | 1.4% |
 
-**Cohort morphology (n = 211 lymphoblasts):** predominantly medium cells (85.3%) with scanty (69.2%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (94.8%), irregular contours (98.1%), and inconspicuous nucleoli (100.0%).
+**Cohort morphology (n = 211 lymphoblasts):** predominantly medium cells (86.3%) with scanty (67.8%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (98.1%), irregular contours (98.1%), and inconspicuous nucleoli (100.0%).
 
-**Morphologic interpretation:** The blast population is relatively cohesive, with medium size, open chromatin, inconspicuous nucleoli, slight cytoplasmic basophilia, and absent vacuolation all showing strong dominance. Nuclear contour irregularity is essentially uniform (98.1%), making irregular nuclear shape a defining feature of this cohort rather than a minor subset. Cytoplasmic quantity is the least one-sided attribute: scant cytoplasm predominates at 69.2%, but this is not as uniform as the nuclear and chromatin features, indicating some cytoplasmic heterogeneity within an otherwise consistent lymphoblast morphology. Overall, the pattern is morphologically compatible with a high-burden lymphoblastic blast process and does not show internal inconsistency with the stated impression.
+**Morphologic interpretation:** The lymphoblast cohort is morphologically cohesive, with predominantly medium size, open chromatin, irregular nuclear contours, inconspicuous nucleoli, slight cytoplasmic basophilia, and absent vacuolation. Cytoplasmic amount is the least one-sided attribute, with scant cytoplasm present in 67.8%, so this feature should be regarded as predominant but not uniform. The absence of prominent nucleoli and cytoplasmic vacuolation, together with the high uniformity of open chromatin and irregular nuclear contours, supports a lymphoid blast morphology without an internally discordant pattern.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 
 **Impression:** Acute Lymphoblastic Leukemia (ALL).
 
-Lymphoblasts comprise 95.5% of WBCs, exceeding the 20% blast threshold for acute leukemia.
+Lymphoblasts comprise 95.0% of WBCs, exceeding the 20% blast threshold for acute leukemia.
 
 **Differential considerations:**
 - B-lymphoblastic leukemia/lymphoma (most common in adults and children).
@@ -32,7 +32,7 @@ Lymphoblasts comprise 95.5% of WBCs, exceeding the 20% blast threshold for acute
 - Molecular studies including BCR::ABL1-like signature where available.
 - CSF examination to assess CNS involvement.
 
-**QC:** 60 FOVs; 221/370 cells classifiable (40.3% artefact); cohort cell count = 211; global canvas stitching active.
+**QC:** 60 FOVs; 222/369 cells classifiable (39.8% artefact); cohort cell count = 211; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

@@ -1,25 +1,25 @@
 # Hematology Report — Case 40
 
-**Specimen:** Peripheral blood smear, 50 fields of view, 90 of 109 annotated objects classified as informative WBCs (19 artefacts excluded).
+**Specimen:** Peripheral blood smear, 50 fields of view, 91 of 110 annotated objects classified as informative WBCs (19 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Neutrophils | 28.9% |
-| Monocytes | 26.7% |
-| Promonocyte | 17.8% |
-| Lymphocytes | 11.1% |
-| Myeloblasts | 8.9% |
+| Neutrophils | 28.6% |
+| Monocytes | 27.5% |
+| Promonocyte | 17.6% |
+| Lymphocytes | 11.0% |
+| Myeloblasts | 8.8% |
 | Eosinophils | 4.4% |
-| Myelocytes | 1.1% |
 | Metamyelocytes | 1.1% |
+| Myelocytes | 1.1% |
 
 **Diagnostic flags:** blasts present; left shifted myeloid; monocytosis present.
 
 **Impression:** Acute Myeloid Leukemia with monocytic differentiation (suspected).
 
-Monocytic-lineage predominance (promonocytes 17.8%) with circulating blasts (8.9%) is suspicious for a monocytic AML pattern under sparse annotation conditions.
+Monocytic-lineage predominance (promonocytes 17.6%) with circulating blasts (8.8%) is suspicious for a monocytic AML pattern under sparse annotation conditions.
 
 **Differential considerations:**
 - Acute monoblastic/monocytic leukemia (AML-M5).
@@ -31,7 +31,7 @@ Monocytic-lineage predominance (promonocytes 17.8%) with circulating blasts (8.9
 - Bone marrow aspirate and trephine biopsy.
 - Cytogenetics and targeted molecular AML panel.
 
-**QC:** 50 FOVs; 90/109 cells classifiable (17.4% artefact); cohort cell count = 16; global canvas stitching active.
+**QC:** 50 FOVs; 91/110 cells classifiable (17.3% artefact); cohort cell count = 16; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

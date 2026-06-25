@@ -32,7 +32,7 @@ Lymphoblasts comprise 71.4% of WBCs, exceeding the 20% blast threshold for acute
 - Molecular studies including BCR::ABL1-like signature where available.
 - CSF examination to assess CNS involvement.
 
-**QC:** 37 FOVs; 42/44 cells classifiable (4.5% artefact); cohort cell count = 30; global canvas stitching active.
+**QC:** 37 FOVs; 42/44 cells classifiable (4.5% artefact); cohort cell count = 30; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

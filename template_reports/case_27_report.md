@@ -1,25 +1,25 @@
 # Hematology Report — Case 27
 
-**Specimen:** Peripheral blood smear, 59 fields of view, 308 of 367 annotated objects classified as informative WBCs (59 artefacts excluded).
+**Specimen:** Peripheral blood smear, 59 fields of view, 311 of 369 annotated objects classified as informative WBCs (58 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Neutrophils | 62.3% |
-| Myelocytes | 14.3% |
-| Metamyelocytes | 10.1% |
-| Myeloblasts | 6.2% |
+| Neutrophils | 62.1% |
+| Myelocytes | 14.2% |
+| Metamyelocytes | 10.3% |
+| Myeloblasts | 6.4% |
 | Monocytes | 3.2% |
-| Basophils | 2.3% |
+| Basophils | 2.2% |
 | Lymphocytes | 1.0% |
-| Eosinophils | 0.7% |
+| Eosinophils | 0.6% |
 
 **Diagnostic flags:** blasts present; basophilia present; left shifted myeloid.
 
 **Impression:** Chronic Myeloid Leukemia (CML), chronic phase (suspected).
 
-Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 6.2% (below the 20% threshold for blast phase) supports a chronic-phase CML pattern.
+Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 6.4% (below the 20% threshold for blast phase) supports a chronic-phase CML pattern.
 
 **Differential considerations:**
 - Leukemoid reaction or severe infection/sepsis, particularly if basophils are absent.
@@ -34,7 +34,7 @@ Left-shifted granulocytic series with the full spectrum of maturation (myelocyte
 - Baseline transcript level for IS-standardized monitoring during TKI therapy.
 - Sokal / EUTOS / ELTS risk score calculation at diagnosis.
 
-**QC:** 59 FOVs; 308/367 cells classifiable (16.1% artefact); cohort cell count = 19; global canvas stitching active.
+**QC:** 59 FOVs; 311/369 cells classifiable (15.7% artefact); cohort cell count = 20; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

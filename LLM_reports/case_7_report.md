@@ -14,7 +14,7 @@
 
 **Cohort morphology (n = 30 lymphoblasts):** predominantly medium cells (76.7%) with scanty (86.7%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show coarse chromatin (100.0%), irregular contours (86.7%), and inconspicuous nucleoli (76.7%).
 
-**Morphologic interpretation:** The lymphoblast cohort shows a cohesive blast pattern with coarse chromatin, irregular nuclear contours, scant cytoplasm, slight cytoplasmic basophilia, and absent vacuolation. Medium cell size and inconspicuous nucleoli are dominant but not uniform at 76.7%, indicating limited heterogeneity within the blast population. The morphology supports an immature lymphoid blast process and argues against a pattern dominated by prominent nucleolation, abundant basophilic cytoplasm, or cytoplasmic vacuolation.
+**Morphologic interpretation:** The lymphoblast cohort is relatively cohesive, dominated by medium-sized cells with coarse chromatin, irregular nuclear contours, scant cytoplasm, slight cytoplasmic basophilia, and absent vacuolation. The size and nucleolar features are not entirely uniform, with the dominant medium size and inconspicuous nucleoli each leaving a minority outside the dominant pattern, but the overall cohort is not strongly pleomorphic. This morphology is compatible with a lymphoblastic process and shows no internal morphologic inconsistency with the stated blast-rich impression.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 
@@ -34,7 +34,7 @@ Lymphoblasts comprise 71.4% of WBCs, exceeding the 20% blast threshold for acute
 - Molecular studies including BCR::ABL1-like signature where available.
 - CSF examination to assess CNS involvement.
 
-**QC:** 37 FOVs; 42/44 cells classifiable (4.5% artefact); cohort cell count = 30; global canvas stitching active.
+**QC:** 37 FOVs; 42/44 cells classifiable (4.5% artefact); cohort cell count = 30; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

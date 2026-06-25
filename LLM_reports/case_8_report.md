@@ -1,6 +1,6 @@
 # Hematology Report — Case 8
 
-**Specimen:** Peripheral blood smear, 55 fields of view, 92 of 116 annotated objects classified as informative WBCs (24 artefacts excluded).
+**Specimen:** Peripheral blood smear, 55 fields of view, 92 of 115 annotated objects classified as informative WBCs (23 artefacts excluded).
 
 **Differential (clinical denominator):**
 
@@ -12,9 +12,9 @@
 | Monocytes | 2.2% |
 | Myelocytes | 1.1% |
 
-**Cohort morphology (n = 74 lymphoblasts):** predominantly medium cells (81.1%) with scanty (81.1%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (75.7%); nuclei show coarse chromatin (96.0%), irregular contours (100.0%), and inconspicuous nucleoli (94.6%).
+**Cohort morphology (n = 74 lymphoblasts):** predominantly medium cells (79.7%) with scanty (79.7%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (74.3%); nuclei show coarse chromatin (94.6%), irregular contours (100.0%), and inconspicuous nucleoli (94.6%).
 
-**Morphologic interpretation:** The lymphoblast cohort is morphologically cohesive, with medium cell size, coarse nuclear chromatin, irregular nuclear contours, inconspicuous nucleoli, and scant slightly basophilic cytoplasm. The combination of inconspicuous nucleoli and coarse chromatin supports an immature lymphoid blast population rather than a population dominated by cells with open chromatin or prominent nucleoli. Cytoplasmic vacuolation is mostly absent but is the least uniform feature at 75.7%, indicating limited cytoplasmic heterogeneity without changing the overall morphologic pattern.
+**Morphologic interpretation:** The blast population shows a cohesive lymphoblast morphology with medium size, coarse chromatin, inconspicuous nucleoli, uniformly irregular nuclear contours, and slightly basophilic scant cytoplasm. Cell size and cytoplasmic amount are dominant but not absolute at 79.7%, indicating a meaningful minority outside the dominant medium/scanty profile. Cytoplasmic vacuolation is mostly absent at 74.3%, but this is not a strongly one-sided attribute and indicates limited cytoplasmic heterogeneity within the cohort. Overall, the morphology is internally consistent with a lymphoblast-rich acute leukemia pattern without prominent nucleoli or open chromatin as defining features.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 
@@ -34,7 +34,7 @@ Lymphoblasts comprise 80.4% of WBCs, exceeding the 20% blast threshold for acute
 - Molecular studies including BCR::ABL1-like signature where available.
 - CSF examination to assess CNS involvement.
 
-**QC:** 55 FOVs; 92/116 cells classifiable (20.7% artefact); cohort cell count = 74; global canvas stitching active.
+**QC:** 55 FOVs; 92/115 cells classifiable (20.0% artefact); cohort cell count = 74; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

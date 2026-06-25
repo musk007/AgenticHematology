@@ -1,25 +1,25 @@
 # Hematology Report — Case 25
 
-**Specimen:** Peripheral blood smear, 46 fields of view, 163 of 177 annotated objects classified as informative WBCs (14 artefacts excluded).
+**Specimen:** Peripheral blood smear, 46 fields of view, 167 of 180 annotated objects classified as informative WBCs (13 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Myeloblasts | 79.1% |
-| Neutrophils | 11.0% |
-| Myelocytes | 6.8% |
+| Myeloblasts | 78.4% |
+| Neutrophils | 12.0% |
+| Myelocytes | 6.6% |
 | Monocytes | 1.8% |
 | Eosinophils | 0.6% |
 | Abnormal promyelocytes | 0.6% |
 
-**Cohort morphology (n = 129 myeloblasts):** predominantly medium cells (92.2%) with abundant (65.1%), moderately basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (96.9%).
+**Cohort morphology (n = 131 myeloblasts):** predominantly medium cells (90.8%) with abundant (61.8%), moderately basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (100.0%), and prominent nucleoli (97.0%).
 
 **Diagnostic flags:** blasts present; blast threshold met; abnormal promyelocytes present.
 
 **Impression:** Acute Promyelocytic Leukemia (APL / AML-M3, suspected).
 
-Abnormal promyelocytes dominate the smear (79.1% of WBCs) with a blast-equivalent burden of 79.8%, meeting criteria for acute leukemia.
+Abnormal promyelocytes dominate the smear (78.4% of WBCs) with a blast-equivalent burden of 79.0%, meeting criteria for acute leukemia.
 
 **Differential considerations:**
 - AML, not otherwise specified (less likely given promyelocyte morphology).
@@ -31,7 +31,7 @@ Abnormal promyelocytes dominate the smear (79.1% of WBCs) with a blast-equivalen
 - Bone marrow aspirate and biopsy for confirmation.
 - Cytogenetics for t(15;17) and screening for variant RARA translocations.
 
-**QC:** 46 FOVs; 163/177 cells classifiable (7.9% artefact); cohort cell count = 129; global canvas stitching active.
+**QC:** 46 FOVs; 167/180 cells classifiable (7.2% artefact); cohort cell count = 131; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

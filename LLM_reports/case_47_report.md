@@ -1,23 +1,23 @@
 # Hematology Report — Case 47
 
-**Specimen:** Peripheral blood smear, 42 fields of view, 20 of 67 annotated objects classified as informative WBCs (47 artefacts excluded).
+**Specimen:** Peripheral blood smear, 42 fields of view, 22 of 69 annotated objects classified as informative WBCs (47 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Neutrophils | 45.0% |
-| Myeloblasts | 20.0% |
-| Lymphocytes | 20.0% |
-| Eosinophils | 15.0% |
+| Neutrophils | 40.9% |
+| Lymphocytes | 22.7% |
+| Myeloblasts | 22.7% |
+| Eosinophils | 13.6% |
 
-**Morphologic interpretation:** The blast population is characterized by open nuclear chromatin, irregular nuclear contours, prominent nucleoli, abundant cytoplasm, and moderate cytoplasmic basophilia, supporting an immature blast phenotype. Cell size is predominantly medium but not completely uniform, with 75.0% dominance indicating some size heterogeneity within the cohort. Cytoplasmic vacuoles are absent in the evaluated blast cohort, arguing against a vacuolated blast pattern.
+**Morphologic interpretation:** The blast population shows open nuclear chromatin, irregular nuclear contours, prominent nucleoli, and abundant moderately basophilic cytoplasm, with cytoplasmic vacuoles absent. Cell size is only borderline dominated by medium forms at 60.0%, indicating appreciable size heterogeneity rather than a uniform blast cohort. Overall, the morphology is consistent with an immature blast population and is internally concordant with a myeloid blast-like process.
 
 **Diagnostic flags:** blasts present; blast threshold met; eosinophilia present.
 
 **Impression:** Acute Myeloid Leukemia (AML).
 
-Myeloid blast-like burden is 20.0% of informative WBCs (overall blast-equivalent burden 20.0%), supporting AML even when mature myeloid cells are also prominent.
+Myeloid blast-like burden is 22.7% of informative WBCs (overall blast-equivalent burden 22.7%), supporting AML even when mature myeloid cells are also prominent.
 
 **Differential considerations:**
 - AML with recurrent genetic abnormalities.
@@ -30,7 +30,7 @@ Myeloid blast-like burden is 20.0% of informative WBCs (overall blast-equivalent
 - Cytogenetics and FISH for recurrent AML abnormalities.
 - Molecular panel including NPM1, FLT3, CEBPA, RUNX1, and TP53.
 
-**QC:** 42 FOVs; 20/67 cells classifiable (70.1% artefact); cohort cell count = 4; global canvas stitching active.  **WARNINGS:** LOW CELL COUNT.
+**QC:** 42 FOVs; 22/69 cells classifiable (68.1% artefact); cohort cell count = 5; global canvas stitching inactive.  **WARNINGS:** LOW CELL COUNT.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

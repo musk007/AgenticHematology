@@ -1,22 +1,22 @@
 # Hematology Report — Case 32
 
-**Specimen:** Peripheral blood smear, 48 fields of view, 221 of 405 annotated objects classified as informative WBCs (184 artefacts excluded).
+**Specimen:** Peripheral blood smear, 48 fields of view, 225 of 413 annotated objects classified as informative WBCs (188 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Atypical lymphocytes | 98.2% |
+| Atypical lymphocytes | 98.7% |
 | Neutrophils | 0.9% |
-| Eosinophils | 0.9% |
+| Eosinophils | 0.4% |
 
-**Morphologic interpretation:** The atypical lymphocyte cohort is characterized by predominantly medium-sized cells with coarse chromatin, inconspicuous nucleoli, and highly frequent irregular nuclear contours. Cytoplasmic amount is not strongly one-sided: although reported as abundant, the dominance is only 57.6%, indicating a mixed cytoplasmic profile within the cohort. Slight cytoplasmic basophilia and absence of cytoplasmic vacuoles support a mature lymphoid cytologic pattern rather than a blast-rich process. The morphology is internally consistent with the reported atypical mature lymphocyte predominance.
+**Morphologic interpretation:** The atypical lymphocyte cohort is morphologically cohesive, with predominantly medium-sized cells (80.18%) showing coarse nuclear chromatin (100.0%), inconspicuous nucleoli (100.0%), and absent cytoplasmic vacuoles (100.0%). Nuclear contours are overwhelmingly irregular (99.1%), supporting an atypical lymphoid pattern rather than a blast-like morphology. Cytoplasmic volume is less one-sided, with abundant cytoplasm present in only 58.11%, so this feature should be regarded as heterogeneous despite uniform slight cytoplasmic basophilia.
 
 **Diagnostic flags:** atypical lymphocytes present.
 
 **Impression:** Chronic Lymphocytic Leukemia / Small Lymphocytic Lymphoma (CLL/SLL, suspected).
 
-The smear is dominated by atypical mature lymphocytes (98.2% of informative WBCs) with coarse chromatin and inconspicuous nucleoli, and no significant blast population.
+The smear is dominated by atypical mature lymphocytes (98.7% of informative WBCs) with coarse chromatin and inconspicuous nucleoli, and no significant blast population.
 
 **Differential considerations:**
 - Mantle cell lymphoma in leukemic phase (excluded by CD5+/CD23+/cyclin D1- profile).
@@ -31,7 +31,7 @@ The smear is dominated by atypical mature lymphocytes (98.2% of informative WBCs
 - IGHV mutation status and TP53 sequencing (prognostic and predictive).
 - Beta-2 microglobulin and standard staging workup (Rai/Binet).
 
-**QC:** 48 FOVs; 221/405 cells classifiable (45.4% artefact); cohort cell count = 217; global canvas stitching active.
+**QC:** 48 FOVs; 225/413 cells classifiable (45.5% artefact); cohort cell count = 222; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

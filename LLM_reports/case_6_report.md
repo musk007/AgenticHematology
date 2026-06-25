@@ -1,26 +1,26 @@
 # Hematology Report — Case 6
 
-**Specimen:** Peripheral blood smear, 55 fields of view, 77 of 92 annotated objects classified as informative WBCs (15 artefacts excluded).
+**Specimen:** Peripheral blood smear, 56 fields of view, 79 of 94 annotated objects classified as informative WBCs (15 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Lymphoblasts | 58.4% |
-| Eosinophils | 19.5% |
-| Lymphocytes | 19.5% |
+| Lymphoblasts | 59.5% |
+| Eosinophils | 19.0% |
+| Lymphocytes | 19.0% |
 | Neutrophils | 1.3% |
 | Monocytes | 1.3% |
 
-**Cohort morphology (n = 45 lymphoblasts):** predominantly medium cells (62.2%) with scanty (82.2%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (97.8%), and inconspicuous nucleoli (100.0%).
+**Cohort morphology (n = 47 lymphoblasts):** predominantly medium cells (61.7%) with scanty (80.8%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (100.0%), irregular contours (97.9%), and inconspicuous nucleoli (100.0%).
 
-**Morphologic interpretation:** The blast population shows a cohesive lymphoblast pattern with open chromatin, markedly irregular nuclear contours, inconspicuous nucleoli, scant cytoplasm, slight cytoplasmic basophilia, and no cytoplasmic vacuolation. The medium-cell designation is borderline dominant at 62.22%, so blast size is not strongly uniform and should be interpreted as showing size heterogeneity. The lack of prominent nucleoli, strong basophilia, or vacuolation supports a relatively immature blast morphology without features suggesting a more cytoplasm-rich or vacuolated blast pattern.
+**Morphologic interpretation:** The lymphoblast cohort shows a largely cohesive immature blast phenotype with open chromatin, irregular nuclear contours, inconspicuous nucleoli, scanty cytoplasm, slight cytoplasmic basophilia, and absent vacuolation. The medium-cell predominance is borderline at 61.7%, so cell size is better interpreted as mildly heterogeneous rather than uniformly medium-sized. The absence of prominent nucleoli, stronger cytoplasmic basophilia, and vacuolation argues against a more cytoplasm-rich or vacuolated blast pattern.
 
 **Diagnostic flags:** blasts present; blast threshold met; eosinophilia present.
 
 **Impression:** Acute Lymphoblastic Leukemia (ALL).
 
-Lymphoblasts comprise 58.4% of WBCs, exceeding the 20% blast threshold for acute leukemia.
+Lymphoblasts comprise 59.5% of WBCs, exceeding the 20% blast threshold for acute leukemia.
 
 **Differential considerations:**
 - B-lymphoblastic leukemia/lymphoma (most common in adults and children).
@@ -34,7 +34,7 @@ Lymphoblasts comprise 58.4% of WBCs, exceeding the 20% blast threshold for acute
 - Molecular studies including BCR::ABL1-like signature where available.
 - CSF examination to assess CNS involvement.
 
-**QC:** 55 FOVs; 77/92 cells classifiable (16.3% artefact); cohort cell count = 45; global canvas stitching active.
+**QC:** 56 FOVs; 79/94 cells classifiable (16.0% artefact); cohort cell count = 47; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

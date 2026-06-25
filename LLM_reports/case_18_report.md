@@ -1,25 +1,25 @@
 # Hematology Report — Case 18
 
-**Specimen:** Peripheral blood smear, 27 fields of view, 43 of 43 annotated objects classified as informative WBCs (0 artefacts excluded).
+**Specimen:** Peripheral blood smear, 28 fields of view, 44 of 44 annotated objects classified as informative WBCs (0 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Lymphoblasts | 76.7% |
-| Neutrophils | 16.3% |
-| Lymphocytes | 4.7% |
+| Lymphoblasts | 77.3% |
+| Neutrophils | 15.9% |
+| Lymphocytes | 4.5% |
 | Eosinophils | 2.3% |
 
-**Cohort morphology (n = 33 lymphoblasts):** predominantly medium cells (93.9%) with scanty (66.7%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show coarse chromatin (100.0%), irregular contours (100.0%), and inconspicuous nucleoli (100.0%).
+**Cohort morphology (n = 34 lymphoblasts):** predominantly medium cells (94.1%) with scanty (67.7%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show coarse chromatin (100.0%), irregular contours (100.0%), and inconspicuous nucleoli (100.0%).
 
-**Morphologic interpretation:** The lymphoblast cohort is relatively monomorphic in size, with a strong predominance of medium cells. Nuclear features are uniform, showing coarse chromatin, irregular nuclear contours, and inconspicuous nucleoli throughout the cohort. Cytoplasmic quantity is less one-sided, with scant cytoplasm present in 66.7%, while slight cytoplasmic basophilia and absent vacuolation are consistent features. Overall, the morphology supports a lymphoblast-rich acute leukemia pattern without internally discordant morphologic features.
+**Morphologic interpretation:** The lymphoblast cohort is morphologically fairly uniform in size, with predominantly medium cells, coarse chromatin, irregular nuclear contours, and inconspicuous nucleoli. Cytoplasmic scantiness is only modestly predominant at 67.7%, so the blast population is not strongly one-sided for cytoplasmic volume. Uniform slight cytoplasmic basophilia with absent vacuolation supports a non-vacuolated lymphoblastic blast morphology. These features are internally consistent with the reported blast-rich lymphoid pattern.
 
 **Diagnostic flags:** blasts present; blast threshold met.
 
 **Impression:** Acute Lymphoblastic Leukemia (ALL).
 
-Lymphoblasts comprise 76.7% of WBCs, exceeding the 20% blast threshold for acute leukemia.
+Lymphoblasts comprise 77.3% of WBCs, exceeding the 20% blast threshold for acute leukemia.
 
 **Differential considerations:**
 - B-lymphoblastic leukemia/lymphoma (most common in adults and children).
@@ -33,7 +33,7 @@ Lymphoblasts comprise 76.7% of WBCs, exceeding the 20% blast threshold for acute
 - Molecular studies including BCR::ABL1-like signature where available.
 - CSF examination to assess CNS involvement.
 
-**QC:** 27 FOVs; 43/43 cells classifiable (0.0% artefact); cohort cell count = 33; global canvas stitching active.
+**QC:** 28 FOVs; 44/44 cells classifiable (0.0% artefact); cohort cell count = 34; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

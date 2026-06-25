@@ -1,25 +1,25 @@
 # Hematology Report — Case 4
 
-**Specimen:** Peripheral blood smear, 52 fields of view, 96 of 147 annotated objects classified as informative WBCs (51 artefacts excluded).
+**Specimen:** Peripheral blood smear, 52 fields of view, 94 of 144 annotated objects classified as informative WBCs (50 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Lymphoblasts | 41.7% |
-| Neutrophils | 38.5% |
-| Lymphocytes | 7.3% |
-| Myelocytes | 6.2% |
-| Eosinophils | 5.2% |
-| Monocytes | 1.0% |
+| Lymphoblasts | 40.4% |
+| Neutrophils | 39.4% |
+| Lymphocytes | 7.5% |
+| Myelocytes | 6.4% |
+| Eosinophils | 5.3% |
+| Monocytes | 1.1% |
 
-**Cohort morphology (n = 40 lymphoblasts):** predominantly medium cells (60.0%) with scanty (97.5%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show coarse chromatin (97.5%), irregular contours (70.0%), and inconspicuous nucleoli (100.0%).
+**Cohort morphology (n = 38 lymphoblasts):** predominantly medium cells (57.9%) with scanty (97.4%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show coarse chromatin (97.4%), irregular contours (68.4%), and inconspicuous nucleoli (100.0%).
 
 **Diagnostic flags:** blasts present; blast threshold met; eosinophilia present.
 
 **Impression:** Acute Lymphoblastic Leukemia (ALL).
 
-Lymphoblasts comprise 41.7% of WBCs, exceeding the 20% blast threshold for acute leukemia.
+Lymphoblasts comprise 40.4% of WBCs, exceeding the 20% blast threshold for acute leukemia.
 
 **Differential considerations:**
 - B-lymphoblastic leukemia/lymphoma (most common in adults and children).
@@ -33,7 +33,7 @@ Lymphoblasts comprise 41.7% of WBCs, exceeding the 20% blast threshold for acute
 - Molecular studies including BCR::ABL1-like signature where available.
 - CSF examination to assess CNS involvement.
 
-**QC:** 52 FOVs; 96/147 cells classifiable (34.7% artefact); cohort cell count = 40; global canvas stitching active.
+**QC:** 52 FOVs; 94/144 cells classifiable (34.7% artefact); cohort cell count = 38; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

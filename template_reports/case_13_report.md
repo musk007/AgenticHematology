@@ -1,21 +1,21 @@
 # Hematology Report — Case 13
 
-**Specimen:** Peripheral blood smear, 31 fields of view, 30 of 42 annotated objects classified as informative WBCs (12 artefacts excluded).
+**Specimen:** Peripheral blood smear, 31 fields of view, 31 of 43 annotated objects classified as informative WBCs (12 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Lymphoblasts | 93.3% |
-| Lymphocytes | 6.7% |
+| Lymphoblasts | 93.5% |
+| Lymphocytes | 6.5% |
 
-**Cohort morphology (n = 28 lymphoblasts):** predominantly small cells (78.6%) with scanty (85.7%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (92.9%), irregular contours (100.0%), and inconspicuous nucleoli (100.0%).
+**Cohort morphology (n = 29 lymphoblasts):** predominantly small cells (79.3%) with scanty (86.2%), slightly basophilic (100.0%) cytoplasm and absent cytoplasmic vacuolation (100.0%); nuclei show open chromatin (93.1%), irregular contours (100.0%), and inconspicuous nucleoli (100.0%).
 
 **Diagnostic flags:** blasts present; blast threshold met.
 
 **Impression:** Acute Lymphoblastic Leukemia (ALL).
 
-Lymphoblasts comprise 93.3% of WBCs, exceeding the 20% blast threshold for acute leukemia.
+Lymphoblasts comprise 93.5% of WBCs, exceeding the 20% blast threshold for acute leukemia.
 
 **Differential considerations:**
 - B-lymphoblastic leukemia/lymphoma (most common in adults and children).
@@ -29,7 +29,7 @@ Lymphoblasts comprise 93.3% of WBCs, exceeding the 20% blast threshold for acute
 - Molecular studies including BCR::ABL1-like signature where available.
 - CSF examination to assess CNS involvement.
 
-**QC:** 31 FOVs; 30/42 cells classifiable (28.6% artefact); cohort cell count = 28; global canvas stitching active.
+**QC:** 31 FOVs; 31/43 cells classifiable (27.9% artefact); cohort cell count = 29; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

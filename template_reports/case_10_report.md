@@ -1,24 +1,24 @@
 # Hematology Report — Case 10
 
-**Specimen:** Peripheral blood smear, 55 fields of view, 68 of 80 annotated objects classified as informative WBCs (12 artefacts excluded).
+**Specimen:** Peripheral blood smear, 55 fields of view, 69 of 79 annotated objects classified as informative WBCs (10 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Neutrophils | 38.2% |
-| Lymphoblasts | 27.9% |
-| Lymphocytes | 14.7% |
-| Myelocytes | 8.8% |
-| Monocytes | 7.3% |
-| Myeloblasts | 1.5% |
-| Basophils | 1.5% |
+| Neutrophils | 39.1% |
+| Lymphoblasts | 26.1% |
+| Lymphocytes | 14.5% |
+| Myelocytes | 8.7% |
+| Monocytes | 8.7% |
+| Myeloblasts | 1.4% |
+| Basophils | 1.4% |
 
 **Diagnostic flags:** blasts present; blast threshold met.
 
 **Impression:** Acute Lymphoblastic Leukemia (ALL).
 
-Lymphoblast burden is 27.9% of informative WBCs, with total blast-equivalent burden 29.4%, meeting criteria for acute leukemia despite mature-cell predominance.
+Lymphoblast burden is 26.1% of informative WBCs, with total blast-equivalent burden 27.5%, meeting criteria for acute leukemia despite mature-cell predominance.
 
 **Differential considerations:**
 - B-lymphoblastic leukemia/lymphoma.
@@ -31,7 +31,7 @@ Lymphoblast burden is 27.9% of informative WBCs, with total blast-equivalent bur
 - Cytogenetics and FISH for recurrent ALL abnormalities.
 - Molecular profiling aligned to ALL risk stratification.
 
-**QC:** 55 FOVs; 68/80 cells classifiable (15.0% artefact); cohort cell count = 19; global canvas stitching active.
+**QC:** 55 FOVs; 69/79 cells classifiable (12.7% artefact); cohort cell count = 18; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

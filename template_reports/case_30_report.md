@@ -1,15 +1,15 @@
 # Hematology Report — Case 30
 
-**Specimen:** Peripheral blood smear, 51 fields of view, 433 of 505 annotated objects classified as informative WBCs (72 artefacts excluded).
+**Specimen:** Peripheral blood smear, 51 fields of view, 431 of 505 annotated objects classified as informative WBCs (74 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Neutrophils | 52.7% |
+| Neutrophils | 52.2% |
 | Myelocytes | 20.6% |
 | Metamyelocytes | 8.8% |
-| Myeloblasts | 8.1% |
+| Myeloblasts | 8.3% |
 | Monocytes | 3.9% |
 | Lymphocytes | 3.2% |
 | Basophils | 1.9% |
@@ -19,7 +19,7 @@
 
 **Impression:** Chronic Myeloid Leukemia (CML), chronic phase (suspected).
 
-Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 8.1% (below the 20% threshold for blast phase) supports a chronic-phase CML pattern.
+Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 8.3% (below the 20% threshold for blast phase) supports a chronic-phase CML pattern.
 
 **Differential considerations:**
 - Leukemoid reaction or severe infection/sepsis, particularly if basophils are absent.
@@ -34,7 +34,7 @@ Left-shifted granulocytic series with the full spectrum of maturation (myelocyte
 - Baseline transcript level for IS-standardized monitoring during TKI therapy.
 - Sokal / EUTOS / ELTS risk score calculation at diagnosis.
 
-**QC:** 51 FOVs; 433/505 cells classifiable (14.3% artefact); cohort cell count = 35; global canvas stitching active.
+**QC:** 51 FOVs; 431/505 cells classifiable (14.7% artefact); cohort cell count = 36; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*

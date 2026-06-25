@@ -1,27 +1,27 @@
 # Hematology Report — Case 27
 
-**Specimen:** Peripheral blood smear, 59 fields of view, 308 of 367 annotated objects classified as informative WBCs (59 artefacts excluded).
+**Specimen:** Peripheral blood smear, 59 fields of view, 311 of 369 annotated objects classified as informative WBCs (58 artefacts excluded).
 
 **Differential (clinical denominator):**
 
 | Cell type | % of informative WBCs |
 |---|---|
-| Neutrophils | 62.3% |
-| Myelocytes | 14.3% |
-| Metamyelocytes | 10.1% |
-| Myeloblasts | 6.2% |
+| Neutrophils | 62.1% |
+| Myelocytes | 14.2% |
+| Metamyelocytes | 10.3% |
+| Myeloblasts | 6.4% |
 | Monocytes | 3.2% |
-| Basophils | 2.3% |
+| Basophils | 2.2% |
 | Lymphocytes | 1.0% |
-| Eosinophils | 0.7% |
+| Eosinophils | 0.6% |
 
-**Morphologic interpretation:** The blast cohort is characterized by medium cell size (84.21%), open chromatin (100.0%), irregular nuclei (100.0%), and prominent nucleoli (94.74%), supporting an immature blast morphology. Cytoplasm is predominantly abundant (73.68%) with moderate cytoplasmic basophilia (94.74%), and cytoplasmic vacuoles are absent (100.0%). Cytoplasmic amount is the least uniform feature, so the cohort is not completely monomorphic despite otherwise strong attribute dominances. The morphology is compatible with circulating myeloblasts in a left-shifted myeloid process and is not internally discordant with that pattern.
+**Morphologic interpretation:** The blast cohort is characterized by medium size with open nuclear chromatin, uniformly irregular nuclear contours, and prominent nucleoli. Cytoplasm is generally abundant with moderate basophilia and no cytoplasmic vacuolation, supporting a myeloid blast morphology. There is limited heterogeneity in cell size and cytoplasmic amount, with the dominant medium-sized and abundant-cytoplasm pattern not completely exclusive. Overall, the cohort morphology is internally consistent with a small myeloblast population in a left-shifted granulocytic smear.
 
 **Diagnostic flags:** blasts present; basophilia present; left shifted myeloid.
 
 **Impression:** Chronic Myeloid Leukemia (CML), chronic phase (suspected).
 
-Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 6.2% (below the 20% threshold for blast phase) supports a chronic-phase CML pattern.
+Left-shifted granulocytic series with the full spectrum of maturation (myelocytes, metamyelocytes, neutrophils), and a blast burden of 6.4% (below the 20% threshold for blast phase) supports a chronic-phase CML pattern.
 
 **Differential considerations:**
 - Leukemoid reaction or severe infection/sepsis, particularly if basophils are absent.
@@ -36,7 +36,7 @@ Left-shifted granulocytic series with the full spectrum of maturation (myelocyte
 - Baseline transcript level for IS-standardized monitoring during TKI therapy.
 - Sokal / EUTOS / ELTS risk score calculation at diagnosis.
 
-**QC:** 59 FOVs; 308/367 cells classifiable (16.1% artefact); cohort cell count = 19; global canvas stitching active.
+**QC:** 59 FOVs; 311/369 cells classifiable (15.7% artefact); cohort cell count = 20; global canvas stitching inactive.
 
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*
