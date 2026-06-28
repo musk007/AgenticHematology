@@ -11,6 +11,14 @@ REPORT="$PROJECT/report"
 cd "$REPORT"
 # shellcheck source=env.sh
 source "$PROJECT/verl_scripts/env.sh"
+export CUDA_HOME=/usr/local/cuda-12.2
+export CUDA_PATH=/usr/local/cuda-12.2
+export PATH="$CUDA_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_HOME/lib64:${LD_LIBRARY_PATH:-}"
+
+export CC=$(which gcc-12)
+export CXX=$(which g++-12)
+export CUDAHOSTCXX=$(which g++-12)
 
 REWARD_FN="${REWARD_FN:-$PROJECT/verl_scripts/reward_report_e2e.py}"
 BASE_MODEL="${BASE_MODEL:-$MODEL_PATH}"
@@ -46,7 +54,7 @@ python3 -c "import ${ROLLOUT_BACKEND}" 2>/dev/null || {
 
 # Cap Ray CPUs on Slurm nodes with few allocated CPUs
 RAY_CPUS="${RAY_CPUS:-${SLURM_CPUS_PER_TASK:-8}}"
-REWARD_WORKERS="${REWARD_WORKERS:-2}"
+REWARD_WORKERS="${REWARD_WORKERS:-1}"
 DATALOADER_WORKERS="${DATALOADER_WORKERS:-2}"
 
 if [ "${CLEAN_RAY:-1}" != "0" ]; then
@@ -113,7 +121,7 @@ python3 -m verl.trainer.main_ppo \
   actor_rollout_ref.actor.kl_loss_coef=0.001 \
   actor_rollout_ref.actor.kl_loss_type=low_var_kl \
   actor_rollout_ref.actor.entropy_coeff=0 \
-  actor_rollout_ref.actor.fsdp_config.param_offload="${ACTOR_PARAM_OFFLOAD:-true}" \
+  actor_rollout_ref.actor.fsdp_config.param_offload=false \
   actor_rollout_ref.actor.fsdp_config.model_dtype=bf16 \
   actor_rollout_ref.actor.fsdp_config.optimizer_offload=False \
   actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu="${LOG_PROB_MICRO_BATCH_SIZE_PER_GPU:-2}" \
@@ -121,7 +129,7 @@ python3 -m verl.trainer.main_ppo \
   actor_rollout_ref.rollout.name="${ROLLOUT_BACKEND}" \
   actor_rollout_ref.rollout.mode=async \
   actor_rollout_ref.rollout.load_format=safetensors \
-  actor_rollout_ref.rollout.layered_summon="${ROLLOUT_LAYERED_SUMMON:-True}" \
+  actor_rollout_ref.rollout.layered_summon="${ROLLOUT_LAYERED_SUMMON:-False}" \
   actor_rollout_ref.rollout.logprobs_mode=null \
   actor_rollout_ref.rollout.gpu_memory_utilization="${ROLLOUT_GPU_MEM:-0.4}" \
   actor_rollout_ref.rollout.max_model_len="${MAX_MODEL_LEN}" \
@@ -134,14 +142,14 @@ python3 -m verl.trainer.main_ppo \
   "+actor_rollout_ref.rollout.engine_kwargs.vllm.attention_config.backend=${VLLM_ATTENTION_BACKEND}" \
   "+actor_rollout_ref.rollout.engine_kwargs.vllm.compilation_config.cudagraph_mode=NONE" \
   actor_rollout_ref.rollout.n="${ROLLOUT_N:-4}" \
-  actor_rollout_ref.rollout.agent.num_workers="${ROLLOUT_AGENT_WORKERS:-2}" \
+  actor_rollout_ref.rollout.agent.num_workers="${ROLLOUT_AGENT_WORKERS:-1}" \
   actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu="${LOG_PROB_MICRO_BATCH_SIZE_PER_GPU:-2}" \
-  actor_rollout_ref.ref.fsdp_config.param_offload=True \
+  actor_rollout_ref.ref.fsdp_config.param_offload=False \
   trainer.critic_warmup=0 \
   trainer.logger='["console"]' \
   trainer.project_name=leukemia_report_grpo \
   trainer.experiment_name="${VERL_RUN_TAG}" \
-  trainer.n_gpus_per_node="${NGPUS_PER_NODE:-${NGPUS:-4}}" \
+  trainer.n_gpus_per_node="${NGPUS_PER_NODE:-${NGPUS:-1}}" \
   trainer.nnodes="${NNODES:-1}" \
   trainer.default_local_dir="${SAVE_DIR}" \
   trainer.save_freq="${SAVE_FREQ:-1}" \
@@ -150,9 +158,15 @@ python3 -m verl.trainer.main_ppo \
   trainer.total_epochs="${TOTAL_EPOCHS:-3}" \
   ray_kwargs.ray_init.num_cpus="${RAY_CPUS}" \
   '+ray_kwargs.ray_init.runtime_env.env_vars.VLLM_USE_V1="1"' \
-  "+ray_kwargs.ray_init.runtime_env.env_vars.LD_LIBRARY_PATH=\"${RAY_LD_LIBRARY_PATH}\"" \
+  '+ray_kwargs.ray_init.runtime_env.env_vars.CUDA_HOME="/usr/local/cuda-12.2"' \
+  '+ray_kwargs.ray_init.runtime_env.env_vars.CUDA_PATH="/usr/local/cuda-12.2"' \
+  "+ray_kwargs.ray_init.runtime_env.env_vars.PATH=\"/usr/local/cuda-12.2/bin:${PATH}\"" \
+  "+ray_kwargs.ray_init.runtime_env.env_vars.LD_LIBRARY_PATH=\"/usr/local/cuda-12.2/lib64:${RAY_LD_LIBRARY_PATH}\"" \
   '+ray_kwargs.ray_init.runtime_env.env_vars.CUDA_MODULE_LOADING="LAZY"' \
+  "+ray_kwargs.ray_init.runtime_env.env_vars.CC=${CC}" \
+  "+ray_kwargs.ray_init.runtime_env.env_vars.CXX=${CXX}" \
+  "+ray_kwargs.ray_init.runtime_env.env_vars.CUDAHOSTCXX=${CUDAHOSTCXX}" \
   reward.num_workers="${REWARD_WORKERS}" \
-  custom_reward_function.path="${REWARD_FN}" \
-  custom_reward_function.name=compute_score \
+  reward.custom_reward_function.path="${REWARD_FN}" \
+  reward.custom_reward_function.name=compute_score \
   "$@"

@@ -68,7 +68,7 @@ def _cell_from_prediction(det: dict, conf_threshold: float) -> dict | None:
 
 def aggregate_predictions(
     predictions_paths: list[str | Path],
-    conf_threshold: float = 0.25,
+    conf_threshold: float = 0.5,
     blast_classes: list[str] | None = None,
 ) -> dict[str, dict[str, Any]]:
     """Group infer JSON by patient_id."""

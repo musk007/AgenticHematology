@@ -5,7 +5,7 @@ set -euo pipefail
 PROJECT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CV="$PROJECT/cv"
 
-DET_WEIGHTS="${DET_WEIGHTS:-$CV/runs/detector/train/weights/best.pt}"
+DET_WEIGHTS="${DET_WEIGHTS:-$CV/runs/detector/yolo11m_wbc/weights/best.pt}"
 ATTR_WEIGHTS="${ATTR_WEIGHTS:-$CV/runs/attribute/train/best_attr.pt}"
 SPLIT="${STAGE1_SPLIT:-test}"
 OUT_JSON="${PREDICTIONS_JSON:-$CV/runs/predict/infer/test_predictions.json}"

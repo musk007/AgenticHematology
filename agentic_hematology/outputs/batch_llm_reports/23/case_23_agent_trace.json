@@ -1,0 +1,25 @@
+{
+  "patient_id": "23",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "High blast burden (73.1%) with borderline classifier confidence (0.752) and low informative cell count (234) suggests need for expert review.",
+      "conf_threshold": 0.3
+    },
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "High blast burden (73.1%) with borderline classifier confidence (0.752) and low informative cell count (234) suggests need for expert review.",
+      "conf_threshold": 0.3
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "High blast burden (73.1%) with borderline classifier confidence (0.752) and low informative cell count (234) suggests need for expert review.",
+    "Report failed validation and should not be delivered automatically"
+  ]
+}

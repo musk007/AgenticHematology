@@ -18,9 +18,9 @@ cmd="${1:-}"
 shift || true
 
 prepare_data() {
-  python scripts/01_aggregate_gt.py
+  python scripts/01_aggregate_gt.py --data-root /l/users/roba.majzoub/LLD_organized
   python scripts/02_aggregate_pred.py
-  python scripts/10_build_grpo_e2e.py --rebuild-sft
+  python scripts/10_build_grpo_e2e.py --rebuild-sft 
   python scripts/06_prepare_verl_data.py
 }
 
@@ -43,12 +43,14 @@ case "$cmd" in
     fi
     ;;
   export) bash "$PROJECT/verl_scripts/export_lora.sh" "${1:-50}" ;;
-  grpo) bash "$PROJECT/verl_scripts/run_grpo.sh" "$@" ;;
+  grpo) bash "$PROJECT/verl_scripts/run_grpo_4B.sh" "$@" ;;
+  # grpo) bash "$PROJECT/verl_scripts/run_grpo.sh" "$@" ;;
   all)
     prepare_data
     bash "$PROJECT/verl_scripts/run_sft.sh" "${1:?Usage: train.sh all <nproc>}"
     bash "$PROJECT/verl_scripts/export_lora.sh" "${EXPORT_STEP:-50}"
-    bash "$PROJECT/verl_scripts/run_grpo.sh" "${@:2}"
+    bash "$PROJECT/verl_scripts/run_grpo_4B.sh" "${@:2}"
+    # bash "$PROJECT/verl_scripts/run_grpo.sh" "${@:2}"
     ;;
   *)
     echo "Usage: $0 {data|sft|export|grpo|all} [args...]"

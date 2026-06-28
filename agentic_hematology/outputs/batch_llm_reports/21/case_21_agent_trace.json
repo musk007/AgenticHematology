@@ -1,0 +1,25 @@
+{
+  "patient_id": "21",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "Low classifier confidence (0.594) and high pct_class_none (17.6%) suggest uncertain diagnosis despite coherent differential.",
+      "conf_threshold": 0.3
+    },
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "Low classifier confidence (0.594) and high pct_class_none (17.6%) suggest uncertain diagnosis despite coherent differential.",
+      "conf_threshold": 0.3
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "Low classifier confidence (0.594) and high pct_class_none (17.6%) suggest uncertain diagnosis despite coherent differential.",
+    "Report failed validation and should not be delivered automatically"
+  ]
+}

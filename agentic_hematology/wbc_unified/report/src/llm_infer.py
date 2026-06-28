@@ -37,7 +37,9 @@ def encode_messages(tokenizer, messages: list[dict[str, str]]) -> list[int]:
     verl_root = REPO_ROOT / "third_party" / "verl"
     if str(verl_root) not in sys.path:
         sys.path.insert(0, str(verl_root))
-    from verl.utils.chat_template import apply_chat_template
+    # from verl.utils.chat_template import apply_chat_template
+    # from verl.utils.tokenizer import normalize_token_ids
+    from verl.utils.tokenizer.chat_template import apply_chat_template
     from verl.utils.tokenizer import normalize_token_ids
 
     return normalize_token_ids(

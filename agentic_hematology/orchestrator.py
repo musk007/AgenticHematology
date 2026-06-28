@@ -185,9 +185,6 @@ def tools_for_intent(intent: Intent) -> list[str]:
     }[intent]
 
 
-class BaseRouter(ABC := type("ABC", (), {})):  # lightweight ABC
-    def route(self, request: OrchestratorRequest) -> RouteDecision:
-        raise NotImplementedError
 
 
 class RuleBasedRouter:
@@ -290,6 +287,8 @@ class LLMRouter:
         - explain
 
         Rules:
+        - The "intent" field MUST be exactly one of: FULL_REPORT, DETECT_ONLY,
+          CLASSIFY_ONLY, REPORT_FROM_JSON, EXPLAIN.
         - Only use the listed tools.
         - Preserve logical ordering.
         - Use explain only for question answering.
@@ -342,6 +341,17 @@ class LLMRouter:
             intent = Intent(payload["intent"])
             tools = payload["tool_sequence"]
             rationale = payload.get("rationale", "LLM router")
+
+            # ---------- Validate preconditions against the actual request ----------
+            # A plan that needs images but has none, or skips detection without
+            # precomputed findings, will crash downstream => reject so we fall back.
+            if "detect" in tools and not request.image_paths:
+                raise ValueError("Plan requires detection but no image paths were supplied.")
+
+            if "detect" not in tools and request.precomputed_findings is None:
+                raise ValueError(
+                    "Plan skips detection but no precomputed findings were supplied."
+                )
             # ---------- Validate tools ----------
 
             if not isinstance(tools, list):
@@ -485,8 +495,15 @@ class Orchestrator:
 
 
     def _run_tools(self, state, tools, request):
+        FINDINGS_REQUIRED = {"classify", "reflect", "report", "validate"}
 
         for tool in tools:
+            if tool in FINDINGS_REQUIRED and state.findings is None:
+                state.errors.append(
+                    f"Tool '{tool}' requires aggregated findings, but none are available; "
+                    "halting tool sequence."
+                )
+                break
             if tool == "detect":
                 state = detect_node(state, self.detector)
 
@@ -575,6 +592,6 @@ class Orchestrator:
             cell_percentages_all=payload.get("cell_percentages_all", {}),
             cell_percentages_clinical=payload.get("cell_percentages_clinical", {}),
             attributes=payload.get("attributes", {}),
-            report_ready=payload["report_ready"],
+            report_ready=payload.get("report_ready", {}),
             grounding_index=payload.get("grounding_index", {}),
         )

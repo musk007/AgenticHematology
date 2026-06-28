@@ -70,7 +70,7 @@ def main() -> None:
             continue
         actions = trace["agent_actions"]
         seq = " -> ".join(
-            a["action"] + (f"(ct={a['conf_threshold']})" if a.get("conf_threshold") else "")
+            a.get("action", "?") + (f"(ct={a['conf_threshold']})" if a.get("conf_threshold") else "")
             for a in actions
         )
         final = actions[-1]["action"] if actions else "?"
@@ -80,7 +80,7 @@ def main() -> None:
             f"flagged={trace['flagged_for_review']!s:5}  trace: {seq}"
         )
         for a in actions:
-            print(f"               [iter {a['iteration']}] {a['action']}: {a['reason']}")
+            print(f"               [iter {a.get('iteration','?')}] {a.get('action','?')}: {a.get('reason','')}")
 
     print()
     print("Final-action distribution:", dict(final_actions))

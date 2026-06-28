@@ -365,10 +365,16 @@ def _save_outputs(resp, case_id: str, out_dir: str | None) -> None:
             print("\n" + resp.state.report.markdown)
     elif resp.state.report and validation_ran and not validation_ok:
         print(
-            "  Report NOT saved — pre-save validation failed "
+            "  Report NOT saved as final — pre-save validation failed "
             f"(validation_passed={resp.state.validation_passed})",
             file=sys.stderr,
         )
+
+        if out_dir:
+            failed_rpt_path = os.path.join(out_dir, f"case_{case_id}_report_FAILED_VALIDATION.md")
+            with open(failed_rpt_path, "w") as f:
+                f.write(resp.state.report.markdown)
+            print(f"  Wrote failed report for debugging: {failed_rpt_path}")
     elif resp.state.validation_passed is not None:
         print(
             f"  validation_passed={resp.state.validation_passed} "
@@ -545,9 +551,10 @@ def main() -> int:
     p.add_argument("--max-new-tokens", type=int, default=768)
     p.add_argument("--temperature", type=float, default=0.0)
     p.add_argument("--instruction", default="diagnose this case")
-    p.add_argument("--no-agent", action="store_true",
-                   help="Disable the agentic LLM router + reflection loop (runs the "
-                        "deterministic automated pipeline only).")
+    p.add_argument("--no-reflect", action="store_true",
+                   help="Disable the reflection agent (the rest of the pipeline still runs).")
+    p.add_argument("--no-router-agent", action="store_true",
+                   help="Use the deterministic rule-based router instead of the LLM router.")
     p.add_argument("--max-reflect-iterations", type=int, default=6,
                    help="Max reflection-agent iterations before forced escalation.")
     p.add_argument("--out", help="Output directory. In batch mode each patient gets its own subdirectory.")
@@ -574,16 +581,13 @@ def main() -> int:
     reflection_agent = None
     router = RuleBasedRouter()
     llm_explain = None
-    if not args.no_agent:
-        print("Agentic mode enabled: initializing LLM router and reflection agent.", flush=True)
+
+    need_llm = (not args.no_reflect) or (not args.no_router_agent) or (args.report_backend == "local-llm")
+
+    if need_llm:
         try:
             from agentic_hematology.agent_controller import QwenLLMClient, ReflectionAgent
-            from agentic_hematology.orchestrator import (
-                Orchestrator,
-                OrchestratorRequest,
-                RuleBasedRouter,
-                LLMRouter,
-            )
+            from agentic_hematology.orchestrator import LLMRouter
         except ModuleNotFoundError:
             from leukemia_pipeline.agent_controller import QwenLLMClient, ReflectionAgent  # type: ignore
             from leukemia_pipeline.orchestrator import LLMRouter  # type: ignore
@@ -592,22 +596,27 @@ def main() -> int:
             model_path=args.llm_model,
             adapter_path=args.lora_adapter,
             max_new_tokens=256,
-            temperature=0.0,
+            temperature=args.temperature,
         )
-        reflection_agent = ReflectionAgent(llm_client)
-        router = LLMRouter(llm_client.complete, fallback=RuleBasedRouter())
         llm_explain = llm_client.complete
-        print("Agentic components initialized.", flush=True)
+
+        if not args.no_reflect:
+            reflection_agent = ReflectionAgent(llm_client)
+            print("Reflection agent enabled.", flush=True)
+
+        if not args.no_router_agent:
+            router = LLMRouter(llm_client.complete, fallback=RuleBasedRouter())
+            print("LLM router enabled.", flush=True)
 
         if args.report_backend == "local-llm" and isinstance(report_gen, LocalLLMReportGenerator):
             try:
                 report_gen.attach(llm_client.model, llm_client.tokenizer)
-                print("Sharing one Qwen3 instance across agent and report generator.")
+                print("Sharing one Qwen3 instance across agent, router, and report generator.")
             except Exception as e:
                 print(f"WARNING: could not share Qwen3 instance ({e}); "
                       f"falling back to separate loads.", file=sys.stderr)
     else:
-        print("Generating reports using template backend.")
+        print("Fully deterministic mode: rule-based router, no reflection agent.", flush=True)
 
     orch = Orchestrator(
         detector=detector,

@@ -191,7 +191,7 @@ class ReflectionAgent:
     def __init__(
         self,
         llm: LLMClient,
-        min_conf_threshold: float = 0.1,
+        min_conf_threshold: float = 0.5,
         max_conf_threshold: float = 0.9,
     ):
         self.llm = llm
@@ -232,10 +232,11 @@ class ReflectionAgent:
         # ---- enforce the safety / sanity envelope ----
         # Disallow re_aggregate if already used, and clamp the threshold.
         if decision.action == AgentAction.RE_AGGREGATE:
+            print("REAGREGGATION LOOOP)")
             if re_aggregate_used:
                 return AgentDecision(
                     AgentAction.FLAG_FOR_REVIEW,
-                    "re_aggregate already used once; escalating instead",
+                    "e_aggregation budget exhausted; escalating instead",
                     raw=raw,
                 )
             ct = decision.conf_threshold
@@ -246,7 +247,6 @@ class ReflectionAgent:
             if ct <= current_conf_threshold:
                 ct = min(self.max_conf, current_conf_threshold + 0.1)
             decision.conf_threshold = round(ct, 3)
-
         return decision
 
     # ------------------------------------------------------------------

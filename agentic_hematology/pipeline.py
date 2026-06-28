@@ -51,63 +51,76 @@ def reflect_node(
     """
     Agentic reflection loop.
 
-    The reflection agent (Qwen3) inspects the intermediate findings +
-    classification and decides the next PROCESS action at runtime:
+    The reflection agent inspects the intermediate findings + classification
+    and decides one process action:
 
-      - proceed          → exit the loop, evidence is sufficient
-      - re_aggregate     → re-run aggregation at a stricter confidence 
-                           threshold, re-classify, and reflect again
-                           (increase confidence threshold by 0.1->agent_controller)
-      - flag_for_review  → mark the case for mandatory human review, exit
+      - proceed          → exit the loop
+      - re_aggregate     → re-run aggregation at the threshold already
+                           validated by agent_controller, then re-classify
+      - flag_for_review  → mark the case for mandatory human review and exit
 
-    This is the component that makes the pipeline agentic: a model makes a
-    control-flow decision based on intermediate results, the loop can
-    iterate, and the stopping condition is model-influenced. The agent
-    never changes the diagnosis — the deterministic classifier stays
-    authoritative.
-
-    If no agent is supplied the node is a safe no-op (preserves the old
-    automated behaviour), so the pipeline still runs without an LLM.
+    The reflection agent does not change the diagnosis. The deterministic
+    classifier remains authoritative.
     """
     if agent is None or state.findings is None:
         return state
 
-    re_aggregate_used = False
+    re_aggregate_count = 0
+    max_reaggregations = max(0, max_iterations - 1)
 
     for iteration in range(1, max_iterations + 1):
         state.n_reflect_iterations = iteration
+
         case_state = build_case_state(
-            state.findings, state.classification, dataset_source=state.dataset_source
+            state.findings,
+            state.classification,
+            dataset_source=state.dataset_source,
         )
+
         decision = agent.decide(
             case_state,
-            re_aggregate_used=re_aggregate_used,
+            re_aggregate_used=(re_aggregate_count >= max_reaggregations),
             current_conf_threshold=state.conf_threshold,
             iteration=iteration,
         )
+
         state.agent_actions.append({"iteration": iteration, **decision.to_dict()})
 
         if decision.action == AgentAction.PROCEED:
             break
 
         if decision.action == AgentAction.FLAG_FOR_REVIEW:
+            state.agent_actions.append({"iteration": iteration, **decision.to_dict()})
             state.flagged_for_review = True
             state.review_reasons.append(decision.reason)
             break
 
         if decision.action == AgentAction.RE_AGGREGATE:
-            # Apply the agent's chosen threshold, re-aggregate, re-classify,
-            # then loop to reflect again on the sharpened evidence.
-            state.conf_threshold = decision.conf_threshold or state.conf_threshold
-            re_aggregate_used = True
+            if decision.conf_threshold is None:
+                state.flagged_for_review = True
+                state.review_reasons.append(
+                    "Re-aggregation requested without a valid confidence threshold"
+                )
+                break
+
+            state.conf_threshold = decision.conf_threshold
+            re_aggregate_count += 1
+
             state = aggregate_node(state)
+
             if classifier is not None:
                 state = classify_node(state, classifier)
+
             continue
 
     else:
-        # Loop exhausted without an explicit proceed → escalate, don't silently ship.
         state.flagged_for_review = True
+        state.agent_actions.append({
+            "iteration": max_iterations,
+            "action": AgentAction.FLAG_FOR_REVIEW.value,
+            "reason": f"reflection loop hit max_iterations={max_iterations} without converging",
+            "conf_threshold": None,
+        })
         state.review_reasons.append(
             f"reflection loop hit max_iterations={max_iterations} without converging"
         )
@@ -154,8 +167,10 @@ def validate_node(
         ("consistency", consistency_validator.validate(state)),
         ("llm_output", llm_output_validator.validate(state.report.markdown)),
     ]
+
     if template_json_validator is not None:
         checks.append(("template_json", template_json_validator.validate(state)))
+
     if numerical_hallucination_validator is not None:
         checks.append(
             ("numerical_hallucination", numerical_hallucination_validator.validate(state))
@@ -163,9 +178,11 @@ def validate_node(
 
     state.consistency_passed = checks[0][1].passed
     state.llm_output_passed = checks[1][1].passed
+
     state.template_json_passed = next(
         (r.passed for name, r in checks if name == "template_json"), None
     )
+
     state.numerical_hallucination_passed = next(
         (r.passed for name, r in checks if name == "numerical_hallucination"), None
     )
@@ -178,7 +195,9 @@ def validate_node(
         }
         for name, result in checks
     }
+
     all_passed = all(result.passed for _, result in checks)
+
     state.validation_passed = all_passed
     state.report_delivery_allowed = all_passed
 
@@ -187,11 +206,16 @@ def validate_node(
             if not result.passed:
                 state.errors.append(f"Report validation failed — {name}: {result.message}")
 
+        state.report_delivery_allowed = False
+
         if failure_policy == "flag":
             state.flagged_for_review = True
             state.review_reasons.append("Report failed pre-save validation")
+
         if failure_policy == "strip":
-            state.report = None
+            state.review_reasons.append(
+                "Report failed validation and should not be delivered automatically"
+            )
 
     return state
 

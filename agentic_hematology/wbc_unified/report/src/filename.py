@@ -6,18 +6,18 @@ from pathlib import Path
 
 def parse_image_stem(stem: str) -> dict[str, str | int]:
     """
-    {patient_id}_{row}_{col}_{magnification}_{disease}.png
+    {patient_id}_{num}_{magnification}_{disease}.png
     e.g. 15_10_12_400_AML
     """
     parts = stem.split("_")
-    if len(parts) < 5:
-        raise ValueError(f"Expected >=5 underscore fields, got: {stem}")
+    if len(parts) < 4:
+        raise ValueError(f"Expected >=4 underscore fields, got: {stem}")
     return {
         "patient_id": parts[0],
-        "row": int(parts[1]),
-        "col": int(parts[2]),
-        "magnification": parts[3],
-        "disease_label": parts[4],
+        # "row": int(parts[1]),
+        # "col": int(parts[2]),
+        "magnification": parts[2],
+        "disease_label": parts[3],
     }
 
 

@@ -1,16 +1,22 @@
 # verl training environment (sourced by run_*.sh / train.sh / sbatch)
-LOCAL_MODEL_ROOT="${LOCAL_MODEL_ROOT:-/nfs-stor/zongyan/pretrained_models}"
-VERL_MODEL_DIR="${VERL_MODEL_DIR:-Qwen3.5-2B}"
+LOCAL_MODEL_ROOT="/home/roba.majzoub/research/AgenticHematology/report_llm/pretrained_models"
+VERL_MODEL_DIR="${VERL_MODEL_DIR:-Qwen3-VL-4B-Instruct}"
+# VERL_MODEL_DIR="${VERL_MODEL_DIR:-Qwen3.5-2B}"
 MODEL_PATH="${MODEL_PATH:-${LOCAL_MODEL_ROOT}/${VERL_MODEL_DIR}}"
-VERL_RUN_TAG="${VERL_RUN_TAG:-qwen3_5_2b_lora}"
+VERL_RUN_TAG="${VERL_RUN_TAG:-qwen3_4b_instruct_lora}"
 
 LORA_RANK="${LORA_RANK:-64}"
 LORA_ALPHA="${LORA_ALPHA:-128}"
 LORA_TARGETS="${LORA_TARGETS:-all-linear}"
 
-export REPORT_LLM_ARTIFACT_ROOT="${REPORT_LLM_ARTIFACT_ROOT:-/nfs-stor/zongyan/wbc_medical/rao.anwer/report_llm}"
+REPORT_LLM_ARTIFACT_ROOT="/home/roba.majzoub/research/AgenticHematology/report_llm"
+export REPORT_LLM_ARTIFACT_ROOT="${REPORT_LLM_ARTIFACT_ROOT:-/home/roba.majzoub/research/AgenticHematology/report_llm}"
 mkdir -p "${REPORT_LLM_ARTIFACT_ROOT}"/{data,runs,outputs,cache,logs}
 
+export CUDA_HOME=/usr/local/cuda-12.2
+export CUDA_PATH=/usr/local/cuda-12.2
+export PATH="$CUDA_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_HOME/lib64:${LD_LIBRARY_PATH:-}"
 export SFT_SAVE_DIR="${SFT_SAVE_DIR:-${REPORT_LLM_ARTIFACT_ROOT}/runs/verl/sft_${VERL_RUN_TAG}}"
 export GRPO_SAVE_DIR="${GRPO_SAVE_DIR:-${REPORT_LLM_ARTIFACT_ROOT}/runs/verl/grpo_${VERL_RUN_TAG}}"
 export GRPO_LORA_STEP="${GRPO_LORA_STEP:-30}"
@@ -31,6 +37,7 @@ export HF_HOME="${HF_HOME:-${REPORT_LLM_ARTIFACT_ROOT}/cache/huggingface}"
 export HF_DATASETS_CACHE="${HF_DATASETS_CACHE:-${HF_HOME}/datasets}"
 export TRANSFORMERS_CACHE="${TRANSFORMERS_CACHE:-${HF_HOME}/hub}"
 export PIP_CACHE_DIR="${PIP_CACHE_DIR:-${REPORT_LLM_ARTIFACT_ROOT}/cache/pip}"
+# echo "${HF_HOME}"
 mkdir -p "${HF_HOME}" "${PIP_CACHE_DIR}"
 
 export LOCAL_MODEL_ROOT VERL_MODEL_DIR MODEL_PATH VERL_RUN_TAG

@@ -14,15 +14,21 @@ EXCLUDED_CLASSES = {"None", "Unknown"}
 def aggregate(result: DetectionResult, conf_threshold: float = 0.25) -> AggregatedFindings:
     cells = [d for d in result.detections if d.objectness >= conf_threshold]
     informative = [d for d in cells if d.cell_type not in EXCLUDED_CLASSES]
+
     counts = Counter(d.cell_type for d in informative)
+    all_counts = Counter(d.cell_type for d in cells)
+
     total_inf = sum(counts.values())
     total_all = len(cells)
 
     clinical_pct = {
-        name: round(100.0 * count / total_inf, 1) for name, count in counts.most_common()
+        name: round(100.0 * count / total_inf, 1)
+        for name, count in counts.most_common()
     } if total_inf else {}
+
     all_pct = {
-        name: round(100.0 * count / max(total_all, 1), 1) for name, count in counts.most_common()
+        name: round(100.0 * count / max(total_all, 1), 1)
+        for name, count in all_counts.most_common()
     }
 
     morphology = _morphology_cohort(informative)
@@ -39,7 +45,9 @@ def aggregate(result: DetectionResult, conf_threshold: float = 0.25) -> Aggregat
         "n_cells_informative": total_inf,
         "n_cells_artifact": max(0, total_all - total_inf),
         "class_counts": dict(counts),
+        "all_class_counts": dict(all_counts),
         "differential_pct": clinical_pct,
+        "all_detection_pct": all_pct,
         "blast_pct": blast_pct,
         "flags": {
             "blasts_present": blast_n > 0,

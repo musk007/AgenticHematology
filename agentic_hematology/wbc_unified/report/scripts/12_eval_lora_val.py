@@ -74,7 +74,17 @@ def main() -> None:
         if hasattr(extra, "item"):
             extra = extra.item()
         pid = str(extra.get("patient_id", len(per_case)))
-        gt = row["reward_model"]["ground_truth"]
+        # gt = row["reward_model"]["ground_truth"]
+        if "reward_model" in row and row["reward_model"]:
+            gt = row["reward_model"]["ground_truth"]
+        elif "messages" in row:
+            msgs_raw = row["messages"]
+            msgs = json.loads(msgs_raw) if isinstance(msgs_raw, str) else msgs_raw
+            gt = next(m["content"] for m in msgs if m["role"] == "assistant")
+        elif "ground_truth" in row:
+            gt = row["ground_truth"]
+        else:
+            raise KeyError(f"No ground truth field found. Available keys: {list(row.keys())}")
         msgs = _prompt_messages(row, args.stage)
         gen = generate_from_messages(
             model,
