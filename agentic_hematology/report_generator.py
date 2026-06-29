@@ -104,24 +104,42 @@ class LocalLLMReportGenerator(BaseReportGenerator):
             )
         summary = _summary_with_agent_context(findings, classification, instruction)
         messages = [
-            {
-                "role": "system",
-                "content": (
-                    "You are a hematopathology assistant. Write a structured "
-                    "diagnostic peripheral blood smear report in Markdown using "
-                    "only the supplied JSON. Include the predicted diagnosis, "
-                    "morphologic descriptors, and a concise grounding section "
-                    "that cites representative cell_ids with image_id and bbox."
-                ),
-            },
-            {
-                "role": "user",
-                "content": (
-                    f"Instruction: {instruction or 'Diagnose this case'}\n\n"
-                    f"<case_summary>\n{json.dumps(summary, indent=2)}\n</case_summary>"
-                ),
-            },
-        ]
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a hematopathology assistant. Write a structured peripheral blood "
+                        "smear report narrative in Markdown using ONLY the supplied JSON. "
+                        "Your output must resemble a hematology report, but you must NOT generate "
+                        "any quantitative table, count table, QC section, or cell grounding section; "
+                        "those will be appended deterministically by the pipeline.\n\n"
+
+                        "Output exactly these sections:\n"
+                        "**Morphologic interpretation:** one concise paragraph.\n"
+                        "**Diagnostic flags:** semicolon-separated flags supported by the JSON.\n"
+                        "**Impression:** one diagnosis line using case_summary['agentic_classification']['predicted_class'].\n"
+                        "**Differential considerations:** 2–4 bullet points.\n"
+                        "**Recommended workup:** 3–5 bullet points.\n\n"
+
+                        "Strict rules:\n"
+                        "- Do not invent numbers, percentages, counts, morphology, clinical history, CBC values, cytogenetics, or immunophenotype.\n"
+                        "- Do not create a Differential table.\n"
+                        "- Do not create a Quantitative Cell Summary.\n"
+                        "- Do not create an Agentic Diagnosis section.\n"
+                        "- Do not create a Cell Grounding section.\n"
+                        "- Do not say a cell type is absent if it appears anywhere in case_summary['differential_pct'].\n"
+                        "- Use only the predicted diagnosis from case_summary['agentic_classification'].\n"
+                        "- For morphology, use only case_summary['morphology_cohort']; if morphology values are generic or unavailable, keep the interpretation conservative.\n"
+                        "- Do not use textbook morphology for ALL/AML/CML/CLL/APML unless it is supported by this patient's JSON.\n"
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": (
+                        f"Instruction: {instruction or 'Diagnose this case'}\n\n"
+                        f"<case_summary>\n{json.dumps(summary, indent=2)}\n</case_summary>"
+                    ),
+                },
+            ]
         markdown = generate_from_messages(
             self._model,
             self._tokenizer,
@@ -130,6 +148,12 @@ class LocalLLMReportGenerator(BaseReportGenerator):
             temperature=self.temperature,
         )
         markdown = _append_quantitative_summary(markdown, findings)
+        markdown = _append_grounding(
+            markdown,
+            findings,
+            classification,
+        )
+
         return GroundedReport(
             markdown=markdown,
             grounding_index=findings.grounding_index,
@@ -199,19 +223,28 @@ def _append_grounding(
     limit: int = 8,
 ) -> str:
     lines = [markdown.rstrip(), "", "## Agentic Diagnosis"]
+
     if classification is not None:
         lines.append(
             f"Predicted diagnosis: **{classification.predicted_class}** "
             f"(confidence {classification.confidence:.2f}). "
             f"Rationale: {classification.rationale}."
         )
+    else:
+        lines.append(
+            "No leukemia classification was available for this report."
+        )
+
     lines.extend(["", "## Cell Grounding", ""])
+
     for cell_id, rec in list(findings.grounding_index.items())[:limit]:
         attrs = rec.get("attributes", {})
         pos = [name.replace("_", " ").lower() for name, val in attrs.items() if val]
         morph = "; ".join(pos[:4]) if pos else "no positive morphology attributes"
+
         lines.append(
             f"- `{cell_id}` in `{rec['image_id']}` bbox={rec['bbox_xyxy']}: "
             f"{rec['cell_type']} ({rec['confidence']:.2f}); {morph}."
         )
+
     return "\n".join(lines)

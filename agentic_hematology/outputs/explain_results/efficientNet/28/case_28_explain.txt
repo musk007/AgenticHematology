@@ -1,9 +1,0 @@
-The report for patient 28 presents an automated hematology analysis of a peripheral blood smear, identifying a **Chronic Myeloid Leukemia (CML)** diagnosis with high confidence (0.65) based on the dominant presence of granulocytic precursors — specifically, a **blast-equivalent burden of 7.4%** — which is consistent with CML’s diagnostic criteria. However, the report includes a **critical flag** indicating **mandatory human review** due to **low classifier confidence** and **high non-WBC fraction** (9.5% artefacts), suggesting potential diagnostic uncertainty.
-
----
-
-### Key Findings:
-
-#### 1. **Differential Count**
-- **Neutrophils dominate** at **64.5%** — the most abundant cell type, consistent with reactive or myeloproliferative states.
-- **Blasts (Myeloblasts + Metamyelocytes + Myelocytes)** account for **7.4%** — the **threshold for blast presence** is met, but **not yet sufficient to meet the “blast threshold”** (as flagged in the report’s `flags` section: `blast_threshold_met: false`), indicating the blast population is **
