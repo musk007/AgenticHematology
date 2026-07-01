@@ -1,0 +1,30 @@
+{
+  "patient_id": "31",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "re_aggregate",
+      "reason": "High pct_class_none and moderate mean_det_conf suggest noisy detections; re-aggregating may sharpen differential.",
+      "conf_threshold": 0.75
+    },
+    {
+      "iteration": 2,
+      "action": "flag_for_review",
+      "reason": "Low classifier confidence (0.638) and high pct_class_none (17.1%) suggest potential misclassification or noisy data.",
+      "conf_threshold": 0.75
+    },
+    {
+      "iteration": 2,
+      "action": "flag_for_review",
+      "reason": "Low classifier confidence (0.638) and high pct_class_none (17.1%) suggest potential misclassification or noisy data.",
+      "conf_threshold": 0.75
+    }
+  ],
+  "n_reflect_iterations": 2,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "Low classifier confidence (0.638) and high pct_class_none (17.1%) suggest potential misclassification or noisy data."
+  ]
+}

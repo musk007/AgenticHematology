@@ -1,0 +1,16 @@
+{
+  "patient_id": "18",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "proceed",
+      "reason": "High detection confidence and clear blast burden support the diagnosis without noise.",
+      "conf_threshold": 0.25
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": false,
+  "review_reasons": []
+}

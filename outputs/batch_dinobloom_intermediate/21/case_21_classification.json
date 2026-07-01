@@ -1,0 +1,6 @@
+{
+  "patient_id": "21",
+  "predicted_class": "CLL",
+  "confidence": 1.0,
+  "rationale": "learned classifier prediction from detection-derived features"
+}

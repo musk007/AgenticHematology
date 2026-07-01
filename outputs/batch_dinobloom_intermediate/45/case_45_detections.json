@@ -1,0 +1,7510 @@
+{
+  "patient_id": "45",
+  "n_images": 54,
+  "detections": [
+    {
+      "cell_id": "img000_c000",
+      "image_id": "45_10_1000_AML.png",
+      "bbox_xyxy": [
+        367.5,
+        218.875,
+        420.5,
+        319.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6602,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.572,
+        "Nuclear_Shape": 0.4936,
+        "Nucleus": 0.7762,
+        "Cytoplasm": 0.3209,
+        "Cytoplasmic_Basophilia": 0.4889,
+        "Cytoplasmic_Vacuoles": 0.1706
+      }
+    },
+    {
+      "cell_id": "img001_c000",
+      "image_id": "45_11_1000_AML.png",
+      "bbox_xyxy": [
+        349.25,
+        414.5,
+        417.75,
+        529.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.9248,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9966,
+        "Nuclear_Shape": 0.0671,
+        "Nucleus": 0.9959,
+        "Cytoplasm": 0.8009,
+        "Cytoplasmic_Basophilia": 0.9893,
+        "Cytoplasmic_Vacuoles": 0.9218
+      }
+    },
+    {
+      "cell_id": "img002_c000",
+      "image_id": "45_12_1000_AML.png",
+      "bbox_xyxy": [
+        183.5,
+        65.75,
+        243.75,
+        180.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8975,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9964,
+        "Nuclear_Shape": 0.0072,
+        "Nucleus": 0.9954,
+        "Cytoplasm": 0.6288,
+        "Cytoplasmic_Basophilia": 0.9259,
+        "Cytoplasmic_Vacuoles": 0.5157
+      }
+    },
+    {
+      "cell_id": "img002_c001",
+      "image_id": "45_12_1000_AML.png",
+      "bbox_xyxy": [
+        453.5,
+        403.5,
+        517.5,
+        522.5
+      ],
+      "class": "Monocyte",
+      "confidence": 0.7827,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9954,
+        "Nuclear_Shape": 0.8187,
+        "Nucleus": 0.9929,
+        "Cytoplasm": 0.3632,
+        "Cytoplasmic_Basophilia": 0.9948,
+        "Cytoplasmic_Vacuoles": 0.9911
+      }
+    },
+    {
+      "cell_id": "img002_c002",
+      "image_id": "45_12_1000_AML.png",
+      "bbox_xyxy": [
+        447.5,
+        180.75,
+        536.5,
+        310.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.7153,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9261,
+        "Nuclear_Shape": 0.7804,
+        "Nucleus": 0.971,
+        "Cytoplasm": 0.2451,
+        "Cytoplasmic_Basophilia": 0.9684,
+        "Cytoplasmic_Vacuoles": 0.8131
+      }
+    },
+    {
+      "cell_id": "img002_c003",
+      "image_id": "45_12_1000_AML.png",
+      "bbox_xyxy": [
+        423.5,
+        307.5,
+        472.5,
+        388.5
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.6318,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7498,
+        "Nuclear_Shape": 0.8261,
+        "Nucleus": 0.8349,
+        "Cytoplasm": 0.1949,
+        "Cytoplasmic_Basophilia": 0.6351,
+        "Cytoplasmic_Vacuoles": 0.4111
+      }
+    },
+    {
+      "cell_id": "img003_c000",
+      "image_id": "45_13_1000_AML.png",
+      "bbox_xyxy": [
+        383.75,
+        143.25,
+        451.75,
+        262.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9399,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9897,
+        "Nuclear_Shape": 0.9984,
+        "Nucleus": 0.9909,
+        "Cytoplasm": 0.0069,
+        "Cytoplasmic_Basophilia": 0.9975,
+        "Cytoplasmic_Vacuoles": 0.9763
+      }
+    },
+    {
+      "cell_id": "img003_c001",
+      "image_id": "45_13_1000_AML.png",
+      "bbox_xyxy": [
+        216.5,
+        475.5,
+        275.5,
+        579.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9111,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9846,
+        "Nuclear_Shape": 0.0256,
+        "Nucleus": 0.9954,
+        "Cytoplasm": 0.793,
+        "Cytoplasmic_Basophilia": 0.8762,
+        "Cytoplasmic_Vacuoles": 0.8724
+      }
+    },
+    {
+      "cell_id": "img004_c000",
+      "image_id": "45_14_1000_AML.png",
+      "bbox_xyxy": [
+        192.0,
+        479.0,
+        258.5,
+        602.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9351,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9903,
+        "Nuclear_Shape": 0.9966,
+        "Nucleus": 0.9943,
+        "Cytoplasm": 0.0089,
+        "Cytoplasmic_Basophilia": 0.9936,
+        "Cytoplasmic_Vacuoles": 0.9793
+      }
+    },
+    {
+      "cell_id": "img004_c001",
+      "image_id": "45_14_1000_AML.png",
+      "bbox_xyxy": [
+        226.25,
+        65.75,
+        299.25,
+        193.25
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.8833,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9968,
+        "Nuclear_Shape": 0.0128,
+        "Nucleus": 0.9976,
+        "Cytoplasm": 0.9319,
+        "Cytoplasmic_Basophilia": 0.9824,
+        "Cytoplasmic_Vacuoles": 0.9301
+      }
+    },
+    {
+      "cell_id": "img005_c000",
+      "image_id": "45_15_1000_AML.png",
+      "bbox_xyxy": [
+        551.5,
+        183.75,
+        587.5,
+        246.25
+      ],
+      "class": "None",
+      "confidence": 0.918,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2103,
+        "Nuclear_Shape": 0.7287,
+        "Nucleus": 0.4854,
+        "Cytoplasm": 0.1963,
+        "Cytoplasmic_Basophilia": 0.4886,
+        "Cytoplasmic_Vacuoles": 0.2569
+      }
+    },
+    {
+      "cell_id": "img005_c001",
+      "image_id": "45_15_1000_AML.png",
+      "bbox_xyxy": [
+        284.5,
+        395.0,
+        342.5,
+        488.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.9092,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9848,
+        "Nuclear_Shape": 0.017,
+        "Nucleus": 0.9912,
+        "Cytoplasm": 0.714,
+        "Cytoplasmic_Basophilia": 0.9555,
+        "Cytoplasmic_Vacuoles": 0.5715
+      }
+    },
+    {
+      "cell_id": "img005_c002",
+      "image_id": "45_15_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        266.5,
+        34.0625,
+        372.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8682,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.5912,
+        "Nuclear_Shape": 0.1231,
+        "Nucleus": 0.6772,
+        "Cytoplasm": 0.641,
+        "Cytoplasmic_Basophilia": 0.4034,
+        "Cytoplasmic_Vacuoles": 0.5323
+      }
+    },
+    {
+      "cell_id": "img005_c003",
+      "image_id": "45_15_1000_AML.png",
+      "bbox_xyxy": [
+        415.75,
+        518.0,
+        481.25,
+        620.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8223,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9952,
+        "Nuclear_Shape": 0.0103,
+        "Nucleus": 0.9968,
+        "Cytoplasm": 0.6119,
+        "Cytoplasmic_Basophilia": 0.923,
+        "Cytoplasmic_Vacuoles": 0.4559
+      }
+    },
+    {
+      "cell_id": "img005_c004",
+      "image_id": "45_15_1000_AML.png",
+      "bbox_xyxy": [
+        498.25,
+        177.25,
+        546.0,
+        256.75
+      ],
+      "class": "None",
+      "confidence": 0.8105,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.635,
+        "Nuclear_Shape": 0.7759,
+        "Nucleus": 0.837,
+        "Cytoplasm": 0.0877,
+        "Cytoplasmic_Basophilia": 0.5744,
+        "Cytoplasmic_Vacuoles": 0.2833
+      }
+    },
+    {
+      "cell_id": "img005_c005",
+      "image_id": "45_15_1000_AML.png",
+      "bbox_xyxy": [
+        624.0,
+        403.5,
+        640.0,
+        509.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.5947,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2863,
+        "Nuclear_Shape": 0.3231,
+        "Nucleus": 0.5936,
+        "Cytoplasm": 0.363,
+        "Cytoplasmic_Basophilia": 0.329,
+        "Cytoplasmic_Vacuoles": 0.4358
+      }
+    },
+    {
+      "cell_id": "img005_c006",
+      "image_id": "45_15_1000_AML.png",
+      "bbox_xyxy": [
+        416.0,
+        518.5,
+        480.0,
+        619.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.4883,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9956,
+        "Nuclear_Shape": 0.0084,
+        "Nucleus": 0.9966,
+        "Cytoplasm": 0.6382,
+        "Cytoplasmic_Basophilia": 0.9127,
+        "Cytoplasmic_Vacuoles": 0.4507
+      }
+    },
+    {
+      "cell_id": "img005_c007",
+      "image_id": "45_15_1000_AML.png",
+      "bbox_xyxy": [
+        284.0,
+        393.75,
+        343.0,
+        488.75
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.2673,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9861,
+        "Nuclear_Shape": 0.0137,
+        "Nucleus": 0.9935,
+        "Cytoplasm": 0.6793,
+        "Cytoplasmic_Basophilia": 0.9531,
+        "Cytoplasmic_Vacuoles": 0.5483
+      }
+    },
+    {
+      "cell_id": "img006_c000",
+      "image_id": "45_16_1000_AML.png",
+      "bbox_xyxy": [
+        131.25,
+        221.25,
+        207.75,
+        337.75
+      ],
+      "class": "None",
+      "confidence": 0.936,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9803,
+        "Nuclear_Shape": 0.212,
+        "Nucleus": 0.9895,
+        "Cytoplasm": 0.7584,
+        "Cytoplasmic_Basophilia": 0.9758,
+        "Cytoplasmic_Vacuoles": 0.9732
+      }
+    },
+    {
+      "cell_id": "img006_c001",
+      "image_id": "45_16_1000_AML.png",
+      "bbox_xyxy": [
+        310.5,
+        71.75,
+        382.5,
+        195.5
+      ],
+      "class": "Monocyte",
+      "confidence": 0.9136,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9845,
+        "Nuclear_Shape": 0.9642,
+        "Nucleus": 0.9946,
+        "Cytoplasm": 0.0559,
+        "Cytoplasmic_Basophilia": 0.9903,
+        "Cytoplasmic_Vacuoles": 0.9606
+      }
+    },
+    {
+      "cell_id": "img006_c002",
+      "image_id": "45_16_1000_AML.png",
+      "bbox_xyxy": [
+        142.75,
+        337.25,
+        211.75,
+        428.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9097,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9984,
+        "Nuclear_Shape": 0.0051,
+        "Nucleus": 0.9966,
+        "Cytoplasm": 0.9325,
+        "Cytoplasmic_Basophilia": 0.7413,
+        "Cytoplasmic_Vacuoles": 0.8477
+      }
+    },
+    {
+      "cell_id": "img006_c003",
+      "image_id": "45_16_1000_AML.png",
+      "bbox_xyxy": [
+        294.5,
+        343.0,
+        338.5,
+        415.5
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.9087,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.3019,
+        "Nuclear_Shape": 0.7791,
+        "Nucleus": 0.2058,
+        "Cytoplasm": 0.1982,
+        "Cytoplasmic_Basophilia": 0.1586,
+        "Cytoplasmic_Vacuoles": 0.1939
+      }
+    },
+    {
+      "cell_id": "img006_c004",
+      "image_id": "45_16_1000_AML.png",
+      "bbox_xyxy": [
+        178.75,
+        453.5,
+        253.25,
+        579.5
+      ],
+      "class": "None",
+      "confidence": 0.895,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8513,
+        "Nuclear_Shape": 0.3367,
+        "Nucleus": 0.9429,
+        "Cytoplasm": 0.2198,
+        "Cytoplasmic_Basophilia": 0.5007,
+        "Cytoplasmic_Vacuoles": 0.3274
+      }
+    },
+    {
+      "cell_id": "img006_c005",
+      "image_id": "45_16_1000_AML.png",
+      "bbox_xyxy": [
+        335.0,
+        424.0,
+        395.0,
+        532.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6958,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9376,
+        "Nuclear_Shape": 0.3643,
+        "Nucleus": 0.9857,
+        "Cytoplasm": 0.472,
+        "Cytoplasmic_Basophilia": 0.9522,
+        "Cytoplasmic_Vacuoles": 0.9024
+      }
+    },
+    {
+      "cell_id": "img006_c006",
+      "image_id": "45_16_1000_AML.png",
+      "bbox_xyxy": [
+        310.5,
+        73.125,
+        382.5,
+        196.625
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.3594,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9833,
+        "Nuclear_Shape": 0.9641,
+        "Nucleus": 0.994,
+        "Cytoplasm": 0.0539,
+        "Cytoplasmic_Basophilia": 0.9898,
+        "Cytoplasmic_Vacuoles": 0.9551
+      }
+    },
+    {
+      "cell_id": "img007_c000",
+      "image_id": "45_17_1000_AML.png",
+      "bbox_xyxy": [
+        426.0,
+        424.0,
+        500.0,
+        541.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8843,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9938,
+        "Nuclear_Shape": 0.0134,
+        "Nucleus": 0.9975,
+        "Cytoplasm": 0.8184,
+        "Cytoplasmic_Basophilia": 0.9796,
+        "Cytoplasmic_Vacuoles": 0.8637
+      }
+    },
+    {
+      "cell_id": "img007_c001",
+      "image_id": "45_17_1000_AML.png",
+      "bbox_xyxy": [
+        146.25,
+        62.125,
+        222.75,
+        190.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.564,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9941,
+        "Nuclear_Shape": 0.2016,
+        "Nucleus": 0.9918,
+        "Cytoplasm": 0.8884,
+        "Cytoplasmic_Basophilia": 0.9392,
+        "Cytoplasmic_Vacuoles": 0.9797
+      }
+    },
+    {
+      "cell_id": "img008_c000",
+      "image_id": "45_18_1000_AML.png",
+      "bbox_xyxy": [
+        551.0,
+        196.0,
+        606.0,
+        304.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9219,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9891,
+        "Nuclear_Shape": 0.0031,
+        "Nucleus": 0.9959,
+        "Cytoplasm": 0.2556,
+        "Cytoplasmic_Basophilia": 0.1214,
+        "Cytoplasmic_Vacuoles": 0.1738
+      }
+    },
+    {
+      "cell_id": "img008_c001",
+      "image_id": "45_18_1000_AML.png",
+      "bbox_xyxy": [
+        109.875,
+        414.0,
+        182.875,
+        519.0
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.9165,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9962,
+        "Nuclear_Shape": 0.0067,
+        "Nucleus": 0.9917,
+        "Cytoplasm": 0.9438,
+        "Cytoplasmic_Basophilia": 0.7825,
+        "Cytoplasmic_Vacuoles": 0.9367
+      }
+    },
+    {
+      "cell_id": "img008_c002",
+      "image_id": "45_18_1000_AML.png",
+      "bbox_xyxy": [
+        45.375,
+        0.4375,
+        128.375,
+        116.625
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9141,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9654,
+        "Nuclear_Shape": 0.6783,
+        "Nucleus": 0.9679,
+        "Cytoplasm": 0.6259,
+        "Cytoplasmic_Basophilia": 0.9817,
+        "Cytoplasmic_Vacuoles": 0.9176
+      }
+    },
+    {
+      "cell_id": "img008_c003",
+      "image_id": "45_18_1000_AML.png",
+      "bbox_xyxy": [
+        337.5,
+        524.0,
+        407.5,
+        636.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.7593,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9944,
+        "Nuclear_Shape": 0.0056,
+        "Nucleus": 0.9948,
+        "Cytoplasm": 0.8686,
+        "Cytoplasmic_Basophilia": 0.9781,
+        "Cytoplasmic_Vacuoles": 0.8498
+      }
+    },
+    {
+      "cell_id": "img008_c004",
+      "image_id": "45_18_1000_AML.png",
+      "bbox_xyxy": [
+        156.75,
+        258.0,
+        218.75,
+        364.0
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.6226,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9553,
+        "Nuclear_Shape": 0.0785,
+        "Nucleus": 0.9687,
+        "Cytoplasm": 0.3948,
+        "Cytoplasmic_Basophilia": 0.6699,
+        "Cytoplasmic_Vacuoles": 0.3349
+      }
+    },
+    {
+      "cell_id": "img008_c005",
+      "image_id": "45_18_1000_AML.png",
+      "bbox_xyxy": [
+        333.5,
+        0.125,
+        415.5,
+        112.4375
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.2847,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9958,
+        "Nuclear_Shape": 0.0137,
+        "Nucleus": 0.9981,
+        "Cytoplasm": 0.8002,
+        "Cytoplasmic_Basophilia": 0.9769,
+        "Cytoplasmic_Vacuoles": 0.7446
+      }
+    },
+    {
+      "cell_id": "img009_c000",
+      "image_id": "45_19_1000_AML.png",
+      "bbox_xyxy": [
+        405.5,
+        518.0,
+        468.5,
+        634.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9229,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9957,
+        "Nuclear_Shape": 0.9996,
+        "Nucleus": 0.9963,
+        "Cytoplasm": 0.0025,
+        "Cytoplasmic_Basophilia": 0.9984,
+        "Cytoplasmic_Vacuoles": 0.9869
+      }
+    },
+    {
+      "cell_id": "img009_c001",
+      "image_id": "45_19_1000_AML.png",
+      "bbox_xyxy": [
+        319.0,
+        60.5,
+        389.0,
+        171.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9028,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9862,
+        "Nuclear_Shape": 0.0019,
+        "Nucleus": 0.9942,
+        "Cytoplasm": 0.6715,
+        "Cytoplasmic_Basophilia": 0.4898,
+        "Cytoplasmic_Vacuoles": 0.516
+      }
+    },
+    {
+      "cell_id": "img009_c002",
+      "image_id": "45_19_1000_AML.png",
+      "bbox_xyxy": [
+        38.5312,
+        44.75,
+        96.0,
+        145.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8931,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9237,
+        "Nuclear_Shape": 0.0043,
+        "Nucleus": 0.994,
+        "Cytoplasm": 0.097,
+        "Cytoplasmic_Basophilia": 0.0339,
+        "Cytoplasmic_Vacuoles": 0.0638
+      }
+    },
+    {
+      "cell_id": "img009_c003",
+      "image_id": "45_19_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        0.0,
+        39.6562,
+        40.625
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.4609,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2764,
+        "Nuclear_Shape": 0.4642,
+        "Nucleus": 0.3498,
+        "Cytoplasm": 0.3021,
+        "Cytoplasmic_Basophilia": 0.4387,
+        "Cytoplasmic_Vacuoles": 0.3828
+      }
+    },
+    {
+      "cell_id": "img009_c004",
+      "image_id": "45_19_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        0.0,
+        38.8438,
+        41.3125
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.3398,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2738,
+        "Nuclear_Shape": 0.5242,
+        "Nucleus": 0.329,
+        "Cytoplasm": 0.2931,
+        "Cytoplasmic_Basophilia": 0.458,
+        "Cytoplasmic_Vacuoles": 0.364
+      }
+    },
+    {
+      "cell_id": "img010_c000",
+      "image_id": "45_1_1000_AML.png",
+      "bbox_xyxy": [
+        173.5,
+        340.25,
+        244.5,
+        446.75
+      ],
+      "class": "None",
+      "confidence": 0.9448,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9966,
+        "Nuclear_Shape": 0.4035,
+        "Nucleus": 0.9963,
+        "Cytoplasm": 0.7731,
+        "Cytoplasmic_Basophilia": 0.9845,
+        "Cytoplasmic_Vacuoles": 0.9739
+      }
+    },
+    {
+      "cell_id": "img010_c001",
+      "image_id": "45_1_1000_AML.png",
+      "bbox_xyxy": [
+        363.5,
+        239.0,
+        435.0,
+        373.0
+      ],
+      "class": "None",
+      "confidence": 0.9219,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9928,
+        "Nuclear_Shape": 0.4925,
+        "Nucleus": 0.9923,
+        "Cytoplasm": 0.4965,
+        "Cytoplasmic_Basophilia": 0.9625,
+        "Cytoplasmic_Vacuoles": 0.83
+      }
+    },
+    {
+      "cell_id": "img010_c002",
+      "image_id": "45_1_1000_AML.png",
+      "bbox_xyxy": [
+        151.75,
+        274.0,
+        209.75,
+        364.0
+      ],
+      "class": "None",
+      "confidence": 0.644,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9705,
+        "Nuclear_Shape": 0.1434,
+        "Nucleus": 0.9877,
+        "Cytoplasm": 0.6678,
+        "Cytoplasmic_Basophilia": 0.8922,
+        "Cytoplasmic_Vacuoles": 0.9208
+      }
+    },
+    {
+      "cell_id": "img010_c003",
+      "image_id": "45_1_1000_AML.png",
+      "bbox_xyxy": [
+        363.0,
+        238.75,
+        436.0,
+        372.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.2612,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9919,
+        "Nuclear_Shape": 0.5804,
+        "Nucleus": 0.9917,
+        "Cytoplasm": 0.4152,
+        "Cytoplasmic_Basophilia": 0.9584,
+        "Cytoplasmic_Vacuoles": 0.7965
+      }
+    },
+    {
+      "cell_id": "img011_c000",
+      "image_id": "45_20_1000_AML.png",
+      "bbox_xyxy": [
+        456.0,
+        378.5,
+        514.0,
+        481.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9058,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9748,
+        "Nuclear_Shape": 0.0105,
+        "Nucleus": 0.9657,
+        "Cytoplasm": 0.7857,
+        "Cytoplasmic_Basophilia": 0.1197,
+        "Cytoplasmic_Vacuoles": 0.5551
+      }
+    },
+    {
+      "cell_id": "img012_c000",
+      "image_id": "45_21_1000_AML.png",
+      "bbox_xyxy": [
+        342.0,
+        424.0,
+        410.0,
+        536.0
+      ],
+      "class": "Myelocyte",
+      "confidence": 0.9473,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9785,
+        "Nuclear_Shape": 0.1635,
+        "Nucleus": 0.9881,
+        "Cytoplasm": 0.6648,
+        "Cytoplasmic_Basophilia": 0.9769,
+        "Cytoplasmic_Vacuoles": 0.8354
+      }
+    },
+    {
+      "cell_id": "img013_c000",
+      "image_id": "45_22_1000_AML.png",
+      "bbox_xyxy": [
+        361.75,
+        489.0,
+        397.75,
+        549.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.9448,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1784,
+        "Nuclear_Shape": 0.9147,
+        "Nucleus": 0.1199,
+        "Cytoplasm": 0.1194,
+        "Cytoplasmic_Basophilia": 0.2531,
+        "Cytoplasmic_Vacuoles": 0.1217
+      }
+    },
+    {
+      "cell_id": "img013_c001",
+      "image_id": "45_22_1000_AML.png",
+      "bbox_xyxy": [
+        578.0,
+        80.0,
+        636.0,
+        185.75
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9419,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9922,
+        "Nuclear_Shape": 0.9824,
+        "Nucleus": 0.9942,
+        "Cytoplasm": 0.0192,
+        "Cytoplasmic_Basophilia": 0.9969,
+        "Cytoplasmic_Vacuoles": 0.9645
+      }
+    },
+    {
+      "cell_id": "img013_c002",
+      "image_id": "45_22_1000_AML.png",
+      "bbox_xyxy": [
+        402.5,
+        410.5,
+        462.0,
+        509.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9414,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9902,
+        "Nuclear_Shape": 0.9895,
+        "Nucleus": 0.9968,
+        "Cytoplasm": 0.0209,
+        "Cytoplasmic_Basophilia": 0.998,
+        "Cytoplasmic_Vacuoles": 0.9739
+      }
+    },
+    {
+      "cell_id": "img013_c003",
+      "image_id": "45_22_1000_AML.png",
+      "bbox_xyxy": [
+        612.0,
+        511.0,
+        640.0,
+        612.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.4036,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7055,
+        "Nuclear_Shape": 0.5717,
+        "Nucleus": 0.8214,
+        "Cytoplasm": 0.2822,
+        "Cytoplasmic_Basophilia": 0.618,
+        "Cytoplasmic_Vacuoles": 0.5662
+      }
+    },
+    {
+      "cell_id": "img013_c004",
+      "image_id": "45_22_1000_AML.png",
+      "bbox_xyxy": [
+        613.0,
+        510.25,
+        640.0,
+        614.0
+      ],
+      "class": "None",
+      "confidence": 0.3345,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6836,
+        "Nuclear_Shape": 0.6148,
+        "Nucleus": 0.8143,
+        "Cytoplasm": 0.2445,
+        "Cytoplasmic_Basophilia": 0.6131,
+        "Cytoplasmic_Vacuoles": 0.5269
+      }
+    },
+    {
+      "cell_id": "img014_c000",
+      "image_id": "45_23_1000_AML.png",
+      "bbox_xyxy": [
+        330.5,
+        238.75,
+        393.5,
+        346.75
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.9204,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9837,
+        "Nuclear_Shape": 0.3405,
+        "Nucleus": 0.9944,
+        "Cytoplasm": 0.4086,
+        "Cytoplasmic_Basophilia": 0.9881,
+        "Cytoplasmic_Vacuoles": 0.9221
+      }
+    },
+    {
+      "cell_id": "img014_c001",
+      "image_id": "45_23_1000_AML.png",
+      "bbox_xyxy": [
+        590.0,
+        253.25,
+        640.0,
+        356.75
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8809,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9864,
+        "Nuclear_Shape": 0.0038,
+        "Nucleus": 0.9939,
+        "Cytoplasm": 0.9809,
+        "Cytoplasmic_Basophilia": 0.9831,
+        "Cytoplasmic_Vacuoles": 0.9768
+      }
+    },
+    {
+      "cell_id": "img014_c002",
+      "image_id": "45_23_1000_AML.png",
+      "bbox_xyxy": [
+        276.75,
+        201.125,
+        338.75,
+        316.0
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.873,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9915,
+        "Nuclear_Shape": 0.0333,
+        "Nucleus": 0.9896,
+        "Cytoplasm": 0.7692,
+        "Cytoplasmic_Basophilia": 0.8954,
+        "Cytoplasmic_Vacuoles": 0.8214
+      }
+    },
+    {
+      "cell_id": "img014_c003",
+      "image_id": "45_23_1000_AML.png",
+      "bbox_xyxy": [
+        562.5,
+        352.5,
+        624.5,
+        437.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8716,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9566,
+        "Nuclear_Shape": 0.0049,
+        "Nucleus": 0.9866,
+        "Cytoplasm": 0.7441,
+        "Cytoplasmic_Basophilia": 0.0668,
+        "Cytoplasmic_Vacuoles": 0.3925
+      }
+    },
+    {
+      "cell_id": "img014_c004",
+      "image_id": "45_23_1000_AML.png",
+      "bbox_xyxy": [
+        398.0,
+        472.0,
+        473.0,
+        589.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8521,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9932,
+        "Nuclear_Shape": 0.0692,
+        "Nucleus": 0.9935,
+        "Cytoplasm": 0.9286,
+        "Cytoplasmic_Basophilia": 0.9688,
+        "Cytoplasmic_Vacuoles": 0.9577
+      }
+    },
+    {
+      "cell_id": "img014_c005",
+      "image_id": "45_23_1000_AML.png",
+      "bbox_xyxy": [
+        359.5,
+        159.75,
+        422.5,
+        258.75
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.7905,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9927,
+        "Nuclear_Shape": 0.3534,
+        "Nucleus": 0.9974,
+        "Cytoplasm": 0.5636,
+        "Cytoplasmic_Basophilia": 0.9913,
+        "Cytoplasmic_Vacuoles": 0.9534
+      }
+    },
+    {
+      "cell_id": "img015_c000",
+      "image_id": "45_24_1000_AML.png",
+      "bbox_xyxy": [
+        166.0,
+        177.0,
+        207.5,
+        243.25
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.9243,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2122,
+        "Nuclear_Shape": 0.784,
+        "Nucleus": 0.2885,
+        "Cytoplasm": 0.1201,
+        "Cytoplasmic_Basophilia": 0.1421,
+        "Cytoplasmic_Vacuoles": 0.0688
+      }
+    },
+    {
+      "cell_id": "img015_c001",
+      "image_id": "45_24_1000_AML.png",
+      "bbox_xyxy": [
+        129.625,
+        79.0625,
+        220.875,
+        180.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9136,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9193,
+        "Nuclear_Shape": 0.4992,
+        "Nucleus": 0.9579,
+        "Cytoplasm": 0.6186,
+        "Cytoplasmic_Basophilia": 0.9878,
+        "Cytoplasmic_Vacuoles": 0.8815
+      }
+    },
+    {
+      "cell_id": "img015_c002",
+      "image_id": "45_24_1000_AML.png",
+      "bbox_xyxy": [
+        304.25,
+        477.75,
+        376.25,
+        590.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9111,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9452,
+        "Nuclear_Shape": 0.052,
+        "Nucleus": 0.9283,
+        "Cytoplasm": 0.6256,
+        "Cytoplasmic_Basophilia": 0.275,
+        "Cytoplasmic_Vacuoles": 0.404
+      }
+    },
+    {
+      "cell_id": "img015_c003",
+      "image_id": "45_24_1000_AML.png",
+      "bbox_xyxy": [
+        457.5,
+        422.5,
+        506.5,
+        504.5
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.9004,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.268,
+        "Nuclear_Shape": 0.5573,
+        "Nucleus": 0.3722,
+        "Cytoplasm": 0.0955,
+        "Cytoplasmic_Basophilia": 0.0714,
+        "Cytoplasmic_Vacuoles": 0.0605
+      }
+    },
+    {
+      "cell_id": "img015_c004",
+      "image_id": "45_24_1000_AML.png",
+      "bbox_xyxy": [
+        23.9375,
+        202.0,
+        88.375,
+        297.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.897,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6877,
+        "Nuclear_Shape": 0.3286,
+        "Nucleus": 0.7414,
+        "Cytoplasm": 0.5539,
+        "Cytoplasmic_Basophilia": 0.563,
+        "Cytoplasmic_Vacuoles": 0.6582
+      }
+    },
+    {
+      "cell_id": "img016_c000",
+      "image_id": "45_25_1000_AML.png",
+      "bbox_xyxy": [
+        48.25,
+        56.4688,
+        103.625,
+        160.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9404,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9971,
+        "Nuclear_Shape": 0.9989,
+        "Nucleus": 0.9959,
+        "Cytoplasm": 0.0032,
+        "Cytoplasmic_Basophilia": 0.9993,
+        "Cytoplasmic_Vacuoles": 0.9913
+      }
+    },
+    {
+      "cell_id": "img016_c001",
+      "image_id": "45_25_1000_AML.png",
+      "bbox_xyxy": [
+        161.25,
+        469.0,
+        224.75,
+        571.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9082,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8097,
+        "Nuclear_Shape": 0.0254,
+        "Nucleus": 0.9109,
+        "Cytoplasm": 0.6586,
+        "Cytoplasmic_Basophilia": 0.0925,
+        "Cytoplasmic_Vacuoles": 0.5345
+      }
+    },
+    {
+      "cell_id": "img016_c002",
+      "image_id": "45_25_1000_AML.png",
+      "bbox_xyxy": [
+        352.0,
+        336.75,
+        410.0,
+        437.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6152,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9956,
+        "Nuclear_Shape": 0.9959,
+        "Nucleus": 0.9981,
+        "Cytoplasm": 0.0132,
+        "Cytoplasmic_Basophilia": 0.9978,
+        "Cytoplasmic_Vacuoles": 0.9912
+      }
+    },
+    {
+      "cell_id": "img017_c000",
+      "image_id": "45_26_1000_AML.png",
+      "bbox_xyxy": [
+        71.25,
+        293.5,
+        121.75,
+        392.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8901,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9736,
+        "Nuclear_Shape": 0.0144,
+        "Nucleus": 0.9927,
+        "Cytoplasm": 0.8673,
+        "Cytoplasmic_Basophilia": 0.9827,
+        "Cytoplasmic_Vacuoles": 0.8944
+      }
+    },
+    {
+      "cell_id": "img017_c001",
+      "image_id": "45_26_1000_AML.png",
+      "bbox_xyxy": [
+        122.375,
+        319.75,
+        157.875,
+        386.75
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.8896,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2538,
+        "Nuclear_Shape": 0.8018,
+        "Nucleus": 0.2097,
+        "Cytoplasm": 0.1073,
+        "Cytoplasmic_Basophilia": 0.1524,
+        "Cytoplasmic_Vacuoles": 0.1126
+      }
+    },
+    {
+      "cell_id": "img017_c002",
+      "image_id": "45_26_1000_AML.png",
+      "bbox_xyxy": [
+        2.6875,
+        366.5,
+        69.0,
+        481.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8687,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9045,
+        "Nuclear_Shape": 0.1005,
+        "Nucleus": 0.9375,
+        "Cytoplasm": 0.8409,
+        "Cytoplasmic_Basophilia": 0.8689,
+        "Cytoplasmic_Vacuoles": 0.9285
+      }
+    },
+    {
+      "cell_id": "img017_c003",
+      "image_id": "45_26_1000_AML.png",
+      "bbox_xyxy": [
+        243.5,
+        151.0,
+        310.5,
+        269.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8579,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.994,
+        "Nuclear_Shape": 0.2176,
+        "Nucleus": 0.9949,
+        "Cytoplasm": 0.554,
+        "Cytoplasmic_Basophilia": 0.9884,
+        "Cytoplasmic_Vacuoles": 0.972
+      }
+    },
+    {
+      "cell_id": "img017_c004",
+      "image_id": "45_26_1000_AML.png",
+      "bbox_xyxy": [
+        520.0,
+        395.5,
+        604.0,
+        590.5
+      ],
+      "class": "None",
+      "confidence": 0.793,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8361,
+        "Nuclear_Shape": 0.5851,
+        "Nucleus": 0.851,
+        "Cytoplasm": 0.5036,
+        "Cytoplasmic_Basophilia": 0.7295,
+        "Cytoplasmic_Vacuoles": 0.7972
+      }
+    },
+    {
+      "cell_id": "img017_c005",
+      "image_id": "45_26_1000_AML.png",
+      "bbox_xyxy": [
+        439.25,
+        397.5,
+        605.0,
+        596.0
+      ],
+      "class": "None",
+      "confidence": 0.7646,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8213,
+        "Nuclear_Shape": 0.3633,
+        "Nucleus": 0.7642,
+        "Cytoplasm": 0.6904,
+        "Cytoplasmic_Basophilia": 0.6745,
+        "Cytoplasmic_Vacuoles": 0.8222
+      }
+    },
+    {
+      "cell_id": "img018_c000",
+      "image_id": "45_27_1000_AML.png",
+      "bbox_xyxy": [
+        219.25,
+        471.5,
+        282.5,
+        573.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9448,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9953,
+        "Nuclear_Shape": 0.9996,
+        "Nucleus": 0.9947,
+        "Cytoplasm": 0.0033,
+        "Cytoplasmic_Basophilia": 0.9991,
+        "Cytoplasmic_Vacuoles": 0.9739
+      }
+    },
+    {
+      "cell_id": "img018_c001",
+      "image_id": "45_27_1000_AML.png",
+      "bbox_xyxy": [
+        44.1562,
+        34.75,
+        101.625,
+        140.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9355,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9941,
+        "Nuclear_Shape": 0.9977,
+        "Nucleus": 0.9985,
+        "Cytoplasm": 0.0086,
+        "Cytoplasmic_Basophilia": 0.9983,
+        "Cytoplasmic_Vacuoles": 0.9935
+      }
+    },
+    {
+      "cell_id": "img018_c002",
+      "image_id": "45_27_1000_AML.png",
+      "bbox_xyxy": [
+        484.5,
+        308.5,
+        552.5,
+        411.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8926,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9605,
+        "Nuclear_Shape": 0.0108,
+        "Nucleus": 0.9853,
+        "Cytoplasm": 0.9001,
+        "Cytoplasmic_Basophilia": 0.6526,
+        "Cytoplasmic_Vacuoles": 0.77
+      }
+    },
+    {
+      "cell_id": "img018_c003",
+      "image_id": "45_27_1000_AML.png",
+      "bbox_xyxy": [
+        154.0,
+        50.75,
+        225.0,
+        170.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8408,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9927,
+        "Nuclear_Shape": 0.7482,
+        "Nucleus": 0.9914,
+        "Cytoplasm": 0.26,
+        "Cytoplasmic_Basophilia": 0.9909,
+        "Cytoplasmic_Vacuoles": 0.9705
+      }
+    },
+    {
+      "cell_id": "img018_c004",
+      "image_id": "45_27_1000_AML.png",
+      "bbox_xyxy": [
+        447.5,
+        0.0,
+        512.0,
+        95.875
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8354,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9864,
+        "Nuclear_Shape": 0.3923,
+        "Nucleus": 0.9964,
+        "Cytoplasm": 0.3995,
+        "Cytoplasmic_Basophilia": 0.9981,
+        "Cytoplasmic_Vacuoles": 0.9856
+      }
+    },
+    {
+      "cell_id": "img018_c005",
+      "image_id": "45_27_1000_AML.png",
+      "bbox_xyxy": [
+        44.25,
+        33.6562,
+        102.875,
+        139.875
+      ],
+      "class": "Eosinophil",
+      "confidence": 0.7251,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9934,
+        "Nuclear_Shape": 0.997,
+        "Nucleus": 0.9981,
+        "Cytoplasm": 0.0118,
+        "Cytoplasmic_Basophilia": 0.9979,
+        "Cytoplasmic_Vacuoles": 0.994
+      }
+    },
+    {
+      "cell_id": "img018_c006",
+      "image_id": "45_27_1000_AML.png",
+      "bbox_xyxy": [
+        574.0,
+        0.0,
+        640.0,
+        24.875
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.4226,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.3495,
+        "Nuclear_Shape": 0.6231,
+        "Nucleus": 0.6166,
+        "Cytoplasm": 0.2382,
+        "Cytoplasmic_Basophilia": 0.717,
+        "Cytoplasmic_Vacuoles": 0.3892
+      }
+    },
+    {
+      "cell_id": "img019_c000",
+      "image_id": "45_28_1000_AML.png",
+      "bbox_xyxy": [
+        555.0,
+        454.0,
+        613.0,
+        555.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9526,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9958,
+        "Nuclear_Shape": 0.9931,
+        "Nucleus": 0.9983,
+        "Cytoplasm": 0.02,
+        "Cytoplasmic_Basophilia": 0.9995,
+        "Cytoplasmic_Vacuoles": 0.9942
+      }
+    },
+    {
+      "cell_id": "img019_c001",
+      "image_id": "45_28_1000_AML.png",
+      "bbox_xyxy": [
+        390.0,
+        530.5,
+        447.0,
+        630.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9307,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9973,
+        "Nuclear_Shape": 0.9997,
+        "Nucleus": 0.9971,
+        "Cytoplasm": 0.0023,
+        "Cytoplasmic_Basophilia": 0.9996,
+        "Cytoplasmic_Vacuoles": 0.9863
+      }
+    },
+    {
+      "cell_id": "img019_c002",
+      "image_id": "45_28_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        347.0,
+        54.3125,
+        449.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8984,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9787,
+        "Nuclear_Shape": 0.0082,
+        "Nucleus": 0.9759,
+        "Cytoplasm": 0.9562,
+        "Cytoplasmic_Basophilia": 0.8315,
+        "Cytoplasmic_Vacuoles": 0.8992
+      }
+    },
+    {
+      "cell_id": "img019_c003",
+      "image_id": "45_28_1000_AML.png",
+      "bbox_xyxy": [
+        545.0,
+        547.0,
+        614.0,
+        639.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8975,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9453,
+        "Nuclear_Shape": 0.0117,
+        "Nucleus": 0.9879,
+        "Cytoplasm": 0.881,
+        "Cytoplasmic_Basophilia": 0.8843,
+        "Cytoplasmic_Vacuoles": 0.9005
+      }
+    },
+    {
+      "cell_id": "img019_c004",
+      "image_id": "45_28_1000_AML.png",
+      "bbox_xyxy": [
+        24.75,
+        445.0,
+        92.375,
+        565.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8267,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9962,
+        "Nuclear_Shape": 0.2632,
+        "Nucleus": 0.9963,
+        "Cytoplasm": 0.6884,
+        "Cytoplasmic_Basophilia": 0.9937,
+        "Cytoplasmic_Vacuoles": 0.9432
+      }
+    },
+    {
+      "cell_id": "img020_c000",
+      "image_id": "45_29_1000_AML.png",
+      "bbox_xyxy": [
+        471.0,
+        248.25,
+        521.0,
+        341.25
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9478,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9889,
+        "Nuclear_Shape": 0.9982,
+        "Nucleus": 0.9912,
+        "Cytoplasm": 0.0152,
+        "Cytoplasmic_Basophilia": 0.9992,
+        "Cytoplasmic_Vacuoles": 0.9749
+      }
+    },
+    {
+      "cell_id": "img020_c001",
+      "image_id": "45_29_1000_AML.png",
+      "bbox_xyxy": [
+        167.875,
+        21.125,
+        227.125,
+        128.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8989,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9904,
+        "Nuclear_Shape": 0.0047,
+        "Nucleus": 0.9909,
+        "Cytoplasm": 0.6696,
+        "Cytoplasmic_Basophilia": 0.5547,
+        "Cytoplasmic_Vacuoles": 0.5213
+      }
+    },
+    {
+      "cell_id": "img020_c002",
+      "image_id": "45_29_1000_AML.png",
+      "bbox_xyxy": [
+        66.25,
+        111.625,
+        133.125,
+        219.625
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8926,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9723,
+        "Nuclear_Shape": 0.0132,
+        "Nucleus": 0.9891,
+        "Cytoplasm": 0.7869,
+        "Cytoplasmic_Basophilia": 0.4972,
+        "Cytoplasmic_Vacuoles": 0.6903
+      }
+    },
+    {
+      "cell_id": "img020_c003",
+      "image_id": "45_29_1000_AML.png",
+      "bbox_xyxy": [
+        38.7188,
+        34.375,
+        101.25,
+        138.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8872,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.893,
+        "Nuclear_Shape": 0.1138,
+        "Nucleus": 0.9621,
+        "Cytoplasm": 0.8181,
+        "Cytoplasmic_Basophilia": 0.9062,
+        "Cytoplasmic_Vacuoles": 0.8304
+      }
+    },
+    {
+      "cell_id": "img020_c004",
+      "image_id": "45_29_1000_AML.png",
+      "bbox_xyxy": [
+        428.0,
+        526.0,
+        495.0,
+        636.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.6992,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9861,
+        "Nuclear_Shape": 0.9527,
+        "Nucleus": 0.9924,
+        "Cytoplasm": 0.2328,
+        "Cytoplasmic_Basophilia": 0.9955,
+        "Cytoplasmic_Vacuoles": 0.9046
+      }
+    },
+    {
+      "cell_id": "img021_c000",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        533.0,
+        373.5,
+        598.0,
+        481.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9482,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9946,
+        "Nuclear_Shape": 0.994,
+        "Nucleus": 0.9969,
+        "Cytoplasm": 0.0501,
+        "Cytoplasmic_Basophilia": 0.9968,
+        "Cytoplasmic_Vacuoles": 0.9633
+      }
+    },
+    {
+      "cell_id": "img021_c001",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        29.0,
+        51.875,
+        104.125,
+        179.875
+      ],
+      "class": "Eosinophil",
+      "confidence": 0.8652,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9772,
+        "Nuclear_Shape": 0.4375,
+        "Nucleus": 0.9779,
+        "Cytoplasm": 0.7605,
+        "Cytoplasmic_Basophilia": 0.9864,
+        "Cytoplasmic_Vacuoles": 0.9259
+      }
+    },
+    {
+      "cell_id": "img021_c002",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        33.5625,
+        178.0,
+        100.6875,
+        302.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.8311,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.994,
+        "Nuclear_Shape": 0.0068,
+        "Nucleus": 0.9826,
+        "Cytoplasm": 0.99,
+        "Cytoplasmic_Basophilia": 0.9516,
+        "Cytoplasmic_Vacuoles": 0.9559
+      }
+    },
+    {
+      "cell_id": "img021_c003",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        289.5,
+        533.0,
+        379.5,
+        640.0
+      ],
+      "class": "None",
+      "confidence": 0.8115,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8363,
+        "Nuclear_Shape": 0.2886,
+        "Nucleus": 0.9014,
+        "Cytoplasm": 0.6553,
+        "Cytoplasmic_Basophilia": 0.8117,
+        "Cytoplasmic_Vacuoles": 0.7817
+      }
+    },
+    {
+      "cell_id": "img021_c004",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        88.375,
+        272.0,
+        149.0,
+        379.0
+      ],
+      "class": "None",
+      "confidence": 0.7798,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8932,
+        "Nuclear_Shape": 0.0219,
+        "Nucleus": 0.9678,
+        "Cytoplasm": 0.6857,
+        "Cytoplasmic_Basophilia": 0.3645,
+        "Cytoplasmic_Vacuoles": 0.3537
+      }
+    },
+    {
+      "cell_id": "img021_c005",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        33.625,
+        180.5,
+        100.5,
+        304.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6602,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9954,
+        "Nuclear_Shape": 0.0041,
+        "Nucleus": 0.9881,
+        "Cytoplasm": 0.9904,
+        "Cytoplasmic_Basophilia": 0.9479,
+        "Cytoplasmic_Vacuoles": 0.9573
+      }
+    },
+    {
+      "cell_id": "img021_c006",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        102.75,
+        202.25,
+        144.75,
+        271.5
+      ],
+      "class": "None",
+      "confidence": 0.6353,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4419,
+        "Nuclear_Shape": 0.3213,
+        "Nucleus": 0.5691,
+        "Cytoplasm": 0.5981,
+        "Cytoplasmic_Basophilia": 0.6006,
+        "Cytoplasmic_Vacuoles": 0.5782
+      }
+    },
+    {
+      "cell_id": "img021_c007",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        560.5,
+        470.5,
+        630.5,
+        586.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.5488,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9934,
+        "Nuclear_Shape": 0.1142,
+        "Nucleus": 0.9938,
+        "Cytoplasm": 0.9524,
+        "Cytoplasmic_Basophilia": 0.9977,
+        "Cytoplasmic_Vacuoles": 0.9816
+      }
+    },
+    {
+      "cell_id": "img021_c008",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        0.0156,
+        343.5,
+        26.7656,
+        466.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.4883,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6015,
+        "Nuclear_Shape": 0.0368,
+        "Nucleus": 0.9194,
+        "Cytoplasm": 0.6822,
+        "Cytoplasmic_Basophilia": 0.3237,
+        "Cytoplasmic_Vacuoles": 0.5103
+      }
+    },
+    {
+      "cell_id": "img021_c009",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        596.0,
+        392.5,
+        640.0,
+        517.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.4417,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9768,
+        "Nuclear_Shape": 0.2209,
+        "Nucleus": 0.9835,
+        "Cytoplasm": 0.8731,
+        "Cytoplasmic_Basophilia": 0.9854,
+        "Cytoplasmic_Vacuoles": 0.9846
+      }
+    },
+    {
+      "cell_id": "img021_c010",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        345.25,
+        27.7188,
+        466.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.3757,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.5526,
+        "Nuclear_Shape": 0.0513,
+        "Nucleus": 0.8939,
+        "Cytoplasm": 0.6538,
+        "Cytoplasmic_Basophilia": 0.3386,
+        "Cytoplasmic_Vacuoles": 0.4666
+      }
+    },
+    {
+      "cell_id": "img021_c011",
+      "image_id": "45_2_1000_AML.png",
+      "bbox_xyxy": [
+        560.0,
+        471.5,
+        633.0,
+        585.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.3328,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9933,
+        "Nuclear_Shape": 0.0877,
+        "Nucleus": 0.9942,
+        "Cytoplasm": 0.9603,
+        "Cytoplasmic_Basophilia": 0.9975,
+        "Cytoplasmic_Vacuoles": 0.9818
+      }
+    },
+    {
+      "cell_id": "img022_c000",
+      "image_id": "45_30_1000_AML.png",
+      "bbox_xyxy": [
+        238.25,
+        456.5,
+        301.75,
+        555.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9473,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.989,
+        "Nuclear_Shape": 0.9996,
+        "Nucleus": 0.9826,
+        "Cytoplasm": 0.0045,
+        "Cytoplasmic_Basophilia": 0.9983,
+        "Cytoplasmic_Vacuoles": 0.9767
+      }
+    },
+    {
+      "cell_id": "img022_c001",
+      "image_id": "45_30_1000_AML.png",
+      "bbox_xyxy": [
+        491.5,
+        346.0,
+        542.5,
+        431.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9272,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.995,
+        "Nuclear_Shape": 0.9968,
+        "Nucleus": 0.994,
+        "Cytoplasm": 0.0181,
+        "Cytoplasmic_Basophilia": 0.9983,
+        "Cytoplasmic_Vacuoles": 0.9923
+      }
+    },
+    {
+      "cell_id": "img022_c002",
+      "image_id": "45_30_1000_AML.png",
+      "bbox_xyxy": [
+        362.5,
+        249.0,
+        424.0,
+        359.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9214,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9954,
+        "Nuclear_Shape": 0.9987,
+        "Nucleus": 0.9955,
+        "Cytoplasm": 0.0042,
+        "Cytoplasmic_Basophilia": 0.9979,
+        "Cytoplasmic_Vacuoles": 0.9799
+      }
+    },
+    {
+      "cell_id": "img022_c003",
+      "image_id": "45_30_1000_AML.png",
+      "bbox_xyxy": [
+        46.0625,
+        0.0312,
+        78.5625,
+        41.0312
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.7593,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1437,
+        "Nuclear_Shape": 0.8357,
+        "Nucleus": 0.1567,
+        "Cytoplasm": 0.127,
+        "Cytoplasmic_Basophilia": 0.2616,
+        "Cytoplasmic_Vacuoles": 0.0993
+      }
+    },
+    {
+      "cell_id": "img023_c000",
+      "image_id": "45_31_1000_AML.png",
+      "bbox_xyxy": [
+        87.125,
+        245.5,
+        155.25,
+        358.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9434,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9947,
+        "Nuclear_Shape": 0.9996,
+        "Nucleus": 0.9966,
+        "Cytoplasm": 0.0024,
+        "Cytoplasmic_Basophilia": 0.9987,
+        "Cytoplasmic_Vacuoles": 0.9906
+      }
+    },
+    {
+      "cell_id": "img023_c001",
+      "image_id": "45_31_1000_AML.png",
+      "bbox_xyxy": [
+        342.5,
+        423.5,
+        410.5,
+        540.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8882,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9114,
+        "Nuclear_Shape": 0.1663,
+        "Nucleus": 0.967,
+        "Cytoplasm": 0.3304,
+        "Cytoplasmic_Basophilia": 0.6454,
+        "Cytoplasmic_Vacuoles": 0.5996
+      }
+    },
+    {
+      "cell_id": "img023_c002",
+      "image_id": "45_31_1000_AML.png",
+      "bbox_xyxy": [
+        13.0625,
+        607.0,
+        49.5,
+        640.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.6792,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1697,
+        "Nuclear_Shape": 0.697,
+        "Nucleus": 0.3561,
+        "Cytoplasm": 0.1259,
+        "Cytoplasmic_Basophilia": 0.1552,
+        "Cytoplasmic_Vacuoles": 0.0939
+      }
+    },
+    {
+      "cell_id": "img023_c003",
+      "image_id": "45_31_1000_AML.png",
+      "bbox_xyxy": [
+        101.6875,
+        97.875,
+        161.25,
+        198.375
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.2568,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9962,
+        "Nuclear_Shape": 0.9659,
+        "Nucleus": 0.9962,
+        "Cytoplasm": 0.0691,
+        "Cytoplasmic_Basophilia": 0.9964,
+        "Cytoplasmic_Vacuoles": 0.9854
+      }
+    },
+    {
+      "cell_id": "img024_c000",
+      "image_id": "45_32_1000_AML.png",
+      "bbox_xyxy": [
+        455.0,
+        153.75,
+        513.0,
+        251.75
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9365,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9479,
+        "Nuclear_Shape": 0.9133,
+        "Nucleus": 0.9832,
+        "Cytoplasm": 0.0846,
+        "Cytoplasmic_Basophilia": 0.9953,
+        "Cytoplasmic_Vacuoles": 0.9313
+      }
+    },
+    {
+      "cell_id": "img024_c001",
+      "image_id": "45_32_1000_AML.png",
+      "bbox_xyxy": [
+        270.5,
+        454.0,
+        339.5,
+        563.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9248,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.992,
+        "Nuclear_Shape": 0.9909,
+        "Nucleus": 0.9952,
+        "Cytoplasm": 0.0119,
+        "Cytoplasmic_Basophilia": 0.9956,
+        "Cytoplasmic_Vacuoles": 0.9875
+      }
+    },
+    {
+      "cell_id": "img024_c002",
+      "image_id": "45_32_1000_AML.png",
+      "bbox_xyxy": [
+        362.0,
+        508.25,
+        427.0,
+        612.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9165,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9831,
+        "Nuclear_Shape": 0.0091,
+        "Nucleus": 0.9871,
+        "Cytoplasm": 0.8387,
+        "Cytoplasmic_Basophilia": 0.709,
+        "Cytoplasmic_Vacuoles": 0.7592
+      }
+    },
+    {
+      "cell_id": "img024_c003",
+      "image_id": "45_32_1000_AML.png",
+      "bbox_xyxy": [
+        530.0,
+        89.875,
+        572.0,
+        161.625
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.915,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2864,
+        "Nuclear_Shape": 0.8842,
+        "Nucleus": 0.2197,
+        "Cytoplasm": 0.0975,
+        "Cytoplasmic_Basophilia": 0.201,
+        "Cytoplasmic_Vacuoles": 0.0695
+      }
+    },
+    {
+      "cell_id": "img024_c004",
+      "image_id": "45_32_1000_AML.png",
+      "bbox_xyxy": [
+        123.6875,
+        372.5,
+        217.25,
+        472.5
+      ],
+      "class": "None",
+      "confidence": 0.9058,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7877,
+        "Nuclear_Shape": 0.1122,
+        "Nucleus": 0.902,
+        "Cytoplasm": 0.7804,
+        "Cytoplasmic_Basophilia": 0.8391,
+        "Cytoplasmic_Vacuoles": 0.8145
+      }
+    },
+    {
+      "cell_id": "img024_c005",
+      "image_id": "45_32_1000_AML.png",
+      "bbox_xyxy": [
+        401.25,
+        53.75,
+        459.25,
+        152.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8999,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9648,
+        "Nuclear_Shape": 0.0064,
+        "Nucleus": 0.9836,
+        "Cytoplasm": 0.7991,
+        "Cytoplasmic_Basophilia": 0.4599,
+        "Cytoplasmic_Vacuoles": 0.7223
+      }
+    },
+    {
+      "cell_id": "img024_c006",
+      "image_id": "45_32_1000_AML.png",
+      "bbox_xyxy": [
+        26.75,
+        492.75,
+        98.5,
+        617.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.897,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9735,
+        "Nuclear_Shape": 0.0193,
+        "Nucleus": 0.9737,
+        "Cytoplasm": 0.9688,
+        "Cytoplasmic_Basophilia": 0.8668,
+        "Cytoplasmic_Vacuoles": 0.9582
+      }
+    },
+    {
+      "cell_id": "img025_c000",
+      "image_id": "45_33_1000_AML.png",
+      "bbox_xyxy": [
+        305.5,
+        234.5,
+        373.0,
+        346.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9209,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9974,
+        "Nuclear_Shape": 0.0108,
+        "Nucleus": 0.9968,
+        "Cytoplasm": 0.9172,
+        "Cytoplasmic_Basophilia": 0.9401,
+        "Cytoplasmic_Vacuoles": 0.8686
+      }
+    },
+    {
+      "cell_id": "img025_c001",
+      "image_id": "45_33_1000_AML.png",
+      "bbox_xyxy": [
+        406.75,
+        439.75,
+        445.75,
+        504.25
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.918,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2022,
+        "Nuclear_Shape": 0.9516,
+        "Nucleus": 0.1325,
+        "Cytoplasm": 0.1234,
+        "Cytoplasmic_Basophilia": 0.303,
+        "Cytoplasmic_Vacuoles": 0.1762
+      }
+    },
+    {
+      "cell_id": "img025_c002",
+      "image_id": "45_33_1000_AML.png",
+      "bbox_xyxy": [
+        188.5,
+        193.0,
+        243.0,
+        276.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9019,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4009,
+        "Nuclear_Shape": 0.0067,
+        "Nucleus": 0.9371,
+        "Cytoplasm": 0.184,
+        "Cytoplasmic_Basophilia": 0.021,
+        "Cytoplasmic_Vacuoles": 0.0962
+      }
+    },
+    {
+      "cell_id": "img026_c000",
+      "image_id": "45_34_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        139.5,
+        72.125,
+        262.0
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.8818,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8746,
+        "Nuclear_Shape": 0.0177,
+        "Nucleus": 0.9478,
+        "Cytoplasm": 0.9194,
+        "Cytoplasmic_Basophilia": 0.6622,
+        "Cytoplasmic_Vacuoles": 0.9008
+      }
+    },
+    {
+      "cell_id": "img026_c001",
+      "image_id": "45_34_1000_AML.png",
+      "bbox_xyxy": [
+        28.2812,
+        6.9688,
+        102.625,
+        127.75
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.7744,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9556,
+        "Nuclear_Shape": 0.0451,
+        "Nucleus": 0.9796,
+        "Cytoplasm": 0.297,
+        "Cytoplasmic_Basophilia": 0.6463,
+        "Cytoplasmic_Vacuoles": 0.1572
+      }
+    },
+    {
+      "cell_id": "img026_c002",
+      "image_id": "45_34_1000_AML.png",
+      "bbox_xyxy": [
+        342.0,
+        382.0,
+        411.0,
+        487.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.769,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9919,
+        "Nuclear_Shape": 0.2299,
+        "Nucleus": 0.9924,
+        "Cytoplasm": 0.6271,
+        "Cytoplasmic_Basophilia": 0.9788,
+        "Cytoplasmic_Vacuoles": 0.8933
+      }
+    },
+    {
+      "cell_id": "img026_c003",
+      "image_id": "45_34_1000_AML.png",
+      "bbox_xyxy": [
+        341.25,
+        274.5,
+        412.75,
+        379.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6738,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9907,
+        "Nuclear_Shape": 0.1082,
+        "Nucleus": 0.9916,
+        "Cytoplasm": 0.8858,
+        "Cytoplasmic_Basophilia": 0.9864,
+        "Cytoplasmic_Vacuoles": 0.9319
+      }
+    },
+    {
+      "cell_id": "img026_c004",
+      "image_id": "45_34_1000_AML.png",
+      "bbox_xyxy": [
+        341.0,
+        277.5,
+        412.0,
+        380.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.5371,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9898,
+        "Nuclear_Shape": 0.1244,
+        "Nucleus": 0.9912,
+        "Cytoplasm": 0.8678,
+        "Cytoplasmic_Basophilia": 0.9852,
+        "Cytoplasmic_Vacuoles": 0.9242
+      }
+    },
+    {
+      "cell_id": "img027_c000",
+      "image_id": "45_38_1000_AML.png",
+      "bbox_xyxy": [
+        342.5,
+        417.0,
+        402.5,
+        512.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9194,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9167,
+        "Nuclear_Shape": 0.1142,
+        "Nucleus": 0.7705,
+        "Cytoplasm": 0.6065,
+        "Cytoplasmic_Basophilia": 0.1945,
+        "Cytoplasmic_Vacuoles": 0.4339
+      }
+    },
+    {
+      "cell_id": "img027_c001",
+      "image_id": "45_38_1000_AML.png",
+      "bbox_xyxy": [
+        580.0,
+        453.0,
+        640.0,
+        563.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9097,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9924,
+        "Nuclear_Shape": 0.964,
+        "Nucleus": 0.9964,
+        "Cytoplasm": 0.0664,
+        "Cytoplasmic_Basophilia": 0.9981,
+        "Cytoplasmic_Vacuoles": 0.9814
+      }
+    },
+    {
+      "cell_id": "img027_c002",
+      "image_id": "45_38_1000_AML.png",
+      "bbox_xyxy": [
+        22.8125,
+        388.0,
+        87.5625,
+        502.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8784,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9808,
+        "Nuclear_Shape": 0.0419,
+        "Nucleus": 0.9672,
+        "Cytoplasm": 0.8827,
+        "Cytoplasmic_Basophilia": 0.8693,
+        "Cytoplasmic_Vacuoles": 0.8744
+      }
+    },
+    {
+      "cell_id": "img027_c003",
+      "image_id": "45_38_1000_AML.png",
+      "bbox_xyxy": [
+        482.0,
+        576.0,
+        518.0,
+        640.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8511,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2547,
+        "Nuclear_Shape": 0.7128,
+        "Nucleus": 0.3615,
+        "Cytoplasm": 0.1668,
+        "Cytoplasmic_Basophilia": 0.3857,
+        "Cytoplasmic_Vacuoles": 0.1887
+      }
+    },
+    {
+      "cell_id": "img027_c004",
+      "image_id": "45_38_1000_AML.png",
+      "bbox_xyxy": [
+        604.0,
+        553.0,
+        640.0,
+        640.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6567,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7791,
+        "Nuclear_Shape": 0.249,
+        "Nucleus": 0.8531,
+        "Cytoplasm": 0.4783,
+        "Cytoplasmic_Basophilia": 0.7463,
+        "Cytoplasmic_Vacuoles": 0.4018
+      }
+    },
+    {
+      "cell_id": "img027_c005",
+      "image_id": "45_38_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        29.875,
+        26.6406,
+        124.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6226,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2317,
+        "Nuclear_Shape": 0.262,
+        "Nucleus": 0.5156,
+        "Cytoplasm": 0.5198,
+        "Cytoplasmic_Basophilia": 0.5518,
+        "Cytoplasmic_Vacuoles": 0.6156
+      }
+    },
+    {
+      "cell_id": "img027_c006",
+      "image_id": "45_38_1000_AML.png",
+      "bbox_xyxy": [
+        17.625,
+        582.0,
+        80.0,
+        640.0
+      ],
+      "class": "None",
+      "confidence": 0.5137,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2798,
+        "Nuclear_Shape": 0.6797,
+        "Nucleus": 0.5533,
+        "Cytoplasm": 0.3083,
+        "Cytoplasmic_Basophilia": 0.4003,
+        "Cytoplasmic_Vacuoles": 0.1882
+      }
+    },
+    {
+      "cell_id": "img027_c007",
+      "image_id": "45_38_1000_AML.png",
+      "bbox_xyxy": [
+        604.0,
+        556.0,
+        640.0,
+        640.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.3167,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7959,
+        "Nuclear_Shape": 0.2454,
+        "Nucleus": 0.8617,
+        "Cytoplasm": 0.4724,
+        "Cytoplasmic_Basophilia": 0.7513,
+        "Cytoplasmic_Vacuoles": 0.4452
+      }
+    },
+    {
+      "cell_id": "img028_c000",
+      "image_id": "45_39_1000_AML.png",
+      "bbox_xyxy": [
+        579.0,
+        520.0,
+        638.0,
+        628.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.937,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.984,
+        "Nuclear_Shape": 0.9951,
+        "Nucleus": 0.9868,
+        "Cytoplasm": 0.0256,
+        "Cytoplasmic_Basophilia": 0.9964,
+        "Cytoplasmic_Vacuoles": 0.9694
+      }
+    },
+    {
+      "cell_id": "img028_c001",
+      "image_id": "45_39_1000_AML.png",
+      "bbox_xyxy": [
+        96.625,
+        347.5,
+        165.375,
+        464.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8984,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9893,
+        "Nuclear_Shape": 0.0646,
+        "Nucleus": 0.9783,
+        "Cytoplasm": 0.8991,
+        "Cytoplasmic_Basophilia": 0.8944,
+        "Cytoplasmic_Vacuoles": 0.8937
+      }
+    },
+    {
+      "cell_id": "img028_c002",
+      "image_id": "45_39_1000_AML.png",
+      "bbox_xyxy": [
+        369.0,
+        185.75,
+        416.0,
+        280.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8965,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.3926,
+        "Nuclear_Shape": 0.0814,
+        "Nucleus": 0.8169,
+        "Cytoplasm": 0.7792,
+        "Cytoplasmic_Basophilia": 0.5179,
+        "Cytoplasmic_Vacuoles": 0.4811
+      }
+    },
+    {
+      "cell_id": "img028_c003",
+      "image_id": "45_39_1000_AML.png",
+      "bbox_xyxy": [
+        313.5,
+        400.0,
+        375.5,
+        506.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.8784,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.993,
+        "Nuclear_Shape": 0.5629,
+        "Nucleus": 0.9981,
+        "Cytoplasm": 0.4027,
+        "Cytoplasmic_Basophilia": 0.9955,
+        "Cytoplasmic_Vacuoles": 0.9733
+      }
+    },
+    {
+      "cell_id": "img028_c004",
+      "image_id": "45_39_1000_AML.png",
+      "bbox_xyxy": [
+        493.0,
+        37.0,
+        543.0,
+        136.0
+      ],
+      "class": "Eosinophil",
+      "confidence": 0.6841,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9801,
+        "Nuclear_Shape": 0.9845,
+        "Nucleus": 0.9879,
+        "Cytoplasm": 0.0427,
+        "Cytoplasmic_Basophilia": 0.9909,
+        "Cytoplasmic_Vacuoles": 0.8855
+      }
+    },
+    {
+      "cell_id": "img028_c005",
+      "image_id": "45_39_1000_AML.png",
+      "bbox_xyxy": [
+        492.75,
+        38.5,
+        543.0,
+        136.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.457,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9808,
+        "Nuclear_Shape": 0.9829,
+        "Nucleus": 0.9893,
+        "Cytoplasm": 0.0435,
+        "Cytoplasmic_Basophilia": 0.9908,
+        "Cytoplasmic_Vacuoles": 0.8952
+      }
+    },
+    {
+      "cell_id": "img029_c000",
+      "image_id": "45_3_1000_AML.png",
+      "bbox_xyxy": [
+        121.75,
+        252.0,
+        179.5,
+        359.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.5273,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9854,
+        "Nuclear_Shape": 0.0096,
+        "Nucleus": 0.9845,
+        "Cytoplasm": 0.828,
+        "Cytoplasmic_Basophilia": 0.8547,
+        "Cytoplasmic_Vacuoles": 0.6704
+      }
+    },
+    {
+      "cell_id": "img030_c000",
+      "image_id": "45_40_1000_AML.png",
+      "bbox_xyxy": [
+        111.375,
+        446.0,
+        166.375,
+        539.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9355,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9681,
+        "Nuclear_Shape": 0.9921,
+        "Nucleus": 0.9756,
+        "Cytoplasm": 0.0147,
+        "Cytoplasmic_Basophilia": 0.9964,
+        "Cytoplasmic_Vacuoles": 0.9293
+      }
+    },
+    {
+      "cell_id": "img030_c001",
+      "image_id": "45_40_1000_AML.png",
+      "bbox_xyxy": [
+        49.25,
+        280.0,
+        119.875,
+        395.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.918,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.899,
+        "Nuclear_Shape": 0.0712,
+        "Nucleus": 0.8681,
+        "Cytoplasm": 0.6043,
+        "Cytoplasmic_Basophilia": 0.0899,
+        "Cytoplasmic_Vacuoles": 0.4067
+      }
+    },
+    {
+      "cell_id": "img030_c002",
+      "image_id": "45_40_1000_AML.png",
+      "bbox_xyxy": [
+        374.25,
+        99.75,
+        440.75,
+        217.75
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9014,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9942,
+        "Nuclear_Shape": 0.2322,
+        "Nucleus": 0.9922,
+        "Cytoplasm": 0.578,
+        "Cytoplasmic_Basophilia": 0.9867,
+        "Cytoplasmic_Vacuoles": 0.9046
+      }
+    },
+    {
+      "cell_id": "img030_c003",
+      "image_id": "45_40_1000_AML.png",
+      "bbox_xyxy": [
+        605.0,
+        84.3125,
+        640.0,
+        212.25
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.875,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9678,
+        "Nuclear_Shape": 0.8307,
+        "Nucleus": 0.9787,
+        "Cytoplasm": 0.2453,
+        "Cytoplasmic_Basophilia": 0.9941,
+        "Cytoplasmic_Vacuoles": 0.9227
+      }
+    },
+    {
+      "cell_id": "img030_c004",
+      "image_id": "45_40_1000_AML.png",
+      "bbox_xyxy": [
+        151.75,
+        0.0312,
+        193.25,
+        46.0312
+      ],
+      "class": "None",
+      "confidence": 0.8164,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2077,
+        "Nuclear_Shape": 0.9165,
+        "Nucleus": 0.1886,
+        "Cytoplasm": 0.168,
+        "Cytoplasmic_Basophilia": 0.2787,
+        "Cytoplasmic_Vacuoles": 0.119
+      }
+    },
+    {
+      "cell_id": "img031_c000",
+      "image_id": "45_41_1000_AML.png",
+      "bbox_xyxy": [
+        302.5,
+        276.25,
+        357.5,
+        365.25
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9473,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8257,
+        "Nuclear_Shape": 0.9148,
+        "Nucleus": 0.9394,
+        "Cytoplasm": 0.1694,
+        "Cytoplasmic_Basophilia": 0.9792,
+        "Cytoplasmic_Vacuoles": 0.8568
+      }
+    },
+    {
+      "cell_id": "img031_c001",
+      "image_id": "45_41_1000_AML.png",
+      "bbox_xyxy": [
+        361.5,
+        71.75,
+        406.5,
+        150.5
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.8398,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2778,
+        "Nuclear_Shape": 0.8796,
+        "Nucleus": 0.253,
+        "Cytoplasm": 0.1177,
+        "Cytoplasmic_Basophilia": 0.2484,
+        "Cytoplasmic_Vacuoles": 0.1293
+      }
+    },
+    {
+      "cell_id": "img031_c002",
+      "image_id": "45_41_1000_AML.png",
+      "bbox_xyxy": [
+        517.0,
+        509.5,
+        583.0,
+        611.5
+      ],
+      "class": "Monocyte",
+      "confidence": 0.7993,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9879,
+        "Nuclear_Shape": 0.4065,
+        "Nucleus": 0.9952,
+        "Cytoplasm": 0.2963,
+        "Cytoplasmic_Basophilia": 0.9961,
+        "Cytoplasmic_Vacuoles": 0.9692
+      }
+    },
+    {
+      "cell_id": "img031_c003",
+      "image_id": "45_41_1000_AML.png",
+      "bbox_xyxy": [
+        516.5,
+        510.0,
+        581.5,
+        612.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.5312,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9911,
+        "Nuclear_Shape": 0.3454,
+        "Nucleus": 0.9962,
+        "Cytoplasm": 0.3408,
+        "Cytoplasmic_Basophilia": 0.9964,
+        "Cytoplasmic_Vacuoles": 0.9791
+      }
+    },
+    {
+      "cell_id": "img031_c004",
+      "image_id": "45_41_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        358.5,
+        24.0625,
+        464.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.5195,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.5857,
+        "Nuclear_Shape": 0.8796,
+        "Nucleus": 0.7296,
+        "Cytoplasm": 0.0977,
+        "Cytoplasmic_Basophilia": 0.8906,
+        "Cytoplasmic_Vacuoles": 0.4697
+      }
+    },
+    {
+      "cell_id": "img031_c005",
+      "image_id": "45_41_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        494.75,
+        42.3125,
+        585.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.4609,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.5449,
+        "Nuclear_Shape": 0.4499,
+        "Nucleus": 0.698,
+        "Cytoplasm": 0.497,
+        "Cytoplasmic_Basophilia": 0.7185,
+        "Cytoplasmic_Vacuoles": 0.6638
+      }
+    },
+    {
+      "cell_id": "img031_c006",
+      "image_id": "45_41_1000_AML.png",
+      "bbox_xyxy": [
+        313.5,
+        88.625,
+        364.0,
+        185.625
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.3557,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.5521,
+        "Nuclear_Shape": 0.7467,
+        "Nucleus": 0.7574,
+        "Cytoplasm": 0.198,
+        "Cytoplasmic_Basophilia": 0.3973,
+        "Cytoplasmic_Vacuoles": 0.2412
+      }
+    },
+    {
+      "cell_id": "img031_c007",
+      "image_id": "45_41_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        108.0,
+        20.6719,
+        229.75
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.3311,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1826,
+        "Nuclear_Shape": 0.6635,
+        "Nucleus": 0.3959,
+        "Cytoplasm": 0.1405,
+        "Cytoplasmic_Basophilia": 0.1792,
+        "Cytoplasmic_Vacuoles": 0.1446
+      }
+    },
+    {
+      "cell_id": "img031_c008",
+      "image_id": "45_41_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        102.8125,
+        23.5312,
+        229.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.2644,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2023,
+        "Nuclear_Shape": 0.602,
+        "Nucleus": 0.4866,
+        "Cytoplasm": 0.1488,
+        "Cytoplasmic_Basophilia": 0.153,
+        "Cytoplasmic_Vacuoles": 0.1348
+      }
+    },
+    {
+      "cell_id": "img032_c000",
+      "image_id": "45_42_1000_AML.png",
+      "bbox_xyxy": [
+        481.0,
+        454.0,
+        542.0,
+        560.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9487,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9911,
+        "Nuclear_Shape": 0.9956,
+        "Nucleus": 0.9942,
+        "Cytoplasm": 0.015,
+        "Cytoplasmic_Basophilia": 0.9983,
+        "Cytoplasmic_Vacuoles": 0.9877
+      }
+    },
+    {
+      "cell_id": "img032_c001",
+      "image_id": "45_42_1000_AML.png",
+      "bbox_xyxy": [
+        207.5,
+        87.75,
+        275.5,
+        210.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9033,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9019,
+        "Nuclear_Shape": 0.0341,
+        "Nucleus": 0.9239,
+        "Cytoplasm": 0.555,
+        "Cytoplasmic_Basophilia": 0.1343,
+        "Cytoplasmic_Vacuoles": 0.5234
+      }
+    },
+    {
+      "cell_id": "img032_c002",
+      "image_id": "45_42_1000_AML.png",
+      "bbox_xyxy": [
+        247.0,
+        446.0,
+        313.0,
+        558.0
+      ],
+      "class": "Myelocyte",
+      "confidence": 0.8154,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9564,
+        "Nuclear_Shape": 0.2525,
+        "Nucleus": 0.985,
+        "Cytoplasm": 0.5307,
+        "Cytoplasmic_Basophilia": 0.9576,
+        "Cytoplasmic_Vacuoles": 0.8537
+      }
+    },
+    {
+      "cell_id": "img032_c003",
+      "image_id": "45_42_1000_AML.png",
+      "bbox_xyxy": [
+        253.25,
+        333.5,
+        303.25,
+        401.5
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.7549,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.261,
+        "Nuclear_Shape": 0.8904,
+        "Nucleus": 0.2272,
+        "Cytoplasm": 0.1433,
+        "Cytoplasmic_Basophilia": 0.1534,
+        "Cytoplasmic_Vacuoles": 0.0922
+      }
+    },
+    {
+      "cell_id": "img032_c004",
+      "image_id": "45_42_1000_AML.png",
+      "bbox_xyxy": [
+        248.0,
+        447.5,
+        314.0,
+        558.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6655,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.959,
+        "Nuclear_Shape": 0.2191,
+        "Nucleus": 0.984,
+        "Cytoplasm": 0.5571,
+        "Cytoplasmic_Basophilia": 0.9635,
+        "Cytoplasmic_Vacuoles": 0.8721
+      }
+    },
+    {
+      "cell_id": "img033_c000",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        12.7969,
+        339.0,
+        70.8125,
+        437.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9385,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8802,
+        "Nuclear_Shape": 0.9155,
+        "Nucleus": 0.95,
+        "Cytoplasm": 0.1503,
+        "Cytoplasmic_Basophilia": 0.9949,
+        "Cytoplasmic_Vacuoles": 0.9492
+      }
+    },
+    {
+      "cell_id": "img033_c001",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        129.5,
+        439.0,
+        174.5,
+        503.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.9136,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2863,
+        "Nuclear_Shape": 0.9562,
+        "Nucleus": 0.1499,
+        "Cytoplasm": 0.0743,
+        "Cytoplasmic_Basophilia": 0.1613,
+        "Cytoplasmic_Vacuoles": 0.0541
+      }
+    },
+    {
+      "cell_id": "img033_c002",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        362.0,
+        450.5,
+        421.0,
+        554.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8984,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7762,
+        "Nuclear_Shape": 0.252,
+        "Nucleus": 0.7416,
+        "Cytoplasm": 0.429,
+        "Cytoplasmic_Basophilia": 0.1521,
+        "Cytoplasmic_Vacuoles": 0.6026
+      }
+    },
+    {
+      "cell_id": "img033_c003",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        535.0,
+        60.125,
+        603.0,
+        161.375
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8823,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7129,
+        "Nuclear_Shape": 0.0243,
+        "Nucleus": 0.8229,
+        "Cytoplasm": 0.5895,
+        "Cytoplasmic_Basophilia": 0.0295,
+        "Cytoplasmic_Vacuoles": 0.3411
+      }
+    },
+    {
+      "cell_id": "img033_c004",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        232.75,
+        364.5,
+        303.25,
+        468.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.873,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8498,
+        "Nuclear_Shape": 0.13,
+        "Nucleus": 0.8954,
+        "Cytoplasm": 0.6557,
+        "Cytoplasmic_Basophilia": 0.4076,
+        "Cytoplasmic_Vacuoles": 0.7021
+      }
+    },
+    {
+      "cell_id": "img033_c005",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        564.5,
+        241.5,
+        624.5,
+        326.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.8726,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.3991,
+        "Nuclear_Shape": 0.6412,
+        "Nucleus": 0.4305,
+        "Cytoplasm": 0.1849,
+        "Cytoplasmic_Basophilia": 0.1776,
+        "Cytoplasmic_Vacuoles": 0.1297
+      }
+    },
+    {
+      "cell_id": "img033_c006",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        20.5156,
+        17.0625,
+        57.75,
+        58.0
+      ],
+      "class": "None",
+      "confidence": 0.7637,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2644,
+        "Nuclear_Shape": 0.7569,
+        "Nucleus": 0.3896,
+        "Cytoplasm": 0.2527,
+        "Cytoplasmic_Basophilia": 0.4241,
+        "Cytoplasmic_Vacuoles": 0.1617
+      }
+    },
+    {
+      "cell_id": "img033_c007",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        431.0,
+        50.625,
+        489.5,
+        150.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.7104,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9812,
+        "Nuclear_Shape": 0.7276,
+        "Nucleus": 0.9886,
+        "Cytoplasm": 0.4236,
+        "Cytoplasmic_Basophilia": 0.9964,
+        "Cytoplasmic_Vacuoles": 0.9373
+      }
+    },
+    {
+      "cell_id": "img033_c008",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        584.0,
+        304.0,
+        640.0,
+        393.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.5293,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4582,
+        "Nuclear_Shape": 0.3938,
+        "Nucleus": 0.7079,
+        "Cytoplasm": 0.4322,
+        "Cytoplasmic_Basophilia": 0.6349,
+        "Cytoplasmic_Vacuoles": 0.5457
+      }
+    },
+    {
+      "cell_id": "img033_c009",
+      "image_id": "45_43_1000_AML.png",
+      "bbox_xyxy": [
+        71.5,
+        93.6875,
+        174.875,
+        172.25
+      ],
+      "class": "None",
+      "confidence": 0.4941,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6856,
+        "Nuclear_Shape": 0.4775,
+        "Nucleus": 0.7259,
+        "Cytoplasm": 0.3792,
+        "Cytoplasmic_Basophilia": 0.6773,
+        "Cytoplasmic_Vacuoles": 0.3335
+      }
+    },
+    {
+      "cell_id": "img034_c000",
+      "image_id": "45_45_1000_AML.png",
+      "bbox_xyxy": [
+        484.0,
+        227.5,
+        542.0,
+        328.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9404,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9911,
+        "Nuclear_Shape": 0.9992,
+        "Nucleus": 0.9889,
+        "Cytoplasm": 0.0043,
+        "Cytoplasmic_Basophilia": 0.9986,
+        "Cytoplasmic_Vacuoles": 0.9852
+      }
+    },
+    {
+      "cell_id": "img034_c001",
+      "image_id": "45_45_1000_AML.png",
+      "bbox_xyxy": [
+        443.5,
+        31.3438,
+        510.5,
+        117.875
+      ],
+      "class": "None",
+      "confidence": 0.9385,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7235,
+        "Nuclear_Shape": 0.3483,
+        "Nucleus": 0.8611,
+        "Cytoplasm": 0.4941,
+        "Cytoplasmic_Basophilia": 0.5686,
+        "Cytoplasmic_Vacuoles": 0.503
+      }
+    },
+    {
+      "cell_id": "img034_c002",
+      "image_id": "45_45_1000_AML.png",
+      "bbox_xyxy": [
+        377.0,
+        407.0,
+        432.0,
+        504.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9136,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.5002,
+        "Nuclear_Shape": 0.0788,
+        "Nucleus": 0.6287,
+        "Cytoplasm": 0.6602,
+        "Cytoplasmic_Basophilia": 0.318,
+        "Cytoplasmic_Vacuoles": 0.618
+      }
+    },
+    {
+      "cell_id": "img034_c003",
+      "image_id": "45_45_1000_AML.png",
+      "bbox_xyxy": [
+        102.9375,
+        428.0,
+        160.5,
+        515.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8687,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4075,
+        "Nuclear_Shape": 0.137,
+        "Nucleus": 0.6656,
+        "Cytoplasm": 0.1416,
+        "Cytoplasmic_Basophilia": 0.0402,
+        "Cytoplasmic_Vacuoles": 0.0505
+      }
+    },
+    {
+      "cell_id": "img034_c004",
+      "image_id": "45_45_1000_AML.png",
+      "bbox_xyxy": [
+        537.0,
+        193.0,
+        587.0,
+        315.75
+      ],
+      "class": "None",
+      "confidence": 0.7622,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6173,
+        "Nuclear_Shape": 0.3066,
+        "Nucleus": 0.8214,
+        "Cytoplasm": 0.372,
+        "Cytoplasmic_Basophilia": 0.3549,
+        "Cytoplasmic_Vacuoles": 0.3303
+      }
+    },
+    {
+      "cell_id": "img034_c005",
+      "image_id": "45_45_1000_AML.png",
+      "bbox_xyxy": [
+        160.125,
+        505.25,
+        217.625,
+        599.0
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.7339,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9903,
+        "Nuclear_Shape": 0.5566,
+        "Nucleus": 0.9948,
+        "Cytoplasm": 0.4778,
+        "Cytoplasmic_Basophilia": 0.9964,
+        "Cytoplasmic_Vacuoles": 0.9834
+      }
+    },
+    {
+      "cell_id": "img034_c006",
+      "image_id": "45_45_1000_AML.png",
+      "bbox_xyxy": [
+        0.75,
+        558.5,
+        43.5625,
+        639.5
+      ],
+      "class": "None",
+      "confidence": 0.6494,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2852,
+        "Nuclear_Shape": 0.1831,
+        "Nucleus": 0.4683,
+        "Cytoplasm": 0.2984,
+        "Cytoplasmic_Basophilia": 0.0955,
+        "Cytoplasmic_Vacuoles": 0.2585
+      }
+    },
+    {
+      "cell_id": "img034_c007",
+      "image_id": "45_45_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        107.4375,
+        23.7031,
+        235.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.4148,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7855,
+        "Nuclear_Shape": 0.7422,
+        "Nucleus": 0.9081,
+        "Cytoplasm": 0.0951,
+        "Cytoplasmic_Basophilia": 0.6454,
+        "Cytoplasmic_Vacuoles": 0.7182
+      }
+    },
+    {
+      "cell_id": "img034_c008",
+      "image_id": "45_45_1000_AML.png",
+      "bbox_xyxy": [
+        1.25,
+        558.0,
+        44.3125,
+        640.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.3225,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.3055,
+        "Nuclear_Shape": 0.1653,
+        "Nucleus": 0.4808,
+        "Cytoplasm": 0.3092,
+        "Cytoplasmic_Basophilia": 0.0877,
+        "Cytoplasmic_Vacuoles": 0.2566
+      }
+    },
+    {
+      "cell_id": "img035_c000",
+      "image_id": "45_46_1000_AML.png",
+      "bbox_xyxy": [
+        390.5,
+        475.0,
+        444.0,
+        556.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9385,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9074,
+        "Nuclear_Shape": 0.9869,
+        "Nucleus": 0.9578,
+        "Cytoplasm": 0.0477,
+        "Cytoplasmic_Basophilia": 0.9947,
+        "Cytoplasmic_Vacuoles": 0.9469
+      }
+    },
+    {
+      "cell_id": "img035_c001",
+      "image_id": "45_46_1000_AML.png",
+      "bbox_xyxy": [
+        15.6875,
+        497.0,
+        89.25,
+        611.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8633,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9935,
+        "Nuclear_Shape": 0.0325,
+        "Nucleus": 0.9897,
+        "Cytoplasm": 0.9857,
+        "Cytoplasmic_Basophilia": 0.9834,
+        "Cytoplasmic_Vacuoles": 0.984
+      }
+    },
+    {
+      "cell_id": "img036_c000",
+      "image_id": "45_47_1000_AML.png",
+      "bbox_xyxy": [
+        379.5,
+        60.625,
+        440.5,
+        157.375
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.937,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9587,
+        "Nuclear_Shape": 0.9984,
+        "Nucleus": 0.9791,
+        "Cytoplasm": 0.0132,
+        "Cytoplasmic_Basophilia": 0.9974,
+        "Cytoplasmic_Vacuoles": 0.9121
+      }
+    },
+    {
+      "cell_id": "img036_c001",
+      "image_id": "45_47_1000_AML.png",
+      "bbox_xyxy": [
+        577.5,
+        179.0,
+        639.5,
+        277.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9365,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9855,
+        "Nuclear_Shape": 0.9998,
+        "Nucleus": 0.9843,
+        "Cytoplasm": 0.003,
+        "Cytoplasmic_Basophilia": 0.9978,
+        "Cytoplasmic_Vacuoles": 0.9423
+      }
+    },
+    {
+      "cell_id": "img036_c002",
+      "image_id": "45_47_1000_AML.png",
+      "bbox_xyxy": [
+        570.0,
+        408.5,
+        638.0,
+        525.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9165,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.669,
+        "Nuclear_Shape": 0.2865,
+        "Nucleus": 0.7961,
+        "Cytoplasm": 0.6442,
+        "Cytoplasmic_Basophilia": 0.836,
+        "Cytoplasmic_Vacuoles": 0.7416
+      }
+    },
+    {
+      "cell_id": "img036_c003",
+      "image_id": "45_47_1000_AML.png",
+      "bbox_xyxy": [
+        94.0,
+        5.25,
+        160.0,
+        121.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.4167,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8976,
+        "Nuclear_Shape": 0.477,
+        "Nucleus": 0.943,
+        "Cytoplasm": 0.5172,
+        "Cytoplasmic_Basophilia": 0.8889,
+        "Cytoplasmic_Vacuoles": 0.5784
+      }
+    },
+    {
+      "cell_id": "img036_c004",
+      "image_id": "45_47_1000_AML.png",
+      "bbox_xyxy": [
+        95.25,
+        4.625,
+        159.375,
+        113.6875
+      ],
+      "class": "None",
+      "confidence": 0.363,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.886,
+        "Nuclear_Shape": 0.4759,
+        "Nucleus": 0.9425,
+        "Cytoplasm": 0.5101,
+        "Cytoplasmic_Basophilia": 0.897,
+        "Cytoplasmic_Vacuoles": 0.5697
+      }
+    },
+    {
+      "cell_id": "img036_c005",
+      "image_id": "45_47_1000_AML.png",
+      "bbox_xyxy": [
+        523.0,
+        495.5,
+        583.0,
+        599.5
+      ],
+      "class": "Monocyte",
+      "confidence": 0.2751,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6592,
+        "Nuclear_Shape": 0.1729,
+        "Nucleus": 0.9669,
+        "Cytoplasm": 0.6401,
+        "Cytoplasmic_Basophilia": 0.9922,
+        "Cytoplasmic_Vacuoles": 0.9335
+      }
+    },
+    {
+      "cell_id": "img037_c000",
+      "image_id": "45_48_1000_AML.png",
+      "bbox_xyxy": [
+        145.0,
+        217.5,
+        197.5,
+        314.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9468,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9622,
+        "Nuclear_Shape": 0.9569,
+        "Nucleus": 0.9909,
+        "Cytoplasm": 0.0694,
+        "Cytoplasmic_Basophilia": 0.9975,
+        "Cytoplasmic_Vacuoles": 0.9701
+      }
+    },
+    {
+      "cell_id": "img037_c001",
+      "image_id": "45_48_1000_AML.png",
+      "bbox_xyxy": [
+        212.25,
+        282.5,
+        269.75,
+        387.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9419,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9941,
+        "Nuclear_Shape": 0.9998,
+        "Nucleus": 0.9924,
+        "Cytoplasm": 0.0079,
+        "Cytoplasmic_Basophilia": 0.9997,
+        "Cytoplasmic_Vacuoles": 0.9906
+      }
+    },
+    {
+      "cell_id": "img037_c002",
+      "image_id": "45_48_1000_AML.png",
+      "bbox_xyxy": [
+        195.5,
+        538.0,
+        250.5,
+        636.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9087,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4048,
+        "Nuclear_Shape": 0.1068,
+        "Nucleus": 0.8112,
+        "Cytoplasm": 0.1714,
+        "Cytoplasmic_Basophilia": 0.0539,
+        "Cytoplasmic_Vacuoles": 0.1053
+      }
+    },
+    {
+      "cell_id": "img037_c003",
+      "image_id": "45_48_1000_AML.png",
+      "bbox_xyxy": [
+        334.5,
+        0.375,
+        402.5,
+        108.5625
+      ],
+      "class": "Myelocyte",
+      "confidence": 0.8843,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9942,
+        "Nuclear_Shape": 0.1192,
+        "Nucleus": 0.9926,
+        "Cytoplasm": 0.8382,
+        "Cytoplasmic_Basophilia": 0.9717,
+        "Cytoplasmic_Vacuoles": 0.9488
+      }
+    },
+    {
+      "cell_id": "img037_c004",
+      "image_id": "45_48_1000_AML.png",
+      "bbox_xyxy": [
+        334.0,
+        0.3125,
+        400.5,
+        108.3125
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.5371,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9925,
+        "Nuclear_Shape": 0.1301,
+        "Nucleus": 0.9924,
+        "Cytoplasm": 0.7811,
+        "Cytoplasmic_Basophilia": 0.9643,
+        "Cytoplasmic_Vacuoles": 0.94
+      }
+    },
+    {
+      "cell_id": "img037_c005",
+      "image_id": "45_48_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        421.5,
+        49.0625,
+        523.0
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.4456,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9794,
+        "Nuclear_Shape": 0.7509,
+        "Nucleus": 0.974,
+        "Cytoplasm": 0.1241,
+        "Cytoplasmic_Basophilia": 0.916,
+        "Cytoplasmic_Vacuoles": 0.4032
+      }
+    },
+    {
+      "cell_id": "img038_c000",
+      "image_id": "45_49_1000_AML.png",
+      "bbox_xyxy": [
+        119.3125,
+        163.0,
+        170.75,
+        256.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9404,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9522,
+        "Nuclear_Shape": 0.9971,
+        "Nucleus": 0.9687,
+        "Cytoplasm": 0.0149,
+        "Cytoplasmic_Basophilia": 0.9941,
+        "Cytoplasmic_Vacuoles": 0.9376
+      }
+    },
+    {
+      "cell_id": "img038_c001",
+      "image_id": "45_49_1000_AML.png",
+      "bbox_xyxy": [
+        176.25,
+        152.75,
+        230.25,
+        247.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9092,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8755,
+        "Nuclear_Shape": 0.0076,
+        "Nucleus": 0.9523,
+        "Cytoplasm": 0.9184,
+        "Cytoplasmic_Basophilia": 0.1201,
+        "Cytoplasmic_Vacuoles": 0.8641
+      }
+    },
+    {
+      "cell_id": "img038_c002",
+      "image_id": "45_49_1000_AML.png",
+      "bbox_xyxy": [
+        381.0,
+        601.0,
+        418.5,
+        640.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.8569,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2236,
+        "Nuclear_Shape": 0.913,
+        "Nucleus": 0.2221,
+        "Cytoplasm": 0.1581,
+        "Cytoplasmic_Basophilia": 0.2975,
+        "Cytoplasmic_Vacuoles": 0.1382
+      }
+    },
+    {
+      "cell_id": "img038_c003",
+      "image_id": "45_49_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        500.5,
+        35.5,
+        597.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8188,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2309,
+        "Nuclear_Shape": 0.3075,
+        "Nucleus": 0.4761,
+        "Cytoplasm": 0.2704,
+        "Cytoplasmic_Basophilia": 0.1323,
+        "Cytoplasmic_Vacuoles": 0.2285
+      }
+    },
+    {
+      "cell_id": "img039_c000",
+      "image_id": "45_4_1000_AML.png",
+      "bbox_xyxy": [
+        278.0,
+        489.25,
+        364.0,
+        617.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9395,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9636,
+        "Nuclear_Shape": 0.7408,
+        "Nucleus": 0.9807,
+        "Cytoplasm": 0.54,
+        "Cytoplasmic_Basophilia": 0.9674,
+        "Cytoplasmic_Vacuoles": 0.9353
+      }
+    },
+    {
+      "cell_id": "img039_c001",
+      "image_id": "45_4_1000_AML.png",
+      "bbox_xyxy": [
+        53.375,
+        74.0625,
+        128.375,
+        188.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8682,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9799,
+        "Nuclear_Shape": 0.0201,
+        "Nucleus": 0.986,
+        "Cytoplasm": 0.6579,
+        "Cytoplasmic_Basophilia": 0.5567,
+        "Cytoplasmic_Vacuoles": 0.3597
+      }
+    },
+    {
+      "cell_id": "img039_c002",
+      "image_id": "45_4_1000_AML.png",
+      "bbox_xyxy": [
+        371.5,
+        91.0,
+        437.5,
+        204.75
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.6724,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9833,
+        "Nuclear_Shape": 0.5732,
+        "Nucleus": 0.9952,
+        "Cytoplasm": 0.3237,
+        "Cytoplasmic_Basophilia": 0.9903,
+        "Cytoplasmic_Vacuoles": 0.9692
+      }
+    },
+    {
+      "cell_id": "img040_c000",
+      "image_id": "45_50_1000_AML.png",
+      "bbox_xyxy": [
+        30.8281,
+        69.5,
+        79.1875,
+        154.75
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9365,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7567,
+        "Nuclear_Shape": 0.9829,
+        "Nucleus": 0.9347,
+        "Cytoplasm": 0.0564,
+        "Cytoplasmic_Basophilia": 0.9819,
+        "Cytoplasmic_Vacuoles": 0.7257
+      }
+    },
+    {
+      "cell_id": "img040_c001",
+      "image_id": "45_50_1000_AML.png",
+      "bbox_xyxy": [
+        436.0,
+        423.0,
+        490.5,
+        514.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9214,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6582,
+        "Nuclear_Shape": 0.7111,
+        "Nucleus": 0.438,
+        "Cytoplasm": 0.232,
+        "Cytoplasmic_Basophilia": 0.2534,
+        "Cytoplasmic_Vacuoles": 0.2197
+      }
+    },
+    {
+      "cell_id": "img040_c002",
+      "image_id": "45_50_1000_AML.png",
+      "bbox_xyxy": [
+        316.5,
+        81.4375,
+        379.0,
+        191.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9136,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9375,
+        "Nuclear_Shape": 0.0525,
+        "Nucleus": 0.822,
+        "Cytoplasm": 0.9179,
+        "Cytoplasmic_Basophilia": 0.3863,
+        "Cytoplasmic_Vacuoles": 0.8842
+      }
+    },
+    {
+      "cell_id": "img040_c003",
+      "image_id": "45_50_1000_AML.png",
+      "bbox_xyxy": [
+        347.25,
+        557.0,
+        407.25,
+        638.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9048,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4117,
+        "Nuclear_Shape": 0.5265,
+        "Nucleus": 0.4447,
+        "Cytoplasm": 0.1312,
+        "Cytoplasmic_Basophilia": 0.1031,
+        "Cytoplasmic_Vacuoles": 0.0648
+      }
+    },
+    {
+      "cell_id": "img040_c004",
+      "image_id": "45_50_1000_AML.png",
+      "bbox_xyxy": [
+        498.0,
+        77.5625,
+        567.0,
+        190.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.8472,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9696,
+        "Nuclear_Shape": 0.01,
+        "Nucleus": 0.9618,
+        "Cytoplasm": 0.9314,
+        "Cytoplasmic_Basophilia": 0.5055,
+        "Cytoplasmic_Vacuoles": 0.8418
+      }
+    },
+    {
+      "cell_id": "img040_c005",
+      "image_id": "45_50_1000_AML.png",
+      "bbox_xyxy": [
+        72.125,
+        104.6875,
+        134.375,
+        215.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.5469,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9746,
+        "Nuclear_Shape": 0.1445,
+        "Nucleus": 0.9677,
+        "Cytoplasm": 0.832,
+        "Cytoplasmic_Basophilia": 0.9768,
+        "Cytoplasmic_Vacuoles": 0.9092
+      }
+    },
+    {
+      "cell_id": "img040_c006",
+      "image_id": "45_50_1000_AML.png",
+      "bbox_xyxy": [
+        497.0,
+        74.5625,
+        566.0,
+        187.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.4377,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9744,
+        "Nuclear_Shape": 0.0065,
+        "Nucleus": 0.9702,
+        "Cytoplasm": 0.9411,
+        "Cytoplasmic_Basophilia": 0.3849,
+        "Cytoplasmic_Vacuoles": 0.8995
+      }
+    },
+    {
+      "cell_id": "img040_c007",
+      "image_id": "45_50_1000_AML.png",
+      "bbox_xyxy": [
+        124.4375,
+        0.0,
+        179.5,
+        19.0156
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.3794,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1713,
+        "Nuclear_Shape": 0.8044,
+        "Nucleus": 0.3615,
+        "Cytoplasm": 0.1563,
+        "Cytoplasmic_Basophilia": 0.2009,
+        "Cytoplasmic_Vacuoles": 0.1058
+      }
+    },
+    {
+      "cell_id": "img041_c000",
+      "image_id": "45_51_1000_AML.png",
+      "bbox_xyxy": [
+        527.0,
+        194.0,
+        570.0,
+        262.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.9448,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2445,
+        "Nuclear_Shape": 0.6793,
+        "Nucleus": 0.3008,
+        "Cytoplasm": 0.443,
+        "Cytoplasmic_Basophilia": 0.6335,
+        "Cytoplasmic_Vacuoles": 0.549
+      }
+    },
+    {
+      "cell_id": "img041_c001",
+      "image_id": "45_51_1000_AML.png",
+      "bbox_xyxy": [
+        171.875,
+        442.0,
+        232.125,
+        540.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9395,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9811,
+        "Nuclear_Shape": 0.9979,
+        "Nucleus": 0.9887,
+        "Cytoplasm": 0.0156,
+        "Cytoplasmic_Basophilia": 0.9994,
+        "Cytoplasmic_Vacuoles": 0.9843
+      }
+    },
+    {
+      "cell_id": "img041_c002",
+      "image_id": "45_51_1000_AML.png",
+      "bbox_xyxy": [
+        155.75,
+        334.5,
+        210.25,
+        427.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.856,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9904,
+        "Nuclear_Shape": 0.8603,
+        "Nucleus": 0.9948,
+        "Cytoplasm": 0.1303,
+        "Cytoplasmic_Basophilia": 0.998,
+        "Cytoplasmic_Vacuoles": 0.9875
+      }
+    },
+    {
+      "cell_id": "img041_c003",
+      "image_id": "45_51_1000_AML.png",
+      "bbox_xyxy": [
+        461.0,
+        550.5,
+        513.0,
+        636.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6841,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6823,
+        "Nuclear_Shape": 0.0482,
+        "Nucleus": 0.8857,
+        "Cytoplasm": 0.3365,
+        "Cytoplasmic_Basophilia": 0.1735,
+        "Cytoplasmic_Vacuoles": 0.2506
+      }
+    },
+    {
+      "cell_id": "img041_c004",
+      "image_id": "45_51_1000_AML.png",
+      "bbox_xyxy": [
+        219.5,
+        131.0,
+        295.5,
+        251.75
+      ],
+      "class": "Monocyte",
+      "confidence": 0.6187,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9705,
+        "Nuclear_Shape": 0.7602,
+        "Nucleus": 0.9856,
+        "Cytoplasm": 0.1746,
+        "Cytoplasmic_Basophilia": 0.9821,
+        "Cytoplasmic_Vacuoles": 0.6503
+      }
+    },
+    {
+      "cell_id": "img042_c000",
+      "image_id": "45_52_1000_AML.png",
+      "bbox_xyxy": [
+        206.0,
+        311.5,
+        267.0,
+        424.5
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.9326,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9478,
+        "Nuclear_Shape": 0.078,
+        "Nucleus": 0.9533,
+        "Cytoplasm": 0.8907,
+        "Cytoplasmic_Basophilia": 0.9356,
+        "Cytoplasmic_Vacuoles": 0.9543
+      }
+    },
+    {
+      "cell_id": "img042_c001",
+      "image_id": "45_52_1000_AML.png",
+      "bbox_xyxy": [
+        578.0,
+        276.75,
+        612.0,
+        337.75
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.9312,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1797,
+        "Nuclear_Shape": 0.7547,
+        "Nucleus": 0.2731,
+        "Cytoplasm": 0.2417,
+        "Cytoplasmic_Basophilia": 0.3235,
+        "Cytoplasmic_Vacuoles": 0.2054
+      }
+    },
+    {
+      "cell_id": "img042_c002",
+      "image_id": "45_52_1000_AML.png",
+      "bbox_xyxy": [
+        423.5,
+        528.0,
+        461.5,
+        590.0
+      ],
+      "class": "None",
+      "confidence": 0.8223,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4542,
+        "Nuclear_Shape": 0.7652,
+        "Nucleus": 0.6391,
+        "Cytoplasm": 0.11,
+        "Cytoplasmic_Basophilia": 0.3122,
+        "Cytoplasmic_Vacuoles": 0.0716
+      }
+    },
+    {
+      "cell_id": "img042_c003",
+      "image_id": "45_52_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        19.0,
+        46.4062,
+        143.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6074,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.922,
+        "Nuclear_Shape": 0.952,
+        "Nucleus": 0.8687,
+        "Cytoplasm": 0.2078,
+        "Cytoplasmic_Basophilia": 0.982,
+        "Cytoplasmic_Vacuoles": 0.7766
+      }
+    },
+    {
+      "cell_id": "img042_c004",
+      "image_id": "45_52_1000_AML.png",
+      "bbox_xyxy": [
+        270.75,
+        308.5,
+        325.75,
+        415.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.5698,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9776,
+        "Nuclear_Shape": 0.6176,
+        "Nucleus": 0.9849,
+        "Cytoplasm": 0.3479,
+        "Cytoplasmic_Basophilia": 0.9983,
+        "Cytoplasmic_Vacuoles": 0.9908
+      }
+    },
+    {
+      "cell_id": "img042_c005",
+      "image_id": "45_52_1000_AML.png",
+      "bbox_xyxy": [
+        195.5,
+        590.5,
+        279.0,
+        639.5
+      ],
+      "class": "Eosinophil",
+      "confidence": 0.4055,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9168,
+        "Nuclear_Shape": 0.9412,
+        "Nucleus": 0.9692,
+        "Cytoplasm": 0.1528,
+        "Cytoplasmic_Basophilia": 0.9609,
+        "Cytoplasmic_Vacuoles": 0.7579
+      }
+    },
+    {
+      "cell_id": "img042_c006",
+      "image_id": "45_52_1000_AML.png",
+      "bbox_xyxy": [
+        423.75,
+        528.0,
+        461.25,
+        590.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.3831,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4542,
+        "Nuclear_Shape": 0.7652,
+        "Nucleus": 0.6391,
+        "Cytoplasm": 0.11,
+        "Cytoplasmic_Basophilia": 0.3122,
+        "Cytoplasmic_Vacuoles": 0.0716
+      }
+    },
+    {
+      "cell_id": "img042_c007",
+      "image_id": "45_52_1000_AML.png",
+      "bbox_xyxy": [
+        197.5,
+        590.0,
+        280.0,
+        640.0
+      ],
+      "class": "Monocyte",
+      "confidence": 0.3191,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9006,
+        "Nuclear_Shape": 0.8851,
+        "Nucleus": 0.9634,
+        "Cytoplasm": 0.2364,
+        "Cytoplasmic_Basophilia": 0.9428,
+        "Cytoplasmic_Vacuoles": 0.7471
+      }
+    },
+    {
+      "cell_id": "img042_c008",
+      "image_id": "45_52_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        15.375,
+        46.0312,
+        141.625
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.2651,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9273,
+        "Nuclear_Shape": 0.9603,
+        "Nucleus": 0.8777,
+        "Cytoplasm": 0.1881,
+        "Cytoplasmic_Basophilia": 0.9822,
+        "Cytoplasmic_Vacuoles": 0.7489
+      }
+    },
+    {
+      "cell_id": "img043_c000",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        172.75,
+        188.0,
+        224.0,
+        279.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.938,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9293,
+        "Nuclear_Shape": 0.9975,
+        "Nucleus": 0.9752,
+        "Cytoplasm": 0.0205,
+        "Cytoplasmic_Basophilia": 0.9986,
+        "Cytoplasmic_Vacuoles": 0.9716
+      }
+    },
+    {
+      "cell_id": "img043_c001",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        407.0,
+        337.75,
+        471.0,
+        442.75
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9375,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9956,
+        "Nuclear_Shape": 0.9952,
+        "Nucleus": 0.9966,
+        "Cytoplasm": 0.0137,
+        "Cytoplasmic_Basophilia": 0.9991,
+        "Cytoplasmic_Vacuoles": 0.9967
+      }
+    },
+    {
+      "cell_id": "img043_c002",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        334.75,
+        529.0,
+        383.75,
+        618.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9365,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9309,
+        "Nuclear_Shape": 0.9989,
+        "Nucleus": 0.9823,
+        "Cytoplasm": 0.012,
+        "Cytoplasmic_Basophilia": 0.9977,
+        "Cytoplasmic_Vacuoles": 0.9786
+      }
+    },
+    {
+      "cell_id": "img043_c003",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        586.0,
+        28.875,
+        640.0,
+        127.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9248,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4771,
+        "Nuclear_Shape": 0.0544,
+        "Nucleus": 0.827,
+        "Cytoplasm": 0.3501,
+        "Cytoplasmic_Basophilia": 0.2276,
+        "Cytoplasmic_Vacuoles": 0.2559
+      }
+    },
+    {
+      "cell_id": "img043_c004",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        17.3906,
+        113.3125,
+        69.5,
+        203.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9033,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4936,
+        "Nuclear_Shape": 0.0165,
+        "Nucleus": 0.7602,
+        "Cytoplasm": 0.5834,
+        "Cytoplasmic_Basophilia": 0.09,
+        "Cytoplasmic_Vacuoles": 0.5402
+      }
+    },
+    {
+      "cell_id": "img043_c005",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        52.125,
+        69.0,
+        93.375,
+        141.75
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.897,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.3014,
+        "Nuclear_Shape": 0.1014,
+        "Nucleus": 0.8117,
+        "Cytoplasm": 0.1147,
+        "Cytoplasmic_Basophilia": 0.0341,
+        "Cytoplasmic_Vacuoles": 0.1412
+      }
+    },
+    {
+      "cell_id": "img043_c006",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        272.0,
+        481.5,
+        328.0,
+        577.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.853,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9884,
+        "Nuclear_Shape": 0.9733,
+        "Nucleus": 0.9966,
+        "Cytoplasm": 0.0429,
+        "Cytoplasmic_Basophilia": 0.9977,
+        "Cytoplasmic_Vacuoles": 0.9823
+      }
+    },
+    {
+      "cell_id": "img043_c007",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        83.625,
+        254.625,
+        137.75,
+        347.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8198,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7687,
+        "Nuclear_Shape": 0.1511,
+        "Nucleus": 0.9197,
+        "Cytoplasm": 0.692,
+        "Cytoplasmic_Basophilia": 0.8129,
+        "Cytoplasmic_Vacuoles": 0.8727
+      }
+    },
+    {
+      "cell_id": "img043_c008",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        289.0,
+        272.0,
+        355.0,
+        362.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6841,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.5923,
+        "Nuclear_Shape": 0.604,
+        "Nucleus": 0.8658,
+        "Cytoplasm": 0.1179,
+        "Cytoplasmic_Basophilia": 0.5636,
+        "Cytoplasmic_Vacuoles": 0.3026
+      }
+    },
+    {
+      "cell_id": "img043_c009",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        380.25,
+        2.4375,
+        440.25,
+        93.625
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.6738,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6338,
+        "Nuclear_Shape": 0.1516,
+        "Nucleus": 0.7368,
+        "Cytoplasm": 0.6893,
+        "Cytoplasmic_Basophilia": 0.7631,
+        "Cytoplasmic_Vacuoles": 0.7902
+      }
+    },
+    {
+      "cell_id": "img043_c010",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        379.5,
+        2.0,
+        441.5,
+        96.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6621,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6078,
+        "Nuclear_Shape": 0.1567,
+        "Nucleus": 0.7032,
+        "Cytoplasm": 0.6984,
+        "Cytoplasmic_Basophilia": 0.767,
+        "Cytoplasmic_Vacuoles": 0.7946
+      }
+    },
+    {
+      "cell_id": "img043_c011",
+      "image_id": "45_53_1000_AML.png",
+      "bbox_xyxy": [
+        622.0,
+        333.5,
+        640.0,
+        440.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.314,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.3447,
+        "Nuclear_Shape": 0.8131,
+        "Nucleus": 0.5027,
+        "Cytoplasm": 0.3085,
+        "Cytoplasmic_Basophilia": 0.9468,
+        "Cytoplasmic_Vacuoles": 0.7017
+      }
+    },
+    {
+      "cell_id": "img044_c000",
+      "image_id": "45_54_1000_AML.png",
+      "bbox_xyxy": [
+        216.25,
+        270.5,
+        280.75,
+        395.0
+      ],
+      "class": "None",
+      "confidence": 0.7139,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7983,
+        "Nuclear_Shape": 0.3185,
+        "Nucleus": 0.9387,
+        "Cytoplasm": 0.2261,
+        "Cytoplasmic_Basophilia": 0.8264,
+        "Cytoplasmic_Vacuoles": 0.6892
+      }
+    },
+    {
+      "cell_id": "img044_c001",
+      "image_id": "45_54_1000_AML.png",
+      "bbox_xyxy": [
+        217.0,
+        270.25,
+        281.5,
+        393.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6992,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.797,
+        "Nuclear_Shape": 0.3373,
+        "Nucleus": 0.9369,
+        "Cytoplasm": 0.2253,
+        "Cytoplasmic_Basophilia": 0.8389,
+        "Cytoplasmic_Vacuoles": 0.7183
+      }
+    },
+    {
+      "cell_id": "img045_c000",
+      "image_id": "45_55_1000_AML.png",
+      "bbox_xyxy": [
+        284.25,
+        511.5,
+        355.25,
+        611.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9331,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9886,
+        "Nuclear_Shape": 0.9918,
+        "Nucleus": 0.9932,
+        "Cytoplasm": 0.0306,
+        "Cytoplasmic_Basophilia": 0.9974,
+        "Cytoplasmic_Vacuoles": 0.9849
+      }
+    },
+    {
+      "cell_id": "img045_c001",
+      "image_id": "45_55_1000_AML.png",
+      "bbox_xyxy": [
+        211.5,
+        162.5,
+        274.5,
+        253.75
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9326,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9274,
+        "Nuclear_Shape": 0.9969,
+        "Nucleus": 0.9669,
+        "Cytoplasm": 0.0232,
+        "Cytoplasmic_Basophilia": 0.9971,
+        "Cytoplasmic_Vacuoles": 0.9318
+      }
+    },
+    {
+      "cell_id": "img045_c002",
+      "image_id": "45_55_1000_AML.png",
+      "bbox_xyxy": [
+        419.5,
+        230.75,
+        475.5,
+        328.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.918,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4719,
+        "Nuclear_Shape": 0.5785,
+        "Nucleus": 0.4128,
+        "Cytoplasm": 0.1253,
+        "Cytoplasmic_Basophilia": 0.0926,
+        "Cytoplasmic_Vacuoles": 0.0666
+      }
+    },
+    {
+      "cell_id": "img045_c003",
+      "image_id": "45_55_1000_AML.png",
+      "bbox_xyxy": [
+        610.0,
+        557.0,
+        640.0,
+        640.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.4805,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4812,
+        "Nuclear_Shape": 0.4043,
+        "Nucleus": 0.7458,
+        "Cytoplasm": 0.4147,
+        "Cytoplasmic_Basophilia": 0.8115,
+        "Cytoplasmic_Vacuoles": 0.5919
+      }
+    },
+    {
+      "cell_id": "img046_c000",
+      "image_id": "45_56_1000_AML.png",
+      "bbox_xyxy": [
+        575.0,
+        212.125,
+        629.0,
+        316.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9409,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9397,
+        "Nuclear_Shape": 0.9874,
+        "Nucleus": 0.9604,
+        "Cytoplasm": 0.0297,
+        "Cytoplasmic_Basophilia": 0.9971,
+        "Cytoplasmic_Vacuoles": 0.9658
+      }
+    },
+    {
+      "cell_id": "img046_c001",
+      "image_id": "45_56_1000_AML.png",
+      "bbox_xyxy": [
+        349.5,
+        186.5,
+        408.5,
+        289.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9365,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9619,
+        "Nuclear_Shape": 0.9475,
+        "Nucleus": 0.9774,
+        "Cytoplasm": 0.1468,
+        "Cytoplasmic_Basophilia": 0.9983,
+        "Cytoplasmic_Vacuoles": 0.9675
+      }
+    },
+    {
+      "cell_id": "img046_c002",
+      "image_id": "45_56_1000_AML.png",
+      "bbox_xyxy": [
+        168.375,
+        45.7188,
+        229.125,
+        154.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9097,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8948,
+        "Nuclear_Shape": 0.0843,
+        "Nucleus": 0.8563,
+        "Cytoplasm": 0.8464,
+        "Cytoplasmic_Basophilia": 0.3897,
+        "Cytoplasmic_Vacuoles": 0.6554
+      }
+    },
+    {
+      "cell_id": "img046_c003",
+      "image_id": "45_56_1000_AML.png",
+      "bbox_xyxy": [
+        261.0,
+        444.0,
+        318.5,
+        542.0
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9053,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9171,
+        "Nuclear_Shape": 0.7228,
+        "Nucleus": 0.9514,
+        "Cytoplasm": 0.5799,
+        "Cytoplasmic_Basophilia": 0.9913,
+        "Cytoplasmic_Vacuoles": 0.9352
+      }
+    },
+    {
+      "cell_id": "img046_c004",
+      "image_id": "45_56_1000_AML.png",
+      "bbox_xyxy": [
+        199.75,
+        552.0,
+        262.25,
+        640.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.854,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4876,
+        "Nuclear_Shape": 0.1384,
+        "Nucleus": 0.6527,
+        "Cytoplasm": 0.4081,
+        "Cytoplasmic_Basophilia": 0.2289,
+        "Cytoplasmic_Vacuoles": 0.4172
+      }
+    },
+    {
+      "cell_id": "img046_c005",
+      "image_id": "45_56_1000_AML.png",
+      "bbox_xyxy": [
+        609.0,
+        504.75,
+        639.0,
+        571.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.8242,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1452,
+        "Nuclear_Shape": 0.7965,
+        "Nucleus": 0.1662,
+        "Cytoplasm": 0.21,
+        "Cytoplasmic_Basophilia": 0.3713,
+        "Cytoplasmic_Vacuoles": 0.1982
+      }
+    },
+    {
+      "cell_id": "img046_c006",
+      "image_id": "45_56_1000_AML.png",
+      "bbox_xyxy": [
+        62.625,
+        151.25,
+        112.125,
+        234.75
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8188,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.5247,
+        "Nuclear_Shape": 0.7933,
+        "Nucleus": 0.3128,
+        "Cytoplasm": 0.2157,
+        "Cytoplasmic_Basophilia": 0.3994,
+        "Cytoplasmic_Vacuoles": 0.1599
+      }
+    },
+    {
+      "cell_id": "img046_c007",
+      "image_id": "45_56_1000_AML.png",
+      "bbox_xyxy": [
+        199.0,
+        552.0,
+        261.25,
+        640.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.6875,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.489,
+        "Nuclear_Shape": 0.1231,
+        "Nucleus": 0.6665,
+        "Cytoplasm": 0.4006,
+        "Cytoplasmic_Basophilia": 0.2053,
+        "Cytoplasmic_Vacuoles": 0.4226
+      }
+    },
+    {
+      "cell_id": "img047_c000",
+      "image_id": "45_57_1000_AML.png",
+      "bbox_xyxy": [
+        468.0,
+        297.5,
+        511.0,
+        386.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9312,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.7704,
+        "Nuclear_Shape": 0.9711,
+        "Nucleus": 0.7793,
+        "Cytoplasm": 0.0635,
+        "Cytoplasmic_Basophilia": 0.935,
+        "Cytoplasmic_Vacuoles": 0.436
+      }
+    },
+    {
+      "cell_id": "img047_c001",
+      "image_id": "45_57_1000_AML.png",
+      "bbox_xyxy": [
+        228.25,
+        302.5,
+        273.0,
+        377.5
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.8726,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1548,
+        "Nuclear_Shape": 0.475,
+        "Nucleus": 0.4593,
+        "Cytoplasm": 0.2886,
+        "Cytoplasmic_Basophilia": 0.4841,
+        "Cytoplasmic_Vacuoles": 0.2721
+      }
+    },
+    {
+      "cell_id": "img047_c002",
+      "image_id": "45_57_1000_AML.png",
+      "bbox_xyxy": [
+        340.0,
+        367.75,
+        393.0,
+        469.25
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.8398,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8573,
+        "Nuclear_Shape": 0.2696,
+        "Nucleus": 0.9357,
+        "Cytoplasm": 0.6229,
+        "Cytoplasmic_Basophilia": 0.9682,
+        "Cytoplasmic_Vacuoles": 0.7966
+      }
+    },
+    {
+      "cell_id": "img047_c003",
+      "image_id": "45_57_1000_AML.png",
+      "bbox_xyxy": [
+        409.5,
+        372.5,
+        453.5,
+        455.5
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.7578,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.259,
+        "Nuclear_Shape": 0.4909,
+        "Nucleus": 0.4151,
+        "Cytoplasm": 0.142,
+        "Cytoplasmic_Basophilia": 0.0796,
+        "Cytoplasmic_Vacuoles": 0.1557
+      }
+    },
+    {
+      "cell_id": "img047_c004",
+      "image_id": "45_57_1000_AML.png",
+      "bbox_xyxy": [
+        340.0,
+        368.0,
+        393.5,
+        468.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.7476,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8662,
+        "Nuclear_Shape": 0.2266,
+        "Nucleus": 0.9481,
+        "Cytoplasm": 0.6412,
+        "Cytoplasmic_Basophilia": 0.9685,
+        "Cytoplasmic_Vacuoles": 0.8096
+      }
+    },
+    {
+      "cell_id": "img047_c005",
+      "image_id": "45_57_1000_AML.png",
+      "bbox_xyxy": [
+        138.25,
+        608.0,
+        198.75,
+        640.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.5117,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.297,
+        "Nuclear_Shape": 0.719,
+        "Nucleus": 0.3974,
+        "Cytoplasm": 0.117,
+        "Cytoplasmic_Basophilia": 0.1503,
+        "Cytoplasmic_Vacuoles": 0.0687
+      }
+    },
+    {
+      "cell_id": "img048_c000",
+      "image_id": "45_59_1000_AML.png",
+      "bbox_xyxy": [
+        456.0,
+        487.5,
+        519.0,
+        588.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9414,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9955,
+        "Nuclear_Shape": 0.9945,
+        "Nucleus": 0.9962,
+        "Cytoplasm": 0.0119,
+        "Cytoplasmic_Basophilia": 0.9991,
+        "Cytoplasmic_Vacuoles": 0.9875
+      }
+    },
+    {
+      "cell_id": "img048_c001",
+      "image_id": "45_59_1000_AML.png",
+      "bbox_xyxy": [
+        116.375,
+        0.8125,
+        189.125,
+        88.75
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9277,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.5617,
+        "Nuclear_Shape": 0.1753,
+        "Nucleus": 0.8519,
+        "Cytoplasm": 0.5429,
+        "Cytoplasmic_Basophilia": 0.8967,
+        "Cytoplasmic_Vacuoles": 0.6694
+      }
+    },
+    {
+      "cell_id": "img048_c002",
+      "image_id": "45_59_1000_AML.png",
+      "bbox_xyxy": [
+        243.375,
+        262.0,
+        303.5,
+        363.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.9136,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9908,
+        "Nuclear_Shape": 0.0358,
+        "Nucleus": 0.9814,
+        "Cytoplasm": 0.7685,
+        "Cytoplasmic_Basophilia": 0.2224,
+        "Cytoplasmic_Vacuoles": 0.7211
+      }
+    },
+    {
+      "cell_id": "img048_c003",
+      "image_id": "45_59_1000_AML.png",
+      "bbox_xyxy": [
+        355.0,
+        402.0,
+        428.0,
+        533.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8965,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9819,
+        "Nuclear_Shape": 0.0271,
+        "Nucleus": 0.9549,
+        "Cytoplasm": 0.8337,
+        "Cytoplasmic_Basophilia": 0.652,
+        "Cytoplasmic_Vacuoles": 0.8426
+      }
+    },
+    {
+      "cell_id": "img048_c004",
+      "image_id": "45_59_1000_AML.png",
+      "bbox_xyxy": [
+        595.0,
+        237.0,
+        640.0,
+        334.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8511,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.4484,
+        "Nuclear_Shape": 0.3198,
+        "Nucleus": 0.5928,
+        "Cytoplasm": 0.2439,
+        "Cytoplasmic_Basophilia": 0.1009,
+        "Cytoplasmic_Vacuoles": 0.1223
+      }
+    },
+    {
+      "cell_id": "img048_c005",
+      "image_id": "45_59_1000_AML.png",
+      "bbox_xyxy": [
+        509.5,
+        372.25,
+        564.5,
+        464.75
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8438,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9667,
+        "Nuclear_Shape": 0.1142,
+        "Nucleus": 0.8358,
+        "Cytoplasm": 0.9517,
+        "Cytoplasmic_Basophilia": 0.9102,
+        "Cytoplasmic_Vacuoles": 0.928
+      }
+    },
+    {
+      "cell_id": "img048_c006",
+      "image_id": "45_59_1000_AML.png",
+      "bbox_xyxy": [
+        464.5,
+        424.25,
+        519.5,
+        493.25
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.6636,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.6335,
+        "Nuclear_Shape": 0.63,
+        "Nucleus": 0.6293,
+        "Cytoplasm": 0.1874,
+        "Cytoplasmic_Basophilia": 0.2726,
+        "Cytoplasmic_Vacuoles": 0.1899
+      }
+    },
+    {
+      "cell_id": "img048_c007",
+      "image_id": "45_59_1000_AML.png",
+      "bbox_xyxy": [
+        60.1875,
+        552.0,
+        96.9375,
+        620.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.3577,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1933,
+        "Nuclear_Shape": 0.9022,
+        "Nucleus": 0.1226,
+        "Cytoplasm": 0.0859,
+        "Cytoplasmic_Basophilia": 0.1335,
+        "Cytoplasmic_Vacuoles": 0.0549
+      }
+    },
+    {
+      "cell_id": "img048_c008",
+      "image_id": "45_59_1000_AML.png",
+      "bbox_xyxy": [
+        60.4375,
+        553.0,
+        97.1875,
+        619.0
+      ],
+      "class": "Lymphocyte",
+      "confidence": 0.2644,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 1,
+        "Nucleus": 0,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.1934,
+        "Nuclear_Shape": 0.8869,
+        "Nucleus": 0.1251,
+        "Cytoplasm": 0.086,
+        "Cytoplasmic_Basophilia": 0.1202,
+        "Cytoplasmic_Vacuoles": 0.0536
+      }
+    },
+    {
+      "cell_id": "img049_c000",
+      "image_id": "45_5_1000_AML.png",
+      "bbox_xyxy": [
+        371.75,
+        290.0,
+        432.25,
+        394.0
+      ],
+      "class": "Lymphoblast",
+      "confidence": 0.8716,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9848,
+        "Nuclear_Shape": 0.0334,
+        "Nucleus": 0.9805,
+        "Cytoplasm": 0.7018,
+        "Cytoplasmic_Basophilia": 0.5264,
+        "Cytoplasmic_Vacuoles": 0.63
+      }
+    },
+    {
+      "cell_id": "img049_c001",
+      "image_id": "45_5_1000_AML.png",
+      "bbox_xyxy": [
+        424.0,
+        419.0,
+        511.0,
+        551.5
+      ],
+      "class": "None",
+      "confidence": 0.8081,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8809,
+        "Nuclear_Shape": 0.631,
+        "Nucleus": 0.947,
+        "Cytoplasm": 0.6495,
+        "Cytoplasmic_Basophilia": 0.9397,
+        "Cytoplasmic_Vacuoles": 0.9104
+      }
+    },
+    {
+      "cell_id": "img049_c002",
+      "image_id": "45_5_1000_AML.png",
+      "bbox_xyxy": [
+        424.0,
+        419.5,
+        511.0,
+        551.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.7188,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.8809,
+        "Nuclear_Shape": 0.631,
+        "Nucleus": 0.947,
+        "Cytoplasm": 0.6495,
+        "Cytoplasmic_Basophilia": 0.9397,
+        "Cytoplasmic_Vacuoles": 0.9104
+      }
+    },
+    {
+      "cell_id": "img050_c000",
+      "image_id": "45_6_1000_AML.png",
+      "bbox_xyxy": [
+        388.5,
+        454.0,
+        447.5,
+        566.0
+      ],
+      "class": "Myeloblast",
+      "confidence": 0.8267,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9942,
+        "Nuclear_Shape": 0.3522,
+        "Nucleus": 0.997,
+        "Cytoplasm": 0.5097,
+        "Cytoplasmic_Basophilia": 0.9899,
+        "Cytoplasmic_Vacuoles": 0.9558
+      }
+    },
+    {
+      "cell_id": "img050_c001",
+      "image_id": "45_6_1000_AML.png",
+      "bbox_xyxy": [
+        96.375,
+        251.5,
+        180.625,
+        391.5
+      ],
+      "class": "None",
+      "confidence": 0.6533,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9712,
+        "Nuclear_Shape": 0.7796,
+        "Nucleus": 0.9793,
+        "Cytoplasm": 0.5599,
+        "Cytoplasmic_Basophilia": 0.992,
+        "Cytoplasmic_Vacuoles": 0.9694
+      }
+    },
+    {
+      "cell_id": "img051_c000",
+      "image_id": "45_7_1000_AML.png",
+      "bbox_xyxy": [
+        439.5,
+        389.0,
+        507.5,
+        508.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9365,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9822,
+        "Nuclear_Shape": 0.9959,
+        "Nucleus": 0.9867,
+        "Cytoplasm": 0.0166,
+        "Cytoplasmic_Basophilia": 0.9969,
+        "Cytoplasmic_Vacuoles": 0.9736
+      }
+    },
+    {
+      "cell_id": "img052_c000",
+      "image_id": "45_8_1000_AML.png",
+      "bbox_xyxy": [
+        202.25,
+        283.0,
+        278.0,
+        411.0
+      ],
+      "class": "Monocyte",
+      "confidence": 0.6909,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 1,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9902,
+        "Nuclear_Shape": 0.3432,
+        "Nucleus": 0.9954,
+        "Cytoplasm": 0.6607,
+        "Cytoplasmic_Basophilia": 0.9869,
+        "Cytoplasmic_Vacuoles": 0.966
+      }
+    },
+    {
+      "cell_id": "img053_c000",
+      "image_id": "45_9_1000_AML.png",
+      "bbox_xyxy": [
+        582.0,
+        224.5,
+        640.0,
+        336.5
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9463,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9903,
+        "Nuclear_Shape": 0.9213,
+        "Nucleus": 0.9933,
+        "Cytoplasm": 0.113,
+        "Cytoplasmic_Basophilia": 0.9963,
+        "Cytoplasmic_Vacuoles": 0.9659
+      }
+    },
+    {
+      "cell_id": "img053_c001",
+      "image_id": "45_9_1000_AML.png",
+      "bbox_xyxy": [
+        0.0,
+        111.375,
+        44.0,
+        219.375
+      ],
+      "class": "Neutrophil",
+      "confidence": 0.9219,
+      "attributes": {
+        "Nuclear_Chromatin": 1,
+        "Nuclear_Shape": 1,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 1,
+        "Cytoplasmic_Vacuoles": 1
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.9726,
+        "Nuclear_Shape": 0.9818,
+        "Nucleus": 0.9745,
+        "Cytoplasm": 0.0618,
+        "Cytoplasmic_Basophilia": 0.9925,
+        "Cytoplasmic_Vacuoles": 0.9288
+      }
+    },
+    {
+      "cell_id": "img053_c002",
+      "image_id": "45_9_1000_AML.png",
+      "bbox_xyxy": [
+        131.0,
+        273.75,
+        174.75,
+        333.75
+      ],
+      "class": "None",
+      "confidence": 0.7866,
+      "attributes": {
+        "Nuclear_Chromatin": 0,
+        "Nuclear_Shape": 0,
+        "Nucleus": 1,
+        "Cytoplasm": 0,
+        "Cytoplasmic_Basophilia": 0,
+        "Cytoplasmic_Vacuoles": 0
+      },
+      "attribute_probs": {
+        "Nuclear_Chromatin": 0.2202,
+        "Nuclear_Shape": 0.2875,
+        "Nucleus": 0.6732,
+        "Cytoplasm": 0.1681,
+        "Cytoplasmic_Basophilia": 0.164,
+        "Cytoplasmic_Vacuoles": 0.0946
+      }
+    }
+  ]
+}

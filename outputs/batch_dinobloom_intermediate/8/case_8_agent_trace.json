@@ -1,0 +1,24 @@
+{
+  "patient_id": "8",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "High blast burden with borderline detection quality and significant non-WBC artifacts.",
+      "conf_threshold": 0.25
+    },
+    {
+      "iteration": 1,
+      "action": "flag_for_review",
+      "reason": "High blast burden with borderline detection quality and significant non-WBC artifacts.",
+      "conf_threshold": 0.25
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": true,
+  "review_reasons": [
+    "High blast burden with borderline detection quality and significant non-WBC artifacts."
+  ]
+}
