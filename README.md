@@ -1,18 +1,102 @@
 # AgenticHematology — LLD workflow
 
 
-
+#### Stage 1- Prepare the data
 
 ```bash
-YOLO=wbc_unified/cv/runs/detector/train/weights/best.pt
-EFFNET=wbc_unified/cv/runs/attribute/train/best_attr.pt
-CLASSIFIER=outputs/ablations/classifier/dinobloom/random_forest/leukemia_random_forest.pkl
-DINOBLOOM_ATTR=wbc_unified/cv/runs/attribute_dinobloom/train/best_attr_dinobloom.pt
+python wbc_unified/cv/data/prepare_dataset.py \
+  --data-root /path/to/data/LLD_organized/ \
+  --out wbc_unified/cv/generated \
+  --image-mode hardlink # you can use copy or auto
 ```
 
----
+#### Stage 2- Trainthe detector
 
-#### 1) Prepare the data
+We train YOLO-v11 model for cell detection. Make sure to adjust the number of workers and batch size based on your resources
+
+```bash
+python agentic_hematology/wbc_unified/cv/train_detector.py \
+    --config agentic_hematology/wbc_unified/cv/configs/dataset.yaml \
+    --model yolo11m.pt \
+    --epochs 200 \
+    --batch 32 \
+    --device 0 \
+    --workers 8 \
+    --name yolo11m_wbc
+```
+
+#### Stage 3- Trainthe attribute classifier
+
+Two options are available for attribute classification EffiecientNet and DinoBloom-L
+
+##### A) For EfficientNet training
+
+```bash
+python agentic_hematology/wbc_unified/cv/train_attributes.py \
+  --config agentic_hematology/wbc_unified/cv/configs/dataset.yaml \
+  --epochs 40 \
+  --batch 256 \
+  --device 0 \
+  --project agentic_hematology/wbc_unified/cv/runs/attribute \
+  --name train
+```
+
+###### To test the trained attribute classifier
+
+```bash
+python agentic_hematology/wbc_unified/cv/scripts/pipeline_eval.py attribute \
+  --weights agentic_hematology/wbc_unified/cv/runs/attribute/train/best_attr.pt \
+  --split test \
+  --json-out agentic_hematology/outputs/eval/effnet_attribute_gt_test.json \
+  --device 0
+```
+
+##### B) For DinoBloom Training
+
+```bash
+python agentic_hematology/wbc_unified/cv/train_dinobloom_attributes_torch.py \
+  --manifest agentic_hematology/wbc_unified/cv/generated/attr_manifest.csv \
+  --dinobloom-weights DinoBloom-L.pth \
+  --dinobloom-variant l \
+  --project agentic_hematology/wbc_unified/cv/runs/attribute_dinobloom \
+  --name train \
+  --epochs 40 \
+  --batch 256 \
+  --device 0 \
+  --workers 4
+```
+
+###### To test the trained attribute classifier
+
+```bash
+python agentic_hematology/wbc_unified/cv/scripts/pipeline_eval_dinobloom.py attribute \
+  --attr-weights agentic_hematology/wbc_unified/cv/runs/attribute_dinobloom/train/best_attr_dinobloom.pt \
+  --split test \
+  --json-out agentic_hematology/outputs/eval/dinobloom_attribute_gt_test.json \
+  --device 0
+```
+
+
+#### Stage 4- Run the whole pipeline
+
+Two approaches are possible, one is deterministic such that the generated report is based on
+##### For EfficientNet Backbome
+
+```bash
+python train_leukemia_from_efficientnet.py --backend all --device 0 \
+  --yolo-weights wbc_unified/cv/runs/detector/train/weights/best.pt \
+  --effnet-weights wbc_unified/cv/runs/attribute/train/best_attr.pt \
+  --out-dir outputs/ablations/classifier/efficientnet
+```
+
+
+
+
+
+##### For EfficientNet training
+
+---
+#### 1) 
 
 ```bash
 python wbc_unified/cv/data/prepare_dataset.py \
