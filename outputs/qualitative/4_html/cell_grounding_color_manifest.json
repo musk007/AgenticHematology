@@ -1,0 +1,162 @@
+[
+  {
+    "index": 0,
+    "cell_id": "img000_c000",
+    "image_id": "4_102_1000_ALL.png",
+    "bbox": [
+      373.5,
+      410.5,
+      441.5,
+      537.5
+    ],
+    "cell_type": "Neutrophil",
+    "confidence": 0.93,
+    "color_name": "red",
+    "hex_color": "#ff0000",
+    "rgb": [
+      255,
+      0,
+      0
+    ]
+  },
+  {
+    "index": 1,
+    "cell_id": "img001_c000",
+    "image_id": "4_103_1000_ALL.png",
+    "bbox": [
+      433.0,
+      382.5,
+      497.0,
+      465.0
+    ],
+    "cell_type": "Lymphoblast",
+    "confidence": 0.9,
+    "color_name": "lime",
+    "hex_color": "#00cc00",
+    "rgb": [
+      0,
+      204,
+      0
+    ]
+  },
+  {
+    "index": 2,
+    "cell_id": "img001_c001",
+    "image_id": "4_103_1000_ALL.png",
+    "bbox": [
+      477.0,
+      239.38,
+      552.0,
+      368.5
+    ],
+    "cell_type": "Eosinophil",
+    "confidence": 0.86,
+    "color_name": "cyan",
+    "hex_color": "#00cccc",
+    "rgb": [
+      0,
+      204,
+      204
+    ]
+  },
+  {
+    "index": 3,
+    "cell_id": "img002_c000",
+    "image_id": "4_104_1000_ALL.png",
+    "bbox": [
+      210.0,
+      532.5,
+      288.5,
+      640.0
+    ],
+    "cell_type": "Lymphoblast",
+    "confidence": 0.89,
+    "color_name": "yellow",
+    "hex_color": "#d9d900",
+    "rgb": [
+      217,
+      217,
+      0
+    ]
+  },
+  {
+    "index": 4,
+    "cell_id": "img002_c001",
+    "image_id": "4_104_1000_ALL.png",
+    "bbox": [
+      557.0,
+      0.0,
+      610.0,
+      54.62
+    ],
+    "cell_type": "Lymphoblast",
+    "confidence": 0.83,
+    "color_name": "magenta",
+    "hex_color": "#cc00cc",
+    "rgb": [
+      204,
+      0,
+      204
+    ]
+  },
+  {
+    "index": 5,
+    "cell_id": "img003_c000",
+    "image_id": "4_105_1000_ALL.png",
+    "bbox": [
+      443.5,
+      267.5,
+      504.5,
+      379.5
+    ],
+    "cell_type": "Lymphoblast",
+    "confidence": 0.92,
+    "color_name": "orange",
+    "hex_color": "#ff8800",
+    "rgb": [
+      255,
+      136,
+      0
+    ]
+  },
+  {
+    "index": 6,
+    "cell_id": "img004_c000",
+    "image_id": "4_15_1000_ALL.png",
+    "bbox": [
+      80.38,
+      312.0,
+      137.5,
+      418.0
+    ],
+    "cell_type": "Neutrophil",
+    "confidence": 0.94,
+    "color_name": "deepskyblue",
+    "hex_color": "#00aaff",
+    "rgb": [
+      0,
+      170,
+      255
+    ]
+  },
+  {
+    "index": 7,
+    "cell_id": "img004_c001",
+    "image_id": "4_15_1000_ALL.png",
+    "bbox": [
+      261.5,
+      449.5,
+      317.5,
+      537.5
+    ],
+    "cell_type": "Neutrophil",
+    "confidence": 0.93,
+    "color_name": "violet",
+    "hex_color": "#9933ff",
+    "rgb": [
+      153,
+      51,
+      255
+    ]
+  }
+]
