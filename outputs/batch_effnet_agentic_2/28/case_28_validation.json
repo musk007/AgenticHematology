@@ -1,0 +1,55 @@
+{
+  "patient_id": "28",
+  "validation_passed": true,
+  "report_delivery_allowed": true,
+  "checks": {
+    "consistency": {
+      "passed": true,
+      "message": "ok",
+      "details": {}
+    },
+    "llm_output": {
+      "passed": true,
+      "message": "ok",
+      "details": {}
+    },
+    "template_json": {
+      "passed": true,
+      "message": "ok",
+      "details": {
+        "passed": true,
+        "mismatches": [],
+        "parsed_differential": {
+          "Neutrophils": 57.7,
+          "Myelocytes": 16.2,
+          "Metamyelocytes": 14.2,
+          "Myeloblasts": 7.4,
+          "Monocytes": 2.0,
+          "Basophils": 1.1,
+          "Lymphocytes": 0.9,
+          "Eosinophils": 0.6
+        },
+        "expected_differential": {
+          "Neutrophil": 57.7,
+          "Myelocyte": 16.2,
+          "Metamyelocyte": 14.2,
+          "Myeloblast": 7.4,
+          "Monocyte": 2.0,
+          "Basophil": 1.1,
+          "Lymphocyte": 0.9,
+          "Eosinophil": 0.6
+        }
+      }
+    },
+    "numerical_hallucination": {
+      "passed": true,
+      "message": "ok",
+      "details": {
+        "n_claims": 22,
+        "n_untraceable": 0,
+        "hallucination_rate": 0.0,
+        "untraceable_examples": []
+      }
+    }
+  }
+}
