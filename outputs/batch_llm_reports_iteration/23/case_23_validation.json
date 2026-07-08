@@ -1,0 +1,57 @@
+{
+  "patient_id": "23",
+  "validation_passed": false,
+  "report_delivery_allowed": false,
+  "checks": {
+    "consistency": {
+      "passed": true,
+      "message": "ok",
+      "details": {}
+    },
+    "llm_output": {
+      "passed": true,
+      "message": "ok",
+      "details": {}
+    },
+    "template_json": {
+      "passed": false,
+      "message": "missing differential row for Myeloblast; missing differential row for Lymphoblast; missing differential row for Neutrophil; missing differential row for Myelocyte (+7 more)",
+      "details": {
+        "passed": false,
+        "mismatches": [
+          "missing differential row for Myeloblast",
+          "missing differential row for Lymphoblast",
+          "missing differential row for Neutrophil",
+          "missing differential row for Myelocyte",
+          "missing differential row for Monocyte",
+          "missing differential row for Lymphocyte",
+          "missing differential row for Eosinophil",
+          "fields of view: expected 60 in report narrative (\u00b12)",
+          "informative WBCs: expected 234 in report narrative (\u00b12)",
+          "detected objects total: expected 252 in report narrative (\u00b12)",
+          "artefacts excluded: expected 18 in report narrative (\u00b12)"
+        ],
+        "parsed_differential": {},
+        "expected_differential": {
+          "Myeloblast": 52.1,
+          "Lymphoblast": 20.9,
+          "Neutrophil": 8.5,
+          "Myelocyte": 8.5,
+          "Monocyte": 4.7,
+          "Lymphocyte": 3.8,
+          "Eosinophil": 1.3
+        }
+      }
+    },
+    "numerical_hallucination": {
+      "passed": true,
+      "message": "ok",
+      "details": {
+        "n_claims": 1,
+        "n_untraceable": 0,
+        "hallucination_rate": 0.0,
+        "untraceable_examples": []
+      }
+    }
+  }
+}

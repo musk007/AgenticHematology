@@ -1,0 +1,50 @@
+{
+  "patient_id": "18",
+  "validation_passed": false,
+  "report_delivery_allowed": false,
+  "checks": {
+    "consistency": {
+      "passed": true,
+      "message": "ok",
+      "details": {}
+    },
+    "llm_output": {
+      "passed": true,
+      "message": "ok",
+      "details": {}
+    },
+    "template_json": {
+      "passed": false,
+      "message": "missing differential row for Lymphoblast; missing differential row for Neutrophil; missing differential row for Lymphocyte; missing differential row for Eosinophil (+3 more)",
+      "details": {
+        "passed": false,
+        "mismatches": [
+          "missing differential row for Lymphoblast",
+          "missing differential row for Neutrophil",
+          "missing differential row for Lymphocyte",
+          "missing differential row for Eosinophil",
+          "fields of view: expected 28 in report narrative (\u00b12)",
+          "informative WBCs: expected 46 in report narrative (\u00b12)",
+          "detected objects total: expected 46 in report narrative (\u00b12)"
+        ],
+        "parsed_differential": {},
+        "expected_differential": {
+          "Lymphoblast": 78.3,
+          "Neutrophil": 17.4,
+          "Lymphocyte": 2.2,
+          "Eosinophil": 2.2
+        }
+      }
+    },
+    "numerical_hallucination": {
+      "passed": true,
+      "message": "ok",
+      "details": {
+        "n_claims": 1,
+        "n_untraceable": 0,
+        "hallucination_rate": 0.0,
+        "untraceable_examples": []
+      }
+    }
+  }
+}

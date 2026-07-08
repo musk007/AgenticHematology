@@ -1,0 +1,18 @@
+{
+  "patient_id": "4",
+  "dataset_source": "lld",
+  "routing_notes": [],
+  "agent_actions": [
+    {
+      "iteration": 1,
+      "action": "proceed",
+      "reason": "Evidence is coherent with high classifier confidence and sufficient informative cells.",
+      "conf_threshold": 0.25
+    }
+  ],
+  "n_reflect_iterations": 1,
+  "flagged_for_review": false,
+  "review_reasons": [
+    "Report failed validation and should not be delivered automatically"
+  ]
+}

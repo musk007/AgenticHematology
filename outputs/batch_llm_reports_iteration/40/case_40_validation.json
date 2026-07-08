@@ -1,0 +1,61 @@
+{
+  "patient_id": "40",
+  "validation_passed": false,
+  "report_delivery_allowed": false,
+  "checks": {
+    "consistency": {
+      "passed": true,
+      "message": "ok",
+      "details": {}
+    },
+    "llm_output": {
+      "passed": true,
+      "message": "ok",
+      "details": {}
+    },
+    "template_json": {
+      "passed": false,
+      "message": "missing differential row for Neutrophil; missing differential row for Eosinophil; missing differential row for Lymphoblast; missing differential row for Monocyte (+9 more)",
+      "details": {
+        "passed": false,
+        "mismatches": [
+          "missing differential row for Neutrophil",
+          "missing differential row for Eosinophil",
+          "missing differential row for Lymphoblast",
+          "missing differential row for Monocyte",
+          "missing differential row for Promonocyte",
+          "missing differential row for Monoblast",
+          "missing differential row for Lymphocyte",
+          "missing differential row for Myeloblast",
+          "missing differential row for Myelocyte",
+          "fields of view: expected 50 in report narrative (\u00b12)",
+          "informative WBCs: expected 109 in report narrative (\u00b12)",
+          "detected objects total: expected 142 in report narrative (\u00b12)",
+          "artefacts excluded: expected 33 in report narrative (\u00b12)"
+        ],
+        "parsed_differential": {},
+        "expected_differential": {
+          "Neutrophil": 35.8,
+          "Eosinophil": 24.8,
+          "Lymphoblast": 12.8,
+          "Monocyte": 10.1,
+          "Promonocyte": 4.6,
+          "Monoblast": 4.6,
+          "Lymphocyte": 3.7,
+          "Myeloblast": 2.8,
+          "Myelocyte": 0.9
+        }
+      }
+    },
+    "numerical_hallucination": {
+      "passed": true,
+      "message": "ok",
+      "details": {
+        "n_claims": 1,
+        "n_untraceable": 0,
+        "hallucination_rate": 0.0,
+        "untraceable_examples": []
+      }
+    }
+  }
+}
