@@ -76,13 +76,15 @@ def reflect_node(
             state.classification,
             dataset_source=state.dataset_source,
         )
+        # breakpoint()
 
         decision = agent.decide(
             case_state,
-            re_aggregate_used=(re_aggregate_count >= max_reaggregations),
+            re_aggregate_used=(re_aggregate_count >= max_reaggregations), # True if we have re-aggregated even once
             current_conf_threshold=state.conf_threshold,
             iteration=iteration,
         )
+        # breakpoint()
 
         state.agent_actions.append({"iteration": iteration, **decision.to_dict()})
 
@@ -90,7 +92,25 @@ def reflect_node(
             break
 
         if decision.action == AgentAction.FLAG_FOR_REVIEW:
-            state.agent_actions.append({"iteration": iteration, **decision.to_dict()})
+            if re_aggregate_count < max_reaggregations:
+                decision.action = AgentAction.RE_AGGREGATE
+                decision.reason = (
+                    "flag_for_review requested before re-aggregation budget was exhausted; "
+                    "forcing re_aggregate first"
+                )
+                decision.conf_threshold = min(0.9, state.conf_threshold + 0.15)
+
+                state.agent_actions[-1] = {"iteration": iteration, **decision.to_dict()}
+
+                state.conf_threshold = decision.conf_threshold
+                re_aggregate_count += 1
+
+                state = aggregate_node(state)
+                if classifier is not None:
+                    state = classify_node(state, classifier)
+
+                continue
+
             state.flagged_for_review = True
             state.review_reasons.append(decision.reason)
             break

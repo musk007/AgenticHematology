@@ -296,7 +296,7 @@ def _discover_lld_split_patients(
     return patients
 
 
-def _save_outputs(resp, case_id: str, out_dir: str | None) -> None:
+def _save_outputs(resp, case_id: str, out_dir: str | None, saved_plan="") -> None:
     """Write all available pipeline outputs for one case."""
     if out_dir:
         os.makedirs(out_dir, exist_ok=True)
@@ -307,6 +307,7 @@ def _save_outputs(resp, case_id: str, out_dir: str | None) -> None:
         det_payload = {
             "patient_id": det.case_id,
             "n_images": det.n_images,
+            "plan":saved_plan,
             "detections": [
                 {
                     "cell_id": d.cell_id,
@@ -396,6 +397,15 @@ def _save_outputs(resp, case_id: str, out_dir: str | None) -> None:
             json.dump(val_payload, f, indent=2)
         print(f"  Wrote {val_path}")
 
+    if out_dir and resp.state.pre_reflection_snapshot:
+        pre_ref_path = os.path.join(
+            out_dir,
+            f"case_{case_id}_pre_reflection_intermediates.json",
+        )
+        with open(pre_ref_path, "w") as f:
+            json.dump(resp.state.pre_reflection_snapshot, f, indent=2)
+        print(f"  Wrote {pre_ref_path}")
+
     # Agent reflection trace (decision-control audit trail)
     if out_dir:
         trace_payload = {
@@ -430,6 +440,7 @@ def _run_one(
     instruction: str,
     out_dir: str | None,
     dataset_source: str = "lld",
+    precomputed_findings: dict | None = None,
 ) -> bool:
     """Run the orchestrator for a single case and save outputs. Returns True on success."""
     print(f"\n{'='*60}", flush=True)
@@ -437,13 +448,15 @@ def _run_one(
 
     req = OrchestratorRequest(
         case_id=case_id,
-        image_paths=image_paths,
+        image_paths=[] if precomputed_findings is not None else image_paths,
         instruction=instruction,
+        precomputed_findings=precomputed_findings,
         dataset_source=dataset_source,
     )
     resp = orch.handle(req)
 
     print(f"Execution plan: {' → '.join(resp.tool_sequence)}")
+    saved_plan = f"Execution plan: {' → '.join(resp.tool_sequence)}"
     if resp.state.agent_actions:
         print("Agent reflection trace:")
         for a in resp.state.agent_actions:
@@ -456,7 +469,7 @@ def _run_one(
         for e in resp.state.errors:
             print(f"  - {e}", file=sys.stderr)
 
-    _save_outputs(resp, case_id, out_dir)
+    _save_outputs(resp, case_id, out_dir, saved_plan)
     return not bool(resp.state.errors)
 
 
@@ -492,7 +505,7 @@ def main() -> int:
              "Set --backend dinobloom to select DinoBloom without passing this flag.",
     )
     p.add_argument("--stub-source")
-    p.add_argument("--yolo-weights", default=str(DEFAULT_YOLO_WEIGHTS))
+    p.add_argument("--yolo-weights", default="/home/roba.majzoub/research/AgenticHematology/agentic_hematology/wbc_unified/cv/runs/detector/yolo11m_wbc/weights/best.pt")
     p.add_argument("--effnet-weights", default=str(DEFAULT_EFFNET_WEIGHTS))
     p.add_argument("--effnet-predicts-celltype", action="store_true")
     p.add_argument(
@@ -551,6 +564,7 @@ def main() -> int:
     p.add_argument("--max-new-tokens", type=int, default=768)
     p.add_argument("--temperature", type=float, default=0.0)
     p.add_argument("--instruction", default="diagnose this case")
+    p.add_argument("--findings-json",type=Path,help="Run REPORT_FROM_JSON from a precomputed AggregatedFindings JSON file.",)
     p.add_argument("--no-reflect", action="store_true",
                    help="Disable the reflection agent (the rest of the pipeline still runs).")
     p.add_argument("--no-router-agent", action="store_true",
@@ -632,10 +646,31 @@ def main() -> int:
     # Single-patient mode
     ################################################
     if args.case_id:
-        images = resolve_images(args)
-        if args.backend != "stub" and not images:
-            sys.exit("No images matched --images. Provide one or more patient image paths/globs.")
-        _run_one(orch, args.case_id, images, args.instruction, args.out, args.dataset_source)
+        precomputed_findings = None
+
+        if args.findings_json:
+            with open(args.findings_json, "r") as f:
+                payload = json.load(f)
+
+            # If using case_<id>_pre_reflection_intermediates.json,
+            # extract only the aggregation block.
+            precomputed_findings = payload.get("aggregation", payload)
+
+            images = []
+        else:
+            images = resolve_images(args)
+            if args.backend != "stub" and not images:
+                sys.exit("No images matched --images. Provide one or more patient image paths/globs.")
+
+        _run_one(
+            orch,
+            args.case_id,
+            images,
+            args.instruction,
+            args.out,
+            args.dataset_source,
+            precomputed_findings=precomputed_findings,
+        )
         return 0
 
     ################################################
