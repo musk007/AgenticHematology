@@ -1,4 +1,14 @@
-"""End-to-end attribute eval aligned with legacy val.py (two-phase: infer on dets, then score)."""
+"""End-to-end attribute eval: YOLO detections -> attribute head -> GT matching.
+
+Two phases, as in the legacy val.py:
+  1. inference (no GT): run the attribute head on every detection crop
+  2. scoring (GT here): for each GT cell take the highest-IoU detection and
+     compare that detection's prediction to the GT labels
+
+Attribute layout: 6 binary attributes (BINARY_ATTRS, 2 = unannotated) plus a
+3-class Cell_Size head. Cell_Size uses 2 = large, so it is NEVER included in
+"is this cell annotated" tests.
+"""
 from __future__ import annotations
 
 from collections import defaultdict
@@ -9,18 +19,46 @@ import torch
 from PIL import Image
 from ultralytics import YOLO
 
-from data.cell_dataset import load_manifest
-from infer import predict_attributes
+from data.cell_dataset import (
+    IMAGENET_MEAN,
+    IMAGENET_STD,
+    SIZE_IGNORE_INDEX,
+    attr_target_value,
+    load_manifest
+)
 from models.attribute_net import build_attribute_model
 from utils.boxes import match_gt_to_best_det
-from utils.labels import ATTR_NAMES, IGNORE_ATTR, crop_with_padding, xywhn_to_xyxy
-from utils.metrics import attribute_metrics, attribute_metrics_legacy
+from utils.labels import (
+    BINARY_ATTRS, 
+    IGNORE_ATTR, 
+    CELL_SIZE_N_CLASSES,
+    crop_with_padding, 
+    xywhn_to_xyxy
+)
+from utils.metrics import attribute_metrics, attribute_metrics_legacy, cell_size_metrics
 
+N_BINARY = len(BINARY_ATTRS)
+
+# ---------------------------------------------------------------------------
+# preprocessing — must match CellAttributeDataset exactly
+# ---------------------------------------------------------------------------
+
+def crops_to_tensor(crops: list[Image.Image], imgsz: int) -> torch.Tensor:
+    arrs = []
+    for crop in crops:
+        c = crop.resize((imgsz, imgsz), Image.BILINEAR)
+        a = np.asarray(c.convert("RGB"), dtype=np.float32) / 255.0
+        a = (a - np.array(IMAGENET_MEAN)) / np.array(IMAGENET_STD)
+        arrs.append(a.transpose(2, 0, 1))
+    if not arrs:
+        return torch.zeros((0, 3, imgsz, imgsz), dtype=torch.float32)
+    return torch.from_numpy(np.stack(arrs)).float()
 
 def load_attribute_model(weights: Path, device: torch.device):
     ckpt = torch.load(weights, map_location=device, weights_only=False)
     model = build_attribute_model(
-        num_attrs=len(ATTR_NAMES),
+        num_binary=N_BINARY,
+        num_size=CELL_SIZE_N_CLASSES,
         backbone=ckpt.get("backbone", "efficientnet_b0"),
         pretrained=False,
     )
@@ -29,6 +67,28 @@ def load_attribute_model(weights: Path, device: torch.device):
     model.eval()
     return model, int(ckpt.get("imgsz", 224)), ckpt
 
+
+@torch.no_grad()
+def predict_attributes_pil(
+    model,
+    crops: list[Image.Image],
+    device: torch.device,
+    imgsz: int,
+    batch: int = 64,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Return (binary probabilities (N, 6), predicted size class (N,))."""
+    if not crops:
+        return (
+            np.zeros((0, N_BINARY), dtype=np.float32),
+            np.zeros((0,), dtype=np.int64),
+        )
+    probs, sizes = [], []
+    for start in range(0, len(crops), batch):
+        x = crops_to_tensor(crops[start : start + batch], imgsz).to(device)
+        bin_logits, size_logits = model(x)
+        probs.append(torch.sigmoid(bin_logits).cpu().numpy())
+        sizes.append(size_logits.argmax(1).cpu().numpy())
+    return np.concatenate(probs, axis=0), np.concatenate(sizes, axis=0)
 
 def xyxy_to_xywhn(xyxy: np.ndarray, w: int, h: int) -> np.ndarray:
     x1, y1, x2, y2 = xyxy
@@ -50,13 +110,28 @@ def det_crops_from_xyxy(image: Image.Image, det_xyxy: np.ndarray, pad: float) ->
 
 
 def row_all_attrs_labeled(row: dict) -> bool:
-    """Legacy val.py: include cell only if all(x != 2 for x in label)."""
-    return all(int(row[name]) != IGNORE_ATTR for name in ATTR_NAMES)
+    """Legacy val.py filter: every BINARY attribute must be 0/1.
+
+    Cell_Size is excluded — 2 there means 'large', not unannotated.
+    """
+    return all(int(row[name]) != IGNORE_ATTR for name in BINARY_ATTRS)
+
+
+def row_any_attr_labeled(row: dict) -> bool:
+    return any(int(row[name]) != IGNORE_ATTR for name in BINARY_ATTRS)
 
 
 def gt_row_to_legacy_targets(row: dict) -> np.ndarray:
-    return np.array([int(row[name]) for name in ATTR_NAMES], dtype=np.float32)
+    return np.array([int(row[name]) for name in BINARY_ATTRS], dtype=np.float32)
 
+
+def gt_row_to_targets(row: dict) -> np.ndarray:
+    return np.array([attr_target_value(int(row[name])) for name in BINARY_ATTRS], dtype=np.float32)
+
+
+def gt_row_size_target(row: dict) -> int:
+    v = int(row["Cell_Size"])
+    return v if 0 <= v < CELL_SIZE_N_CLASSES else SIZE_IGNORE_INDEX
 
 @torch.no_grad()
 def eval_attributes_e2e(
@@ -73,34 +148,31 @@ def eval_attributes_e2e(
     attr_batch: int = 64,
     pad: float = 0.15,
     det_device: str = "0",
-    legacy: bool = True,
+    legacy: bool = False,
+    predict_fn=None,
 ) -> tuple[dict, dict, list | None]:
-    """
-    Legacy val.py / test.py (batch_size=1) attribute scoring:
+    """Score attribute predictions made on YOLO detections against GT cells.
 
-    Phase 1 — inference (no GT):
-      For every detection box, run attribute head on that det crop.
-
-    Phase 2 — metrics only (GT used here):
-      For each GT cell, pick detection with highest IoU (my_process_batch argmax).
-      Compare that detection's attribute prediction to GT labels.
-
-    legacy=True matches val.py filters and sklearn metrics:
-      - conf_thres=0.001, iou_thres=0.6, max_det=300
-      - skip cells where any attribute == 2 (all six must be 0/1)
+    ``predict_fn(crops, batch) -> (bin_probs, size_pred)`` lets another backbone
+    (e.g. DinoBloom) reuse this loop; defaults to the EfficientNet head.
     """
     rows = load_manifest(manifest, split)
     by_image: dict[str, list[dict]] = defaultdict(list)
-    cell_filter = row_all_attrs_labeled if legacy else lambda r: any(int(r[n]) != IGNORE_ATTR for n in ATTR_NAMES)
+    cell_filter = row_all_attrs_labeled if legacy else row_any_attr_labeled
     for row in rows:
         if cell_filter(row):
             by_image[row["image"]].append(row)
 
     det = YOLO(str(det_weights))
-    attr_model, attr_imgsz, _ = load_attribute_model(attr_weights, device)
+    if predict_fn is None:
+        attr_model, attr_imgsz, _ = load_attribute_model(attr_weights, device)
+        def predict_fn(crops, batch):  # noqa: F811
+            return predict_attributes_pil(attr_model, crops, device, attr_imgsz, batch=batch)
 
     y_true_list: list[np.ndarray] = []
     y_pred_list: list[np.ndarray] = []
+    size_true: list[int] = []
+    size_pred: list[int] = []
     ious: list[float] = []
     n_gt = 0
     n_matched = 0
@@ -147,22 +219,19 @@ def eval_attributes_e2e(
             continue
 
         det_crops = det_crops_from_xyxy(image, det_xyxy, pad=pad)
-        all_det_attrs = predict_attributes(attr_model, det_crops, device, attr_imgsz, batch=attr_batch)
+        all_bin, all_size = predict_fn(det_crops, attr_batch)
 
         det_idx, best_iou = match_gt_to_best_det(gt_xyxy, det_xyxy)
         for row, di, iou_val in zip(img_rows, det_idx, best_iou):
             if di < 0:
                 n_skipped_no_det += 1
                 continue
-            if not cell_filter(row):
-                continue
-            if legacy:
-                y_true_list.append(gt_row_to_legacy_targets(row))
-            else:
-                from data.cell_dataset import attr_target_value
-
-                y_true_list.append(np.array([attr_target_value(int(row[n])) for n in ATTR_NAMES], dtype=np.float32))
-            y_pred_list.append(all_det_attrs[di])
+            y_true_list.append(
+                gt_row_to_legacy_targets(row) if legacy else gt_row_to_targets(row)
+            )
+            y_pred_list.append(all_bin[di])
+            size_true.append(gt_row_size_target(row))
+            size_pred.append(int(all_size[di]))
             ious.append(float(iou_val))
             n_matched += 1
 
@@ -179,7 +248,11 @@ def eval_attributes_e2e(
     y_pred = np.stack(y_pred_list, axis=0)
     table_rows = None
     if legacy:
-        metrics, table_rows = attribute_metrics_legacy(y_true, y_pred, ATTR_NAMES)
+        metrics, table_rows = attribute_metrics_legacy(y_true, y_pred, BINARY_ATTRS)
     else:
-        metrics = attribute_metrics(y_true, y_pred, ATTR_NAMES)
+        metrics = attribute_metrics(y_true, y_pred, BINARY_ATTRS)
+
+    size_m = cell_size_metrics(np.array(size_true), np.array(size_pred))
+    if size_m:
+        metrics["Cell_Size"] = size_m
     return metrics, stats, table_rows

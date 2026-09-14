@@ -24,7 +24,11 @@ def _attr_metrics_one(y_true: np.ndarray, y_pred_bin: np.ndarray) -> dict:
         "f1": float(f1_score(y_true, y_pred_bin, zero_division=0)),
     }
 
+def cell_size_metrics(y_true, y_pred_idx):
+    return {"accuracy": float(accuracy_score(y_true, y_pred_idx)),
+            "f1_macro": float(f1_score(y_true, y_pred_idx, average="macro", zero_division=0))}
 
+            
 def attribute_metrics(
     y_true: np.ndarray,
     y_pred: np.ndarray,

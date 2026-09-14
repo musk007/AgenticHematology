@@ -165,7 +165,7 @@ _SYSTEM_PROMPT = (
     "to decide the next PROCESS action based on data quality and internal "
     "coherence of the evidence.\n\n"
     "Choose EXACTLY ONE action and reply with ONLY a JSON object, no prose:\n"
-    '{"action": "proceed" | "re_aggregate" | "flag_for_review", '
+    '{"action": <one of "proceed", "re_aggregate", "flag_for_review">, '
     '"reason": "<one short sentence>", '
     '"conf_threshold": <float 0.1-0.9, only if action is re_aggregate>}\n\n'
     "Guidance:\n"
@@ -173,12 +173,24 @@ _SYSTEM_PROMPT = (
     "high fraction of non-WBC/None detections, low mean detection confidence, "
     "and the differential could plausibly sharpen if low-confidence detections "
     "are dropped. Provide a stricter conf_threshold than the current one. Only "
-    "available if re_aggregate has not already been used.\n"
+    "available while re-aggregation budget remains: if "
+    "re_aggregate_already_used is true in the input, do not choose this "
+    "action.\n"
     "- flag_for_review: choose this when the picture is borderline or "
     "contradictory — e.g. blast burden near the 20% threshold, very few "
     "informative cells, low classifier confidence, or morphology that conflicts "
     "with the predicted class.\n"
     "- proceed: choose this when the evidence is coherent and sufficient.\n"
+    "Examples:\n\n"
+    "case_state: {\"blast_pct\": 6.5, \"qc\": {\"mean_det_conf\": 0.48, \"pct_class_none\": 34.0}, "
+    "\"n_cells_informative\": 65}\n"
+    "→ {\"action\": \"re_aggregate\", \"reason\": \"high artifact fraction and low mean confidence "
+    "suggest differential may sharpen with a stricter threshold\", \"conf_threshold\": 0.4}\n\n"
+    "case_state: {\"blast_pct\": 22.3, \"qc\": {\"mean_det_conf\": 0.42, \"pct_class_none\": 31.0}, "
+    "\"n_cells_informative\": 18}\n"
+    "→ {\"action\": \"flag_for_review\", \"reason\": \"blast burden near 20% threshold with few "
+    "informative cells that re-aggregation cannot increase\"}\n"
+
 )
 
 
@@ -191,7 +203,7 @@ class ReflectionAgent:
     def __init__(
         self,
         llm: LLMClient,
-        min_conf_threshold: float = 0.5,
+        min_conf_threshold: float = 0.2,
         max_conf_threshold: float = 0.9,
     ):
         self.llm = llm
@@ -219,6 +231,7 @@ class ReflectionAgent:
         try:
             print("Running reflection agent...", flush=True)
             raw = self.llm.complete(_SYSTEM_PROMPT, user)
+
         except Exception as e:
             return AgentDecision(
                 AgentAction.FLAG_FOR_REVIEW,
@@ -226,6 +239,7 @@ class ReflectionAgent:
                 raw="",
             )
         print("Reflection agent complete.", flush=True)
+
 
         decision = self._parse(raw)
 
