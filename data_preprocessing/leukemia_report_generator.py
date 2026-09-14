@@ -76,6 +76,10 @@ CELL_PRINT_NAME = {
     "metamyelocyte": "Metamyelocytes",
 }
 
+COHORT_DESCRIBABLE_CELL_TYPES = {
+    "lymphoblast", "myeloblast", "monoblast", "abnormal promyelocyte",
+    "promonocyte", "atypical lymphocyte", "lymphocyte",
+}
 
 # ---------------------------------------------------------------------------
 # Data containers
@@ -116,14 +120,15 @@ def classify_case(
     # 1. APML — abnormal promyelocytes are a hard, specific finding.
     if flags.get("abnormal_promyelocytes_present"):
         return Impression(
-            primary="Acute Promyelocytic Leukemia (APL / AML-M3, suspected)",
+            primary="Findings consistent with an acute leukaemia showing abnormal promyelocyte morphology",
             rationale=(
                 f"Abnormal promyelocytes dominate the smear "
                 f"({report_ready['dominant_cell_pct']:.1f}% of WBCs) with "
                 f"a blast-equivalent burden of {blast_pct:.1f}%, "
-                f"meeting criteria for acute leukemia."
+                f"meeting criteria for acute leukaemia."
             ),
             differential=[
+                "Acute promyelocytic leukaemia — requires urgent PML::RARA confirmation.",
                 "AML, not otherwise specified (less likely given promyelocyte morphology).",
             ],
             recommended_workup=[
@@ -137,19 +142,18 @@ def classify_case(
             ],
         )
 
-    # 2. Acute leukemia with high blast burden (>= 20% WHO threshold).
+    # 2. Acute leukaemia with high blast burden (>= 20% WHO threshold).
     if flags.get("blast_threshold_met"):
         if dominant == "lymphoblast":
             return Impression(
-                primary="Acute Lymphoblastic Leukemia (ALL)",
+                primary="Findings consistent with an acute leukaemia of lymphoblastic morphology",
                 rationale=(
                     f"Lymphoblasts comprise {blast_pct:.1f}% of WBCs, "
-                    f"exceeding the 20% blast threshold for acute leukemia."
+                    f"exceeding the 20% blast threshold for acute leukaemia."
                 ),
                 differential=[
-                    "B-lymphoblastic leukemia/lymphoma (most common in adults and children).",
-                    "T-lymphoblastic leukemia/lymphoma.",
-                    "Mixed-phenotype acute leukemia (excluded by immunophenotyping).",
+                    "B- or T-lymphoblastic leukaemia/lymphoma.",
+                    "Mixed-phenotype acute leukaemia (excluded by immunophenotyping).",
                 ],
                 recommended_workup=[
                     "Flow cytometric immunophenotyping for lineage assignment "
@@ -163,15 +167,13 @@ def classify_case(
             )
         if dominant == "monoblast":
             return Impression(
-                primary="Acute Myeloid Leukemia with monocytic differentiation "
-                        "(AML-M5 / acute monoblastic or monocytic leukemia, suspected)",
+                primary="Findings consistent with an acute leukaemia showing monocytic differentiation",
                 rationale=(
-                    f"Monoblasts comprise {blast_pct:.1f}% of WBCs with "
-                    f"prominent nucleoli and abundant moderately basophilic "
-                    f"cytoplasm, consistent with a monocytic-lineage acute leukemia."
+                    f"Monoblasts comprise {blast_pct:.1f}% of WBCs, "
+                    f"consistent with a monocytic-lineage acute leukaemia."
                 ),
                 differential=[
-                    "Acute myelomonocytic leukemia (AML-M4).",
+                    "Acute myelomonocytic leukaemia.",
                     "AML with KMT2A rearrangement (frequently monocytic).",
                     "Blastic plasmacytoid dendritic cell neoplasm (excluded by immunophenotyping).",
                 ],
@@ -186,15 +188,15 @@ def classify_case(
             )
         if dominant == "myeloblast":
             return Impression(
-                primary="Acute Myeloid Leukemia (AML)",
+                primary="Findings consistent with an acute leukaemia of myeloblastic morphology",
                 rationale=(
                     f"Myeloblasts comprise {blast_pct:.1f}% of WBCs, "
-                    f"exceeding the 20% blast threshold for acute leukemia."
+                    f"exceeding the 20% blast threshold for acute leukaemia."
                 ),
                 differential=[
                     "AML with recurrent genetic abnormalities (per WHO/ICC).",
-                    "AML, not otherwise specified.",
-                    "Mixed-phenotype acute leukemia (excluded by immunophenotyping).",
+                    "Acute myeloid leukaemia.",
+                    "Mixed-phenotype acute leukaemia (excluded by immunophenotyping).",
                 ],
                 recommended_workup=[
                     "Flow cytometric immunophenotyping (CD13, CD33, CD117, MPO, HLA-DR).",
@@ -204,19 +206,18 @@ def classify_case(
                 ],
             )
         # If mature cells dominate despite >=20% blasts, infer lineage from the
-        # differential distribution so acute leukemia is not dropped to fallback.
+        # differential distribution so acute leukaemia is not dropped to fallback.
         if lymphoblast_pct >= 20.0 and lymphoblast_pct >= myeloid_blast_like_pct:
             return Impression(
-                primary="Acute Lymphoblastic Leukemia (ALL)",
+                primary="Findings consistent with an acute leukaemia of lymphoblastic morphology",
                 rationale=(
                     f"Lymphoblast burden is {lymphoblast_pct:.1f}% of informative WBCs, "
                     f"with total blast-equivalent burden {blast_pct:.1f}%, meeting criteria "
-                    f"for acute leukemia despite mature-cell predominance."
+                    f"for acute leukaemia despite mature-cell predominance."
                 ),
                 differential=[
-                    "B-lymphoblastic leukemia/lymphoma.",
-                    "T-lymphoblastic leukemia/lymphoma.",
-                    "Mixed-phenotype acute leukemia (requires immunophenotyping).",
+                    "B- or T-lymphoblastic leukaemia/lymphoma.",
+                    "Mixed-phenotype acute leukaemia (requires immunophenotyping).",
                 ],
                 recommended_workup=[
                     "Flow cytometric immunophenotyping for lineage assignment.",
@@ -227,16 +228,16 @@ def classify_case(
             )
         if myeloid_blast_like_pct >= 20.0:
             return Impression(
-                primary="Acute Myeloid Leukemia (AML)",
+                primary="Findings consistent with an acute leukaemia of myeloblastic morphology",
                 rationale=(
                     f"Myeloid blast-like burden is {myeloid_blast_like_pct:.1f}% of informative WBCs "
                     f"(overall blast-equivalent burden {blast_pct:.1f}%), supporting AML even when "
                     f"mature myeloid cells are also prominent."
                 ),
                 differential=[
-                    "AML with recurrent genetic abnormalities.",
-                    "AML with monocytic differentiation.",
-                    "Mixed-phenotype acute leukemia (requires immunophenotyping).",
+                    "AML with recurrent genetic abnormalities (per WHO/ICC).",
+                    "Acute myeloid leukaemia.",
+                    "Mixed-phenotype acute leukaemia (requires immunophenotyping).",
                 ],
                 recommended_workup=[
                     "Flow cytometric immunophenotyping (myeloid and monocytic markers).",
@@ -253,19 +254,19 @@ def classify_case(
         or myeloid_blast_like_pct >= 10.0
     ):
         if dominant == "lymphoblast" or lymphoblast_pct >= myeloid_blast_like_pct:
-            primary = "Acute Lymphoblastic Leukemia (ALL, borderline/sub-threshold)"
+            primary = "Findings suspicious for an early acute leukaemia of lymphoblastic morphology"
         else:
-            primary = "Acute Myeloid Leukemia (AML, borderline/sub-threshold)"
+            primary = "Findings suspicious for an early acute leukaemia of myeloid morphology"
         return Impression(
             primary=primary,
             rationale=(
                 f"{dominant.capitalize()}s comprise {blast_pct:.1f}% of WBCs. "
                 f"While below the classic 20% acute threshold, this remains a "
                 f"highly abnormal circulating blast population and is suspicious "
-                f"for an incipient acute leukemia pattern."
+                f"for an incipient acute leukaemia pattern."
             ),
             differential=[
-                "Incipient acute leukemia phase.",
+                "Incipient acute leukaemia phase.",
                 "Myelodysplastic syndrome with excess blasts.",
                 "Reactive leukemoid pattern with blast-like cells (less likely).",
             ],
@@ -287,15 +288,15 @@ def classify_case(
         )
     ):
         return Impression(
-            primary="Acute Myeloid Leukemia with monocytic differentiation (suspected)",
+            primary="Findings consistent with an acute leukaemia showing monocytic differentiation",
             rationale=(
                 f"Monocytic-lineage predominance (promonocytes {promonocyte_pct:.1f}%) "
                 f"with circulating blasts ({blast_pct:.1f}%) is suspicious for a monocytic AML pattern "
                 f"under sparse annotation conditions."
             ),
             differential=[
-                "Acute monoblastic/monocytic leukemia (AML-M5).",
-                "Acute myelomonocytic leukemia (AML-M4).",
+                "Acute monoblastic/monocytic leukaemia.",
+                "Acute myelomonocytic leukaemia.",
                 "Reactive monocytosis with immature forms (less likely).",
             ],
             recommended_workup=[
@@ -325,7 +326,7 @@ def classify_case(
             )
         if is_cml_profile and not flags.get("monocytosis_present"):
             return Impression(
-                primary="Chronic Myeloid Leukemia (CML), chronic phase (suspected)",
+                primary="Findings consistent with a chronic myeloproliferative process with left-shifted granulopoiesis",
                 rationale=(
                     f"Left-shifted granulocytic series with the full spectrum of "
                     f"maturation (myelocytes, metamyelocytes, neutrophils), "
@@ -334,6 +335,7 @@ def classify_case(
                     f"chronic-phase CML pattern.{basophil_note}"
                 ),
                 differential=[
+                    "Chronic myeloid leukaemia — requires BCR::ABL1 confirmation.",
                     "Leukemoid reaction or severe infection/sepsis, particularly if basophils are absent.",
                     "Other MPN (PV, ET, primary myelofibrosis).",
                     "Atypical CML, BCR::ABL1 negative.",
@@ -352,17 +354,15 @@ def classify_case(
     #    no left shift.
     if flags.get("atypical_lymphocytes_present") and not flags.get("blast_threshold_met"):
         return Impression(
-            primary="Chronic Lymphocytic Leukemia / Small Lymphocytic Lymphoma "
-                    "(CLL/SLL, suspected)",
+            primary="Findings consistent with a mature lymphoid proliferation",
             rationale=(
                 f"The smear is dominated by atypical mature lymphocytes "
                 f"({report_ready['dominant_cell_pct']:.1f}% of informative WBCs) "
-                f"with coarse chromatin and inconspicuous nucleoli, "
                 f"and no significant blast population."
             ),
             differential=[
+                "Chronic lymphocytic leukaemia / small lymphocytic lymphoma.",
                 "Mantle cell lymphoma in leukemic phase (excluded by CD5+/CD23+/cyclin D1- profile).",
-                "Marginal zone lymphoma, leukemic.",
                 "Prolymphocytic leukemia (>55% prolymphocytes).",
                 "Reactive lymphocytosis (e.g. viral) — typically polyclonal.",
             ],
@@ -433,8 +433,8 @@ def build_blast_morphology_paragraph(case: dict[str, Any]) -> str:
     """
     rr = case["report_ready"]
     cohort_n = rr["qc"]["n_cells_in_cohort"]
-    dominant = rr["dominant_cell_type"]
-    if dominant not in BLAST_LIKE_CELL_TYPES or cohort_n == 0:
+    cohort_type = rr.get("cohort_cell_type") or rr["dominant_cell_type"]
+    if cohort_type not in COHORT_DESCRIBABLE_CELL_TYPES or cohort_n == 0:
         return ""
 
     morph = rr["blast_morphology"]
@@ -450,7 +450,7 @@ def build_blast_morphology_paragraph(case: dict[str, Any]) -> str:
     baso, baso_pct = d("cytoplasmic_basophilia")
     vac, vac_pct = d("cytoplasmic_vacuoles")
 
-    cohort_label = CELL_PRINT_NAME.get(dominant, dominant).lower()
+    cohort_label = CELL_PRINT_NAME.get(cohort_type, cohort_type).lower()
 
     return (
         f"**Cohort morphology (n = {cohort_n} {cohort_label}):** "
@@ -483,8 +483,7 @@ def build_qc_line(case: dict[str, Any]) -> str:
         f"**QC:** {qc['n_fields_of_view']} FOVs; "
         f"{qc['n_identified_wbc']}/{qc['n_annotated_cells']} cells classifiable "
         f"({artefact_pct:.1f}% artefact); "
-        f"cohort cell count = {qc['n_cells_in_cohort']}; "
-        f"global canvas stitching {'active' if qc['global_canvas_stitching_active'] else 'inactive'}."
+        f"cohort cell count = {qc['n_cells_in_cohort']}."
     )
     if warnings:
         base += "  **WARNINGS:** " + ", ".join(warnings) + "."
@@ -495,7 +494,8 @@ def build_impression_block(imp: Impression) -> str:
     workup = "\n".join(f"- {w}" for w in imp.recommended_workup)
     diff = "\n".join(f"- {d}" for d in imp.differential)
     return (
-        f"**Impression:** {imp.primary}.\n\n"
+        f"**Impression:** {imp.primary}. Definitive classification requires "
+        f"clinical correlation and ancillary studies.\n\n"
         f"{imp.rationale}\n\n"
         f"**Differential considerations:**\n{diff}\n\n"
         f"**Recommended workup:**\n{workup}"
@@ -522,9 +522,17 @@ REPORT_TEMPLATE = """# Hematology Report — Case {case_id}
 
 {qc_line}
 
+{scope_line}
 ---
 *Automated multi-image peripheral blood smear analysis. Findings are intended to support — not replace — review by a board-certified hematopathologist.*
 """
+
+def build_scope_line(case: dict[str, Any]) -> str:
+    return (
+        "**Not assessed:** erythrocyte and platelet morphology, dysplastic features, "
+        "smear staining quality, and whether fields originate from the optimal "
+        "monolayer zone. Findings are based on leukocyte morphology only."
+    )
 
 
 def generate_report(case_id: str, case: dict[str, Any]) -> str:
@@ -541,6 +549,7 @@ def generate_report(case_id: str, case: dict[str, Any]) -> str:
         "flags_line": build_flags_line(case),
         "impression_block": build_impression_block(impression),
         "qc_line": build_qc_line(case),
+        "scope_line": build_scope_line(case),
     }
 
     report = REPORT_TEMPLATE.format(**sections)

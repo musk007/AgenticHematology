@@ -7,7 +7,7 @@ import sys
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any
-
+from data_preprocessing.report_prompt import prompt as MORPH_SYSTEM_PROMPT
 from .schemas import AggregatedFindings, GroundedReport, LeukemiaClassification
 
 
@@ -96,64 +96,34 @@ class LocalLLMReportGenerator(BaseReportGenerator):
         instruction: str | None = None,
     ) -> GroundedReport:
         from report.src.llm_infer import generate_from_messages, load_model_and_tokenizer
+        from report.src.template_report import generate_template_report
 
         if self._model is None or self._tokenizer is None:
             self._model, self._tokenizer = load_model_and_tokenizer(
-                self.model_path,
-                self.adapter_path,
+                self.model_path, self.adapter_path
             )
+
         summary = _summary_with_agent_context(findings, classification, instruction)
+        template_md = generate_template_report(summary, _load_default_cfg())
+
         messages = [
-                {
-                    "role": "system",
-                    "content": (
-                        "You are a hematopathology assistant. Write a structured peripheral blood "
-                        "smear report narrative in Markdown using ONLY the supplied JSON. "
-                        "Your output must resemble a hematology report, but you must NOT generate "
-                        "any quantitative table, count table, QC section, or cell grounding section; "
-                        "those will be appended deterministically by the pipeline.\n\n"
+            {"role": "system", "content": MORPH_SYSTEM_PROMPT},
+            {
+                "role": "user",
+                "content": (
+                    f"---JSON---\n{json.dumps(summary, indent=2)}\n\n"
+                    f"---REPORT---\n{template_md}"
+                ),
+            },
+        ]
+        morph = generate_from_messages(
+            self._model, self._tokenizer, messages,
+            max_new_tokens=self.max_new_tokens, temperature=self.temperature,
+        ).strip()
 
-                        "Output exactly these sections:\n"
-                        "**Morphologic interpretation:** one concise paragraph.\n"
-                        "**Diagnostic flags:** semicolon-separated flags supported by the JSON.\n"
-                        "**Impression:** one diagnosis line using case_summary['agentic_classification']['predicted_class'].\n"
-                        "**Differential considerations:** 2–4 bullet points.\n"
-                        "**Recommended workup:** 3–5 bullet points.\n\n"
-
-                        "Strict rules:\n"
-                        "- Do not invent numbers, percentages, counts, morphology, clinical history, CBC values, cytogenetics, or immunophenotype.\n"
-                        "- Do not create a Differential table.\n"
-                        "- Do not create a Quantitative Cell Summary.\n"
-                        "- Do not create an Agentic Diagnosis section.\n"
-                        "- Do not create a Cell Grounding section.\n"
-                        "- Do not say a cell type is absent if it appears anywhere in case_summary['differential_pct'].\n"
-                        "- Use only the predicted diagnosis from case_summary['agentic_classification'].\n"
-                        "- For morphology, use only case_summary['morphology_cohort']; if morphology values are generic or unavailable, keep the interpretation conservative.\n"
-                        "- Do not use textbook morphology for ALL/AML/CML/CLL/APML unless it is supported by this patient's JSON.\n"
-                    )
-                },
-                {
-                    "role": "user",
-                    "content": (
-                        f"Instruction: {instruction or 'Diagnose this case'}\n\n"
-                        f"<case_summary>\n{json.dumps(summary, indent=2)}\n</case_summary>"
-                    ),
-                },
-            ]
-        markdown = generate_from_messages(
-            self._model,
-            self._tokenizer,
-            messages,
-            max_new_tokens=self.max_new_tokens,
-            temperature=self.temperature,
-        )
+        markdown = _insert_morphology(template_md, morph)
         markdown = _append_quantitative_summary(markdown, findings)
-        markdown = _append_grounding(
-            markdown,
-            findings,
-            classification,
-        )
-
+        markdown = _append_grounding(markdown, findings, classification)
         return GroundedReport(
             markdown=markdown,
             grounding_index=findings.grounding_index,
@@ -187,6 +157,17 @@ def _summary_with_agent_context(
     summary["grounding_index"] = findings.grounding_index
     return summary
 
+def _insert_morphology(template_md: str, morph: str) -> str:
+    """Insert the LLM paragraph between Cohort morphology and Diagnostic flags,
+    matching how the ground-truth reports were assembled."""
+    if not morph:
+        return template_md
+    marker = "**Diagnostic flags:**"
+    if marker in template_md:
+        head, _, tail = template_md.partition(marker)
+        return f"{head.rstrip()}\n\n{morph}\n\n{marker}{tail}"
+    return f"{template_md.rstrip()}\n\n{morph}"
+
 
 def _append_quantitative_summary(markdown: str, findings: AggregatedFindings) -> str:
     summary = findings.report_ready
@@ -202,6 +183,9 @@ def _append_quantitative_summary(markdown: str, findings: AggregatedFindings) ->
     )
     lines.append(
         f"- Artefacts/non-WBC detections: {summary.get('n_cells_artifact', 0)}"
+    )
+    lines.append(
+        f"- Blast-equivalent burden is {summary.get('blast_pct', 0.0)}% of informative WBCs"
     )
     lines.append("")
     lines.append("| Cell type | Count | % informative WBCs |")
@@ -220,7 +204,7 @@ def _append_grounding(
     markdown: str,
     findings: AggregatedFindings,
     classification: LeukemiaClassification | None,
-    limit: int = 8,
+    limit: int = 5,
 ) -> str:
     lines = [markdown.rstrip(), "", "## Agentic Diagnosis"]
 

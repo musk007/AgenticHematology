@@ -124,7 +124,7 @@ def ingest_yolo_attribute_dir(stores: dict[str, dict], label_dir: str) -> None:
         return
 
     paths = sorted(glob.glob(os.path.join(label_dir, "*.txt")))
-    breakpoint()
+
     for path in paths:
         fname = os.path.basename(path)
         pid, dx = parse_filename(fname)
@@ -135,7 +135,7 @@ def ingest_yolo_attribute_dir(stores: dict[str, dict], label_dir: str) -> None:
         if stores[pid]["metadata_filename_diagnosis"] is None:
             stores[pid]["metadata_filename_diagnosis"] = dx
         stores[pid]["filenames"].add(stem)
-        breakpoint()
+
 
         with open(path) as f:
             for row in f:
@@ -353,6 +353,7 @@ def _build_report_ready(rec: dict, pct_clinical: dict) -> dict:
         "cohort_selection_ambiguous": cohort_ambiguous,
         "differential_alerts": alerts,
         "requires_review": any(a["severity"] == "review" for a in alerts),
+        "cohort_cell_type": next(iter(cohort_types), None),
     }
 
     return {

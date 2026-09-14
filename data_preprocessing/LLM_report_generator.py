@@ -80,7 +80,7 @@ Output exactly one section titled "**Morphologic interpretation:**" containing 3
 
 # What the section should do
 
-1. Describe the morphologic pattern of the blast cohort and any clinically meaningful heterogeneity. Do not assign, favour, compare against, or discuss FAB subtypes (L1, L2, L3, M0-M7) or any morphology-only leukemia subclassification system.
+1. Describe the morphologic pattern of the cohort and any clinically meaningful heterogeneity.
 2. Surface clinically relevant subordinate findings from the JSON that the template's dominant-only prose hides:
    - Size heterogeneity / pleomorphism (a substantial minority of small or large cells alongside the dominant population)
    - Nuclear shape sub-categories (cleaved or folded nuclei, prominent irregular minority alongside a regular dominant)
@@ -93,8 +93,8 @@ Output exactly one section titled "**Morphologic interpretation:**" containing 3
 
 - Do not mention FAB classifications, FAB subtypes, or compare findings against FAB categories.
 - Numbers: do not introduce any numeric value not literally present in either input. You may quote percentages from `cell_percentages_clinical`, `blast_morphology`, or the report verbatim.
-- Source of truth for cohort morphology: use ONLY the `report_ready.blast_morphology` block, which is computed over the blast cohort (n_cells_in_cohort). The top-level `attributes` block is computed over all annotated objects (including artefacts) and must not be cited as cohort statistics, though you may reference its subordinate percentages when explicitly discussing the broader smear rather than the blast cohort.
-- Do not interpret `code_2`, `code_3`, or any `code_N` placeholder as a morphology value — these represent non-informative / artefact cells. Treat them as missing data, not as a finding, and do not mention them in the output.
+- Source of truth for cohort morphology: use ONLY the `report_ready.blast_morphology` block, which is computed over the selected cohort (n_cells_in_cohort) — this cohort may be a blast population or a mature lymphoid population depending on the case. The top-level `attributes` block is computed over all annotated objects (including artefacts) and must not be cited as cohort statistics, though you may reference its subordinate percentages when explicitly discussing the broader smear rather than the cohort.
+- Do not interpret `code_4`, `code_3`, or any `code_N` placeholder as a morphology value — these represent non-informative / artefact cells. Treat them as missing data, not as a finding, and do not mention them in the output.
 - Do not use `metadata_filename_diagnosis` as a confirmed diagnosis — it is dataset training metadata, not clinical truth. Reason from morphology only.
 - Do not invent any clinical data absent from the inputs: no age, sex, CBC indices, symptoms, history, immunophenotype, cytogenetics, or molecular results.
 - Do not invent any morphologic finding not present in the attribute distributions: no Auer rods, smudge cells, faggot cells, hand-mirror cells, granules, vacuoles, or features beyond what the JSON describes.
@@ -110,7 +110,7 @@ Do not assign a definitive diagnosis solely from morphology. Morphologic finding
 - Clinical, terse, declarative. Audience is a hematopathologist who will sign the report.
 - Running prose. No numbered or bulleted lists.
 - Reference attributes by morphologic name, not JSON key: "nuclear chromatin" not "nuclear_chromatio"; "cytoplasmic basophilia" not "cytoplasmic_basophilia".
-- Use "the cohort", "the blast population", or e.g. "the lymphoblast cohort" — not "the cells in this report".
+- Refer to the cohort by its actual cell type — e.g. "the lymphoblast cohort", "the atypical lymphocyte cohort" — or simply "the cohort". Do not call it a blast population unless the cohort cell type is a blast.
 - Output will be inserted between the "Cohort morphology" block and the "Impression" line of the template report. Match the surrounding tone.
 
 """
@@ -135,8 +135,6 @@ DEFAULT_WHITELIST: set[str] = {
     "10",                    # accelerated phase CML threshold
     "5",                     # lymphocytosis threshold
     "2",                     # basophilia threshold
-    "1", "3", "4", "6", "7", # FAB indices
-    "2022",                  # WHO 5th ed.
 }
 
 
